@@ -1302,7 +1302,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c785f5;
+  background: #cc57c1;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2624,4 +2624,10 @@ hr {
 }
 .copyright {
   text-align: center;
+}
+.posts-expand .post-tags a {
+  background-color: transparent;
+}
+.posts-expand .post-tags a:hover {
+  background-color: transparent;
 }
