@@ -17,10 +17,12 @@
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="所有人的坚强 都是软弱生的茧">
@@ -133,6 +135,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -161,9 +164,39 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
 </div>
     </header>
 
@@ -186,113 +219,6 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.guard.ren/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
-      <meta itemprop="name" content="何年何月何时多">
-      <meta itemprop="description" content="所有人的坚强 都是软弱生的茧">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何年何月何时多">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/" class="post-title-link" itemprop="url">redis安装在liunx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-21 10:35:23" itemprop="dateCreated datePublished" datetime="2019-04-21T10:35:23+08:00">2019-04-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>532</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>下载包<br><a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a><br>如包名为redis-5.0.4.tar.gz</p>
-<p>上传至服务器：如/tmp<br>移动到目录下<br><code>cd /tmp</code></p>
-<ol>
-<li>解压<br><code>tar -zvxf redis-5.0.4.tar.gz</code></li>
-<li>移动到/usr/local并重名名为redis<br><code>mv redis-5.0.4 /usr/local/redis</code></li>
-<li>切换目录<br><code>cd /usr/local/reids/</code></li>
-<li>编译<br><code>make</code></li>
-<li>添加启动目录<br><code>make install</code></li>
-<li>测试访问<br><code>redis-s &gt; tab &gt;显示 redis-server 即可</code></li>
-<li>打开配置文件<br><code>vi redis.conf</code></li>
-<li>更改<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#服务器访问</span></span><br><span class="line"><span class="string">bind</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="string">&gt;</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> </span><br><span class="line"><span class="comment">#后台执行</span></span><br><span class="line"><span class="string">daemonize</span> <span class="literal">no</span> <span class="string">&gt;</span> <span class="literal">yes</span></span><br><span class="line"><span class="comment">#访问密码</span></span><br><span class="line"><span class="string">requirepass</span> <span class="string">&gt;</span> <span class="number">1234567</span></span><br></pre></td></tr></table></figure>
-完成后<br><code>:wq</code></li>
-<li>启动服务<br><code>redis-server ./redis.conf</code><br>进程查看<code>ps -ef | grep redis</code></li>
-<li>访问服务<br><code>redis-cli</code></li>
-<li>退出<br><code>exit</code></li>
-<li>关闭<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">shutdown save</span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure></li>
-<li>配置成服务<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./install_server.sh </span><br><span class="line"><span class="number">1.</span>端口</span><br><span class="line"><span class="number">2.</span>配置文件</span><br><span class="line"><span class="number">3.</span>log文件</span><br><span class="line"><span class="number">4.</span>数据目录</span><br><span class="line"><span class="number">5.</span>可执行文件</span><br></pre></td></tr></table></figure>
-检测<br><code>chkconfig --list | grep redis</code></li>
-</ol>
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
   
   
@@ -333,7 +259,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/%E8%8E%B7%E5%8F%96ip-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="获取ip" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/%E8%8E%B7%E5%8F%96ip-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/%E8%8E%B7%E5%8F%96ip-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -358,12 +305,109 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>util</p>
-<a id="more"></a>
+          util
 
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.<span class="keyword">extern</span>.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line">@Slf4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IpUtil</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> ERROR_IP = <span class="string">"127.0.0.1"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> Pattern pattern = Pattern.</span><br><span class="line">            compile(<span class="string">"(2[5][0-5]|2[0-4]\\d|1\\d&#123;2&#125;|\\d&#123;1,2&#125;)\\.(25[0-5]|2[0-4]\\d|1\\d&#123;2&#125;|\\d&#123;1,2&#125;)\\.(25[0-5]|2[0-4]\\d|1\\d&#123;2&#125;|\\d&#123;1,2&#125;)\\.(25[0-5]|2[0-4]\\d|1\\d&#123;2&#125;|\\d&#123;1,2&#125;)"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 取外网IP</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param request</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="title">getRemoteIp</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">String</span> ip = request.getHeader(<span class="string">"x-real-ip"</span>);</span><br><span class="line">        <span class="keyword">if</span> (ip == null) &#123;</span><br><span class="line">            ip = request.getRemoteAddr();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//过滤反向代理的ip</span></span><br><span class="line">        <span class="keyword">String</span>[] stemps = ip.split(<span class="string">","</span>);</span><br><span class="line">        <span class="keyword">if</span> (stemps != null &amp;&amp; stemps.length &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">//得到第一个IP，即客户端真实IP</span></span><br><span class="line">            ip = stemps[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ip = ip.trim();</span><br><span class="line">        <span class="keyword">if</span> (ip.length() &gt; <span class="number">23</span>) &#123;</span><br><span class="line">            ip = ip.substring(<span class="number">0</span>, <span class="number">23</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ip;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取用户的真实ip</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param request</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="title">getUserIP</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 优先取X-Real-IP</span></span><br><span class="line">        <span class="keyword">String</span> ip = request.getHeader(<span class="string">"X-Real-IP"</span>);</span><br><span class="line">        <span class="keyword">if</span> (ip == null || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">            ip = request.getHeader(<span class="string">"x-forwarded-for"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ip == null || ip.length() == <span class="number">0</span> || <span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">            ip = request.getRemoteAddr();</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"0:0:0:0:0:0:0:1"</span>.equals(ip)) &#123;</span><br><span class="line">                ip = ERROR_IP;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"unknown"</span>.equalsIgnoreCase(ip)) &#123;</span><br><span class="line">            ip = ERROR_IP;</span><br><span class="line">            <span class="keyword">return</span> ip;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> pos = ip.indexOf(<span class="string">','</span>);</span><br><span class="line">        <span class="keyword">if</span> (pos &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            ip = ip.substring(<span class="number">0</span>, pos);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ip;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="title">getLastIpSegment</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">String</span> ip = getUserIP(request);</span><br><span class="line">        <span class="keyword">if</span> (ip != null) &#123;</span><br><span class="line">            ip = ip.substring(ip.lastIndexOf(<span class="string">'.'</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ip = <span class="string">"0"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ip;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValidIP</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">String</span> ip = getUserIP(request);</span><br><span class="line">        <span class="keyword">return</span> isValidIP(ip);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断我们获取的ip是否是一个符合规则ip</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param ip</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValidIP</span><span class="params">(<span class="keyword">String</span> ip)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(ip)) &#123;</span><br><span class="line">            <span class="built_in">log</span>.debug(<span class="string">"ip is null. valid result is false"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Matcher matcher = pattern.matcher(ip);</span><br><span class="line">        <span class="keyword">boolean</span> <span class="built_in">isValid</span> = matcher.matches();</span><br><span class="line">        <span class="built_in">log</span>.debug(<span class="string">"valid ip:"</span> + ip + <span class="string">" result is: "</span> + <span class="built_in">isValid</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">isValid</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="title">getLastServerIpSegment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">String</span> ip = getServerIP();</span><br><span class="line">        <span class="keyword">if</span> (ip != null) &#123;</span><br><span class="line">            ip = ip.substring(ip.lastIndexOf(<span class="string">'.'</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ip = <span class="string">"0"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ip;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> <span class="title">getServerIP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        InetAddress inet;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            inet = InetAddress.getLocalHost();</span><br><span class="line">            <span class="keyword">String</span> hostAddress = inet.getHostAddress();</span><br><span class="line">            <span class="keyword">return</span> hostAddress;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"127.0.0.1"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+10
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/%E8%8E%B7%E5%8F%96ip-20190406/#more" rel="contents">
@@ -426,7 +470,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/Mail-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="Mail" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/Mail-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/Mail-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -451,12 +516,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>util</p>
-<a id="more"></a>
+          util
 
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cn.zuohy.beans.Mail;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.mail.EmailException;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.mail.HtmlEmail;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> MailUtil &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">boolean</span> send(Mail mail) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// TODO</span></span><br><span class="line">        <span class="built_in">String</span> <span class="keyword">from</span> = <span class="string">""</span>;</span><br><span class="line">        int port = <span class="number">25</span>;</span><br><span class="line">        <span class="built_in">String</span> host = <span class="string">""</span>;</span><br><span class="line">        <span class="built_in">String</span> pass = <span class="string">""</span>;</span><br><span class="line">        <span class="built_in">String</span> nickname = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        HtmlEmail email = <span class="keyword">new</span> HtmlEmail();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            email.setHostName(host);</span><br><span class="line">            email.setCharset(<span class="string">"UTF-8"</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">String</span> str : mail.getReceivers()) &#123;</span><br><span class="line">                email.addTo(str);</span><br><span class="line">            &#125;</span><br><span class="line">            email.setFrom(<span class="keyword">from</span>, nickname);</span><br><span class="line">            email.setSmtpPort(port);</span><br><span class="line">            email.setAuthentication(<span class="keyword">from</span>, pass);</span><br><span class="line">            email.setSubject(mail.getSubject());</span><br><span class="line">            email.setMsg(mail.getMessage());</span><br><span class="line">            email.send();</span><br><span class="line">            log.info(<span class="string">"&#123;&#125; 发送邮件到 &#123;&#125;"</span>, <span class="keyword">from</span>, StringUtils.join(mail.getReceivers(), <span class="string">","</span>));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (EmailException e) &#123;</span><br><span class="line">            log.error(<span class="keyword">from</span> + <span class="string">"发送邮件到"</span> + StringUtils.join(mail.getReceivers(), <span class="string">","</span>) + <span class="string">"失败"</span>, e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Description: 邮件</span></span><br><span class="line"><span class="comment"> * User: dummmmmmmy</span></span><br><span class="line"><span class="comment"> * Date: 2018-12-06</span></span><br><span class="line"><span class="comment"> * Time: 23:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Mail &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">String</span> subject;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">String</span> message;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Set&lt;<span class="built_in">String</span>&gt; receivers;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+
+import cn.zuohy.beans.Mail;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/Mail-20190406/#more" rel="contents">
@@ -519,7 +650,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/MD5%E5%8A%A0%E5%AF%86-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="MD5加密" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/MD5%E5%8A%A0%E5%AF%86-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/MD5%E5%8A%A0%E5%AF%86-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -544,12 +696,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>util</p>
-<a id="more"></a>
+          util
 
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"></span><br><span class="line">@Slf4j</span><br><span class="line"><span class="keyword">public</span> class MD5Util &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> encrypt(<span class="keyword">String</span> s) &#123;</span><br><span class="line">        <span class="built_in">char</span> hexDigits[] = &#123; <span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span> &#125;;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="built_in">byte</span>[] btInput = s.getBytes();</span><br><span class="line">            <span class="comment">// 获得MD5摘要算法的 MessageDigest 对象</span></span><br><span class="line">            MessageDigest mdInst = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            <span class="comment">// 使用指定的字节更新摘要</span></span><br><span class="line">            mdInst.update(btInput);</span><br><span class="line">            <span class="comment">// 获得密文</span></span><br><span class="line">            <span class="built_in">byte</span>[] md = mdInst.digest();</span><br><span class="line">            <span class="comment">// 把密文转换成十六进制的字符串形式</span></span><br><span class="line">            <span class="built_in">int</span> j = md.length;</span><br><span class="line">            <span class="built_in">char</span> <span class="built_in">str</span>[] = <span class="keyword">new</span> <span class="built_in">char</span>[j * <span class="number">2</span>];</span><br><span class="line">            <span class="built_in">int</span> k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; j; i++) &#123;</span><br><span class="line">                <span class="built_in">byte</span> byte0 = md[i];</span><br><span class="line">                <span class="built_in">str</span>[k++] = hexDigits[byte0 &gt;&gt;&gt; <span class="number">4</span> &amp; <span class="number">0xf</span>];</span><br><span class="line">                <span class="built_in">str</span>[k++] = hexDigits[byte0 &amp; <span class="number">0xf</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">String</span>(<span class="built_in">str</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="built_in">log</span>.error(<span class="string">"generate md5 error, &#123;&#125;"</span>, s, e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.security.MessageDigest;
+
+@Slf4j
+public class MD5Util {
+
+    public final static String encrypt(String s) {
+        char hexDigits[] = { '0', '1', '2', '3',
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/MD5%E5%8A%A0%E5%AF%86-20190406/#more" rel="contents">
@@ -612,7 +804,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/%E5%AF%86%E6%96%87%E6%90%9C%E7%B4%A2-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="密文搜索" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/%E5%AF%86%E6%96%87%E6%90%9C%E7%B4%A2-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/%E5%AF%86%E6%96%87%E6%90%9C%E7%B4%A2-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -637,16 +850,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>福尔摩斯从X星收到一份资料，全部是小写字母组成。<br>他的助手提供了另一份资料：许多长度为8的密码列表。<br>福尔摩斯发现，这些密码是被打乱后隐藏在先前那份资料中的。</p>
-<p>请你编写一个程序，从第一份资料中搜索可能隐藏密码的位置。要考虑密码的所有排列可能性。</p>
-<p>数据格式：</p>
-<p>输入第一行：一个字符串s，全部由小写字母组成，长度小于1024*1024<br>紧接着一行是一个整数n,表示以下有n行密码，1&lt;=n&lt;=1000<br>紧接着是n行字符串，都是小写字母组成，长度都为8</p>
-<p>要求输出：<br>一个整数, 表示每行密码的所有排列在s中匹配次数的总和。</p>
-<p>例如：<br>用户输入：<br>aaaabbbbaabbcccc<br>2<br>aaaabbbb<br>abcabccc</p>
-<p>则程序应该输出：<br>4</p>
-<p>这是因为：第一个密码匹配了3次，第二个密码匹配了1次，一共4次。</p>
-<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 512M<br>CPU消耗 &lt; 5000ms</p>
-<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+          福尔摩斯从X星收到一份资料，全部是小写字母组成。
+他的助手提供了另一份资料：许多长度为8的密码列表。
+福尔摩斯发现，这些密码是被打乱后隐藏在先前那份资料中的。
+
+请你编写一个程序，从第一份资料中搜索可能隐藏密码的位置。要考虑密码的所有排列可能性。
+
+数据格式：
+
+输入第一行：一个字符串s，全部由小写字母组成，长度小于1024*1024
+紧接着一行是一个整数n,表示以下有n行密码，1<=n<=1000
+紧接着是n行字符串，都是小写字母组成，长度都为8
+
+要求输出：
+一个整数, 表示每行密码的所有排列在s中匹配次数的总和。
+
+例如：
+用户输入：
+aaaabbbbaabbcccc
+2
+aaaabbb
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/%E5%AF%86%E6%96%87%E6%90%9C%E7%B4%A2-20190406/#more" rel="contents">
@@ -709,7 +932,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/Ajax-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="Ajax小计" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/Ajax-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/Ajax-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -734,13 +978,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">				<span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>)[<span class="number">0</span>].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">					<span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">					<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">					<span class="keyword">var</span> <span class="built_in">url</span> = <span class="keyword">this</span>.href + <span class="string">"?time="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">					<span class="keyword">var</span> method = <span class="string">"GET"</span>;</span><br><span class="line">					<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">					request.open(method, <span class="built_in">url</span>);</span><br><span class="line">					<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">					request.send(<span class="literal">null</span>);</span><br><span class="line">					<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">					request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">						<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">						<span class="keyword">if</span>(request.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">							<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">							<span class="keyword">if</span>(request.status == <span class="number">200</span> || request.status == <span class="number">304</span>) &#123;</span><br><span class="line">								<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">								<span class="built_in">console</span>.log(request.responseText);</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">					<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
+          XMLHttpRequest发送请求
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;$(<span class="string">"a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="comment">//url</span></span><br><span class="line">					<span class="comment">//args :JSON格式</span></span><br><span class="line">					<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">					</span><br><span class="line">					<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">					<span class="keyword">var</span> <span class="built_in">url</span> = <span class="keyword">this</span>.href;</span><br><span class="line">					<span class="keyword">var</span> args = &#123;</span><br><span class="line">						<span class="string">"time"</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">					&#125;;</span><br><span class="line">					<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">					$(<span class="string">"#con"</span>).load(<span class="built_in">url</span>, args);</span><br><span class="line"></span><br><span class="line">					<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">					<span class="keyword">var</span> <span class="built_in">url</span> = <span class="keyword">this</span>.href + <span class="string">"h2 a"</span>;</span><br><span class="line">					<span class="keyword">var</span> args = &#123;</span><br><span class="line">						<span class="string">"time"</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">					&#125;;</span><br><span class="line">					$(<span class="string">"#con"</span>).load(<span class="built_in">url</span>, args);</span><br><span class="line"></span><br><span class="line">					<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">					<span class="keyword">var</span> <span class="built_in">url</span> = <span class="keyword">this</span>.href;</span><br><span class="line">					<span class="keyword">var</span> args = &#123;</span><br><span class="line">						<span class="string">"time"</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">					&#125;;</span><br><span class="line">					$.get(<span class="built_in">url</span>, args, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">						$(<span class="string">"#con"</span>).empty().append(data);</span><br><span class="line">					&#125;);</span><br><span class="line">					</span><br><span class="line">					<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">					<span class="keyword">var</span> <span class="built_in">url</span> = <span class="keyword">this</span>.href;</span><br><span class="line">					<span class="keyword">var</span> args = &#123;</span><br><span class="line">						<span class="string">"time"</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">					&#125;;</span><br><span class="line">					$.post(<span class="built_in">url</span>, args, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">						$(<span class="string">"#con"</span>).empty().append(data);</span><br><span class="line">					&#125;);</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br></pre></td></tr></table></figure>
 
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">			<span class="string">"name"</span>: <span class="string">"guigui"</span>,</span><br><span class="line">			<span class="string">"age"</span>: <span class="number">12</span>,</span><br><span class="line">			<span class="string">"address"</span>: &#123;</span><br><span class="line">				<span class="string">"city"</span>: <span class="string">"sc"</span>,</span><br><span class="line">				<span class="string">"school"</span>: <span class="string">"sc"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">"teaching"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				alert(<span class="string">"Java"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		alert(jsonObject.name);</span><br><span class="line">		alert(jsonObject.address.city);</span><br><span class="line"></span><br><span class="line">		jsonObject.teaching();</span><br><span class="line">		<span class="comment">//把字符串转为json</span></span><br><span class="line">		<span class="keyword">var</span> jsonStr = <span class="string">"&#123;'name':'guigui'&#125;"</span>;</span><br><span class="line">		jsonStr =  <span class="built_in">eval</span>(<span class="string">"("</span> + jsonStr + <span class="string">")"</span>);</span><br><span class="line">		alert(jsonStr.name);</span><br></pre></td></tr></table></figure>
-
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+window.onload = function() {
+				//1.获取a节点，并为其添加onclick响应函数
+				document.getElementsByTagName("a")[0].onclick = function() {
+					//3.创建一个XMLHttpRequest对象  
+					var request = new XMLHttpRequest();
+					//4.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/Ajax-20190406/#more" rel="contents">
@@ -803,7 +1076,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/IDEA2-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="IntelliJ IDEA自定义后的快捷键-仿Eclipse" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/IDEA2-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/IDEA2-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -828,58 +1122,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li>执行(run) alt+r</li>
-<li>提示补全 (Class Name Completion) alt+/</li>
-<li>单行注释 ctrl + /</li>
-<li>多行注释 ctrl + shift + /</li>
-<li>向下复制一行 (Duplicate Lines) ctrl+alt+down</li>
-<li>删除一行或选中行 (delete line) ctrl+d</li>
-<li>向下移动行(move statement down) alt+down</li>
-<li>向上移动行(move statement up) alt+up</li>
-<li>向下开始新的一行(start new line) shift+enter</li>
-<li>向上开始新的一行 (Start New Line before current) ctrl+shift+enter</li>
-<li>如何查看源码 (class) ctrl + 选中指定的结构 或 ctrl + shift + t</li>
-<li>万能解错/生成返回值变量 alt + enter</li>
-<li>退回到前一个编辑的页面 (back) alt + left</li>
-<li>进入到下一个编辑的页面(针对于上条) (forward) alt + right</li>
-<li>查看继承关系(type hierarchy) F4</li>
-<li>格式化代码(reformat code) ctrl+shift+F</li>
-<li>提示方法参数类型(Parameter Info) ctrl+alt+/</li>
-<li>复制代码 ctrl + c</li>
-<li>撤销 ctrl + z</li>
-<li>反撤销 ctrl + y</li>
-<li>剪切 ctrl + x</li>
-<li>粘贴 ctrl + v</li>
-<li>保存 ctrl + s</li>
-<li>全选 ctrl + a</li>
-<li>选中数行，整体往后移动 tab</li>
-<li>选中数行，整体往前移动 shift + tab</li>
-<li>查看类的结构：类似于 eclipse 的 outline ctrl+o</li>
-<li>重构：修改变量名与方法名(rename) alt+shift+r</li>
-<li>大写转小写/小写转大写(toggle case) ctrl+shift+y</li>
-<li>生成构造器/get/set/toString alt +shift + s</li>
-<li>查看文档说明(quick documentation) F2</li>
-<li>收起所有的方法(collapse all) alt + shift + c</li>
-<li>打开所有方法(expand all) alt+shift+x</li>
-<li>打开代码所在硬盘文件夹(show in explorer) ctrl+shift+x</li>
-<li>生成 try-catch 等(surround with) alt+shift+z</li>
-<li>局部变量抽取为成员变量(introduce field) alt+shift+f</li>
-<li>查找/替换(当前) ctrl+f</li>
-<li>查找(全局) ctrl+h</li>
-<li>查找文件 double Shift</li>
-<li>查看类的继承结构图(Show UML Diagram) ctrl + shift + u</li>
-<li>查看方法的多层重写结构(method hierarchy) ctrl+alt+h</li>
-<li>添加到收藏(add to favorites) ctrl+alt+f</li>
-<li>抽取方法(Extract Method) alt+shift+m</li>
-<li>打开最近修改的文件(Recently Files) ctrl+E</li>
-<li>关闭当前打开的代码栏(close) ctrl + w</li>
-<li>关闭打开的所有代码栏(close all) ctrl + shift + w</li>
-<li>快速搜索类中的错误(next highlighted error) ctrl + shift + q</li>
-<li>选择要粘贴的内容(Show in Explorer) ctrl+shift+v 49 查找方法在哪里被调用(Call Hierarchy) ctrl+shift+h</li>
-</ol>
-<p><a href="IDEA2-20190406/快捷键.rar">快捷键包</a></p>
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+          1.  执行(run) alt+r
+ 2.  提示补全 (Class Name Completion) alt+/
+ 3.  单行注释 ctrl + /
+ 4.  多行注释 ctrl + shift + /
+ 5.  向下复制一行 (Duplicate Lines) ctrl+alt+down
+ 6.  删除一行或选中行 (delete line) ctrl+d
+ 7.  向下移动行(move statement down) alt+down
+ 8.  向上移动行(move statement up) alt+up
+ 9.  向下开始新的一行(start new line) shift+ent
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/IDEA2-20190406/#more" rel="contents">
@@ -942,7 +1193,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/IDEA1-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="IntelliJ IDEA常用模板" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/IDEA1-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/IDEA1-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -967,11 +1239,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
+          1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
 
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Test</span> &#123;</span><br><span class="line">    <span class="comment">//常用模板</span></span><br><span class="line">    <span class="comment">//psvm</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="comment">//sout</span></span><br><span class="line">        System.<span class="keyword">out</span>.println();</span><br><span class="line"><span class="comment">//变种 soutp/soutm/soutv/xxx.sout</span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"args = ["</span> + args + <span class="string">"]"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"Test.main"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"args = "</span> + args);</span><br><span class="line">        <span class="built_in">int</span> num = <span class="number">0</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(num);</span><br><span class="line"><span class="comment">//fori</span></span><br><span class="line">        <span class="built_in">int</span>[] arr = new <span class="built_in">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            System.<span class="keyword">out</span>.println(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//变种 iter/itar</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i : arr) &#123;</span><br><span class="line">            System.<span class="keyword">out</span>.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="built_in">int</span> i1 = arr[i];</span><br><span class="line">            System.<span class="keyword">out</span>.println(i1);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//list.for</span></span><br><span class="line">        ArrayList list = new ArrayList();</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">2</span>);</span><br><span class="line">        list.add(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object o : list) &#123;</span><br><span class="line">            System.<span class="keyword">out</span>.println(o);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//变种 list.fori/list.forr</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">&#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = list.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//ifn</span></span><br><span class="line">        ArrayList list2 = new ArrayList();</span><br><span class="line">        list2.add(<span class="number">1</span>);</span><br><span class="line">        list2.add(<span class="number">2</span>);</span><br><span class="line">        list2.add(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span> (list2 == <span class="literal">null</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line">        <span class="comment">//变种 inn/xxx.nn/xxx.null</span></span><br><span class="line">        <span class="keyword">if</span> (list2 != <span class="literal">null</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line">        <span class="keyword">if</span> (list2 != <span class="literal">null</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line">        <span class="keyword">if</span> (list2 == <span class="literal">null</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//prsf</span></span><br><span class="line">    <span class="keyword">private</span> static <span class="keyword">final</span> <span class="built_in">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//psf</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> num2 = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//psgi</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> <span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//psgs</span></span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">final</span> String s = <span class="string">"0"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+import java.util.ArrayList;
+public class Test {
+    //常用模板
+    //psvm
+    public static void main(String[] args) {
+   
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/IDEA1-20190406/#more" rel="contents">
@@ -1034,7 +1372,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/solr-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="Solr" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/solr-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/solr-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -1059,33 +1418,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="索引搜索"><a href="#索引搜索" class="headerlink" title="索引搜索"></a>索引搜索</h1><ul>
-<li>环境配置<ul>
-<li>下载解压</li>
-<li>solr.bat<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">e:</span><br><span class="line">cd E:<span class="symbol">\M</span>ySVN<span class="symbol">\r</span>epository<span class="symbol">\s</span>olr-7.5.0<span class="symbol">\b</span>in</span><br><span class="line">solr start -p 8989</span><br></pre></td></tr></table></figure></li>
-<li>运行<br><code>http://localhost:8989/solr/#/~cores</code></li>
-<li>创建core（报错）</li>
-<li>solr-7.5.0\server\solr\configsets_default目录下，把conf文件夹复制到solr-7.5.0\server\solr\new_core 目录下，然后再执行Add core</li>
-</ul>
-</li>
-<li>数据库配置<ul>
-<li>Jar包<br>JDBC驱动<br><img src="solr-20190406/1.png" alt></li>
-<li>放入server\solr-webapp\webapp\WEB-INF\lib</li>
-<li>\example\example-DIH\solr\db\conf覆盖\server\solr\test_core\conf</li>
-<li>修改db-data-config.xml<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataConfig&gt;</span><br><span class="line">	&lt;dataSource driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;amp;characterEncoding=utf-8" <span class="keyword">user</span>="root" <span class="keyword">password</span>="123456"/&gt;</span><br><span class="line">	&lt;document&gt;</span><br><span class="line">	    &lt;entity <span class="type">name</span>="user" query="select * from user" pk="user_id"&gt;</span><br><span class="line">	            &lt;field column="user_id" <span class="type">name</span>="userId" /&gt;</span><br><span class="line">				&lt;field column="user_name" <span class="type">name</span>="userName" /&gt;</span><br><span class="line">				&lt;field column="user_pass" <span class="type">name</span>="userPass" /&gt;</span><br><span class="line">				&lt;field column="user_time" <span class="type">name</span>="userTime" /&gt;</span><br><span class="line">	    &lt;/entity&gt;</span><br><span class="line">	&lt;/document&gt;</span><br><span class="line">&lt;/dataConfig&gt;</span><br><span class="line">配置说明：</span><br><span class="line">dataSource<span class="comment">--&gt;数据库连接，用户名密码配置</span></span><br><span class="line">entity<span class="comment">--&gt;sql定义</span></span><br><span class="line">field<span class="comment">--&gt;字段定义，column对应数据库字段，name对应solr的索引字段名</span></span><br></pre></td></tr></table></figure></li>
-<li>修改managed-schema<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"userId"</span> <span class="attribute">type</span>=<span class="string">"string"</span> <span class="attribute">indexed</span>=<span class="string">"true"</span> <span class="attribute">stored</span>=<span class="string">"true"</span> <span class="attribute">required</span>=<span class="string">"true"</span> <span class="attribute">multiValued</span>=<span class="string">"false"</span> /&gt; </span><br><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"userName"</span> <span class="attribute">type</span>=<span class="string">"text_general"</span> <span class="attribute">indexed</span>=<span class="string">"true"</span> <span class="attribute">stored</span>=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"userPass"</span> <span class="attribute">type</span>=<span class="string">"text_general"</span> <span class="attribute">indexed</span>=<span class="string">"true"</span> <span class="attribute">stored</span>=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"userTime"</span> <span class="attribute">type</span>=<span class="string">"pdate"</span> <span class="attribute">indexed</span>=<span class="string">"false"</span> <span class="attribute">stored</span>=<span class="string">"true"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<p>注意：我们copy来的配置文件中有一些关键字已经配置了，如id，name，那就不需要重新配置field，只需要配置没有的。</p>
-<p>如果你的表主键id不是叫id，那么你定义的field需要指定required=”true”,并把默认的id的required=”true”属性去掉，并把<uniquekey>id</uniquekey>修改成你的主键id值，否则数据导入不进去。</p>
-<p>说明：因为只是做个基础的搜索业务，没有精细该schema文件，精益求精的小伙伴可以把冗余字段都干掉试试。</p>
-<p>到此，配置完成，接下来我们操作导入数据</p>
-<h2 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h2><p><img src="solr-20190406/2.png" alt></p>
-<p><code>&lt;delete&gt;&lt;query&gt;*:*&lt;/query&gt;&lt;/delete&gt;&lt;commit/&gt;</code></p>
-<h1 id="增量更新索引"><a href="#增量更新索引" class="headerlink" title="增量更新索引"></a>增量更新索引</h1>
+          索引搜索
+ * 环境配置 * 下载解压
+    * solr.bat1
+      2
+      3
+      4
+      
+      
+      @echo off
+      e:
+      cd E:\MySVN\repository\solr-7.5.0\bin
+      solr start -p 8989
+      
+      
+      
+    * 运行
+      http://localhost:8989/solr/#/~cores
+    * 创建core（报错）
+    * solr-7.5.0\server\solr\configsets_def
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/solr-20190406/#more" rel="contents">
@@ -1148,7 +1499,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/04/06/Java3-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="Thread Local" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/Java3-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/Java3-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -1173,22 +1545,215 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>高并发处理 : 在当前进程取出对象，不会冲突<br>放入的东西<br>各个线程保存的东西是分开只与进程有关系<br>每个进程会处理自己的内容</p>
-</blockquote>
-<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><p>ThreadLocal的是一个本地线程副本变量工具类。</p>
-<p>主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可以实现无状态的调用，特别适用于各个线程依赖不通的变量值完成操作的场景。</p>
-<a id="more"></a>
+          高并发处理 : 在当前进程取出对象，不会冲突
+放入的东西
+各个线程保存的东西是分开只与进程有关系
+每个进程会处理自己的内容
 
-<p>原理大佬说的很清楚了》<a href="https://www.jianshu.com/p/98b68c97df9b" target="_blank" rel="noopener">https://www.jianshu.com/p/98b68c97df9b</a></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;SysUser&gt; userHolder = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;HttpServletRequest&gt; requestHolder = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(SysUser sysUser)</span></span>&#123;</span><br><span class="line">       userHolder.<span class="built_in">set</span>(sysUser);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       requestHolder.<span class="built_in">set</span>(request);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SysUser <span class="title">getCurrentUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> userHolder.<span class="built_in">get</span>();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpServletRequest <span class="title">getCurrentRequest</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> requestHolder.<span class="built_in">get</span>();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>&#123;</span><br><span class="line">       userHolder.<span class="built_in">remove</span>();</span><br><span class="line">       requestHolder.<span class="built_in">remove</span>();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+ThreadLocal
+ThreadLocal的是一个本地线程副本变量工具类。
 
+主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可以实现无状态的调用，特别适用于各个线程依赖不通的变量值完成操作的场景。
 
+原理大佬说的很清楚了》https://www.jianshu.com/p/98b68c97df9b
 
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/06/Java3-20190406/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.guard.ren/2019/04/06/Java2-20190406/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
+      <meta itemprop="name" content="何年何月何时多">
+      <meta itemprop="description" content="所有人的坚强 都是软弱生的茧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何年何月何时多">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/06/Java2-20190406/" class="post-title-link" itemprop="url">Java数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-06 16:06:16" itemprop="dateCreated datePublished" datetime="2019-04-06T16:06:16+08:00">2019-04-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/04/06/Java2-20190406/" class="post-meta-item leancloud_visitors" data-flag-title="Java数组" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/06/Java2-20190406/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/Java2-20190406/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          数组拷贝
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+
+
+public static void main(String[] args) {
+		 // 这样拷贝数组没有隔离性
+		 String[] ss1 = { "1", "2", "3" };
+		 // 把ss1对数组的引用传递给变量ss2,两个变量指向的是用一个数组
+		
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/06/Java2-20190406/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1280,20 +1845,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1350,13 +1915,35 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">138k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:05</span>
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a39fa0e8d042b" async="async"></script>
@@ -1376,6 +1963,7 @@
   </div>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -1391,6 +1979,7 @@
 <script src="/js/next-boot.js"></script>
 
 
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
 
 
   
@@ -1407,6 +1996,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -1421,6 +2014,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'C9AAW8SB4K7bNBlRqfu6rywU-gzGzoHsz',
+      appKey     : 'ChKeqxyh2HFkQT23TV4lEEWE',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！快活啊！",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 <script src="https://v1.hitokoto.cn/?encode=js&select=%23guard" defer></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tororo"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>

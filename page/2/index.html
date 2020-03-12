@@ -17,10 +17,12 @@
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="所有人的坚强 都是软弱生的茧">
@@ -133,6 +135,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -161,9 +164,39 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
 </div>
     </header>
 
@@ -186,97 +219,6 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.guard.ren/2019/12/28/%E6%99%9A%E5%AE%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
-      <meta itemprop="name" content="何年何月何时多">
-      <meta itemprop="description" content="所有人的坚强 都是软弱生的茧">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何年何月何时多">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/28/%E6%99%9A%E5%AE%89/" class="post-title-link" itemprop="url">晚安</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-28 10:48:25" itemprop="dateCreated datePublished" datetime="2019-12-28T10:48:25+08:00">2019-12-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E4%B9%90/" itemprop="url" rel="index"><span itemprop="name">音乐</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>422</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>晚安<br>歌手 : 丢火车<br>作曲 : 球子<br>作词 : 丢火车<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边<br>想说的话都没有说完 还是会有些遗憾<br>这一生 有些短<br>晚安<br>晚安 在醒来之前 我才会说出再见<br>晚安 在天亮之后 那事非与你无关<br>我们离开荒芜的绿洲<br>回到没有阳光的白昼<br>你醒了 尽管我<br>所有的美梦都没做完<br>你会不会突然地想起我<br>在某个没有睡意的清醒时刻<br>想把身上所有枷锁 全部挣脱<br>只为自己做了选择<br>你会不会突然地忘记了<br>就这样等待到底是为了什么<br>不安的心 渐渐干涸 失去了颜色<br>再也不会想起我<br>晚安<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边<br>我们离开荒芜的绿洲<br>回到没有阳光的白昼<br>你醒了 尽管我<br>所有的美梦都没做完<br>晚安 晚安<br>晚安 晚安<br>晚安 晚安<br>晚安向沉睡自己告别<br>你会不会突然地想起我<br>在某个没有睡意的清醒时刻<br>想把身上所有枷锁 全部挣脱<br>只为自己做了选择<br>你会不会突然地忘记了<br>就这样等待到底是为了什么<br>不安的心 渐渐干涸 失去了颜色<br>再也不会想起我<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34923114&auto=1&height=66"></iframe>
-
-<blockquote class="blockquote-center">想你，在最开心的时刻</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/28/%E6%99%9A%E5%AE%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
   
   
@@ -317,7 +259,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/11/04/%E6%B2%A1%E6%9C%89%E4%BA%BA-%E5%9C%A8%E5%B9%B4%E5%B0%91%E6%97%B6%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E4%BA%BA/" class="post-meta-item leancloud_visitors" data-flag-title="没有人，在年少时想成为一个普通人" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/04/%E6%B2%A1%E6%9C%89%E4%BA%BA-%E5%9C%A8%E5%B9%B4%E5%B0%91%E6%97%B6%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E4%BA%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/04/%E6%B2%A1%E6%9C%89%E4%BA%BA-%E5%9C%A8%E5%B9%B4%E5%B0%91%E6%97%B6%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E4%BA%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -342,16 +305,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>尊敬的老师<br>亲爱们<br>大家好<br>我是838班的张锡峰<br>相信很多同学应该认识我<br>在大家眼里我扮演更多的通常是个谐星的角色<br>可是大家似乎忘记了<br>在我这看似狂野<br>实则狂野的外表下<br>也隐藏着一颗憧憬阳光的心<br>所以<br>我站在这里<br>与大家分享关于学习我的看法<br>我演讲的主题是：青春梦想<br>话出这世间<br>唯有青春与梦想不可辜负</p>
-<p>花开正好<br>微风不燥<br>我们扬帆<br>起航<br>首先<br>青春<br>青春是什么颜色的<br>是五月的花海<br>灿烂无比<br>是海边的浪花<br>永不停息<br>是仲夏的骄阳<br>激情四射，<br>青春在衡中<br>是绚丽多彩</p>
-<p>原来啊<br>我常常想<br>别人尊重我<br>是因为我很优秀<br>可是<br>到了衡中才发现<br>别人尊重我<br>是因为<br>别人很优秀<br>这<br>是衡中学子<br>独有的<br>青春魅力</p>
-<p>同样<br>正值青春，<br>我们有犯错的权利，<br>记得第一次交改错本<br>我问老师要改多少，<br>老师说<br>根据个人情况<br>在精不在多<br>哦呜<br>是吗<br>这可是您说的<br>说时迟那时快<br>我顿时绽放了一个耀眼笑容<br>我心不在焉<br>草草了事<br>可是<br>改错发下来时却是<br>一片万紫千红的样子<br>上面<br>有详细的批注<br>评语是这样的<br>这改错改的不错<br>有些题改着改着就错了<br>我们老师青春活泼的力量<br>就这样让学习生活妙趣横生</p>
-<p>其次<br>是这青春的学习气氛<br>当你满眼都是追求卓越的字样时<br>便也<br>没理由落后了<br>连我这个<br>被同学们誉为古娜拉黑暗之神的人<br>也<br>早已经<br>在前往卓越的路上</p>
-<p>我喜欢在某个课间琢磨那些<br>优雅的<br>美丽的数学题<br>小东西<br>真是别致<br>我喜欢<br>在某天清晨头昏脑胀时<br>回想刚刚学过的<br>系统命名法<br>哇<br>这一瞬间有100万个可能<br>我喜欢某天晚上躺在床上<br>回想曾经背过的老子<br>知人者智，自知者明<br>胜人者有力，自胜者强<br>我好困啊</p>
-<p>第二<br>梦想有一条路<br>人烟稀少<br>寸步难行<br>但是<br>却不得不坚持前进<br>因为他的尽头<br>种着梦想<br>同学们<br>你的梦想是什么<br>相信<br>很多人的回答都会是清北这样的顶尖名校<br>我们选择他们不仅仅因为他们是名校<br>还因为他们坐落的城市<br>他们美丽的传说<br>对于痴迷于地理学科的我来说<br>外面的世界<br>外面的城市就是我的梦想<br>这里<br>广东<br>对外开放的前沿，<br>我把它做成卡贴随身携带<br>这里<br>上海<br>全中国最大的城市<br>我把它拍成照片贴在课桌上<br>这里<br>西安<br>大唐不夜城<br>我做梦都会想起它<br>看完这些<br>不知道同学们心里有什么感触<br>此刻<br>你的心里是否充满了对未来的渴望<br>我问同学们一个问题<br>请大家伸出右手<br>看<br>他还想什么<br>像右手<br>这都被你发现了吗<br>同学们<br>果然见多识广啊<br>请大家<br>五指并拢<br>放于腰间<br>慢慢高举<br>举过头顶<br>张开<br>成功了吗<br>那恭喜你<br>你给自己<br>放了个烟花</p>
-<p>可是<br>烟花虽美<br>转瞬即逝<br>现在请同学们伸出的烟花<br>把它攥成拳<br>大家看<br>它又像什么<br>好<br>我们不要再来了<br>请大家把你的右拳置于你的耳边<br>如果你能清楚地听到脉搏的律动<br>那么我告诉你<br>这<br>是生命<br>我们梦想很美<br>很远大<br>但是只有把掌握成拳<br>用尽全力<br>挥向生活<br>这样<br>才是青春路上<br>该有的姿态</p>
-<p>同学们<br>你<br>有没有感到一种震撼<br>相信<br>很多人都会跟我一样<br>因为这是一种念想<br>一种发自内心<br>由内而外的<br>对城市<br>对未来的渴望<br>少年们早已不想拘泥于这里<br>只能在所谓<br>抖音<br>电影里<br>只观望别人的生活<br>可是<br>为什么我们就只能做那个躲在阴暗的角落里<br>新鲜的舞台之上<br>光鲜亮丽的别人的那个<br>卑微的人<br>这样不行<br>一点都不好玩<br>我们<br>会走出去<br>顺境也好<br>逆境也好<br>人生<br>本就是一场与种种困难无休无尽的斗争<br>一场<br>敌众我寡的斗争<br>我曾把自己向往大学热爱的城市<br>拍成照片贴在课桌上<br>每当我精疲力竭时<br>便要看下他<br>然后质问自己<br>就这样啦<br>你就这点东西<br>你真的真的到了最后歇斯底里不能坚持的地步了吗<br>你的理想是诗<br>理想是梦<br>理想是远方的田野<br>是穿越世界的旅行<br>但现在你能做的所有<br>只是<br>把手握紧<br>厚积薄发<br>你<br>只有付出<br>付出你的时间<br>赌上你的尊严<br>拿出你的全部<br>你的everything<br>当别人打游戏时你在学习<br>当别人睡懒觉时你在学习<br>你含着泪在深夜里舞蹈<br>在回忆里奔跑<br>没有人<br>在年少时想成为一个普通人<br>尽管生活<br>它会剥夺你的所爱<br>践踏你的尊严<br>把你踩在脚下<br>遍体鳞伤<br>但你<br>怎能<br>倒下<br>你的身后<br>是挚爱的人<br>那些受过的伤终将成为你的勋章<br>都是你<br>送给未来的自己最好的礼物<br>我<br>也有梦想啊<br>我告诉自己<br>总有一天<br>我会站在金色的舞台上<br>聚光灯打向我<br>摄像机对准我<br>所有人的目光注视着我<br>我能站在台上侃侃而谈<br>此刻<br>世界只有我一<br>我要让平日轻蔑我的对手知道<br>我要让他们亲口说出的三个字<br>你<br>赢了<br>如果说<br>青春<br>是足迹<br>那梦想<br>一定<br>叫做远方<br>请同学们相信<br>生活明朗<br>万物可爱<br>人间值得<br>未来可期</p>
-<iframe src="//player.bilibili.com/player.html?aid=53043610&cid=92800991&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style=" width: 100%;height: 600px;"> </iframe>
+          尊敬的老师
+亲爱们
+大家好
+我是838班的张锡峰
+相信很多同学应该认识我
+在大家眼里我扮演更多的通常是个谐星的角色
+可是大家似乎忘记了
+在我这看似狂野
+实则狂野的外表下
+也隐藏着一颗憧憬阳光的心
+所以
+我站在这里
+与大家分享关于学习我的看法
+我演讲的主题是：青春梦想
+话出这世间
+唯有青春与梦想不可辜负
+
+花开正好
+微风不燥
+我们扬帆
+起航
+首先
+青春
+青春是什么颜色的
+是五月的花海
+灿烂无比
+是海边的浪花
+永不停息
+是仲夏的骄阳
+激情四射，
+青春在衡中
+是绚丽多彩
+
+原来啊
+我常常想
+别人尊重我
+是因为我很优秀
+可是
+到了衡中才发现
+别人尊重我
+是因为
+别人很优秀
+这
+是衡中学子
+独有的
+青春
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/11/04/%E6%B2%A1%E6%9C%89%E4%BA%BA-%E5%9C%A8%E5%B9%B4%E5%B0%91%E6%97%B6%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E4%BA%BA/#more" rel="contents">
@@ -415,7 +414,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/11/01/%E9%82%A3%E5%B9%B4%E4%BD%A027-8%E5%B2%81/" class="post-meta-item leancloud_visitors" data-flag-title="那年你27、8岁" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/01/%E9%82%A3%E5%B9%B4%E4%BD%A027-8%E5%B2%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/01/%E9%82%A3%E5%B9%B4%E4%BD%A027-8%E5%B2%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -440,16 +460,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>18岁以后，他已经不是为了自己而活着</p>
-<p>18岁，你上了大学。</p>
-<p>20岁，你大二结束，开始悔恨<br>自己前两年幼稚的行为<br>于是开始努力</p>
-<p>22岁你大学毕业了，却发现<br>找不到一份令自己满意的工作</p>
-<p>26岁，你看着身边的人都结了婚<br>婚礼的份子钱逐年递增<br>春节回家，父母从带你串亲戚<br>变成了带你去见相亲对象<br>见了十几个姑娘<br>你每次都觉得和那个她比<br>差了一点</p>
-<p>28岁那年，你遇到了一个和你遭遇差不多的姑娘<br>你们有一搭没一搭聊着<br>她说：你还不错<br>你喝了一口可乐说：你也是<br>你还不确定喜不喜欢她<br>双方家长就已经摆好了订婚宴<br>结婚的前一周，你和朋友出去喝酒<br>你说，不想结婚<br>朋友说，你啊，就是想太多。谁不是这么过来的？</p>
-<p>29岁，你们终于结了婚<br>婚礼办的不大不小，朋友来的不多不少<br>攒了几年想要去实现理想的钱<br>搭在了这一场百人的私人庙会上<br>婚礼进行到中间<br>司仪带着标准的商业化微笑<br>对着台下的亲朋喊道<br>要不要让他们亲一个！<br>台下那些人跟着一起起哄<br>不知道为什么<br>你简简单单的亲了一口<br>俩人恢复到了一开始的站位<br>你小声说了一句：我爱你<br>那个昨天还看不惯你倒腾模型的新娘<br>愣了一下说：我也爱你<br>你不确定她是不是对你说的<br>就像你不确定是不是对她说的一样<br>婚礼结束后，并没有你想象的浪漫<br>你听着外屋的新娘一笔一笔的算着份子钱<br>想着不过才两年，怎么就变成这样了<br>想着想着，洞房夜就睡着了</p>
-<p>30岁，她怀孕了<br>辞掉了工作，在家养胎<br>你在公司逐渐有了点地位<br>手里管着十来个人<br>独立负责一个项目<br>结婚前陪嫁的那辆20万左右的车<br>也变成了你一个人的独享<br>但你依然不敢放松<br>每次加班<br>电话那头都是抱怨与委屈<br>但你不能争辩什么<br>谁让她怀了你的孩子<br>在这一刻<br>不论是她的父母还是你的父母<br>都无条件的站在这一边</p>
-<p>31岁，孩子落地了<br>前前后后连孕检带住院费花了10万块钱<br>不过无所谓<br>你看着你的孩子，怎么看怎么喜欢<br>高兴的仿佛这是你的新生</p>
-<p>32岁，这是人生最不愿意重复的一年<br>平均睡眠3小时<br>孩子每一个小时都要闹腾一次<br>第二天拖着睡不醒的眼睛去上班<br>老板说你上班不干活<br>回家媳妇说你不干活<br>你想了半天不明白，那谁干活呢？<br>那辆开了3年的车<br>成为了你真正的家<br>你不在抱怨路上拥堵的交通<br>你甚至开始希望<br>再多堵一会<br>回到家，你关了发动机<br>在车上点了一根烟<br>这是你每天最幸福的十分钟<br>车前是功名利禄，车尾是柴米油盐</p>
+          18岁以后，他已经不是为了自己而活着
+
+18岁，你上了大学。
+
+20岁，你大二结束，开始悔恨
+自己前两年幼稚的行为
+于是开始努力
+
+22岁你大学毕业了，却发现
+找不到一份令自己满意的工作
+
+26岁，你看着身边的人都结了婚
+婚礼的份子钱逐年递增
+春节回家，父母从带你串亲戚
+变成了带你去见相亲对象
+见了十几个姑娘
+你每次都觉得和那个她比
+差了一点
+
+28岁那年，你遇到了一个和你遭遇差不多的姑娘
+你们有一搭没一搭聊着
+她说：你还不错
+你喝了一口可乐说：你也是
+你还不确定喜不喜欢她
+双方家长就已经摆好了订婚宴
+结婚的前一周，你和朋友出去喝酒
+你说，不想结婚
+朋友说，你啊，就是想太多。谁不是这么过来的？
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/11/01/%E9%82%A3%E5%B9%B4%E4%BD%A027-8%E5%B2%81/#more" rel="contents">
@@ -512,7 +550,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/10/30/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E9%92%B1-%E6%B2%A1%E6%9C%89%E9%AB%98%E4%BD%8E%E8%B4%B5%E8%B4%B1%E4%B9%8B%E5%88%86/" class="post-meta-item leancloud_visitors" data-flag-title="钱,没有高低贵贱之分" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/30/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E9%92%B1-%E6%B2%A1%E6%9C%89%E9%AB%98%E4%BD%8E%E8%B4%B5%E8%B4%B1%E4%B9%8B%E5%88%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/30/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E9%92%B1-%E6%B2%A1%E6%9C%89%E9%AB%98%E4%BD%8E%E8%B4%B5%E8%B4%B1%E4%B9%8B%E5%88%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -537,25 +596,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>2000年前，犹太教的拉比们就已经开始教育他们的同胞，“钱不是罪恶，钱是神对人的祝福”，“《圣经》发射光明，金钱散发温暖”，“身体依心而生存，心则依靠钱包而生存”。金钱是成功的标志，是实现人生价值的工具，所以<br>“金钱是给美好人生的祝福，是人给上帝的礼物”。</p>
-<p>《塔木德》中说：“金钱平等，因此，人格平等，于是怀有赚大钱的欲望才好。金钱对于任何人来说，都是平等的，它没有高低贵贱的差别。”这是犹太人的经商法则。</p>
-<blockquote>
-<p>有一位犹太人在一个公众场合演讲，为了证明人在任何时候都要看得起自己，他拿起了20美元，高举过头顶。</p>
-<p>“看，这是20美元，崭新的20美元，有谁想要？”结果所有的人都举起了手。</p>
-<p>然后，他把这张纸币在手里揉了揉，纸币变得皱巴巴的了，然后又问观众：“现在有人想要这20美元吗？”所有的人举起了手。</p>
-<p>他把这张纸币放在地下，用脚狠狠地踩了几下，钱币已经变得又脏又烂了。他拿起钱来，又问：“现在还有人想要吗？”</p>
-<p>结果还是所有的人都举起了手，于是他说：“朋友们，钱在任何的时候都是钱，它不会因为你揉了它，你把它踩烂，它的价值就会有任何的变化，它依然可以在商店里花出去。”</p>
-</blockquote>
-<p>为什么那张钞票在那个演讲者的手里揉皱了，又被他踩脏弄破了，还是有人想要它呢，因为梦票就是钞票，钞票是没有高低费贱的，它不会因为受到了什么“待遇”就有所差别，它的价值还是和以前一样，和其他等面值的钞票的价值是一样的。只要他们的价值一样，钞票都是平等的。</p>
-<p>犹太人就是这样的观念，所以他们总是不怕生意细微，即使连小的生意也是不会放弃的，因而在他们的经商历史中，他们喜欢把“钞票不问出处”这句话挂在嘴上，实际上是在教人们创造和积累财富必须处心积虑，必须巧捕商机，必须妙用手腕。</p>
-<p>钱是货币，是一个人拥有的物质财富的多少的标志，他本身不存在贵贱问感。犹太人的赚钱观念和我们的传统观念不一样，他们丝毫不认为拉三轮、扛麻袋较就低贱，而当老板、做经理就高贵，钱在谁的口袋里都一样是钱，他们不会到了另一个人的口袋中就不是钱了。</p>
-<p>因此他们在赚钱的时候，不会觉得钱是低贱或高贵的，他们不会因为自己目前所从事的职业不好而感到自愧不如，他们在从事所谓的低贱的职业的时候，心态也表现得十分平和。</p>
-<p>犹太人对钱的观念自有所持，特别是犹太商人，他们认为“金钱无姓氏，更无履历表”。他们不像有些国家和民族那样，把钱分为“干净的钱”或“不干净的钱”。他们自信，通过经营赚来的钱，是心安理得的。因此，他们通过千方百计的经营，尽量赚取更多的钱，不管这些钱是农夫出卖了产品得来的，还是赌徒赢来的，还是知识分子脑力劳动得来的，都是收之无愧，泰然处之。</p>
-<p>赚钱有术的犹太人数不胜数，以放债发迹的亚伦就是典型的一例。</p>
-<blockquote>
-<p>这位移居英国的犹太人从打工开始，用积蓄的一点小钱做些小生意。由于生意的扩大，他需要资金周转，不得不向钱庄或银行借钱。他在自己的实践中发觉，向别人借钱的代价确实太高，往往与商业经营获得的利润相差无儿。他想，自己辛辛苦苦经营全为银行打工，而且风险比银行还大，倒不如自己从事放债业务合算。</p>
-<p>几年后，他开始了放债业务。他一边维持小生意经营，一边抽出部分资本货给急需用钱的人。另外，他又从银行货来利率相对较低的钱，以较高的利率转贷给别人，从中赚取差额利润。有些等钱应急的生产者或个人，宁愿以月息20%借货，这样，等于100元放贷1年，可获得240%的回报率，这比投资做买卖更能赚钱，亚伦就是盯着这个赚钱的路子，迅速走上发迹之路的，亚伦63岁逝世时，留一下的钱财在当时英国是首屈一指的。</p>
-</blockquote>
+          2000年前，犹太教的拉比们就已经开始教育他们的同胞，“钱不是罪恶，钱是神对人的祝福”，“《圣经》发射光明，金钱散发温暖”，“身体依心而生存，心则依靠钱包而生存”。金钱是成功的标志，是实现人生价值的工具，所以
+“金钱是给美好人生的祝福，是人给上帝的礼物”。
+
+《塔木德》中说：“金钱平等，因此，人格平等，于是怀有赚大钱的欲望才好。金钱对于任何人来说，都是平等的，它没有高低贵贱的差别。”这是犹太人的经商法则。
+
+有一位犹太人在一个公众场合演讲，为了证明人在任何时候都要看得起自己，他拿起了20美元，高举过头顶。
+
+“看，这是20美元，崭新的20美元，有谁想要？”结果所有的人都举起了手。
+
+然后，他把
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/10/30/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E9%92%B1-%E6%B2%A1%E6%9C%89%E9%AB%98%E4%BD%8E%E8%B4%B5%E8%B4%B1%E4%B9%8B%E5%88%86/#more" rel="contents">
@@ -618,7 +668,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/10/29/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E5%89%8D%E8%A8%80/" class="post-meta-item leancloud_visitors" data-flag-title="前言" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/29/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E5%89%8D%E8%A8%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E5%89%8D%E8%A8%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -643,16 +714,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>犹太民族是一个谜一样的民族</p>
-<p>在人类历史上的长河中，可以说没有哪一个民族像犹太民族这样，没有家园，没有土地，没有生存的权利，被异族追杀、迫害，四处漂泊、流浪，饱受屈辱和磨难，饥饿和折磨。但也没有哪一个民族能像他们这样在恶劣的环境中，凭着他们独特的智慧和坚强不屈的精神生存下来，并谱写了人类史上璀璨的文明。</p>
-<p>据《福布斯》杂志报道，世界前400名亿万富翁中，有60人是犹太人，占总数的15%。犹太人凭借独特的经营技巧和众多富甲天下的商贾，摘取了“世界第一商人”的桂冠。美国前400个富豪家族中，犹太人占了23%。如果仅限于前40人，实际上40%是犹太人。犹太人获诺贝尔奖的人数超过240人，是世界各民族平均数的28倍。其中获得诺贝尔奖的科学家中，有17%是犹太人。世界10大哲学家中，有8人就是犹太人……</p>
-<p>犹太民族之所以令世界瞩目，一切源于犹太人运用自己杰出的智慧，生生不息地延续着民族的圣火，创造着民族的伟大辉煌和历史，还创造着世界的伟大知识和财富。</p>
-<p>“三个犹太人坐在一起，就可以决定世界！”这是世人对犹太人非凡智慧的肯定。</p>
-<p>犹太商人是商人中的智者，更是商人中的魔鬼，他们能够从零开始，从一无所有起步，最终成为亿万富翁。冒险是犹太人的习惯，犹太民族特有的冒险精神令犹太商人在产品上，在经营手段上，在许许多多方面打破常规，引领变革。任何东西到了犹太人手里，都会变成商品，他们早已把合同、公司乃至文化、艺术甚至于他们的上帝都商品化了。犹太商人之所以能成为世界上最成功的商人，犹太生意经之所以成为智慧的生意经，就是因为智慧与金钱同在与统一。</p>
-<p>对于犹太人来说，人生就是一张谈判桌，他们无时不在与上帝、敌人、对手进行谈判。</p>
-<p>犹太人在谈判时特别小心谨慎，从不信口开河，并在谈判前尽可能地做好大量的准备工作，对谈判中所有可能出现的问题都要预测到，并拿出相应的对策，做到成竹在胸。因而，犹太人在谈判时幽默风趣，能够轻易地控制谈判气氛，并取得谈判的胜利。</p>
-<p>犹太民族既没有罗马帝国式的强大武功，也没有中华民族般的强盛国力，有的只是不堪一击的弱小和备受歧视的卑贱。然而，犹太民族区别于其他民族的根本地方就在于它的“一神救”信仰，生生不息的民族意志，还有非凡的处世智慧。</p>
-<p>无论是历法还是礼俗，无论是节日还是姓名，无不深深地打着犹太宗数的格印。犹太民族是一个热爱生活的民族，犹太人认为，生活中无论遭遇到何种困难，都要让自己享受生活的快乐，几乎所有的犹太先知们，都无一例外地鼓励人们从自己所拥有的一切资源中，寻找幸福美好的生活。</p>
+          犹太民族是一个谜一样的民族
+
+在人类历史上的长河中，可以说没有哪一个民族像犹太民族这样，没有家园，没有土地，没有生存的权利，被异族追杀、迫害，四处漂泊、流浪，饱受屈辱和磨难，饥饿和折磨。但也没有哪一个民族能像他们这样在恶劣的环境中，凭着他们独特的智慧和坚强不屈的精神生存下来，并谱写了人类史上璀璨的文明。
+
+据《福布斯》杂志报道，世界前400名亿万富翁中，有60人是犹太人，占总数的15%。犹太人凭借独特的经营技巧和众多富甲天下的商贾，摘取了“世界第一商人”的桂冠。美国前400个富豪家族中，犹太人占了23%。如果仅限于前40人，实际上40%是犹太人。犹太人获诺贝尔奖的人数超过240人，是世界各民族
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/10/29/%E7%8A%B9%E5%A4%AA%E4%BA%BA%E6%99%BA%E6%85%A7%E6%B3%95%E5%88%99100%E6%9D%A1-%E5%89%8D%E8%A8%80/#more" rel="contents">
@@ -715,7 +781,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/05/06/%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" class="post-meta-item leancloud_visitors" data-flag-title="算法-算法练习" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -740,14 +827,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="心里的准备"><a href="#心里的准备" class="headerlink" title="心里的准备"></a>心里的准备</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/1.png" alt></p>
-<h2 id="算法练习的网站"><a href="#算法练习的网站" class="headerlink" title="算法练习的网站"></a>算法练习的网站</h2><p><a href="https://leetcode.com/problemset/all/" target="_blank" rel="noopener">https://leetcode.com/problemset/all/</a><br>或者<br><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">https://leetcode-cn.com/problemset/all/</a><br><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/2.png" alt></p>
-<ul>
-<li>做题的时候用上切题四件套</li>
-</ul>
-<p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/3.png" alt></p>
-<h2 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/4.png" alt></p>
-<h2 id="坚持"><a href="#坚持" class="headerlink" title="坚持"></a>坚持</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/5.png" alt></p>
+          心里的准备
+
+
+算法练习的网站
+https://leetcode.com/problemset/all/
+或者
+https://leetcode-cn.com/problemset/all/
+
+
+ * 做题的时候用上切题四件套
+
+
+
+反馈
+
+
+坚持
+
+
+为了一个爱的人
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/#more" rel="contents">
@@ -810,7 +909,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="post-meta-item leancloud_visitors" data-flag-title="算法-复杂度" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -835,15 +955,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="课程的进度"><a href="#课程的进度" class="headerlink" title="课程的进度"></a>课程的进度</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/1.png" alt></p>
-<h2 id="算法的复杂度"><a href="#算法的复杂度" class="headerlink" title="算法的复杂度"></a>算法的复杂度</h2><ul>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
-</ul>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/2.png" alt></p>
-<h2 id="常用复杂度"><a href="#常用复杂度" class="headerlink" title="常用复杂度"></a>常用复杂度</h2><p>多块代码复杂度只看最高复杂度</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/3.png" alt></p>
-<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><h3 id="常数统一为O-1"><a href="#常数统一为O-1" class="headerlink" title="常数统一为O(1)"></a>常数统一为O(1)</h3>
+          课程的进度
+
+
+算法的复杂度
+ * 时间复杂度
+ * 空间复杂度
+
+
+
+常用复杂度
+多块代码复杂度只看最高复杂度
+
+
+
+具体代码
+常数统一为O(1)
+
+
+
+
+
+算法的使用对比
+
+
+递归的复杂度计算
+斐波拉契数列
+
+
+
+每次计算都要重新计算一便前面的数据，复杂度应该为O(2^N)
+
+
+
+常见递归及递归复杂度计算网站
+
+
+为了一个爱的人
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/#more" rel="contents">
@@ -906,7 +1054,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="算法-学习方式" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -931,15 +1100,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>明确！目标！</p>
-</blockquote>
-<p>学习最重要的是方式，更重要也是坚持</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/1.png" alt></p>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up(切碎知识点)"></a>Chunk it up(切碎知识点)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/2.png" alt><br><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/3.png" alt><br><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/6.png" alt></p>
-<h2 id="Deliberate-practicing-刻意练习"><a href="#Deliberate-practicing-刻意练习" class="headerlink" title="Deliberate practicing(刻意练习)"></a>Deliberate practicing(刻意练习)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/4.png" alt></p>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback(反馈)"></a>Feedback(反馈)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/5.png" alt></p>
-<h2 id="算法的解析"><a href="#算法的解析" class="headerlink" title="算法的解析"></a>算法的解析</h2>
+          明确！目标！
+
+学习最重要的是方式，更重要也是坚持
+
+
+
+Chunk it up(切碎知识点)
+
+
+
+
+Deliberate practicing(刻意练习)
+
+
+Feedback(反馈)
+
+
+算法的解析
+
+
+为了一个爱的人
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/05/06/%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/#more" rel="contents">
@@ -1002,7 +1183,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/05/03/SpringBoot%E6%89%93war%E5%8C%85/" class="post-meta-item leancloud_visitors" data-flag-title="SpringBoot打war包" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/03/SpringBoot%E6%89%93war%E5%8C%85/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/03/SpringBoot%E6%89%93war%E5%8C%85/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -1027,20 +1229,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li><p>更改pom.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>添加spring-boot-starter-tomcat的provided依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupld</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupld</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactld</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactld</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>添加maven-war-plugin插件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>$(project.artifactld)<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupld</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupld</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactld</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactld</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改启动类</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@ <span class="type">SpringBootApplication</span> </span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">SpringBootServletlnitializer</span> </span>&#123;</span><br><span class="line">	public static void main(<span class="type">String</span>[] args)&#123;</span><br><span class="line">		<span class="type">SpringApplication</span>.run(<span class="type">MainApplication</span><span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="keyword">protected</span> <span class="type">SpringApplicationBuilder</span> configure(<span class="type">SpringApplicationBuilder</span> builder)&#123;</span><br><span class="line">		<span class="keyword">return</span> builder.sources(<span class="type">MainApplication</span><span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>目录下<br><code>mvn clean package</code></p>
-</li>
-</ol>
-<blockquote class="blockquote-center">为了一个爱的人</blockquote>
+          1. 更改pom.xml
+    
+    1
+    
+    
+    <packaging>war</packaging>
+    
+    
+    
+ 2. 添加spring-boot-starter-tomcat的provided依赖
+    
+    1
+    2
+    3
+    4
+    5
+    
+    
+    <dependency>
+    	<groupld>org.springframework.boot</groupld>
+    	<artifactld>spring-boot-starter-tomcat</artifactld>
+    	<sc
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/05/03/SpringBoot%E6%89%93war%E5%8C%85/#more" rel="contents">
@@ -1103,7 +1313,28 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span id="/2019/05/03/JMeter/" class="post-meta-item leancloud_visitors" data-flag-title="JMeter" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/03/JMeter/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/05/03/JMeter/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -1128,23 +1359,162 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="JMeter入门"><a href="#JMeter入门" class="headerlink" title="JMeter入门"></a>JMeter入门</h1><p>官方网站：<a href="https://jmeter.apache.org/" target="_blank" rel="noopener">https://jmeter.apache.org/</a><br>软件下载：<a href="https://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">https://jmeter.apache.org/download_jmeter.cgi</a><br>用户手册：<a href="https://jmeter.apache.org/usermanual/index.html" target="_blank" rel="noopener">https://jmeter.apache.org/usermanual/index.html</a></p>
-<p>下载后解压，找到目录 bin 下的 jmeter.bat 文件，双击启动<br><img src="JMeter/1.png" alt><br><img src="JMeter/2.png" alt></p>
-<h2 id="设置中文界面"><a href="#设置中文界面" class="headerlink" title="设置中文界面"></a>设置中文界面</h2><p><img src="JMeter/3.png" alt></p>
-<h2 id="测试接口"><a href="#测试接口" class="headerlink" title="测试接口"></a>测试接口</h2><ol>
-<li>设置线程组<br><img src="JMeter/4.png" alt></li>
-</ol>
-<ul>
-<li>线程数为并发数</li>
-<li>Ramp-Up时间（秒）为启动全部线程的时间</li>
-</ul>
-<ol start="2">
-<li>添加HTTP请求默认值</li>
-</ol>
-<p><img src="JMeter/5.png" alt><br><img src="JMeter/6.png" alt></p>
+          JMeter入门
+官方网站：https://jmeter.apache.org/
+软件下载：https://jmeter.apache.org/download_jmeter.cgi
+用户手册：https://jmeter.apache.org/usermanual/index.html
+
+下载后解压，找到目录 bin 下的 jmeter.bat 文件，双击启动
+
+
+
+设置中文界面
+
+
+测试接口
+ 1. 设置线程组
+    
+
+ * 线程数为并发数
+ * Ramp-Up时间（秒）为启动全部线程的时间
+
+ 2. 添加HTTP请求默认值
+
+
+
+
+ * 只需要配置web服务器，就不用每次都配置请求（
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/05/03/JMeter/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.guard.ren/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
+      <meta itemprop="name" content="何年何月何时多">
+      <meta itemprop="description" content="所有人的坚强 都是软弱生的茧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何年何月何时多">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/" class="post-title-link" itemprop="url">redis安装在liunx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-21 10:35:23" itemprop="dateCreated datePublished" datetime="2019-04-21T10:35:23+08:00">2019-04-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/" class="post-meta-item leancloud_visitors" data-flag-title="redis安装在liunx" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>532</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          下载包
+https://redis.io/
+如包名为redis-5.0.4.tar.gz
+
+上传至服务器：如/tmp
+移动到目录下
+cd /tmp
+
+ 1.  解压
+     tar -zvxf redis-5.0.4.tar.gz
+ 2.  移动到/usr/local并重名名为redis
+     mv redis-5.0.4 /usr/local/redis
+ 3.  切换目录
+     cd /usr/local/reids/
+ 4.  编译
+     make
+ 5.  添加启动目录
+     make install
+ 6.  测试访问
+     redis-s > tab >显示 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/21/redis%E5%AE%89%E8%A3%85-20190421/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1236,20 +1606,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">63</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1306,13 +1676,35 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">138k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:05</span>
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a39fa0e8d042b" async="async"></script>
@@ -1332,6 +1724,7 @@
   </div>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -1347,6 +1740,7 @@
 <script src="/js/next-boot.js"></script>
 
 
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
 
 
   
@@ -1363,6 +1757,10 @@
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -1377,6 +1775,35 @@
   
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'C9AAW8SB4K7bNBlRqfu6rywU-gzGzoHsz',
+      appKey     : 'ChKeqxyh2HFkQT23TV4lEEWE',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！快活啊！",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 <script src="https://v1.hitokoto.cn/?encode=js&select=%23guard" defer></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tororo"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
