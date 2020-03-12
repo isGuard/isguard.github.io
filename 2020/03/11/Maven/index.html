@@ -16,42 +16,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":true},
-    copycode: {"enable":true,"show_result":true,"style":"mac"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="常用Maven命令执行与构建过程相关的命令，必须进入pom.xml所在的目录。与构建过程相关的：编译、测试、打包…  mvn clean：清理  mvn compile：编译主程序  mvn test-compile：编译测试程序  mvn test：执行测试  mvn package：打包  mvn install：安装进入仓库  mvn site：生成站点 联网问题 Maven的核心程序中仅">
 <meta property="og:type" content="article">
@@ -61,7 +31,7 @@
 <meta property="og:description" content="常用Maven命令执行与构建过程相关的命令，必须进入pom.xml所在的目录。与构建过程相关的：编译、测试、打包…  mvn clean：清理  mvn compile：编译主程序  mvn test-compile：编译测试程序  mvn test：执行测试  mvn package：打包  mvn install：安装进入仓库  mvn site：生成站点 联网问题 Maven的核心程序中仅">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-11T12:34:29.000Z">
-<meta property="article:modified_time" content="2020-03-12T06:32:08.416Z">
+<meta property="article:modified_time" content="2020-03-12T06:37:10.745Z">
 <meta property="article:author" content="何年何月何时多">
 <meta property="article:tag" content="目标成为大咸鱼的小咸鱼">
 <meta name="twitter:card" content="summary">
@@ -73,24 +43,28 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true
   };
 </script>
 
   <title>Maven | 何年何月何时多</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-136832726-1');
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-136832726-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
       }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
     </script>
 
 
@@ -138,6 +112,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -151,11 +133,8 @@
       
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
@@ -243,7 +222,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-12 14:32:08" itemprop="dateModified" datetime="2020-03-12T14:32:08+08:00">2020-03-12</time>
+                <time title="修改时间：2020-03-12 14:37:10" itemprop="dateModified" datetime="2020-03-12T14:37:10+08:00">2020-03-12</time>
               </span>
 
           <br>
@@ -259,7 +238,7 @@
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -271,8 +250,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <html><head></head><body></body></html><html><head></head><body><p><a name="35a4d87e"></a></p>
-<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。<br>与构建过程相关的：编译、测试、打包…</p>
+        <p><a name="35a4d87e"></a></p>
+<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。<br />与构建过程相关的：编译、测试、打包…</p>
 <ol>
 <li><p>mvn clean：清理</p>
 </li>
@@ -303,17 +282,17 @@
 <li>找到Maven文件下的\conf\settings.xml</li>
 <li>找到标签<code>localRepository</code></li>
 <li>将标签<code>localRepository</code>从注释中取出</li>
-<li>定义当自定义的目录如：<code><localRepository>E:\maven\maven-repository</localRepository></code></li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
 </ol>
 </li>
 <li><p>设置阿里Maven仓库</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag"><<span class="name">mirror</span>></span></span><br><span class="line">  <span class="tag"><<span class="name">id</span>></span>alimaven<span class="tag"></<span class="name">id</span>></span></span><br><span class="line">  <span class="tag"><<span class="name">name</span>></span>aliyun maven<span class="tag"></<span class="name">name</span>></span></span><br><span class="line">  <span class="tag"><<span class="name">url</span>></span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag"></<span class="name">url</span>></span></span><br><span class="line">  <span class="tag"><<span class="name">mirrorOf</span>></span>central<span class="tag"></<span class="name">mirrorOf</span>></span>        </span><br><span class="line"><span class="tag"></<span class="name">mirror</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p><a name="POM"></a></p>
 <h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
-<li><p>含义：Project Object Model 项目对象模型<br><br>            DOM Document Object Model 文档对象模型</p>
+<li><p>含义：Project Object Model 项目对象模型<br><br />            DOM Document Object Model 文档对象模型</p>
 </li>
 <li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程<br><a name="d5490c88"></a></p>
 <h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
@@ -382,7 +361,7 @@
 <li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
 </li>
 <li><p>排除设置</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">exclusions</span>></span></span><br><span class="line">	<span class="tag"><<span class="name">exclusion</span>></span></span><br><span class="line">		<span class="tag"><<span class="name">gourpId</span>></span>xxxx<span class="tag"></<span class="name">gourpId</span>></span></span><br><span class="line">		<span class="tag"><<span class="name">artifactId</span>></span>xxxxxx<span class="tag"></<span class="name">artifactId</span>></span></span><br><span class="line">	<span class="tag"></<span class="name">exclusion</span>></span></span><br><span class="line"><span class="tag"></<span class="name">exclusions</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>依赖原则</p>
 <ol>
@@ -419,19 +398,19 @@
 </li>
 <li><p>操作步骤</p>
 <ol>
-<li><p>创建一个Maven工程为父工程。注意：打包方式为pom<br><br><code><packaging>pom</packaging></code></p>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom<br><br /><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
 </li>
 <li><p>在子工程中声明对父工程的引用</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><!-- 子工程中声明父工程 --></span></span><br><span class="line"><span class="tag"><<span class="name">parent</span>></span></span><br><span class="line">	<span class="tag"><<span class="name">groupId</span>></span>ren.guard.maven<span class="tag"></<span class="name">groupId</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">artifactId</span>></span>Parent<span class="tag"></<span class="name">artifactId</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">version</span>></span>0.0.1-SNAPSHOT<span class="tag"></<span class="name">version</span>></span></span><br><span class="line">    <span class="comment"><!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --></span></span><br><span class="line">    <span class="tag"><<span class="name">relativePath</span>></span>../Parent/pom.xml<span class="tag"></<span class="name">relativePath</span>></span></span><br><span class="line"><span class="tag"></<span class="name">parent</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">groupId</span>></span>ren.guard.maven<span class="tag"></<span class="name">groupId</span>></span><span class="comment"><!-- 删除 --></span></span><br><span class="line"><span class="tag"><<span class="name">version</span>></span>0.0.1-SNAPSHOT<span class="tag"></<span class="name">version</span>></span><span class="comment"><!-- 删除 --></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在父工程中统一管理test依赖</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">dependencyManagement</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">dependencies</span>></span></span><br><span class="line">        <span class="tag"><<span class="name">dependency</span>></span></span><br><span class="line">        	<span class="tag"><<span class="name">groupId</span>></span>org.junit.jupiter<span class="tag"></<span class="name">groupId</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">artifactId</span>></span>junit-jupiter-api<span class="tag"></<span class="name">artifactId</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">version</span>></span>5.6.0<span class="tag"></<span class="name">version</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">scope</span>></span>test<span class="tag"></<span class="name">scope</span>></span></span><br><span class="line">        <span class="tag"></<span class="name">dependency</span>></span></span><br><span class="line">    <span class="tag"></<span class="name">dependencies</span>></span></span><br><span class="line"><span class="tag"></<span class="name">dependencyManagement</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在子工程中删除test依赖的版本号部分</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">dependency</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">groupId</span>></span>org.junit.jupiter<span class="tag"></<span class="name">groupId</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">artifactId</span>></span>junit-jupiter-api<span class="tag"></<span class="name">artifactId</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">scope</span>></span>test<span class="tag"></<span class="name">scope</span>></span></span><br><span class="line"><span class="tag"></<span class="name">dependency</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在配置继承后，执行安装命令时要先安装父工程<br><a name="52efbe5e"></a></p>
 <h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3></li>
@@ -440,16 +419,16 @@
 <li><p>作用：一键安装各个模块工程</p>
 </li>
 <li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">modules</span>></span></span><br><span class="line">    <span class="comment"><!-- 指定各个子工程的相对路径 --></span></span><br><span class="line">    <span class="tag"><<span class="name">module</span>></span>jpa_settings<span class="tag"></<span class="name">module</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">module</span>></span>log4j_settings<span class="tag"></<span class="name">module</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">module</span>></span>logger_settings<span class="tag"></<span class="name">module</span>></span></span><br><span class="line"><span class="tag"></<span class="name">modules</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用方式：在聚合工程的pom.xml上点击maven install<br><a name="ea782e6a"></a></p>
 <h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3></li>
 </ol>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><!-- 配置当工程构建过程中的特殊设置 --></span></span><br><span class="line"><span class="tag"><<span class="name">build</span>></span></span><br><span class="line">    <span class="comment"><!-- 项目最后的名称 --></span></span><br><span class="line">	<span class="tag"><<span class="name">finalName</span>></span>mavenWeb<span class="tag"></<span class="name">finalName</span>></span></span><br><span class="line">    <span class="comment"><!-- 配置构建过程中需要使用的插件 --></span></span><br><span class="line">    <span class="tag"><<span class="name">plugins</span>></span></span><br><span class="line">    	<span class="tag"><<span class="name">plugin</span>></span></span><br><span class="line">            <span class="comment"><!-- cargo是一家专门从事“启动Servlet容器”的组织 --></span></span><br><span class="line">        	<span class="tag"><<span class="name">groupId</span>></span>org.codehaus.cargo<span class="tag"></<span class="name">groupId</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">artifactId</span>></span>cargo-maven2-plugin<span class="tag"></<span class="name">artifactId</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">version</span>></span>1.2.3<span class="tag"></<span class="name">version</span>></span></span><br><span class="line">            <span class="comment"><!-- 针对插件进行的配置 --></span></span><br><span class="line">            <span class="tag"><<span class="name">configuration</span>></span></span><br><span class="line">                <span class="comment"><!-- 配置当前系统中容器的位置 --></span></span><br><span class="line">            	<span class="tag"><<span class="name">container</span>></span></span><br><span class="line">                	<span class="tag"><<span class="name">containerId</span>></span>tomcat8x<span class="tag"></<span class="name">containerId</span>></span></span><br><span class="line">                    <span class="tag"><<span class="name">home</span>></span>D:\xxxx\xxxxx<span class="tag"></<span class="name">home</span>></span></span><br><span class="line">                <span class="tag"></<span class="name">container</span>></span></span><br><span class="line">                <span class="tag"><<span class="name">configuration</span>></span></span><br><span class="line">                	<span class="tag"><<span class="name">type</span>></span>existing<span class="tag"></<span class="name">type</span>></span></span><br><span class="line">                    <span class="tag"><<span class="name">home</span>></span>D:\xxxx\xxxxx<span class="tag"></<span class="name">home</span>></span></span><br><span class="line">                    <span class="comment"><!-- 如果Tomcat端口为默认值8080则不必设置该属性 --></span></span><br><span class="line">                    <span class="tag"><<span class="name">properties</span>></span></span><br><span class="line">                    	<span class="tag"><<span class="name">cargo.servlet.port</span>></span>8989<span class="tag"></<span class="name">cargo.servlet.port</span>></span></span><br><span class="line">                    <span class="tag"></<span class="name">properties</span>></span></span><br><span class="line">                <span class="tag"></<span class="name">configuration</span>></span></span><br><span class="line">            <span class="tag"></<span class="name">configuration</span>></span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"><!-- 配置插件在什么情况下执行 --></span></span><br><span class="line">            <span class="tag"><<span class="name">executions</span>></span></span><br><span class="line">            	<span class="tag"><<span class="name">execution</span>></span></span><br><span class="line">                	<span class="tag"><<span class="name">id</span>></span>cargo-run<span class="tag"></<span class="name">id</span>></span></span><br><span class="line">                    <span class="comment"><!-- 生命周期的阶段 --></span></span><br><span class="line">                    <span class="tag"><<span class="name">phase</span>></span>install<span class="tag"></<span class="name">phase</span>></span></span><br><span class="line">                    <span class="tag"><<span class="name">goals</span>></span></span><br><span class="line">                        <span class="comment"><!-- 插件的目标 --></span></span><br><span class="line">                    	<span class="tag"><<span class="name">goal</span>></span>run<span class="tag"></<span class="name">goal</span>></span></span><br><span class="line">                    <span class="tag"></<span class="name">goals</span>></span></span><br><span class="line">                <span class="tag"></<span class="name">execution</span>></span></span><br><span class="line">            <span class="tag"></<span class="name">executions</span>></span></span><br><span class="line">        <span class="tag"></<span class="name">plugin</span>></span></span><br><span class="line">    <span class="tag"></<span class="name">plugins</span>></span></span><br><span class="line"><span class="tag"></<span class="name">build</span>></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><code>mvn deploy</code><br><a name="0e39f65b"></a></p>
 <h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></p>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tororo"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
+
     </div>
 
     
@@ -467,7 +446,7 @@
     <a href="https://blog.guard.ren/2020/03/11/Maven/" title="Maven">https://blog.guard.ren/2020/03/11/Maven/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -477,6 +456,8 @@
 
         
 
+
+        
       </footer>
     
   </article>
@@ -489,6 +470,28 @@
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -519,8 +522,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="何年何月何时多"
-    src="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
+    <img class="site-author-image" itemprop="image" alt="何年何月何时多"
+      src="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5">
   <p class="site-author-name" itemprop="name">何年何月何时多</p>
   <div class="site-description" itemprop="description">所有人的坚强 都是软弱生的茧</div>
 </div>
@@ -537,14 +540,14 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/isGuard" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;isGuard" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/isGuard" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isGuard" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:isguard@outlook.com" title="E-Mail &amp;rarr; mailto:isguard@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:isguard@outlook.com" title="E-Mail → mailto:isguard@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -593,7 +596,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8 分钟</span>
+    <span title="站点阅读时长">4 分钟</span>
 </div>
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a39fa0e8d042b" async="async"></script>
@@ -608,11 +611,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -645,7 +643,6 @@
       s.parentNode.insertBefore(bp, s);
     })();
   </script>
-
 
 
 
