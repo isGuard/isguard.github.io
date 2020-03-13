@@ -389,13 +389,13 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">Predicate<T></td>
+<td align="center">Predicate<T></T></td>
 <td align="center">T</td>
 <td align="center">boolean</td>
 <td align="center">用来判断真假</td>
 </tr>
 <tr>
-<td align="center">Consumer<T></td>
+<td align="center">Consumer<T></T></td>
 <td align="center">T</td>
 <td align="center">void</td>
 <td align="center">输出一个值</td>
@@ -407,19 +407,19 @@
 <td align="center">获取Artist对象的名字</td>
 </tr>
 <tr>
-<td align="center">Supplier<T></td>
+<td align="center">Supplier<T></T></td>
 <td align="center">None</td>
 <td align="center">T</td>
 <td align="center">工厂方法</td>
 </tr>
 <tr>
-<td align="center">UnaryOperator<T></td>
+<td align="center">UnaryOperator<T></T></td>
 <td align="center">T</td>
 <td align="center">T</td>
 <td align="center">逻辑非(!)</td>
 </tr>
 <tr>
-<td align="center">BinaryOperator<T></td>
+<td align="center">BinaryOperator<T></T></td>
 <td align="center">(T,T)</td>
 <td align="center">T</td>
 <td align="center">求两个数的乘积(*)</td>
@@ -443,7 +443,7 @@
 <p>BinaryOperator 毕竟是一个具有泛型参数的函数接口，该类型既是参数 x 和 y 的类型，也是返回值的类型。<br>上面的例子中并没有给出变量add 的任何泛型信息，给出的正是原始类型的定义。<br>因此，编译器认为参数和返回值都是java.lang.Object 实例。</p>
 <h2 id="要点回顾"><a href="#要点回顾" class="headerlink" title="要点回顾"></a>要点回顾</h2><ul>
 <li>Lambda 表达式是一个匿名方法，将行为像数据一样进行传递。</li>
-<li>Lambda 表达式的常见结构：BinaryOperator<Integer> add = (x, y) → x + y。</li>
+<li>Lambda 表达式的常见结构：BinaryOperator<Integer> add = (x, y) → x + y。</Integer></li>
 <li>函数接口指仅具有单个抽象方法的接口，用来表示 Lambda 表达式的类型。</li>
 </ul>
 <blockquote>

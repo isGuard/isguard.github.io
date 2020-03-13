@@ -32,15 +32,15 @@
 <meta property="og:site_name" content="何年何月何时多">
 <meta property="og:description" content="索引搜索  * 环境配置 * 下载解压     * solr.bat1       2       3       4                     @echo off       e:       cd E:\MySVN\repository\solr-7.5.0\bin       solr start -p 8989                          * 运行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.guard.ren/2019/cc34c7f6/solr-20190406/1.png">
-<meta property="og:image" content="https://blog.guard.ren/2019/cc34c7f6/solr-20190406/2.png">
+<meta property="og:image" content="https://blog.guard.ren/2019/cc34c7f6/1.png">
+<meta property="og:image" content="https://blog.guard.ren/2019/cc34c7f6/2.png">
 <meta property="article:published_time" content="2019-04-06T09:56:30.000Z">
 <meta property="article:modified_time" content="2019-04-06T09:56:30.000Z">
 <meta property="article:author" content="何年何月何时多">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Solr">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.guard.ren/2019/cc34c7f6/solr-20190406/1.png">
+<meta name="twitter:image" content="https://blog.guard.ren/2019/cc34c7f6/1.png">
 
 <link rel="canonical" href="https://blog.guard.ren/2019/cc34c7f6/">
 
@@ -320,7 +320,7 @@
 </ul>
 </li>
 <li>数据库配置<ul>
-<li>Jar包<br>JDBC驱动<br><img src="solr-20190406/1.png" alt=""></li>
+<li>Jar包<br>JDBC驱动<br><img src="/2019/cc34c7f6/1.png" alt></li>
 <li>放入server\solr-webapp\webapp\WEB-INF\lib</li>
 <li>\example\example-DIH\solr\db\conf覆盖\server\solr\test_core\conf</li>
 <li>修改db-data-config.xml<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataConfig&gt;</span><br><span class="line">	&lt;dataSource driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;amp;characterEncoding=utf-8" <span class="keyword">user</span>="root" <span class="keyword">password</span>="123456"/&gt;</span><br><span class="line">	&lt;document&gt;</span><br><span class="line">	    &lt;entity <span class="type">name</span>="user" query="select * from user" pk="user_id"&gt;</span><br><span class="line">	            &lt;field column="user_id" <span class="type">name</span>="userId" /&gt;</span><br><span class="line">				&lt;field column="user_name" <span class="type">name</span>="userName" /&gt;</span><br><span class="line">				&lt;field column="user_pass" <span class="type">name</span>="userPass" /&gt;</span><br><span class="line">				&lt;field column="user_time" <span class="type">name</span>="userTime" /&gt;</span><br><span class="line">	    &lt;/entity&gt;</span><br><span class="line">	&lt;/document&gt;</span><br><span class="line">&lt;/dataConfig&gt;</span><br><span class="line">配置说明：</span><br><span class="line">dataSource<span class="comment">--&gt;数据库连接，用户名密码配置</span></span><br><span class="line">entity<span class="comment">--&gt;sql定义</span></span><br><span class="line">field<span class="comment">--&gt;字段定义，column对应数据库字段，name对应solr的索引字段名</span></span><br></pre></td></tr></table></figure></li>
@@ -334,7 +334,7 @@
 <p>如果你的表主键id不是叫id，那么你定义的field需要指定required=”true”,并把默认的id的required=”true”属性去掉，并把<uniqueKey>id</uniqueKey>修改成你的主键id值，否则数据导入不进去。</p>
 <p>说明：因为只是做个基础的搜索业务，没有精细该schema文件，精益求精的小伙伴可以把冗余字段都干掉试试。</p>
 <p>到此，配置完成，接下来我们操作导入数据</p>
-<h2 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h2><p><img src="solr-20190406/2.png" alt=""></p>
+<h2 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h2><p><img src="/2019/cc34c7f6/2.png" alt></p>
 <p><code>&lt;delete&gt;&lt;query&gt;*:*&lt;/query&gt;&lt;/delete&gt;&lt;commit/&gt;</code></p>
 <h1 id="增量更新索引"><a href="#增量更新索引" class="headerlink" title="增量更新索引"></a>增量更新索引</h1><ul>
 <li>准备jar包</li>

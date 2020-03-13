@@ -4,7 +4,7 @@
     <title>Maven</title>
     <url>/2020/7273cdc/</url>
     <content><![CDATA[<p><a name="35a4d87e"></a></p>
-<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。<br />与构建过程相关的：编译、测试、打包…</p>
+<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。<br>与构建过程相关的：编译、测试、打包…</p>
 <ol>
 <li><p>mvn clean：清理</p>
 </li>
@@ -45,7 +45,7 @@
 </ol>
 <p><a name="POM"></a></p>
 <h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
-<li><p>含义：Project Object Model 项目对象模型<br><br />            DOM Document Object Model 文档对象模型</p>
+<li><p>含义：Project Object Model 项目对象模型<br><br>            DOM Document Object Model 文档对象模型</p>
 </li>
 <li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程<br><a name="d5490c88"></a></p>
 <h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
@@ -151,7 +151,7 @@
 </li>
 <li><p>操作步骤</p>
 <ol>
-<li><p>创建一个Maven工程为父工程。注意：打包方式为pom<br><br /><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom<br><br><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
 </li>
 <li><p>在子工程中声明对父工程的引用</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -451,7 +451,7 @@
 <p>中间很长的时间都在麻痹自己<br>也是这个我离开了那个地方<br>走到了另外的地方<br>一切都像从头开始一样<br>虽然有点可笑<br>但好像又是真的<br>可能会很久很长</p>
 <h2 id="月升"><a href="#月升" class="headerlink" title="月升"></a>月升</h2><p>相信在这一年我能找到我的目标<br>毕竟我还活着<br>还是需要找到我存在的意义<br>也希望明年我不会那么无聊</p>
 <h2 id="繁星"><a href="#繁星" class="headerlink" title="繁星"></a>繁星</h2><p>谢谢，这一年的你们<br>谢谢，这一年的包容<br>谢谢，这一年的遭遇<br>谢谢，这一年的成长<br>谢谢，这一年的天空<br>谢谢，这一年的大地<br>谢谢，这一年的心情<br>谢谢，这一年的决定<br>谢谢…..<br>谢谢，这一年的结束<br>我们来年加油，来年继续</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=470402746&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=470402746&auto=1&height=66"></iframe>
 
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
@@ -521,7 +521,7 @@
     <title>晚安</title>
     <url>/2019/74fda535/</url>
     <content><![CDATA[<p>晚安<br>歌手 : 丢火车<br>作曲 : 球子<br>作词 : 丢火车<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边<br>想说的话都没有说完 还是会有些遗憾<br>这一生 有些短<br>晚安<br>晚安 在醒来之前 我才会说出再见<br>晚安 在天亮之后 那事非与你无关<br>我们离开荒芜的绿洲<br>回到没有阳光的白昼<br>你醒了 尽管我<br>所有的美梦都没做完<br>你会不会突然地想起我<br>在某个没有睡意的清醒时刻<br>想把身上所有枷锁 全部挣脱<br>只为自己做了选择<br>你会不会突然地忘记了<br>就这样等待到底是为了什么<br>不安的心 渐渐干涸 失去了颜色<br>再也不会想起我<br>晚安<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边<br>我们离开荒芜的绿洲<br>回到没有阳光的白昼<br>你醒了 尽管我<br>所有的美梦都没做完<br>晚安 晚安<br>晚安 晚安<br>晚安 晚安<br>晚安向沉睡自己告别<br>你会不会突然地想起我<br>在某个没有睡意的清醒时刻<br>想把身上所有枷锁 全部挣脱<br>只为自己做了选择<br>你会不会突然地忘记了<br>就这样等待到底是为了什么<br>不安的心 渐渐干涸 失去了颜色<br>再也不会想起我<br>晚安 愿长夜无梦 在所有夜晚安眠<br>晚安 望路途遥远 都有人陪伴身边</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=34923114&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=34923114&auto=1&height=66"></iframe>
 
 <blockquote class="blockquote-center">想你，在最开心的时刻</blockquote>]]></content>
       <categories>
@@ -543,7 +543,7 @@
 <p>第二<br>梦想有一条路<br>人烟稀少<br>寸步难行<br>但是<br>却不得不坚持前进<br>因为他的尽头<br>种着梦想<br>同学们<br>你的梦想是什么<br>相信<br>很多人的回答都会是清北这样的顶尖名校<br>我们选择他们不仅仅因为他们是名校<br>还因为他们坐落的城市<br>他们美丽的传说<br>对于痴迷于地理学科的我来说<br>外面的世界<br>外面的城市就是我的梦想<br>这里<br>广东<br>对外开放的前沿，<br>我把它做成卡贴随身携带<br>这里<br>上海<br>全中国最大的城市<br>我把它拍成照片贴在课桌上<br>这里<br>西安<br>大唐不夜城<br>我做梦都会想起它<br>看完这些<br>不知道同学们心里有什么感触<br>此刻<br>你的心里是否充满了对未来的渴望<br>我问同学们一个问题<br>请大家伸出右手<br>看<br>他还想什么<br>像右手<br>这都被你发现了吗<br>同学们<br>果然见多识广啊<br>请大家<br>五指并拢<br>放于腰间<br>慢慢高举<br>举过头顶<br>张开<br>成功了吗<br>那恭喜你<br>你给自己<br>放了个烟花</p>
 <p>可是<br>烟花虽美<br>转瞬即逝<br>现在请同学们伸出的烟花<br>把它攥成拳<br>大家看<br>它又像什么<br>好<br>我们不要再来了<br>请大家把你的右拳置于你的耳边<br>如果你能清楚地听到脉搏的律动<br>那么我告诉你<br>这<br>是生命<br>我们梦想很美<br>很远大<br>但是只有把掌握成拳<br>用尽全力<br>挥向生活<br>这样<br>才是青春路上<br>该有的姿态</p>
 <p>同学们<br>你<br>有没有感到一种震撼<br>相信<br>很多人都会跟我一样<br>因为这是一种念想<br>一种发自内心<br>由内而外的<br>对城市<br>对未来的渴望<br>少年们早已不想拘泥于这里<br>只能在所谓<br>抖音<br>电影里<br>只观望别人的生活<br>可是<br>为什么我们就只能做那个躲在阴暗的角落里<br>新鲜的舞台之上<br>光鲜亮丽的别人的那个<br>卑微的人<br>这样不行<br>一点都不好玩<br>我们<br>会走出去<br>顺境也好<br>逆境也好<br>人生<br>本就是一场与种种困难无休无尽的斗争<br>一场<br>敌众我寡的斗争<br>我曾把自己向往大学热爱的城市<br>拍成照片贴在课桌上<br>每当我精疲力竭时<br>便要看下他<br>然后质问自己<br>就这样啦<br>你就这点东西<br>你真的真的到了最后歇斯底里不能坚持的地步了吗<br>你的理想是诗<br>理想是梦<br>理想是远方的田野<br>是穿越世界的旅行<br>但现在你能做的所有<br>只是<br>把手握紧<br>厚积薄发<br>你<br>只有付出<br>付出你的时间<br>赌上你的尊严<br>拿出你的全部<br>你的everything<br>当别人打游戏时你在学习<br>当别人睡懒觉时你在学习<br>你含着泪在深夜里舞蹈<br>在回忆里奔跑<br>没有人<br>在年少时想成为一个普通人<br>尽管生活<br>它会剥夺你的所爱<br>践踏你的尊严<br>把你踩在脚下<br>遍体鳞伤<br>但你<br>怎能<br>倒下<br>你的身后<br>是挚爱的人<br>那些受过的伤终将成为你的勋章<br>都是你<br>送给未来的自己最好的礼物<br>我<br>也有梦想啊<br>我告诉自己<br>总有一天<br>我会站在金色的舞台上<br>聚光灯打向我<br>摄像机对准我<br>所有人的目光注视着我<br>我能站在台上侃侃而谈<br>此刻<br>世界只有我一<br>我要让平日轻蔑我的对手知道<br>我要让他们亲口说出的三个字<br>你<br>赢了<br>如果说<br>青春<br>是足迹<br>那梦想<br>一定<br>叫做远方<br>请同学们相信<br>生活明朗<br>万物可爱<br>人间值得<br>未来可期</p>
-<iframe src="//player.bilibili.com/player.html?aid=53043610&cid=92800991&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"style=" width: 100%;height: 600px;"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=53043610&cid=92800991&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style=" width: 100%;height: 600px;"> </iframe>
 
 <blockquote class="blockquote-center">没有人，在年少时成为一个普通人</blockquote>]]></content>
       <categories>
@@ -648,14 +648,14 @@
   <entry>
     <title>算法-算法练习</title>
     <url>/2019/f8f09bca/</url>
-    <content><![CDATA[<h2 id="心里的准备"><a href="#心里的准备" class="headerlink" title="心里的准备"></a>心里的准备</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/1.png" alt=""></p>
-<h2 id="算法练习的网站"><a href="#算法练习的网站" class="headerlink" title="算法练习的网站"></a>算法练习的网站</h2><p><a href="https://leetcode.com/problemset/all/" target="_blank" rel="noopener">https://leetcode.com/problemset/all/</a><br>或者<br><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">https://leetcode-cn.com/problemset/all/</a><br><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/2.png" alt=""></p>
+    <content><![CDATA[<h2 id="心里的准备"><a href="#心里的准备" class="headerlink" title="心里的准备"></a>心里的准备</h2><p><img src="/2019/f8f09bca/1.png" alt></p>
+<h2 id="算法练习的网站"><a href="#算法练习的网站" class="headerlink" title="算法练习的网站"></a>算法练习的网站</h2><p><a href="https://leetcode.com/problemset/all/" target="_blank" rel="noopener">https://leetcode.com/problemset/all/</a><br>或者<br><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">https://leetcode-cn.com/problemset/all/</a><br><img src="/2019/f8f09bca/2.png" alt></p>
 <ul>
 <li>做题的时候用上切题四件套</li>
 </ul>
-<p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/3.png" alt=""></p>
-<h2 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/4.png" alt=""></p>
-<h2 id="坚持"><a href="#坚持" class="headerlink" title="坚持"></a>坚持</h2><p><img src="%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/5.png" alt=""></p>
+<p><img src="/2019/f8f09bca/3.png" alt></p>
+<h2 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h2><p><img src="/2019/f8f09bca/4.png" alt></p>
+<h2 id="坚持"><a href="#坚持" class="headerlink" title="坚持"></a>坚持</h2><p><img src="/2019/f8f09bca/5.png" alt></p>
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
         <category>算法</category>
@@ -667,21 +667,21 @@
   <entry>
     <title>算法-复杂度</title>
     <url>/2019/57269371/</url>
-    <content><![CDATA[<h2 id="课程的进度"><a href="#课程的进度" class="headerlink" title="课程的进度"></a>课程的进度</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/1.png" alt=""></p>
+    <content><![CDATA[<h2 id="课程的进度"><a href="#课程的进度" class="headerlink" title="课程的进度"></a>课程的进度</h2><p><img src="/2019/57269371/1.png" alt></p>
 <h2 id="算法的复杂度"><a href="#算法的复杂度" class="headerlink" title="算法的复杂度"></a>算法的复杂度</h2><ul>
 <li>时间复杂度</li>
 <li>空间复杂度</li>
 </ul>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/2.png" alt=""></p>
+<p><img src="/2019/57269371/2.png" alt></p>
 <h2 id="常用复杂度"><a href="#常用复杂度" class="headerlink" title="常用复杂度"></a>常用复杂度</h2><p>多块代码复杂度只看最高复杂度</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/3.png" alt=""></p>
-<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><h3 id="常数统一为O-1"><a href="#常数统一为O-1" class="headerlink" title="常数统一为O(1)"></a>常数统一为O(1)</h3><p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/4.png" alt=""><br><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/5.png" alt=""><br><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/6.png" alt=""><br><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/7.png" alt=""></p>
-<h3 id="算法的使用对比"><a href="#算法的使用对比" class="headerlink" title="算法的使用对比"></a>算法的使用对比</h3><p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/8.png" alt=""></p>
+<p><img src="/2019/57269371/3.png" alt></p>
+<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><h3 id="常数统一为O-1"><a href="#常数统一为O-1" class="headerlink" title="常数统一为O(1)"></a>常数统一为O(1)</h3><p><img src="/2019/57269371/4.png" alt><br><img src="/2019/57269371/5.png" alt><br><img src="/2019/57269371/6.png" alt><br><img src="/2019/57269371/7.png" alt></p>
+<h3 id="算法的使用对比"><a href="#算法的使用对比" class="headerlink" title="算法的使用对比"></a>算法的使用对比</h3><p><img src="/2019/57269371/8.png" alt></p>
 <h3 id="递归的复杂度计算"><a href="#递归的复杂度计算" class="headerlink" title="递归的复杂度计算"></a>递归的复杂度计算</h3><p>斐波拉契数列</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/9.png" alt=""></p>
+<p><img src="/2019/57269371/9.png" alt></p>
 <p>每次计算都要重新计算一便前面的数据，复杂度应该为O(2^N)</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/10.png" alt=""></p>
-<h4 id="常见递归及递归复杂度计算网站"><a href="#常见递归及递归复杂度计算网站" class="headerlink" title="常见递归及递归复杂度计算网站"></a>常见递归及递归复杂度计算网站</h4><p><img src="%E7%AE%97%E6%B3%95-%E5%A4%8D%E6%9D%82%E5%BA%A6/11.png" alt=""></p>
+<p><img src="/2019/57269371/10.png" alt></p>
+<h4 id="常见递归及递归复杂度计算网站"><a href="#常见递归及递归复杂度计算网站" class="headerlink" title="常见递归及递归复杂度计算网站"></a>常见递归及递归复杂度计算网站</h4><p><img src="/2019/57269371/11.png" alt></p>
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
         <category>算法</category>
@@ -697,11 +697,11 @@
 <p>明确！目标！</p>
 </blockquote>
 <p>学习最重要的是方式，更重要也是坚持</p>
-<p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/1.png" alt=""></p>
-<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up(切碎知识点)"></a>Chunk it up(切碎知识点)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/2.png" alt=""><br><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/3.png" alt=""><br><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/6.png" alt=""></p>
-<h2 id="Deliberate-practicing-刻意练习"><a href="#Deliberate-practicing-刻意练习" class="headerlink" title="Deliberate practicing(刻意练习)"></a>Deliberate practicing(刻意练习)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/4.png" alt=""></p>
-<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback(反馈)"></a>Feedback(反馈)</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/5.png" alt=""></p>
-<h2 id="算法的解析"><a href="#算法的解析" class="headerlink" title="算法的解析"></a>算法的解析</h2><p><img src="%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/7.png" alt=""></p>
+<p><img src="/2019/f58ab717/1.png" alt></p>
+<h2 id="Chunk-it-up-切碎知识点"><a href="#Chunk-it-up-切碎知识点" class="headerlink" title="Chunk it up(切碎知识点)"></a>Chunk it up(切碎知识点)</h2><p><img src="/2019/f58ab717/2.png" alt><br><img src="/2019/f58ab717/3.png" alt><br><img src="/2019/f58ab717/6.png" alt></p>
+<h2 id="Deliberate-practicing-刻意练习"><a href="#Deliberate-practicing-刻意练习" class="headerlink" title="Deliberate practicing(刻意练习)"></a>Deliberate practicing(刻意练习)</h2><p><img src="/2019/f58ab717/4.png" alt></p>
+<h2 id="Feedback-反馈"><a href="#Feedback-反馈" class="headerlink" title="Feedback(反馈)"></a>Feedback(反馈)</h2><p><img src="/2019/f58ab717/5.png" alt></p>
+<h2 id="算法的解析"><a href="#算法的解析" class="headerlink" title="算法的解析"></a>算法的解析</h2><p><img src="/2019/f58ab717/7.png" alt></p>
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
         <category>算法</category>
@@ -739,10 +739,10 @@
     <title>JMeter</title>
     <url>/2019/46e35c1e/</url>
     <content><![CDATA[<h1 id="JMeter入门"><a href="#JMeter入门" class="headerlink" title="JMeter入门"></a>JMeter入门</h1><p>官方网站：<a href="https://jmeter.apache.org/" target="_blank" rel="noopener">https://jmeter.apache.org/</a><br>软件下载：<a href="https://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">https://jmeter.apache.org/download_jmeter.cgi</a><br>用户手册：<a href="https://jmeter.apache.org/usermanual/index.html" target="_blank" rel="noopener">https://jmeter.apache.org/usermanual/index.html</a></p>
-<p>下载后解压，找到目录 bin 下的 jmeter.bat 文件，双击启动<br><img src="JMeter/1.png" alt=""><br><img src="JMeter/2.png" alt=""></p>
-<h2 id="设置中文界面"><a href="#设置中文界面" class="headerlink" title="设置中文界面"></a>设置中文界面</h2><p><img src="JMeter/3.png" alt=""></p>
+<p>下载后解压，找到目录 bin 下的 jmeter.bat 文件，双击启动<br><img src="/2019/46e35c1e/1.png" alt><br><img src="/2019/46e35c1e/2.png" alt></p>
+<h2 id="设置中文界面"><a href="#设置中文界面" class="headerlink" title="设置中文界面"></a>设置中文界面</h2><p><img src="/2019/46e35c1e/3.png" alt></p>
 <h2 id="测试接口"><a href="#测试接口" class="headerlink" title="测试接口"></a>测试接口</h2><ol>
-<li>设置线程组<br><img src="JMeter/4.png" alt=""></li>
+<li>设置线程组<br><img src="/2019/46e35c1e/4.png" alt></li>
 </ol>
 <ul>
 <li>线程数为并发数</li>
@@ -751,56 +751,56 @@
 <ol start="2">
 <li>添加HTTP请求默认值</li>
 </ol>
-<p><img src="JMeter/5.png" alt=""><br><img src="JMeter/6.png" alt=""></p>
+<p><img src="/2019/46e35c1e/5.png" alt><br><img src="/2019/46e35c1e/6.png" alt></p>
 <ul>
 <li>只需要配置web服务器，就不用每次都配置请求（端口不填默认80）</li>
 </ul>
 <ol start="3">
 <li>添加取样器</li>
 </ol>
-<p><img src="JMeter/7.png" alt=""><br><img src="JMeter/8.png" alt=""></p>
+<p><img src="/2019/46e35c1e/7.png" alt><br><img src="/2019/46e35c1e/8.png" alt></p>
 <ul>
 <li>这里就不用添加web服务器了</li>
 </ul>
 <ol start="4">
 <li>添加监听器</li>
 </ol>
-<p><img src="JMeter/9.png" alt=""></p>
+<p><img src="/2019/46e35c1e/9.png" alt></p>
 <p>因为查看的结果的不同，添加你觉得适合的监听器</p>
-<p><img src="JMeter/10.png" alt=""></p>
+<p><img src="/2019/46e35c1e/10.png" alt></p>
 <p>我添加的了一个聚合报告，在点击运行的时候回弹出一个对话框，问是否保存测试计划，根据你自己的需求决定</p>
 <h2 id="设置不同的参数"><a href="#设置不同的参数" class="headerlink" title="设置不同的参数"></a>设置不同的参数</h2><ol>
 <li>先添加HTTP请求默认值</li>
 </ol>
-<p><img src="JMeter/11.png" alt=""></p>
+<p><img src="/2019/46e35c1e/11.png" alt></p>
 <ol start="2">
 <li>添加Http请求</li>
 </ol>
-<p><img src="JMeter/12.png" alt=""></p>
+<p><img src="/2019/46e35c1e/12.png" alt></p>
 <ol start="3">
 <li>准备样本文件</li>
 </ol>
-<p><img src="JMeter/13.png" alt=""></p>
+<p><img src="/2019/46e35c1e/13.png" alt></p>
 <ol start="4">
 <li>添加CSV数据文件</li>
 </ol>
-<p><img src="JMeter/14.png" alt=""></p>
+<p><img src="/2019/46e35c1e/14.png" alt></p>
 <ul>
 <li>选中你的样本文件</li>
 <li>可以添加多个数据，分隔符可以自己定义，推荐‘,’</li>
 <li>设置对应每行的变量名，也要用分隔符分隔</li>
 </ul>
-<p><img src="JMeter/15.png" alt=""></p>
+<p><img src="/2019/46e35c1e/15.png" alt></p>
 <ol start="5">
 <li>添加变量</li>
 </ol>
-<p>${定义的变量名}<br><img src="JMeter/16.png" alt=""></p>
+<p>${定义的变量名}<br><img src="/2019/46e35c1e/16.png" alt></p>
 <ol start="6">
 <li>添加监听器</li>
 </ol>
 <p>我选择了查看结果树</p>
 <p>这样就能看到每次请求的链接</p>
-<p><img src="JMeter/17.png" alt=""></p>
+<p><img src="/2019/46e35c1e/17.png" alt></p>
 <h2 id="Redis压测"><a href="#Redis压测" class="headerlink" title="Redis压测"></a>Redis压测</h2><ol>
 <li>100个并发连接，100000个请求<br><code>redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000</code></li>
 <li>存取大小为100字节的数据包<br><code>redis-benchmark -h 127.0.0.1 -p 6379 -q -d 100</code></li>
@@ -1033,7 +1033,7 @@
 </ul>
 </li>
 <li>数据库配置<ul>
-<li>Jar包<br>JDBC驱动<br><img src="solr-20190406/1.png" alt=""></li>
+<li>Jar包<br>JDBC驱动<br><img src="/2019/cc34c7f6/1.png" alt></li>
 <li>放入server\solr-webapp\webapp\WEB-INF\lib</li>
 <li>\example\example-DIH\solr\db\conf覆盖\server\solr\test_core\conf</li>
 <li>修改db-data-config.xml<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">&lt;dataConfig&gt;</span><br><span class="line">	&lt;dataSource driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;amp;characterEncoding=utf-8" <span class="keyword">user</span>="root" <span class="keyword">password</span>="123456"/&gt;</span><br><span class="line">	&lt;document&gt;</span><br><span class="line">	    &lt;entity <span class="type">name</span>="user" query="select * from user" pk="user_id"&gt;</span><br><span class="line">	            &lt;field column="user_id" <span class="type">name</span>="userId" /&gt;</span><br><span class="line">				&lt;field column="user_name" <span class="type">name</span>="userName" /&gt;</span><br><span class="line">				&lt;field column="user_pass" <span class="type">name</span>="userPass" /&gt;</span><br><span class="line">				&lt;field column="user_time" <span class="type">name</span>="userTime" /&gt;</span><br><span class="line">	    &lt;/entity&gt;</span><br><span class="line">	&lt;/document&gt;</span><br><span class="line">&lt;/dataConfig&gt;</span><br><span class="line">配置说明：</span><br><span class="line">dataSource<span class="comment">--&gt;数据库连接，用户名密码配置</span></span><br><span class="line">entity<span class="comment">--&gt;sql定义</span></span><br><span class="line">field<span class="comment">--&gt;字段定义，column对应数据库字段，name对应solr的索引字段名</span></span><br></pre></td></tr></table></figure></li>
@@ -1047,7 +1047,7 @@
 <p>如果你的表主键id不是叫id，那么你定义的field需要指定required=”true”,并把默认的id的required=”true”属性去掉，并把<uniqueKey>id</uniqueKey>修改成你的主键id值，否则数据导入不进去。</p>
 <p>说明：因为只是做个基础的搜索业务，没有精细该schema文件，精益求精的小伙伴可以把冗余字段都干掉试试。</p>
 <p>到此，配置完成，接下来我们操作导入数据</p>
-<h2 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h2><p><img src="solr-20190406/2.png" alt=""></p>
+<h2 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h2><p><img src="/2019/cc34c7f6/2.png" alt></p>
 <p><code>&lt;delete&gt;&lt;query&gt;*:*&lt;/query&gt;&lt;/delete&gt;&lt;commit/&gt;</code></p>
 <h1 id="增量更新索引"><a href="#增量更新索引" class="headerlink" title="增量更新索引"></a>增量更新索引</h1><ul>
 <li>准备jar包</li>
@@ -1146,18 +1146,18 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <p>JDK提供了一组主要的数据结构实现，如List、Map、Set等常用数据结构。这些数据都继承自java.util.Collection接口，并位于java.util包内</p>
 </blockquote>
 <h1 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h1><p>最重要的三种List接口实现：ArrayList、Vector、LinkedList。它们的类图如下：</p>
-<p><img src="Java1-20190406/1.png" alt=""></p>
+<p><img src="/2019/999816d4/1.png" alt></p>
 <p>可以看到，3种List均来自AbstratList的实现。</p>
 <p>而AbstratList直接实现了List接口，并扩展自AbstratCollection。</p>
 <p>ArrayList和Vector使用了数组实现，可以认为，ArrayList封装了对内部数组的操作。比如向数组中添加、删除、插入新的元素或数组的扩展和重定义。对ArrayList或者Vector的操作，等价于对内部对象数组的操作。</p>
 <p>ArrayList和Vector几乎使用了相同的算法，它们的唯一区别可以认为是对多线程的支持。ArrayList没有对一个方法做线程同步，因此不是线程安全的。Vector中绝大多数方法都做了线程同步，是一种线程安全的实现。因此ArrayList和Vector的性能特性相差无几。</p>
 <p>LinkedList使用了循环双向链表数据结构。LinkedList由一系列表项连接而成。一个表项总是包含3个部分：元素内容、前驱表项和后驱表项。如图所示：</p>
-<p><img src="Java1-20190406/2.png" alt=""></p>
+<p><img src="/2019/999816d4/2.png" alt></p>
 <p>LinkedList的表项源码：</p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">private static class <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; &#123;</span><br><span class="line">    E item;</span><br><span class="line">    <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; next;</span><br><span class="line">    <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; prev;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">Node</span><span class="title">(Node</span><span class="tag">&lt;E&gt;</span> prev, E element, <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; next) &#123;</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>无论LinkedList是否为空，链表都有一个header表项，它既是链表的开始，也表示链表的结尾。它的后驱表项便是链表的第一个元素，前驱表项便是链表的最后一个元素。如图所示：</p>
-<p><img src="Java1-20190406/3.png" alt=""></p>
+<p><img src="/2019/999816d4/3.png" alt></p>
 <p>下面比较下ArrayList和LinkedList的不同。</p>
 <h2 id="增加元素到列表尾端"><a href="#增加元素到列表尾端" class="headerlink" title="增加元素到列表尾端"></a>增加元素到列表尾端</h2><p>对于ArrayList来说，只要当前容量足够大，add()操作的效率是非常高的。</p>
 <p>只有当ArrayList对容量的需求超过当前数组的大小时，才需要进行扩容。扩容会进行大量的数组复制操作。而复制时最终调用的是System.arraycopy()方法，因此，add()效率还是相当高的。</p>
@@ -1173,7 +1173,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <p>对于ForEach操作，反编译可知实际上是将ForEach循环体作为迭代器处理。不过ForEach比自定义的迭代器多了一步赋值操作，性能不如直接使用迭代器的方式。</p>
 <p>使用For循环通过随机访问遍历列表，ArrayList表现很好，速度最快；但是LinkedList的表现非常差，应避免使用，这是因为对LinkedList的随机访问时，总会进行一次列表的遍历操作。</p>
 <h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><p>Map是一种非常常用的数据结构。围绕着Map接口，最主要的实现类有Hashtable, HashMap, LinkedHashMap 和 TreeMap，在Hashtable中，还有Properties 类的实现。</p>
-<p><img src="Java1-20190406/4.png" alt=""></p>
+<p><img src="/2019/999816d4/4.png" alt></p>
 <p>Hashtable和hashMap的区别在于Hashtable的大部分方法都做了线程同步，而HashMap没有，</p>
 <p>因此，Hashtable是线程安全的，HashMap不是。</p>
 <p>其次，Hashtable 不允许key或value使用null值，而HashMap可以。</p>
@@ -1462,13 +1462,13 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">Predicate<T></td>
+<td align="center">Predicate<T></T></td>
 <td align="center">T</td>
 <td align="center">boolean</td>
 <td align="center">用来判断真假</td>
 </tr>
 <tr>
-<td align="center">Consumer<T></td>
+<td align="center">Consumer<T></T></td>
 <td align="center">T</td>
 <td align="center">void</td>
 <td align="center">输出一个值</td>
@@ -1480,19 +1480,19 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <td align="center">获取Artist对象的名字</td>
 </tr>
 <tr>
-<td align="center">Supplier<T></td>
+<td align="center">Supplier<T></T></td>
 <td align="center">None</td>
 <td align="center">T</td>
 <td align="center">工厂方法</td>
 </tr>
 <tr>
-<td align="center">UnaryOperator<T></td>
+<td align="center">UnaryOperator<T></T></td>
 <td align="center">T</td>
 <td align="center">T</td>
 <td align="center">逻辑非(!)</td>
 </tr>
 <tr>
-<td align="center">BinaryOperator<T></td>
+<td align="center">BinaryOperator<T></T></td>
 <td align="center">(T,T)</td>
 <td align="center">T</td>
 <td align="center">求两个数的乘积(*)</td>
@@ -1516,7 +1516,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <p>BinaryOperator 毕竟是一个具有泛型参数的函数接口，该类型既是参数 x 和 y 的类型，也是返回值的类型。<br>上面的例子中并没有给出变量add 的任何泛型信息，给出的正是原始类型的定义。<br>因此，编译器认为参数和返回值都是java.lang.Object 实例。</p>
 <h2 id="要点回顾"><a href="#要点回顾" class="headerlink" title="要点回顾"></a>要点回顾</h2><ul>
 <li>Lambda 表达式是一个匿名方法，将行为像数据一样进行传递。</li>
-<li>Lambda 表达式的常见结构：BinaryOperator<Integer> add = (x, y) → x + y。</li>
+<li>Lambda 表达式的常见结构：BinaryOperator<Integer> add = (x, y) → x + y。</Integer></li>
 <li>函数接口指仅具有单个抽象方法的接口，用来表示 Lambda 表达式的类型。</li>
 </ul>
 <blockquote>
@@ -1723,7 +1723,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <td align="center">线程让步</td>
 </tr>
 </tbody></table>
-<h2 id="线程生命周期"><a href="#线程生命周期" class="headerlink" title="线程生命周期"></a>线程生命周期</h2><p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE3-20190128/1.png" alt=""></p>
+<h2 id="线程生命周期"><a href="#线程生命周期" class="headerlink" title="线程生命周期"></a>线程生命周期</h2><p><img src="/2019/9f8f68ce/1.png" alt></p>
 <p>线程优先级</p>
 <ul>
 <li>每个线程都有一个优先级，取值范围：1~10</li>
@@ -1774,7 +1774,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <p>当多个线程同步时，获得锁的顺序不一致，导致线程相互等待的情况，称为死锁现象</p>
 <p>如何避免</p>
 <p>保证锁的顺序都一直</p>
-<p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE3-20190128/2.png" alt=""></p>
+<p><img src="/2019/9f8f68ce/2.png" alt></p>
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
         <category>Java</category>
@@ -1878,7 +1878,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 </ul>
 <p>List集合与HashSet集合中判断是否同一个元素，需要调用对象的equals()方法，元素的类需要重写equals()方法</p>
 <p>TreeSet集合判断是否同一个元素，根据Comparator/Comparable的比较结果是否为0判断，如果比较结果为0就认为是同一个元素</p>
-<p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE2-20190126/1.png" alt=""></p>
+<p><img src="/2019/e8885858/1.png" alt></p>
 <h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><ul>
 <li>HashSet底层是HashMap<ul>
 <li>向HashSet中添加元素，实际上是把元素作为键添加到底层的HashMap中</li>
@@ -1899,7 +1899,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 </li>
 </ul>
 <h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>Map是按&lt;键,值&gt;对的形式存储数据的</p>
-<p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE2-20190126/2.png" alt=""></p>
+<p><img src="/2019/e8885858/2.png" alt></p>
 <table>
 <thead>
 <tr>
@@ -1968,7 +1968,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <td align="center">返回值的集合</td>
 </tr>
 </tbody></table>
-<p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE2-20190126/3.png" alt=""></p>
+<p><img src="/2019/e8885858/3.png" alt></p>
 <h2 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h2><ul>
 <li>底层都是哈希表（散列表），但是HashTable事线程安全的，HashMap不是线程安全的</li>
 <li>HashMap的父类是AbstractMap,HashTable的父类是Dictionary</li>
@@ -1998,7 +1998,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
   <entry>
     <title>Java基础回顾1</title>
     <url>/2019/718109e2/</url>
-    <content><![CDATA[<h1 id="Java的加载与执行"><a href="#Java的加载与执行" class="headerlink" title="Java的加载与执行"></a>Java的加载与执行</h1><p><img src="Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE1-20190124/1.png" alt=""></p>
+    <content><![CDATA[<h1 id="Java的加载与执行"><a href="#Java的加载与执行" class="headerlink" title="Java的加载与执行"></a>Java的加载与执行</h1><p><img src="/2019/718109e2/1.png" alt></p>
 <h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><ul>
 <li>btye：Java中最小的数据类型，在内存中占8位(bit)，即1个字节，取值范围-128~127，默认值0</li>
 <li>short：短整型，在内存中占16位，即2个字节，取值范围-32768~32717，默认值0</li>
@@ -2072,7 +2072,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 </li>
 </ul>
 <h2 id="主备的原理"><a href="#主备的原理" class="headerlink" title="主备的原理"></a>主备的原理</h2><p>主服务器（master） 把数据同步到从服务器（slave）</p>
-<p><img src="%E4%B8%BB%E4%BB%8EMysql%E8%AE%BE%E7%BD%AE-20190121/1.jpg" alt=""></p>
+<p><img src="/2019/d8c50556/1.jpg" alt></p>
 <h2 id="下面就是实现了"><a href="#下面就是实现了" class="headerlink" title="下面就是实现了"></a>下面就是实现了</h2><p>首先需要两个mysql（本地测试推荐：phpstudy里面复制两个mysql）</p>
 <h3 id="修改my-ini"><a href="#修改my-ini" class="headerlink" title="修改my.ini"></a>修改my.ini</h3><p>— 唯一 ,要与备机的不同</p>
 <p><code>server_id = 101</code></p>
@@ -2177,7 +2177,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">│  .classpath</span><br><span class="line">│  .project</span><br><span class="line">│  list.txt</span><br><span class="line">│  pom.xml</span><br><span class="line">│  </span><br><span class="line">├─.settings</span><br><span class="line">│      .jsdtscope</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.core</span><span class="selector-class">.resources</span>.prefs</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.jdt</span><span class="selector-class">.core</span>.prefs</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.m2e</span><span class="selector-class">.core</span>.prefs</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.wst</span><span class="selector-class">.common</span>.component</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.wst</span><span class="selector-class">.common</span><span class="selector-class">.project</span><span class="selector-class">.facet</span><span class="selector-class">.core</span>.xml</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.wst</span><span class="selector-class">.jsdt</span><span class="selector-class">.ui</span><span class="selector-class">.superType</span>.container</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.wst</span><span class="selector-class">.jsdt</span><span class="selector-class">.ui</span><span class="selector-class">.superType</span>.name</span><br><span class="line">│      org<span class="selector-class">.eclipse</span><span class="selector-class">.wst</span><span class="selector-class">.validation</span>.prefs</span><br><span class="line">│      </span><br><span class="line">├─src</span><br><span class="line">│  ├─main</span><br><span class="line">│  │  ├─java</span><br><span class="line">│  │  │  └─cn</span><br><span class="line">│  │  │      └─zuohy</span><br><span class="line">│  │  │          ├─beans</span><br><span class="line">│  │  │          ├─common</span><br><span class="line">│  │  │          │      ApplicationContextHelper.java</span><br><span class="line">│  │  │          │      HttpInterceptor.java</span><br><span class="line">│  │  │          │      JsonData.java</span><br><span class="line">│  │  │          │      SpringExceptionResolver.java</span><br><span class="line">│  │  │          │      </span><br><span class="line">│  │  │          ├─controller</span><br><span class="line">│  │  │          │      TestController.java</span><br><span class="line">│  │  │          │      </span><br><span class="line">│  │  │          ├─dao</span><br><span class="line">│  │  │          ├─exception</span><br><span class="line">│  │  │          │      ParamException.java</span><br><span class="line">│  │  │          │      PermissionException.java</span><br><span class="line">│  │  │          │      </span><br><span class="line">│  │  │          ├─<span class="attribute">filter</span></span><br><span class="line">│  │  │          ├─model</span><br><span class="line">│  │  │          ├─param</span><br><span class="line">│  │  │          │      TestParam.java</span><br><span class="line">│  │  │          │      </span><br><span class="line">│  │  │          ├─service</span><br><span class="line">│  │  │          └─util</span><br><span class="line">│  │  │                  BeanValidator.java</span><br><span class="line">│  │  │                  JsonMapper.java</span><br><span class="line">│  │  │                  </span><br><span class="line">│  │  ├─resources</span><br><span class="line">│  │  │  │  logback.xml</span><br><span class="line">│  │  │  │  mybatis-config.xml</span><br><span class="line">│  │  │  │  settings.properties</span><br><span class="line">│  │  │  │  spring-servlet.xml</span><br><span class="line">│  │  │  │  spring.xml</span><br><span class="line">│  │  │  │  </span><br><span class="line">│  │  │  └─mapper</span><br><span class="line">│  │  └─webapp</span><br><span class="line">│  │      │  index.jsp</span><br><span class="line">│  │      │  </span><br><span class="line">│  │      ├─static</span><br><span class="line">│  │      └─WEB-INF</span><br><span class="line">│  │              web.xml</span><br><span class="line">│  │              </span><br><span class="line">│  └─test</span><br><span class="line">│      └─java</span><br><span class="line">└─target</span><br><span class="line">    ├─classes</span><br><span class="line">    │  │  logback.xml</span><br><span class="line">    │  │  mybatis-config.xml</span><br><span class="line">    │  │  settings.properties</span><br><span class="line">    │  │  spring-servlet.xml</span><br><span class="line">    │  │  spring.xml</span><br><span class="line">    │  │  </span><br><span class="line">    │  └─cn</span><br><span class="line">    │      └─zuohy</span><br><span class="line">    │          ├─beans</span><br><span class="line">    │          ├─common</span><br><span class="line">    │          │      ApplicationContextHelper.class</span><br><span class="line">    │          │      HttpInterceptor.class</span><br><span class="line">    │          │      JsonData.class</span><br><span class="line">    │          │      SpringExceptionResolver.class</span><br><span class="line">    │          │      </span><br><span class="line">    │          ├─controller</span><br><span class="line">    │          │      TestController.class</span><br><span class="line">    │          │      </span><br><span class="line">    │          ├─dao</span><br><span class="line">    │          ├─exception</span><br><span class="line">    │          │      ParamException.class</span><br><span class="line">    │          │      PermissionException.class</span><br><span class="line">    │          │      </span><br><span class="line">    │          ├─<span class="attribute">filter</span></span><br><span class="line">    │          ├─model</span><br><span class="line">    │          ├─param</span><br><span class="line">    │          │      TestParam.class</span><br><span class="line">    │          │      </span><br><span class="line">    │          ├─service</span><br><span class="line">    │          └─util</span><br><span class="line">    │                  BeanValidator.class</span><br><span class="line">    │                  JsonMapper.class</span><br><span class="line">    │                  </span><br><span class="line">    ├─m2e-wtp</span><br><span class="line">    │  └─web-resources</span><br><span class="line">    │      └─META-INF</span><br><span class="line">    │          │  MANIFEST.MF</span><br><span class="line">    │          │  </span><br><span class="line">    │          └─maven</span><br><span class="line">    │              └─cn.zuohy</span><br><span class="line">    │                  └─module</span><br><span class="line">    │                          pom.properties</span><br><span class="line">    │                          pom.xml</span><br><span class="line">    │                          </span><br><span class="line">    └─test-classes</span><br></pre></td></tr></table></figure>
 
-<p><img src="SSM%E7%9B%AE%E5%BD%95-20190119/1.png" alt=""></p>
+<p><img src="/2019/2da77ff9/1.png" alt></p>
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
       <categories>
         <category>Java</category>
@@ -2309,7 +2309,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 
 <h2 id="Redis-xml"><a href="#Redis-xml" class="headerlink" title="Redis.xml"></a>Redis.xml</h2><figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span></span><br><span class="line"><span class="xml">       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line"><span class="xml">       xmlns:context="http://www.springframework.org/schema/context"</span></span><br><span class="line"><span class="xml">       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:settings.properties"</span>/&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>/&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"shardedJedisPool"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.ShardedJedisPool"</span> <span class="attr">scope</span>=<span class="string">"singleton"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">list</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisShardInfo"</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"host"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;redis.host&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;redis.port&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"timeout"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;redis.timeout&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;redis.password&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="settings-properties"><a href="#settings-properties" class="headerlink" title="settings.properties"></a>settings.properties</h2><p>没有密码可以去除<property name=”password” value=”${redis.password}”/>和redis.password=</p>
+<h2 id="settings-properties"><a href="#settings-properties" class="headerlink" title="settings.properties"></a>settings.properties</h2><p>没有密码可以去除<property name="”password”" value="”${redis.password}”/">和redis.password=</property></p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">redis.host</span>=</span><br><span class="line"><span class="attr">redis.port</span>=<span class="number">6379</span></span><br><span class="line"><span class="attr">redis.timeout</span>=<span class="number">300</span></span><br><span class="line"><span class="attr">redis.password</span>=</span><br></pre></td></tr></table></figure>
 
 <h2 id="引用和启用客户端"><a href="#引用和启用客户端" class="headerlink" title="引用和启用客户端"></a>引用和启用客户端</h2><figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@Service</span>(<span class="string">"redisPool"</span>)</span><br><span class="line"><span class="variable">@Slf4j</span></span><br><span class="line">public class RedisPool &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Resource</span>(name = <span class="string">"shardedJedisPool"</span>)</span><br><span class="line">    private ShardedJedisPool shardedJedisPool;</span><br><span class="line">    <span class="comment">//只有启用一个客户端</span></span><br><span class="line">    <span class="selector-tag">public</span> <span class="selector-tag">ShardedJedis</span> <span class="selector-tag">instance</span>()&#123;</span><br><span class="line">        <span class="selector-tag">return</span> <span class="selector-tag">shardedJedisPool</span><span class="selector-class">.getResource</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//关闭客户端</span></span><br><span class="line">    <span class="selector-tag">public</span> <span class="selector-tag">void</span> <span class="selector-tag">safeClose</span>(ShardedJedis shardedJedis)&#123;</span><br><span class="line">        <span class="selector-tag">try</span> &#123;</span><br><span class="line">            <span class="selector-tag">if</span>(shardedJedis!=null)&#123;</span><br><span class="line">                <span class="selector-tag">shardedJedis</span><span class="selector-class">.close</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="selector-tag">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="selector-tag">log</span><span class="selector-class">.error</span>(<span class="string">"return redis resource exception"</span>,e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2433,7 +2433,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <p>如图就是恰当的填法。</p>
 <p>请你利用计算机搜索所有可能的填法有多少种。<br>注意：旋转或镜像后相同的算同一种填法。</p>
 <p>请提交表示方案数目的整数，不要填写任何其它内容。</p>
-<p><img src="%E4%BA%94%E6%98%9F%E5%A1%AB%E6%95%B0-20190406/1.png" alt=""></p>
+<p><img src="/2018/1277624e/1.png" alt></p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">Main</span> &#123;</span><br><span class="line">	static <span class="built_in">int</span> connt = <span class="number">0</span>;</span><br><span class="line">	static <span class="built_in">int</span>[] num = new <span class="built_in">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">12</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> static <span class="built_in">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		Assignment(<span class="number">0</span>);</span><br><span class="line">		System.<span class="keyword">out</span>.println(connt/<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> static <span class="built_in">void</span> Assignment(<span class="built_in">int</span> n) &#123;</span><br><span class="line">		<span class="keyword">if</span> (with(num) &amp;&amp; n == <span class="number">10</span>) &#123;</span><br><span class="line">			System.<span class="keyword">out</span>.println(Arrays.toString(num));</span><br><span class="line">			connt++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="built_in">int</span> i = n; i &lt; num.length; i++) &#123;</span><br><span class="line">			<span class="built_in">int</span> tmp = num[i];</span><br><span class="line">			num[i] = num[n];</span><br><span class="line">			num[n] = tmp;</span><br><span class="line">			Assignment(n + <span class="number">1</span>);	</span><br><span class="line">			<span class="comment">//回溯</span></span><br><span class="line">			<span class="built_in">int</span> temp1 = num[i];</span><br><span class="line">			num[i] = num[n];</span><br><span class="line">			num[n] = temp1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> static <span class="built_in">bool</span>ean with(<span class="built_in">int</span>[] Times) &#123;</span><br><span class="line">		<span class="built_in">int</span> tmp = Times[<span class="number">0</span>] + Times[<span class="number">5</span>] + Times[<span class="number">6</span>] + Times[<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">if</span> (tmp == Times[<span class="number">1</span>] + Times[<span class="number">6</span>] + Times[<span class="number">7</span>] + Times[<span class="number">3</span>])</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (tmp == Times[<span class="number">2</span>] + Times[<span class="number">7</span>] + Times[<span class="number">8</span>] + Times[<span class="number">4</span>])</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (tmp == Times[<span class="number">3</span>] + Times[<span class="number">8</span>] + Times[<span class="number">9</span>] + Times[<span class="number">0</span>])</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (tmp == Times[<span class="number">4</span>] + Times[<span class="number">9</span>] + Times[<span class="number">5</span>] + Times[<span class="number">1</span>])</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
@@ -2488,7 +2488,7 @@ name=”text_ik”,分词器名称，在后面的filed定义的时候，可以�
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="strong">*****</span><span class="emphasis">* *</span><span class="strong">*****</span></span><br><span class="line"><span class="strong">*****</span> 	<span class="strong">*****</span></span><br><span class="line"><span class="strong">**** 	 **</span>**</span><br><span class="line"><span class="strong">*** 	  **</span>*</span><br><span class="line"><span class="strong">** 		   **</span></span><br><span class="line"><span class="bullet">*           </span>*</span><br><span class="line"><span class="strong">**         **</span></span><br><span class="line"><span class="strong">*** 	  **</span>*</span><br><span class="line"><span class="strong">**** 	 **</span>**</span><br><span class="line"><span class="strong">*****</span> 	<span class="strong">*****</span></span><br><span class="line"><span class="strong">*****</span><span class="emphasis">* *</span><span class="strong">*****</span></span><br><span class="line">（如果有对齐问题，参看【图1.png】）</span><br></pre></td></tr></table></figure>
 
 <p>他一高兴，踢掉了电源，最后一次修改没有保存…..<br>毛病出在划线的部分。<br>请你帮助小明分析程序，填写划线部分缺失的代码。</p>
-<p><img src="%E7%A9%BA%E5%BF%83%E8%8F%B1%E5%BD%A2-20190406/1.png" alt=""></p>
+<p><img src="/2018/3840d4dc/1.png" alt></p>
 <figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">String</span> <span class="title">pr</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">String</span> s = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			s += <span class="string">" "</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">			s = <span class="string">"*"</span> + s + <span class="string">"*"</span>;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">String</span> s = pr(<span class="number">1</span>, n * <span class="number">2</span> - <span class="number">1</span>) + <span class="string">"\n"</span>;</span><br><span class="line">		<span class="keyword">String</span> s2 = s;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">			s = pr(<span class="number">1</span> + i, n * <span class="number">2</span> - i * <span class="number">2</span> - <span class="number">1</span>) + <span class="string">"\n"</span>; <span class="comment">// 填空位置</span></span><br><span class="line">			s2 = s + s2 + s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.<span class="built_in">print</span>(s2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">		f(<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote class="blockquote-center">为了一个爱的人</blockquote>]]></content>
