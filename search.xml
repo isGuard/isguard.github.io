@@ -1,6 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>开发工具Intellij-IDEA</title>
+    <url>/2020/2ba40ac9/</url>
+    <content><![CDATA[<h1 id="开发工具Intellij-IDEA"><a href="#开发工具Intellij-IDEA" class="headerlink" title="开发工具Intellij IDEA"></a>开发工具Intellij IDEA</h1><h2 id="开发工具概述"><a href="#开发工具概述" class="headerlink" title="开发工具概述"></a>开发工具概述</h2><p>IDEA是一个专门针对Java的集成开发工具（IDE），由Java语言编写。所以，需要有JRE运行环境并配置好环境变量它可以极大地提升我们的开发效率。可以自动编译，检查错误。在公司中，使用的就是IDEA进行开发。</p>
+<p>下载地址：<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">https://www.jetbrains.com/idea/</a></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402170317121.png" alt="image-20200402170317121"></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402170351577.png" alt="image-20200402170351577"></p>
+<h2 id="IDEA软件安装"><a href="#IDEA软件安装" class="headerlink" title="IDEA软件安装"></a>IDEA软件安装</h2><p>此软件集成了32位和64位，双击<code>ideaIU-2017.3.2.exe</code>进入安装。</p>
+<h3 id="欢迎界面"><a href="#欢迎界面" class="headerlink" title="欢迎界面"></a>欢迎界面</h3><p><img data-src="/2020/2ba40ac9/image-20200402170525471.png" alt="image-20200402170525471"></p>
+<h3 id="安装路径"><a href="#安装路径" class="headerlink" title="安装路径"></a>安装路径</h3><p><img data-src="/2020/2ba40ac9/image-20200402170544275.png" alt="image-20200402170544275"></p>
+<h3 id="配置安装选项"><a href="#配置安装选项" class="headerlink" title="配置安装选项"></a>配置安装选项</h3><p><img data-src="/2020/2ba40ac9/image-20200402170608817.png" alt="image-20200402170608817"></p>
+<h3 id="开始菜单"><a href="#开始菜单" class="headerlink" title="开始菜单"></a>开始菜单</h3><p><img data-src="/2020/2ba40ac9/image-20200402170635952.png" alt="image-20200402170635952"></p>
+<h3 id="安装完毕"><a href="#安装完毕" class="headerlink" title="安装完毕"></a>安装完毕</h3><p><img data-src="/2020/2ba40ac9/image-20200402170652435.png" alt="image-20200402170652435"></p>
+<h2 id="IDEA首次驱动"><a href="#IDEA首次驱动" class="headerlink" title="IDEA首次驱动"></a>IDEA首次驱动</h2><h3 id="选择不导入任何设置，点击OK"><a href="#选择不导入任何设置，点击OK" class="headerlink" title="选择不导入任何设置，点击OK"></a>选择不导入任何设置，点击OK</h3><p><img data-src="/2020/2ba40ac9/image-20200402170744130.png" alt="image-20200402170744130"></p>
+<h3 id="选择Create-New-Project"><a href="#选择Create-New-Project" class="headerlink" title="选择Create New Project"></a>选择Create New Project</h3><p><img data-src="/2020/2ba40ac9/image-20200402170816522.png" alt="image-20200402170816522"></p>
+<h3 id="点击new按钮，配置安装的JDK版本"><a href="#点击new按钮，配置安装的JDK版本" class="headerlink" title="点击new按钮，配置安装的JDK版本"></a>点击new按钮，配置安装的JDK版本</h3><p><img data-src="/2020/2ba40ac9/image-20200402170854718.png" alt="image-20200402170854718"></p>
+<h3 id="选择自己电脑上的JDK目录，点击确定"><a href="#选择自己电脑上的JDK目录，点击确定" class="headerlink" title="选择自己电脑上的JDK目录，点击确定"></a>选择自己电脑上的JDK目录，点击确定</h3><p><img data-src="/2020/2ba40ac9/image-20200402170941742.png" alt="image-20200402170941742"></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402171012124.png" alt="image-20200402171012124"></p>
+<h3 id="不使用模板"><a href="#不使用模板" class="headerlink" title="不使用模板"></a>不使用模板</h3><p><img data-src="/2020/2ba40ac9/image-20200402171036407.png" alt="image-20200402171036407"></p>
+<h3 id="为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建"><a href="#为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建" class="headerlink" title="为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建"></a>为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建</h3><blockquote>
+<p>首次新建项目时，默认的Project Location路径有问题，如<code>c:\\xxx</code>，正确写法为<code>c:\xxx</code>。更改后不会出现此类问题。</p>
+</blockquote>
+<p><img data-src="/2020/2ba40ac9/image-20200402171237437.png" alt="image-20200402171237437"></p>
+<h3 id="打开一个每日一帖对话框，勾掉每次启动显示，点击close"><a href="#打开一个每日一帖对话框，勾掉每次启动显示，点击close" class="headerlink" title="打开一个每日一帖对话框，勾掉每次启动显示，点击close"></a>打开一个每日一帖对话框，勾掉每次启动显示，点击close</h3><p><img data-src="/2020/2ba40ac9/image-20200402171303668.png" alt="image-20200402171303668"></p>
+<h3 id="IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-gt-new-gt-Project"><a href="#IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-gt-new-gt-Project" class="headerlink" title="IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-&gt;new-&gt;Project"></a>IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-&gt;new-&gt;Project</h3><p><img data-src="/2020/2ba40ac9/image-20200402171333076.png" alt="image-20200402171333076"></p>
+<h2 id="IDEA的项目结构"><a href="#IDEA的项目结构" class="headerlink" title="IDEA的项目结构"></a>IDEA的项目结构</h2><p><img data-src="/2020/2ba40ac9/02-IDEA%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt="02-IDEA的项目结构"></p>
+<h3 id="创建包和类"><a href="#创建包和类" class="headerlink" title="创建包和类"></a>创建包和类</h3><p>展开创建的工程，在源代码目录<code>src</code>上，鼠标右键，选择<code>new-&gt;package</code>，输入包名<code>com.itheima.demo</code>（随便你自己）点击确定。</p>
+<p><img data-src="/2020/2ba40ac9/image-20200402171834576.png" alt="image-20200402171834576"></p>
+<p>右键点击<code>com.itheima.demo</code>，选择<code>Show in Explorer</code>，会发现创建包的目录结构。</p>
+<p><img data-src="/2020/2ba40ac9/image-20200402171910062.png" alt="image-20200402171910062"></p>
+<p>在创建好的包上，鼠标右键，选择<code>new-&gt;class</code>创建类，键入类名。</p>
+<p><img data-src="/2020/2ba40ac9/image-20200402172005458.png" alt="image-20200402172005458"></p>
+<p>在代码编辑区，键入主方法，并输出<code>HelloWorld</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402172028412.png" alt="image-20200402172028412"></p>
+<p>运行程序，在代码编辑区鼠标右键，选择<code>Run HelloWorld</code>即可，或在菜单中选择<code>Run-&gt;Run HelloWor1d</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402172155375.png" alt="image-20200402172155375"></p>
+<h2 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h2><p>IDEA工具的默认字体非常小，代码编辑器和控制台的输出字体都需要进行调整。</p>
+<ul>
+<li>点击菜单栏上的<code>File-&gt;Settings-&gt;Editor-&gt;Font</code>修改字体。</li>
+</ul>
+<p><img data-src="/2020/2ba40ac9/image-20200402172320302.png" alt="image-20200402172320302"></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402172334670.png" alt="image-20200402172334670"></p>
+<h2 id="IDEA的项目目录"><a href="#IDEA的项目目录" class="headerlink" title="IDEA的项目目录"></a>IDEA的项目目录</h2><ul>
+<li>我们创建的项目，在<code>d:videawork</code>目录的<code>demo</code>下<ul>
+<li><code>.idea</code>目录和<code>demo.iml</code>和我们开发无关，是IDEA工具自己使用的</li>
+<li><code>out</code>目录是存储编译后的<code>.class</code>文件</li>
+<li><code>src</code>目录是存储我们编写的<code>.java</code>源文件</li>
+</ul>
+</li>
+</ul>
+<p><img data-src="/2020/2ba40ac9/image-20200402172453930.png" alt="image-20200402172453930"></p>
+<h2 id="IDEA常用快捷键"><a href="#IDEA常用快捷键" class="headerlink" title="IDEA常用快捷键"></a>IDEA常用快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt+Enter</code></td>
+<td>导入包，自动修正代码</td>
+</tr>
+<tr>
+<td><code>Ctrl+Y</code></td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td><code>Ctrl+D</code></td>
+<td>复制光标所在行的内容，插入光标位置下面</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+L</code></td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td><code>Ctrl+/</code></td>
+<td>单行注释</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+/</code></td>
+<td>选中代码注释，多行注释，再按取消注释</td>
+</tr>
+<tr>
+<td><code>Alt+Ins</code></td>
+<td>自动生成代码，toString，get，set等方法</td>
+</tr>
+<tr>
+<td><code>Alt+Shift+上下箭头</code></td>
+<td>移动当前代码行</td>
+</tr>
+</tbody></table>
+<h2 id="IDEA修改快捷键"><a href="#IDEA修改快捷键" class="headerlink" title="IDEA修改快捷键"></a>IDEA修改快捷键</h2><p>在IDEA工具中，<code>ctrl+空格</code>的快捷键，可以帮助我们补全代码，但是这个快捷键和Windows中的输入法切换快捷键冲突，需要修改IDEA中的快捷键。</p>
+<p><code>File-&gt;Settings-&gt;keymap-&gt;Main menu-&gt;code-&gt;Completion-&gt;Basic</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173148296.png" alt="image-20200402173148296"></p>
+<p>双击<code>Basic-&gt;remove-&gt;Ctrl+空格</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173230646.png" alt="image-20200402173230646"></p>
+<p>再双击<code>Basic-&gt;Add Keyboard-&gt;输入 Alt+/-&gt;点击OK</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173336235.png" alt="image-20200402173336235"></p>
+<h2 id="IDEA导入和关闭项目"><a href="#IDEA导入和关闭项目" class="headerlink" title="IDEA导入和关闭项目"></a>IDEA导入和关闭项目</h2><p>关闭IDEA中已经存在的项目，<code>File-&gt;Close Project</code></p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173432324.png" alt="image-20200402173432324"></p>
+<p><code>File-&gt;Close Project</code>这时IDEA回到了刚启动界面，点击项目上的<code>x</code>，IDEA中就没有这个项目了</p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173507196.png" alt="image-20200402173507196"></p>
+<p>在IDEA启界面上，点击<code>OPEN</code>，选择项目目录即可</p>
+<p><img data-src="/2020/2ba40ac9/image-20200402173526958.png" alt="image-20200402173526958"></p>
+<blockquote>
+<p>若想通过IDEA同时开多个项目，点击OPEN打开项目时，点击New Window按钮</p>
+</blockquote>
+<p>![image-20200402173626718](14.开发工具Intellij IDEA/image-20200402173626718.png)</p>
+<blockquote class="blockquote-center" id="guard"></blockquote>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>循环语句</title>
+    <url>/2020/b38e349f/</url>
+    <content><![CDATA[<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="循环概述"><a href="#循环概述" class="headerlink" title="循环概述"></a>循环概述</h2><p>循环语句可以在满足循环条件的情况下，反复执行某一段代码，这段被重复执行的代码被称为循环体语句，当反复执行这个循环体时，需要在合适的时候把循环判断条件修改为<strong>false</strong>，从而结束循环，否则循环将一直执行下去，形成死循环。</p>
+<p>循环结构的基本组成部分，一般可以分成四部分：</p>
+<ul>
+<li>初始化语句：在循环开始最初执行，而且只做唯一一次</li>
+<li>条件判断：如果成立，则循环继续，如不不成立，则循环推出</li>
+<li>循环体：重复要做的事情内容，若干行语句</li>
+<li>步进语句：每次循环之后都要进行的扫尾工作，每次循环结束之后都要执行一次</li>
+</ul>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><ul>
+<li>for循环语句格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化表达式① ; 布尔表达式② ; 步进表达式④)&#123;</span><br><span class="line">  循环体③;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span><span class="comment">/*初始化表达式*/</span>; i &lt; <span class="number">50</span><span class="comment">/*布尔表达式*/</span>; i++<span class="comment">/*步进表达式*/</span>) &#123;</span><br><span class="line">      <span class="comment">//循环体③</span></span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(i); <span class="comment">//50</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="for的流程图"><a href="#for的流程图" class="headerlink" title="for的流程图"></a>for的流程图</h4><ul>
+<li>执行顺序：①②③④&gt;②③④&gt;②③④…直到②不满住为止</li>
+<li>①负责完成循环变量初始化</li>
+<li>②负责判断是否满足循环条件，不满足则跳出循环</li>
+<li>③具体执行的语句</li>
+<li>④循环后，循环条件所涉及变量的变化情况</li>
+</ul>
+<p><img data-src="/2020/b38e349f/05-for%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="05-for循环的流程图"></p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>while循环有一个标准格式，还有一个扩展格式</p>
+<ul>
+<li>标准格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件判断)&#123;</span><br><span class="line">  循环体;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>扩展格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">初始化表达式①</span><br><span class="line"><span class="keyword">while</span>(条件判断②)&#123;</span><br><span class="line">  循环体③;</span><br><span class="line">  步进表达式④;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// 初始化表达式</span></span><br><span class="line">		<span class="keyword">while</span>(i &lt; <span class="number">50</span><span class="comment">/*条件判断*/</span>)&#123;</span><br><span class="line">			<span class="comment">//循环体③</span></span><br><span class="line">			i++; <span class="comment">// 步进表达式</span></span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(i); <span class="comment">//50</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="while的流程图"><a href="#while的流程图" class="headerlink" title="while的流程图"></a>while的流程图</h3><ul>
+<li>执行顺序：①②③④&gt;②③④&gt;②③④…直到②不满住为止</li>
+<li>①负责完成循环变量初始化</li>
+<li>②负责判断是否满足循环条件，不满足则跳出循环</li>
+<li>③具体执行的语句</li>
+<li>④循环后，循环变量的变化情况</li>
+</ul>
+<p><img data-src="/2020/b38e349f/06-while%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="06-while循环的流程图"></p>
+<h2 id="do…while"><a href="#do…while" class="headerlink" title="do…while"></a>do…while</h2><p>do…while循环有一个标准格式，还有一个扩展格式</p>
+<ul>
+<li>标准格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  循环体;</span><br><span class="line">&#125; <span class="keyword">while</span> (条件判断);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>扩展格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">初始化表达式①</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  循环体③;</span><br><span class="line">  步进表达式④</span><br><span class="line">&#125; <span class="keyword">while</span> (布尔表达式②);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// 初始化表达式</span></span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			<span class="comment">//循环体</span></span><br><span class="line">			i++; <span class="comment">// 步进表达式</span></span><br><span class="line">		&#125;<span class="keyword">while</span>(i &lt; <span class="number">50</span><span class="comment">/*布尔表达式*/</span>);</span><br><span class="line">		System.out.println(i); <span class="comment">//50</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="do…while的流程图"><a href="#do…while的流程图" class="headerlink" title="do…while的流程图"></a>do…while的流程图</h3><ul>
+<li>执行顺序：①②③④&gt;②③④&gt;②③④…直到②不满住为止</li>
+<li>①负责完成循环变量初始化</li>
+<li>②负责判断是否满足循环条件，不满足则跳出循环</li>
+<li>③具体执行的语句</li>
+<li>④循环后，循环变量的变化情况</li>
+</ul>
+<p><img data-src="/2020/b38e349f/image-20200402161047519.png" alt="image-20200402161047519"></p>
+<h2 id="循环语句的区别"><a href="#循环语句的区别" class="headerlink" title="循环语句的区别"></a>循环语句的区别</h2><ul>
+<li><strong>for</strong>和<strong>while</strong>的小区别：<ul>
+<li>控制条件语句所控制的那个变量，在for循环结束后，就不能再被访问到了，而while循环结束还可以继续使用，如果你想继续使用，就用while，否则推荐使用for。原因是for循环结束，该变量就从内存中消失，能够提高内存的使用效率</li>
+<li>如果条件判断从来没有满足过，那么for循环和while循环将会执行0次，但是do…while循环会执行至少一次</li>
+<li>在已知循环次数的时候使用推荐使用for，循环次数未知的时推荐使用while</li>
+</ul>
+</li>
+</ul>
+<h2 id="跳出语句"><a href="#跳出语句" class="headerlink" title="跳出语句"></a>跳出语句</h2><h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>常用的两种：</p>
+<ol>
+<li>可以用在switch语句当中，一旦执行，整个switch语句立刻结束</li>
+<li>还可以用在循环语句当中，一旦执行，整个循环语句立刻结束，打断循环</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="number">4</span>)&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;				</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><ul>
+<li>一旦执行，立刻跳过当次循环剩余内容，马上开始下次循环</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="number">4</span>)&#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">		&#125;				</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="循环拓展"><a href="#循环拓展" class="headerlink" title="循环拓展"></a>循环拓展</h2><h3 id="死循环"><a href="#死循环" class="headerlink" title="死循环"></a>死循环</h3><ul>
+<li>死循环：也就是循环中的条件永远为true，死循环的是永不结束的循环。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在后期的开发中，会出现使用死循环的场景，例如：我们需要读取用户输入的输入，但是用户输入多少数据我们不清楚，也只能使用死循环，当用户不想输入数据了，就可以结束循环了，如何去结束一个死循环呢，就需要使用到跳出语句了。</p>
+<h3 id="嵌套循环"><a href="#嵌套循环" class="headerlink" title="嵌套循环"></a>嵌套循环</h3><p>所谓嵌套循环，是指一个循环的循环体是另一个循环。比如for循环里面还有一个for循环，就是嵌套循环。总共的循环次数=外循环次数*内循环次数</p>
+<ul>
+<li>格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化表达式① ; 循环条件② ; 步进表达式⑦)&#123;</span><br><span class="line"> 	<span class="keyword">for</span>(初始化表达式③ ; 循环条件④ ; 步进表达式⑥)&#123;</span><br><span class="line">    执行语句⑤;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoopStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;<span class="number">10</span>; j++) &#123;</span><br><span class="line">				System.out.println(i+<span class="string">"------&gt;"</span>+j);</span><br><span class="line">			&#125;			</span><br><span class="line">		&#125;				</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="嵌套循环执行流程"><a href="#嵌套循环执行流程" class="headerlink" title="嵌套循环执行流程"></a>嵌套循环执行流程</h4><ul>
+<li>执行流程：①②③④⑤⑥&gt;④⑤⑥&gt;⑦②③④⑤⑥&gt;④⑤⑥</li>
+<li>外循环一次，内循环多次</li>
+</ul>
+<blockquote class="blockquote-center" id="guard"></blockquote>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>添加abbrlink后图片无法显示</title>
     <url>/2020/a22adf80/</url>
     <content><![CDATA[<p>在以前安装了<a href="https://github.com/7ym0n/hexo-asset-image.git" target="_blank" rel="noopener">hexo-asset-image</a>,在创建新的md时会在,同级目录下创建名称相同的文件夹,用来存放图片.</p>
@@ -44,6 +292,145 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>选择语句</title>
+    <url>/2020/54b98eca/</url>
+    <content><![CDATA[<h1 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h1><h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><ul>
+<li><strong>switch语句格式</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">  <span class="keyword">case</span> 常量值<span class="number">1</span>:</span><br><span class="line">    语句体<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> 常量值<span class="number">2</span>:</span><br><span class="line">    语句体<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    语句体n+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectAStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">switch</span>(num)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期一"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期二"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期三"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期四"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期五"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期六"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">				System.out.println(<span class="string">"星期日"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				System.out.println(<span class="string">"数据有误"</span>);</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="switch的流程图"><a href="#switch的流程图" class="headerlink" title="switch的流程图"></a>switch的流程图</h3><ul>
+<li>首先计算出表达式的值</li>
+<li>其次和case依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到<strong>break</strong>就会结束</li>
+<li>最后，如果所有的case都和表达式的值不匹配，就会执行default语句体部分，然后程序结束</li>
+</ul>
+<p><img data-src="/2020/54b98eca/image-20200402150825436.png" alt="image-20200402150825436"></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>多个case后面的数值不可以重复</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectAStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">switch</span>(num)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:  <span class="comment">// 错误: case 标签重复</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>switch后面小括号当中只能是下列数据类型<ul>
+<li>基本数据类型：byte/short/char/int</li>
+<li>引用数据类型：String（jdk1.7以后支持）、enum枚举</li>
+</ul>
+</li>
+<li>switch语句格式可以很灵活：前后顺序可以颠倒，而且break语句还可以省略<ul>
+<li>但是case的后面的break不写，会出现穿透现象，也就是不会再判断下一个case的值，直接向后运行，直到遇到break或者整体switch结束</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectAStatement</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">switch</span>(num)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				System.out.println(<span class="string">"输出1"</span>);</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:  </span><br><span class="line">				System.out.println(<span class="string">"输出2"</span>);</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				System.out.println(<span class="string">"输出default"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 输出1</span></span><br><span class="line">		<span class="comment">// 输出2</span></span><br><span class="line">		<span class="comment">// 输出default</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote class="blockquote-center" id="guard"></blockquote>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>判断语句</title>
+    <url>/2020/4222aa87/</url>
+    <content><![CDATA[<h1 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h1><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><ul>
+<li><strong>if语句的第一种格式</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式)&#123;</span><br><span class="line"> 语句体; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgmentStatementIf</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"a等于10"</span>); </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>( a == <span class="number">20</span>)&#123;</span><br><span class="line">			System.out.println(<span class="string">"a等于20"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="comment">// 只显示了:a等于10</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="if的流程图"><a href="#if的流程图" class="headerlink" title="if的流程图"></a>if的流程图</h3><ul>
+<li>首先判断关系表达式看其结果是true还是false</li>
+<li>如果是rue就执行语句体</li>
+<li>如果是false就不执行语句体</li>
+</ul>
+<p><img data-src="/2020/4222aa87/02-%E5%8D%95if%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="02-单if语句的流程图"></p>
+<h2 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h2><ul>
+<li><strong>if语句第二种格式</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式)&#123;</span><br><span class="line">	语句体<span class="number">1</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  语句体<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgmentStatementIf</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"a等于10"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"a不等于10"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="if…else的流程图"><a href="#if…else的流程图" class="headerlink" title="if…else的流程图"></a>if…else的流程图</h3><ul>
+<li>首先判断关系表达式看其结果的true还是false</li>
+<li>如果true就执行语句体1</li>
+<li>如果false就执行语句体2</li>
+</ul>
+<p><img data-src="/2020/4222aa87/03-%E6%A0%87%E5%87%86if-else%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="03-标准if-else语句的流程图"></p>
+<h2 id="if…else-if…else"><a href="#if…else-if…else" class="headerlink" title="if…else if…else"></a>if…else if…else</h2><ul>
+<li><strong>if语句第三种格式</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (判断条件<span class="number">1</span>)&#123;</span><br><span class="line">	执行语句<span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(判断条件<span class="number">2</span>)&#123;</span><br><span class="line">	执行语句<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(判断条件n)&#123;</span><br><span class="line">	执行语句n;</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">  执行语句n+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgmentStatementIf</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">30</span>;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="number">10</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"a等于10"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a == <span class="number">20</span>)&#123;</span><br><span class="line">			System.out.println(<span class="string">"a等于20"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"a不等于10也不等于20"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="if…else-if…else的流程图"><a href="#if…else-if…else的流程图" class="headerlink" title="if…else if…else的流程图"></a>if…else if…else的流程图</h3><ul>
+<li>首先判断关系表达式1看其结果是true还是false</li>
+<li>如果是true就执行语句体1</li>
+<li>如果是false就继续判断关系表达式2看其结果是true还是false</li>
+<li>如果是true就执行语句体2</li>
+<li>如果是false就继续判断关系表达式看其结果是true还是false</li>
+<li>…</li>
+<li>如果没有任何关系表达式为true，就执行语句体n+1</li>
+</ul>
+<p><img data-src="/2020/4222aa87/04-%E6%89%A9%E5%B1%95if-else%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="04-扩展if-else语句的流程图"></p>
+<h2 id="if语句和三元运算符的互换"><a href="#if语句和三元运算符的互换" class="headerlink" title="if语句和三元运算符的互换"></a>if语句和三元运算符的互换</h2><p>在某些简单的应用中,if语句是可以和三元运算符互换使用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">  <span class="comment">// 比较两个值的大小</span></span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">20</span>;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">30</span>;</span><br><span class="line">  <span class="comment">// 保存a和b的较大值</span></span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line">  <span class="keyword">if</span>(a &gt; b)&#123;</span><br><span class="line">    c = a;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    c = b;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//三元运算符</span></span><br><span class="line">  c = a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote class="blockquote-center" id="guard"></blockquote>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>顺序结构</title>
+    <url>/2020/25dc0574/</url>
+    <content><![CDATA[<h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在一个程序执行的过程中，各象语句的执行顺序对程序的结果是有直接影响的，也就是说，程序的流程对运行结果有直接的影响。所以，我们必须清楚每条语句的执行流程。而且，很多时候我们要通过控制语句的执行顺序来实现我们要完成的功能。</p>
+<h2 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h2><p>顺序执行,根据编写的顺序,从上到下运行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sequence</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="comment">//顺序执行,根据编写的顺序,从上到下运行</span></span><br><span class="line">    System.out.print(<span class="string">"先"</span>);</span><br><span class="line">    System.out.print(<span class="string">"中"</span>);</span><br><span class="line">    System.out.print(<span class="string">"后"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="顺序结构的流程图"><a href="#顺序结构的流程图" class="headerlink" title="顺序结构的流程图"></a>顺序结构的流程图</h3><p><img data-src="/2020/25dc0574/01-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="01-顺序结构的流程图"></p>
+<blockquote class="blockquote-center" id="guard"></blockquote>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
