@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=2"><meta name=theme-color content=#222><meta name=generator content="Hexo 4.2.0"><link rel=apple-touch-icon sizes=180x180 href=/images/guard.png><link rel=icon type=image/png sizes=32x32 href=/images/guard.png><link rel=icon type=image/png sizes=16x16 href=/images/guard.png><link rel=mask-icon href=/images/guard.svg color=#222><meta name=google-site-verification content=1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk><meta name=msvalidate.01 content=E4B8BD2F04290DD88CD9F8BF5853705F><meta name=baidu-site-verification content=H0FI8ImJtX><link rel=stylesheet href=/css/main.css><link rel=stylesheet href=//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css><link rel=stylesheet href=//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css><script src=//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js></script><script id=hexo-configurations>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script><meta name=description content="线程状态概述 当线程被创建并启动以后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。在线程的生命周期中，有几种状态呢？在API中 java.lang.Thread.State 这个枚举中给出了六种线程状态： 这里先列出各个线程状态发生的条件，下面将会对每种状态进行详细解析 线程状态导致状态发生条件NEW(新建)线程刚被创建，但是并未启动。还没调用start方法。Runnable(可运行"><meta property=og:type content=article><meta property=og:title content=线程状态><meta property=og:url content=https://blog.guard.ren/2020/ecb26108/index.html><meta property=og:site_name content=何年何月何时多><meta property=og:description content="线程状态概述 当线程被创建并启动以后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。在线程的生命周期中，有几种状态呢？在API中 java.lang.Thread.State 这个枚举中给出了六种线程状态： 这里先列出各个线程状态发生的条件，下面将会对每种状态进行详细解析 线程状态导致状态发生条件NEW(新建)线程刚被创建，但是并未启动。还没调用start方法。Runnable(可运行"><meta property=og:locale content=zh_CN><meta property=og:image content=https://blog.guard.ren/2020/ecb26108/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png><meta property=og:image content=https://blog.guard.ren/2020/ecb26108/%E8%AE%A1%E6%97%B6%E7%AD%89%E5%BE%85.png><meta property=og:image content=https://blog.guard.ren/2020/ecb26108/%E9%94%81%E9%98%BB%E5%A1%9E.png><meta property=og:image content=https://blog.guard.ren/2020/ecb26108/%E6%97%A0%E9%99%90%E7%AD%89%E5%BE%85.png><meta property=article:published_time content=2020-04-21T08:04:25.000Z><meta property=article:modified_time content=2020-04-21T08:04:25.000Z><meta property=article:author content=何年何月何时多><meta property=article:tag content=Java><meta name=twitter:card content=summary><meta name=twitter:image content=https://blog.guard.ren/2020/ecb26108/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png><link rel=canonical href="https://blog.guard.ren/2020/ecb26108/"><script id=page-configurations>
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script><title>线程状态 | 何年何月何时多</title><script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-136832726-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script><script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><noscript><style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style></noscript></head><body itemscope itemtype=http://schema.org/WebPage><div class="container use-motion"><div class=headband></div><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label=切换导航栏><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div></div><div class=site-meta><div><a href="/" class=brand rel=start><span class=logo-line-before><i></i></span> <span class=site-title>何年何月何时多</span> <span class=logo-line-after><i></i></span></a></div><h1 class=site-subtitle itemprop=description>我的身旁是一扇亮了又暗的窗</h1></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul id=menu class=menu><li class="menu-item menu-item-home"><a href="/" rel=section><i class="fa fa-fw fa-home"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel=section><i class="fa fa-fw fa-tags"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel=section><i class="fa fa-fw fa-th"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel=section><i class="fa fa-fw fa-archive"></i>归档</a></li><li class="menu-item menu-item-search"><a role=button class=popup-trigger><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class=site-search><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocorrect=off autocapitalize=off placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close><i class="fa fa-times-circle"></i></span></div><div id=search-result><div id=no-result><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div></div></div></div></div></header><div class=back-to-top><i class="fa fa-arrow-up"></i> <span>0%</span></div><div class=reading-progress-bar></div><a href=https://github.com/isGuard class=github-corner title="Follow me on GitHub" aria-label="Follow me on GitHub" rel=noopener target=_blank><svg width=80 height=80 viewbox="0 0 250 250" aria-hidden=true><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill=currentColor style="transform-origin: 130px 106px;" class=octo-arm></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill=currentColor class=octo-body></path></svg></a><main class=main><div class=main-inner><div class=content-wrap><div class=content><div class=posts-expand><article itemscope itemtype=http://schema.org/Article class=post-block lang=zh-CN><link itemprop=mainEntityOfPage href="https://blog.guard.ren/2020/ecb26108/"><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5"><meta itemprop=name content=何年何月何时多><meta itemprop=description content=我的身旁是一扇亮了又暗的窗></span> <span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content=何年何月何时多></span><header class=post-header><h2 class=post-title itemprop="name headline">线程状态</h2><div class=post-meta><span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-calendar-o"></i></span> <span class=post-meta-item-text>发表于</span><time title="创建时间：2020-04-21 16:04:25" itemprop="dateCreated datePublished" datetime=2020-04-21T16:04:25+08:00>2020-04-21</time></span> <span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-folder-o"></i></span> <span class=post-meta-item-text>分类于</span> <span itemprop=about itemscope itemtype=http://schema.org/Thing><a href="/categories/Java/" itemprop=url rel=index><span itemprop=name>Java</span></a></span></span> <span id="/2020/ecb26108/" class="post-meta-item leancloud_visitors" data-flag-title=线程状态 title=阅读次数><span class=post-meta-item-icon><i class="fa fa-eye"></i></span> <span class=post-meta-item-text>阅读次数：</span> <span class=leancloud-visitors-count></span></span> <span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-comment-o"></i></span> <span class=post-meta-item-text>Valine：</span> <a title=valine href=/2020/ecb26108/#valine-comments itemprop=discussionUrl><span class="post-comments-count valine-comment-count" data-xid="/2020/ecb26108/" itemprop=commentCount></span></a></span><br><span class=post-meta-item title=本文字数><span class=post-meta-item-icon><i class="fa fa-file-word-o"></i></span> <span class=post-meta-item-text>本文字数：</span> <span>3.3k</span></span> <span class=post-meta-item title=阅读时长><span class=post-meta-item-icon><i class="fa fa-clock-o"></i></span> <span class=post-meta-item-text>阅读时长 &asymp;</span> <span>3 分钟</span></span></div></header><div class=post-body itemprop=articleBody><h2 id=线程状态概述><a href=#线程状态概述 class=headerlink title=线程状态概述></a>线程状态概述</h2><p>当线程被创建并启动以后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。在线程的生命周期中，有几种状态呢？在API中 <code>java.lang.Thread.State</code> 这个枚举中给出了六种线程状态：<br>这里先列出各个线程状态发生的条件，下面将会对每种状态进行详细解析</p><table><thead><tr><th><strong>线程状态</strong></th><th><strong>导致状态发生条件</strong></th></tr></thead><tbody><tr><td>NEW(新建)</td><td>线程刚被创建，但是并未启动。还没调用start方法。</td></tr><tr><td>Runnable(可运行)</td><td>线程可以在java虚拟机中运行的状态，可能正在运行自己代码，也可能没有，这取决于操作系统处理器。</td></tr><tr><td>Blocked(锁阻塞)</td><td>当一个线程试图获取一个对象锁，而该对象锁被其他的线程持有，则该线程进入Blocked状态；当该线程持有锁时，该线程将变成Runnable状态。</td></tr><tr><td>Waiting(无限等待)</td><td>一个线程在等待另一个线程执行一个（唤醒）动作时，该线程进入Waiting状态。进入这个状态后是不能自动唤醒的，必须等待另一个线程调用notify或者notifyAll方法才能够唤醒。</td></tr><tr><td>Timed Waiting(计时等待)</td><td>同waiting状态，有几个方法有超时参数，调用他们将进入Timed Waiting状态。这一状态将一直保持到超时期满或者接收到唤醒通知。带有超时参数的常用方法有Thread.sleep 、Object.wait。</td></tr><tr><td>Teminated(被终止)</td><td>因为run方法正常退出而死亡，或者因为没有捕获的异常终止了run方法而死亡。</td></tr></tbody></table><p>我们不需要去研究这几种状态的实现原理，我们只需知道在做线程操作中存在这样的状态。那我们怎么去理解这几个状态呢，新建与被终止还是很容易理解的，我们就研究一下线程从Runnable（可运行）状态与非运行状态之间<br>的转换问题。</p><p><img data-src=/2020/ecb26108/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png alt=线程状态图></p><h2 id=Timed-Waiting（计时等待）><a href=#Timed-Waiting（计时等待） class=headerlink title="Timed Waiting（计时等待）"></a>Timed Waiting（计时等待）</h2><p>Timed Waiting在API中的描述为：一个正在限时等待另一个线程执行一个（唤醒）动作的线程处于这一状态。单独的去理解这句话，真是玄之又玄，其实我们在之前的操作中已经接触过这个状态了，在哪里呢？</p><p>在我们写卖票的案例中，为了减少线程执行太快，现象不明显等问题，我们在run方法中添加了sleep语句，这样就强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。</p><p>其实当我们调用了sleep方法之后，当前执行的线程就进入到“休眠状态”，其实就是所谓的Timed Waiting(计时等待)，那么我们通过一个案例加深对该状态的一个理解。</p><p>实现一个计数器，计数到100，在每个数字之间暂停1秒，每隔10个数字输出一个字符串。</p><figure class="highlight java"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br></pre></td><td class=code><pre><span class=line><span class=keyword>public</span> <span class=class><span class=keyword>class</span> <span class=title>TestTimedWaiting</span> </span>&#123;</span><br><span class=line>    <span class=function><span class=keyword>public</span> <span class=keyword>static</span> <span class=keyword>void</span> <span class=title>main</span><span class=params>(String[] args)</span> </span>&#123;</span><br><span class=line>        <span class=keyword>new</span> Thread(()-&gt;&#123;</span><br><span class=line>            <span class=keyword>for</span> (<span class=keyword>int</span> i = <span class=number>1</span>; i &lt;= <span class=number>100</span> ; i++) &#123;</span><br><span class=line>                System.out.println(i);</span><br><span class=line>                <span class=keyword>if</span>(i%<span class=number>10</span>==<span class=number>0</span>)&#123;</span><br><span class=line>                    System.out.println(<span class=string>"---------"</span>);</span><br><span class=line>                &#125;</span><br><span class=line>                <span class=keyword>try</span> &#123;</span><br><span class=line>                    Thread.sleep(<span class=number>1000</span>);</span><br><span class=line>                &#125; <span class=keyword>catch</span> (InterruptedException e) &#123;</span><br><span class=line>                    e.printStackTrace();</span><br><span class=line>                &#125;</span><br><span class=line>            &#125;</span><br><span class=line>        &#125;).start();</span><br><span class=line>    &#125;</span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure><p>通过案例可以发现，sleep方法的使用还是很简单的。我们需要记住下面几点：</p><blockquote><p>进入 TIMED_WAITING 状态的一种常见情形是调用的 sleep 方法，单独的线程也可以调用，不一定非要有协<br>作关系。</p><p>为了让其他线程有机会执行，可以将Thread.sleep()的调用放线程run()之内。这样才能保证该线程执行过程<br>中会睡眠</p><p>sleep与锁无关，线程睡眠到期自动苏醒，并返回到Runnable（可运行）状态。</p></blockquote><blockquote><p>sleep()中指定的时间是线程不会运行的最短时间。因此，sleep()方法不能保证该线程睡眠到期后就开始立刻执行。</p></blockquote><p><img data-src=/2020/ecb26108/%E8%AE%A1%E6%97%B6%E7%AD%89%E5%BE%85.png alt=计时等待></p><h2 id=BLOCKED（锁阻塞）><a href=#BLOCKED（锁阻塞） class=headerlink title=BLOCKED（锁阻塞）></a>BLOCKED（锁阻塞）</h2><p>Blocked状态在API中的介绍为：一个正在阻塞等待一个监视器锁（锁对象）的线程处于这一状态。</p><p>我们已经知道同步机制，那么这个状态是非常好理解的了。比如，线程A与线程B代码中使用同一锁，如果线程A获取到锁，线程A进入到Runnable状态，那么线程B就进入到Blocked锁阻塞状态。</p><p><img data-src=/2020/ecb26108/%E9%94%81%E9%98%BB%E5%A1%9E.png alt=锁阻塞></p><h2 id=Waiting（无限等待）><a href=#Waiting（无限等待） class=headerlink title=Waiting（无限等待）></a>Waiting（无限等待）</h2><p>Wating状态在API中介绍为：一个正在无限期等待另一个线程执行一个特别的（唤醒）动作的线程处于这一状态。</p><figure class="highlight java"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br><span class=line>18</span><br><span class=line>19</span><br><span class=line>20</span><br><span class=line>21</span><br><span class=line>22</span><br><span class=line>23</span><br><span class=line>24</span><br><span class=line>25</span><br><span class=line>26</span><br><span class=line>27</span><br><span class=line>28</span><br><span class=line>29</span><br><span class=line>30</span><br><span class=line>31</span><br><span class=line>32</span><br><span class=line>33</span><br><span class=line>34</span><br><span class=line>35</span><br><span class=line>36</span><br><span class=line>37</span><br><span class=line>38</span><br><span class=line>39</span><br><span class=line>40</span><br><span class=line>41</span><br></pre></td><td class=code><pre><span class=line><span class=keyword>public</span> <span class=class><span class=keyword>class</span> <span class=title>TestWaiting</span> </span>&#123;</span><br><span class=line>    <span class=keyword>public</span> <span class=keyword>static</span> Object obj = <span class=keyword>new</span> Object();</span><br><span class=line>    <span class=function><span class=keyword>public</span> <span class=keyword>static</span> <span class=keyword>void</span> <span class=title>main</span><span class=params>(String[] args)</span> </span>&#123;</span><br><span class=line><span class=comment>// 演示waiting</span></span><br><span class=line>        <span class=keyword>new</span> Thread(<span class=keyword>new</span> Runnable() &#123;</span><br><span class=line>            <span class=meta>@Override</span></span><br><span class=line>            <span class=function><span class=keyword>public</span> <span class=keyword>void</span> <span class=title>run</span><span class=params>()</span> </span>&#123;</span><br><span class=line>                <span class=keyword>while</span> (<span class=keyword>true</span>)&#123;</span><br><span class=line>                    <span class=keyword>synchronized</span> (obj)&#123;</span><br><span class=line>                        <span class=keyword>try</span> &#123;</span><br><span class=line>                            System.out.println( Thread.currentThread().getName() +<span class=string>"=== 获取到锁对象，调用wait方法，进入waiting状态，释放锁对象"</span>);</span><br><span class=line>                            obj.wait(); <span class=comment>//无限等待</span></span><br><span class=line>                            <span class=comment>//obj.wait(5000);</span></span><br><span class=line>                            <span class=comment>// 计时等待, 5秒 时间到，自动醒来</span></span><br><span class=line>                        &#125; <span class=keyword>catch</span> (InterruptedException e) &#123;</span><br><span class=line>                            e.printStackTrace();</span><br><span class=line>                        &#125;</span><br><span class=line>                        System.out.println( Thread.currentThread().getName() + <span class=string>"=== 从waiting状态醒来，获取到锁对象，继续执行了"</span>);</span><br><span class=line>                    &#125;</span><br><span class=line>                &#125;</span><br><span class=line>            &#125;</span><br><span class=line>        &#125;,<span class=string>"等待线程"</span>).start();</span><br><span class=line>        <span class=keyword>new</span> Thread(<span class=keyword>new</span> Runnable() &#123;</span><br><span class=line>            <span class=meta>@Override</span></span><br><span class=line>            <span class=function><span class=keyword>public</span> <span class=keyword>void</span> <span class=title>run</span><span class=params>()</span> </span>&#123;</span><br><span class=line><span class=comment>// while (true)&#123; //每隔3秒 唤醒一次</span></span><br><span class=line>                <span class=keyword>try</span> &#123;</span><br><span class=line>                    System.out.println( Thread.currentThread().getName() +<span class=string>"‐‐‐‐‐ 等待3秒钟"</span>);</span><br><span class=line>                    Thread.sleep(<span class=number>3000</span>);</span><br><span class=line>                &#125; <span class=keyword>catch</span> (InterruptedException e) &#123;</span><br><span class=line>                    e.printStackTrace();</span><br><span class=line>                &#125;</span><br><span class=line>                <span class=keyword>synchronized</span> (obj)&#123;</span><br><span class=line>                    System.out.println( Thread.currentThread().getName() +<span class=string>"‐‐‐‐‐ 获取到锁对象,调用notify方法，释放锁对象"</span>);</span><br><span class=line>                            obj.notify();</span><br><span class=line>                &#125;</span><br><span class=line>            &#125;</span><br><span class=line><span class=comment>// &#125;</span></span><br><span class=line>        &#125;,<span class=string>"唤醒线程"</span>).start();</span><br><span class=line>    &#125;</span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure><p>通过上述案例我们会发现，一个调用了某个对象的 Object.wait 方法的线程会等待另一个线程调用此对象的Object.notify()方法 或 Object.notifyAll()方法。</p><p>其实waiting状态并不是一个线程的操作，它体现的是多个线程间的通信，可以理解为多个线程之间的协作关系，多个线程会争取锁，同时相互之间又存在协作关系。就好比在公司里你和你的同事们，你们可能存在晋升时的竞<br>争，但更多时候你们更多是一起合作以完成某些任务。</p><p>当多个线程协作时，比如A，B线程，如果A线程在Runnable（可运行）状态中调用了wait()方法那么A线程就进入了Waiting（无限等待）状态，同时失去了同步锁。假如这个时候B线程获取到了同步锁，在运行状态中调用notify()方法，那么就会将无限等待的A线程唤醒。</p><p>注意是唤醒，如果获取到锁对象，那么A线程唤醒后就进入Runnable（可运行）状态；如果没有获取锁对象，那么就进入到Blocked（锁阻塞状态）。</p><p><img data-src=/2020/ecb26108/%E6%97%A0%E9%99%90%E7%AD%89%E5%BE%85.png alt=无限等待></p><blockquote class=blockquote-center id=guard></blockquote></div><div><ul class=post-copyright><li class=post-copyright-author><strong>本文作者：</strong>何年何月何时多</li><li class=post-copyright-link><strong>本文链接：</strong> <a href="https://blog.guard.ren/2020/ecb26108/" title=线程状态>https://blog.guard.ren/2020/ecb26108/</a></li><li class=post-copyright-license><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel=noopener target=_blank><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class=post-footer><div class=post-tags><a href="/tags/Java/" rel=tag><i class="fa fa-tag"></i> Java</a></div><div class=post-nav><div class=post-nav-item><a href="/2020/f07340/" rel=prev title=线程安全><i class="fa fa-chevron-left"></i> 线程安全</a></div><div class=post-nav-item><a href="/2020/134f3b6f/" rel=next title=等待唤醒机制>等待唤醒机制 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div></div><div class=comments id=valine-comments></div><script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script></div><div class="toggle sidebar-toggle"><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div><aside class=sidebar><div class=sidebar-inner><ul class="sidebar-nav motion-element"><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class="post-toc-wrap sidebar-panel"><div class="post-toc motion-element"><ol class=nav><li class="nav-item nav-level-2"><a class=nav-link href=#线程状态概述><span class=nav-number>1.</span> <span class=nav-text>线程状态概述</span></a></li><li class="nav-item nav-level-2"><a class=nav-link href=#Timed-Waiting（计时等待）><span class=nav-number>2.</span> <span class=nav-text>Timed Waiting（计时等待）</span></a></li><li class="nav-item nav-level-2"><a class=nav-link href=#BLOCKED（锁阻塞）><span class=nav-number>3.</span> <span class=nav-text>BLOCKED（锁阻塞）</span></a></li><li class="nav-item nav-level-2"><a class=nav-link href=#Waiting（无限等待）><span class=nav-number>4.</span> <span class=nav-text>Waiting（无限等待）</span></a></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=何年何月何时多 src="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5"><p class=site-author-name itemprop=name>何年何月何时多</p><div class=site-description itemprop=description>我的身旁是一扇亮了又暗的窗</div></div><div class="site-state-wrap motion-element"><nav class=site-state><div class="site-state-item site-state-posts"><a href="/archives/"><span class=site-state-item-count>66</span> <span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class=site-state-item-count>3</span> <span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class=site-state-item-count>4</span> <span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-author motion-element"><span class=links-of-author-item><a href=https://github.com/isGuard title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isGuard" rel=noopener target=_blank><i class="fa fa-fw fa-github"></i>GitHub</a></span> <span class=links-of-author-item><a href=mailto:isguard@outlook.com title="E-Mail → mailto:isguard@outlook.com" rel=noopener target=_blank><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="cc-license motion-element" itemprop=license><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class=cc-opacity rel=noopener target=_blank><img src=/images/cc-by-nc-sa.svg alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element"><div class=links-of-blogroll-title><i class="fa fa-fw fa-link"></i> 友链</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href="https://www.lostdeer.cn/" title=https:&#x2F;&#x2F;www.lostdeer.cn rel=noopener target=_blank>LostDeer</a></li></ul></div></div></div></aside><div id=sidebar-dimmer></div></div></main><footer class=footer><div class=footer-inner><div class=copyright>&copy; 2019 – <span itemprop=copyrightYear>2020</span> <span class=with-love><i class="fa fa-heart"></i></span> <span class=author itemprop=copyrightHolder>何年何月何时多</span> <span class=post-meta-divider>|</span> <span class=post-meta-item-icon><i class="fa fa-area-chart"></i></span> <span class=post-meta-item-text>站点总字数：</span> <span title=站点总字数>147k</span> <span class=post-meta-divider>|</span> <span class=post-meta-item-icon><i class="fa fa-coffee"></i></span> <span class=post-meta-item-text>站点阅读时长 &asymp;</span> <span title=站点阅读时长>2:14</span></div><div class=addthis_inline_share_toolbox><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a39fa0e8d042b" async></script></div><div style="display: none;"><script pjax src="//s95.cnzz.com/z_stat.php?id=1261517279&web_id=1261517279"></script></div></div></footer></div><script src=/lib/anime.min.js></script><script src=//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js></script><script src=//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js></script><script src=//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js></script><script src=//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js></script><script src=//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js></script><script src=/js/utils.js></script><script src=/js/motion.js></script><script src=/js/schemes/muse.js></script><script src=/js/next-boot.js></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script><script defer src=//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js></script><script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script><script src=/js/local-search.js></script><div id=pjax><script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'C9AAW8SB4K7bNBlRqfu6rywU-gzGzoHsz',
+      appKey     : 'ChKeqxyh2HFkQT23TV4lEEWE',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！快活啊！",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><script type=text/javascript>
+if(document.getElementById('guard')){
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.src= 'https://v1.hitokoto.cn/?encode=js&select=%23guard';
+    head.appendChild(script);
+}
+</script></div><script src=/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
