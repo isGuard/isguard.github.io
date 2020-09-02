@@ -137,4 +137,846 @@
 <p>完</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>多线程</title>
+    <url>/2020/5729df21/</url>
+    <content><![CDATA[<h1 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h1><ul>
+<li>多任务<ul>
+<li>本质上还是同时间还是只完成了一个任务，但因为切换的时间太快，感觉是同时进行</li>
+</ul>
+</li>
+<li>多线程<ul>
+<li>多条线路同时执行，进而提升整体处理性能</li>
+<li><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584677469439-1bee86e5-255a-411a-b660-4c271277c1c3.png#align=left&display=inline&height=507&margin=%5Bobject%20Object%5D&name=image.png&originHeight=507&originWidth=940&size=244103&status=done&style=none&width=940" alt="image.png"></li>
+</ul>
+</li>
+<li>进程（Process）<ul>
+<li>在操作系统中运行的程序就是进程</li>
+<li>而程序是指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念</li>
+</ul>
+</li>
+<li>线程（Thread）<ul>
+<li>一个进程中有多个线程，而进程中至少有一个线程</li>
+<li>而进程则是执行程序的一次执行过程，它是一个动态的概念。是系统资源分配的单位</li>
+<li>线程是 CPU 调度和执行的的单位</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：</strong>很多多线程是模拟出来的，真正的多线程是指有多个 cpu，即多核，如服务器。如果是模拟出来的多线程，即在一个 cpu 的情况下，在同一个时间点，cpu 只能执行一个代码，因为切换的很快，所以就有同时执行的错局。</p>
+<ul>
+<li>核心概念<ul>
+<li>线程就是独立的执行路径</li>
+<li>在程序运行时，即使没有自己创建线程，后台也会有多个线程，如主线程，gc 线程</li>
+<li>main（）称之为主线程，为系统的入口，用于执行整个程序</li>
+<li>在一个进程中，如果开辟了多个线程，线程的运行由调度器安排调度，调度器是与操作系统紧密相关的，先后顺序是不能人为的干预的。</li>
+<li>对同一份资源操作时，会存在资源抢夺的问题，需要加入并发控制</li>
+<li>线程会带来额外的开销，如 cpu 调度时间，并发控制开销</li>
+<li>每个线程在自己的工作内存交互，内存控制不当会造成数据不一致</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="线程创建"><a href="#线程创建" class="headerlink" title="线程创建"></a>线程创建</h1><p>三种创建方式<br><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584678242712-4bab3a5f-87c4-4c2e-bfc9-d918af3f4dad.png#align=left&display=inline&height=739&margin=%5Bobject%20Object%5D&name=image.png&originHeight=739&originWidth=1347&size=184661&status=done&style=none&width=1347" alt="image.png"></p>
+<h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><ul>
+<li>继承 Thread 类</li>
+<li>重写 run()方法</li>
+<li>调用 start()开启线程</li>
+<li><strong>子类继承 Thread 类具备多线程能力</strong></li>
+<li><strong>启动线程：子类对象.start()</strong></li>
+<li><strong>不建议使用：避免 OOP 单继承局限性</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建线程1:继承Thread类,重写run()方法,调用start()开启线程</span></span><br><span class="line"><span class="comment">//注意：线程开启不一定立即执行，由CPU调度执行</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test01</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//run方法线程体</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">500</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run:"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//main线程</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建一个线程对象</span></span><br><span class="line">        Test01 test01 = <span class="keyword">new</span> Test01();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//没有开启线程</span></span><br><span class="line">        <span class="comment">//test01.run();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//调用start()开启线程</span></span><br><span class="line">        test01.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main:"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><ul>
+<li>实现 runnable 接口</li>
+<li>重写 run()方法</li>
+<li>执行线程需要丢入 runnable 接口实现类</li>
+<li>调用 start 方法</li>
+<li><strong>实现接口 Runnable 具有多线程能力</strong></li>
+<li><strong>启动线程：传入目标对象+Thread 对象.start（）</strong></li>
+<li><strong>准荐使用：避免单继承局限性，灵活方便，方便同一个对象被多个线程使用</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建线程2：实现runnable接口,重写run()方法,执行线程需要丢入runnable接口实现类,调用start方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test03</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//run方法线程体</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">500</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run:"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建runnable接口的实现类</span></span><br><span class="line">        Test03 test03 = <span class="keyword">new</span> Test03();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建线程对象,通过线程对象来开启线程(代理)</span></span><br><span class="line">        <span class="keyword">new</span> Thread(test03).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main:"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><ul>
+<li>实现 Callable 接口，需要返回值类型</li>
+<li>重写 call 方法，需要抛出异常</li>
+<li>创建目标对象</li>
+<li>创建执行服务：ExecutorService ser = Executors. newFixedThreadPool(1);</li>
+<li>提交执行：Future<Boolean> result1 = ser.submit(t1);</Boolean></li>
+<li>获取结果：boolean r1 = result1.get();</li>
+<li>关闭服务：ser.shutdownNow();</li>
+<li><strong>可以获得返回值</strong></li>
+<li><strong>可以抛出异常</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//线程创建3：实现Callable</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test05</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Boolean</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Test05</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">            System.out.println(name + <span class="string">":"</span> + <span class="string">"call:"</span> + i + <span class="string">":"</span> + <span class="keyword">this</span>.getClass().getClassLoader());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        Test05 t1 = <span class="keyword">new</span> Test05(<span class="string">"小明"</span>);</span><br><span class="line">        Test05 t2 = <span class="keyword">new</span> Test05(<span class="string">"大黄"</span>);</span><br><span class="line">        Test05 t3 = <span class="keyword">new</span> Test05(<span class="string">"多小"</span>);</span><br><span class="line">        <span class="comment">//创建执行服务</span></span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line">        <span class="comment">//提交执行</span></span><br><span class="line">        Future&lt;Boolean&gt; r1 = executorService.submit(t1);</span><br><span class="line">        Future&lt;Boolean&gt; r2 = executorService.submit(t2);</span><br><span class="line">        Future&lt;Boolean&gt; r3 = executorService.submit(t3);</span><br><span class="line">        <span class="comment">//获取结果</span></span><br><span class="line">        Boolean b1 = r1.get();</span><br><span class="line">        Boolean b2 = r2.get();</span><br><span class="line">        Boolean b3 = r3.get();</span><br><span class="line">        <span class="comment">//关闭服务</span></span><br><span class="line">        executorService.shutdownNow();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h1><p><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584759290885-714250f3-d1ae-4315-a61e-93d49db6f841.png#align=left&display=inline&height=524&name=image.png&originHeight=524&originWidth=1477&size=338638&status=done&style=none&width=1477" alt="image.png"></p>
+<h2 id="线程方法"><a href="#线程方法" class="headerlink" title="线程方法"></a>线程方法</h2><table>
+<thead>
+<tr>
+<th>setPriority(int newPriority)</th>
+<th>更改线程的优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static void sleep(long millis)</td>
+<td>在指定的毫秒数内让当前正在执行的线程休眠</td>
+</tr>
+<tr>
+<td>void join()</td>
+<td>等待该线程终止</td>
+</tr>
+<tr>
+<td>static void yield()</td>
+<td>暂停当前正在执行的线程对象，并执行其他线程</td>
+</tr>
+<tr>
+<td>void interrupt()</td>
+<td>中断线程（不建议使用）</td>
+</tr>
+<tr>
+<td>boolean isAlive()</td>
+<td>测试线程是否处于活动状态</td>
+</tr>
+</tbody></table>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><ul>
+<li>不推荐使用 JDK 提供的 stop()、destroy()方法。【已废弃】</li>
+<li>推荐线程自动停止</li>
+<li>建议使用一个标志位进行终止变量当 flag=false，则终止线程运行。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试Stop</span></span><br><span class="line"><span class="comment">//建议线程正常停止</span></span><br><span class="line"><span class="comment">//建议使用标志位</span></span><br><span class="line"><span class="comment">//不要使用stop或者destroy等过时方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test06</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (flag) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run ----&gt;"</span> + i++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.flag = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Test06 t1 = <span class="keyword">new</span> Test06();</span><br><span class="line">        <span class="keyword">new</span> Thread(t1).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">98</span>) &#123;</span><br><span class="line">                t1.stop();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"main ----&gt;"</span> + i++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程休眠-sleep"><a href="#线程休眠-sleep" class="headerlink" title="线程休眠(sleep)"></a>线程休眠(sleep)</h3><ul>
+<li>sleep（时间）指定当前线程阻塞的毫秒数</li>
+<li>sleep 存在异常 InterruptedException</li>
+<li>sleep 时间达到后线程进入就绪状态</li>
+<li>sleep 可以模拟网络延时，倒计时等</li>
+<li>每一个对象都有一个锁，sleep 不会释放锁</li>
+</ul>
+<h3 id="线程礼让-yield"><a href="#线程礼让-yield" class="headerlink" title="线程礼让(yield)"></a>线程礼让(yield)</h3><ul>
+<li>礼让线程，让当前正在执行的线程暂停，但不阻塞</li>
+<li>将线程从运行状态转为就绪状态</li>
+<li>让 cpu 重新调度，礼让不一定成功！看 CPU 心情</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试礼让线程</span></span><br><span class="line"><span class="comment">//礼让不一定成功</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test07</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyYield myYield = <span class="keyword">new</span> MyYield();</span><br><span class="line">        <span class="keyword">new</span> Thread(myYield, <span class="string">"a"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(myYield, <span class="string">"b"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyYield</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"线程开始"</span>);</span><br><span class="line">        Thread.yield();<span class="comment">//礼让</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"线程结束"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h3><ul>
+<li>Join 合并线程，待此线程执行完成后，再执行其他线程，其他线程阻塞</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试join方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test08</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run:"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Test08 t1 = <span class="keyword">new</span> Test08();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(t1);</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">50</span>) &#123;</span><br><span class="line">                thread.join();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"main"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程状态-Thread-State"><a href="#线程状态-Thread-State" class="headerlink" title="线程状态 Thread.State"></a>线程状态 Thread.State</h3><p>线程状态。线程可以处于以下状态之一：</p>
+<ul>
+<li>NEW<ul>
+<li>尚未启动的线程处于此状态。</li>
+</ul>
+</li>
+<li>RUNNABLE<ul>
+<li>在 Java 虚拟机中执行的线程处于此状态。</li>
+</ul>
+</li>
+<li>BLOCKED<ul>
+<li>被阻塞等待监视器锁定的线程处于此状态。</li>
+</ul>
+</li>
+<li>WAITING<ul>
+<li>正在等待另一个线程执行特定动作的线程处于此状态。</li>
+</ul>
+</li>
+<li>TIMED_WAITING<ul>
+<li>正在等待另一个线程执行动作达到指定等待时间的线程处于此状态。</li>
+</ul>
+</li>
+<li>TERMINATED<ul>
+<li>已退出的线程处于此状态。</li>
+</ul>
+</li>
+</ul>
+<p>一个线程可以在给定时间点处于一个状态。这些状态是不反映任何操作系统线程状态的虚拟机状态</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">      Thread thread = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">              &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">        Thread.State state = thread.getState();</span><br><span class="line">        System.out.println(state);</span><br><span class="line"></span><br><span class="line">        thread.start();<span class="comment">// 启动线程</span></span><br><span class="line"></span><br><span class="line">        state = thread.getState();</span><br><span class="line">        System.out.println(state);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (state!= Thread.State.TERMINATED)&#123;</span><br><span class="line">            Thread.sleep(<span class="number">500</span>);</span><br><span class="line">            state = thread.getState();</span><br><span class="line">            System.out.println(state);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程优先级-setPriority"><a href="#线程优先级-setPriority" class="headerlink" title="线程优先级(setPriority)"></a>线程优先级(setPriority)</h3><ul>
+<li>Java 提供一个线程调度器来监控程序中启动后进入就绪状态的所有线程，线程调度器按照优先级决定应该调度哪个线程来执行。</li>
+<li>线程的优先级用数字表示，范围从 1-10.<ul>
+<li>Thread.MIN PRIORITY =1；</li>
+<li>Thread.MAX PRIORITY = 10；</li>
+<li>Thread.NORM PRIORITY = 5；</li>
+</ul>
+</li>
+<li>使用以下方式改变或获取优先级<ul>
+<li>getPriority().setPriority(int xxx)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试线程的优先级</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test10</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//主线程默认优先级</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"----&gt;"</span>+Thread.currentThread().getPriority());</span><br><span class="line">        MyPriority myPriority = <span class="keyword">new</span> MyPriority();</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t3 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t4 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t5 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t6 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置优先级，再启动</span></span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        t2.setPriority(<span class="number">1</span>);</span><br><span class="line">        t2.start();</span><br><span class="line"></span><br><span class="line">        t3.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">        t3.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//t4.setPriority(-1);</span></span><br><span class="line">        <span class="comment">//t4.start();//异常</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//t5.setPriority(11);</span></span><br><span class="line">        <span class="comment">//t5.start();//异常</span></span><br><span class="line"></span><br><span class="line">        t6.setPriority(<span class="number">8</span>);</span><br><span class="line">        t6.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyPriority</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"----&gt;"</span>+Thread.currentThread().getPriority());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="守护线程-setDaemon"><a href="#守护线程-setDaemon" class="headerlink" title="守护线程(setDaemon)"></a>守护线程(setDaemon)</h3><ul>
+<li>线程分为<strong>用户线程</strong>和<strong>守护线程</strong></li>
+<li>虚拟机必须确保用户线程执行完毕</li>
+<li>虚拟机不用等待守护线程执行完毕</li>
+<li>如后台记录操作日志，监控内存，垃圾回收等待…</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试守护线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test11</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        UserThread userThread = <span class="keyword">new</span> UserThread();</span><br><span class="line">        DaemonThread daemonThread = <span class="keyword">new</span> DaemonThread();</span><br><span class="line"></span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(daemonThread);</span><br><span class="line">        thread.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(userThread).start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DaemonThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"DaemonThread------&gt;"</span> + i++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"UserThread------&gt;"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h1><p>并发：同一个对象被多个线程同时操作<br>处理多线程问题时，多个线程访问同一个对象，并且某些线程还想修改这个对象.这时候我们就需要线程同步.线程同步其实就是一种等待机制，多个需要同时访问此对象的线程进入这个对象的等待池形成队列，等待前面线程使用完毕，下一个线程再使用</p>
+<ul>
+<li>由于同一进程的多个线程共享同一块存储空间，在带来方便的同时，也带来了访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入<strong>锁机制 synchronized</strong>，当一个线程获得对象的排它锁，独占资源，其他线程必须等待使用后释放锁即可，存在以下问题：<ul>
+<li>一个线程持有锁会导致其他所有需要此锁的线程挂起</li>
+<li>在多线程竞争下，加锁，释放锁会导致比较多的上下文切换和调度延时，引起性能问题</li>
+<li>如果一个优先级高的线程等待一个优先级低的线程释放锁会导致优先级倒置，引起性能问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h2><ul>
+<li>由于我们可以通过 private 关键字来保证数据对象只能被方法访问，所以我们只需要针对方法提出一套机制，这套机制就是 synchronized 关键字，它包括两种用法：synchronized 方法和 synchronized 块</li>
+<li><code>同步方法:public synchronized void method(int args)</code></li>
+<li>synchronized 方法控制对“对象”的访问，每个对象对应一把锁，每个 synchronized 方法都必须获得调用该方法的对象的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，直到该方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行</li>
+<li><code>缺陷：若将一个大的方法申明为synchronized将会影响效率</code></li>
+</ul>
+<h2 id="同步块"><a href="#同步块" class="headerlink" title="同步块"></a>同步块</h2><ul>
+<li>同步块：synchronized(Obj){}</li>
+<li>Obj 称之为同步监视器<ul>
+<li>Obj 可以是任何对象，但是推荐使用共享资源作为同步监视器</li>
+<li>同步方法中无需指定同步监视器，因为同步方法的同步监视器就是 this，就是这个对象本身，或者是 class</li>
+</ul>
+</li>
+<li>同步监视器的执行过程<ol>
+<li>第一个线程访问，锁定同步监视器，执行其中代码，</li>
+<li>第二个线程访问，发现同步监视器被锁定，无法访问</li>
+<li>第一个线程访问完毕，解锁同步监视器.</li>
+<li>第二个线程访问，发现同步监视器没有锁，然后锁定并访问</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//锁</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test12</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MySynchronized mySynchronized = <span class="keyword">new</span> MySynchronized();</span><br><span class="line">        <span class="keyword">new</span> Thread(mySynchronized, <span class="string">"大爷"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(mySynchronized, <span class="string">"朋友"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(mySynchronized, <span class="string">"小黄"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySynchronized</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (flag) &#123;</span><br><span class="line">            buy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//synchronize默认是this</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">buy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (number &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            flag = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"------&gt;"</span> + number--);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>多个线程各自占有一些共享资源，并且互相等待其他线程占有的资源才能运行，而导致两个或者多个线程都在等待对方释放资源，都停止执行的情形，某一个同步块同时拥有“两个以上对象的锁”时，就可能会发生”死锁”的问题</p>
+<ul>
+<li>产生死锁的四个必要条件：<ul>
+<li>互斥条件：一个资源每次只能被一个进程使用。</li>
+<li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li>不剥夺条件：进程已获得的资源，在末使用完之前，不能强行剥夺。</li>
+<li>循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。</li>
+</ul>
+</li>
+</ul>
+<p>上面列出了死锁的四个必要条件，我们只要想办法破其中的任意一个或多个条就可以避免死锁发生</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//死锁：多线程互相拿着对方需要的资源</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test13</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        C c1 = <span class="keyword">new</span> C(<span class="number">0</span>);</span><br><span class="line">        C c2 = <span class="keyword">new</span> C(<span class="number">1</span>);</span><br><span class="line">        c1.start();</span><br><span class="line">        c2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> A a = <span class="keyword">new</span> A();</span><br><span class="line">    <span class="keyword">static</span> B b = <span class="keyword">new</span> B();</span><br><span class="line">    <span class="keyword">int</span> d;</span><br><span class="line"></span><br><span class="line">    C(<span class="keyword">int</span> d) &#123;</span><br><span class="line">        <span class="keyword">this</span>.d = d;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            e();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//相互拿着对方的资源</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (d == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (a) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName());</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (b) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (b) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName());</span><br><span class="line">                Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                <span class="keyword">synchronized</span> (a) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lock-锁"><a href="#Lock-锁" class="headerlink" title="Lock(锁)"></a>Lock(锁)</h2><ul>
+<li>从 JDK 5.0 开始，Java 提供了更强大的线程同步机制-通过显式定义同步锁对象来实现同步。同步锁使用 Lock 对象充当</li>
+<li>java.util.concurrent.locks.Lock 接口是控制多个线程对共享资源进行访问的工具。锁提供了对共享资源的独占访问，每次只能有一个线程对 Lock 对象加锁，线程开始访问共享资源之前应先获得 Lock 对象</li>
+<li>ReentrantLock 类实现了 Lock，它拥有与 synchronized 相同的并发性和内存语义，在实现线程安全的控制中，比较常用的是 ReentrantLock，可以显式加锁、释放锁。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试Lock</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestLock</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestLTock2 t = <span class="keyword">new</span> TestLTock2();</span><br><span class="line">        <span class="keyword">new</span> Thread(t).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(t).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(t).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestLTock2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义锁 可重复锁</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//加锁</span></span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + i--);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//解锁</span></span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="synchronized-与-Lock-的对比"><a href="#synchronized-与-Lock-的对比" class="headerlink" title="synchronized 与 Lock 的对比"></a>synchronized 与 Lock 的对比</h3><ul>
+<li>Lock 是显式锁（手动开启和关闭锁，别忘记关闭锁）synchronized 是隐式锁，出了作用城自动释放</li>
+<li>Lock 只有代码块锁，synchronized 有代码块锁和方法锁</li>
+<li>使用 Lock 锁，JVM 将花费较少的时间来调度线程，性能更好。并且具有更好的扩展性（提供更多的子类）</li>
+<li>优先使用顺序：<ul>
+<li>Lock &gt;同步代码块（已经进入了方法体，分配了相应资源）&gt;同步方法（在方法之外）</li>
+</ul>
+</li>
+</ul>
+<h1 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>生产者和消费者问题</p>
+<ul>
+<li>假设仓库中只能存放一件产品，生产者将生产出来的产品放入仓库，消费者将仓库中产品取走消费</li>
+<li>如果仓库中没有产品，则生产者将产品放入仓库，否则停止生产并等待，直到仓库中的产品被消费者取走为止.</li>
+<li>如果仓库中放有产品，则消费者可以将产品取走消费，否则停止消费并等待，直到仓库中再次放入产品为止.</li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><strong>这是一个线程同步问题（生产者和消费者共享同一个资源，并且生产者和消费者之间相互依赖，互为条件</strong></p>
+<ul>
+<li>对于生产者，没有生产产品之前，要通知消费者等待，而生产了产品之后，又需要马上通知消费者消费</li>
+<li>对于消费者，在消费之后，要通知生产者已经结束消费，需要生产新的产品以供消费.</li>
+<li>在生产者消费者问题中，仅有 synchronized 是不够的<ul>
+<li>synchronized 可阻止并发更新同一个共享资源，实现了同步</li>
+<li>synchronized 不能用来实现不同线程之间的消息传递（通信）</li>
+</ul>
+</li>
+<li>Java 提供了几个方法解决程之 的通信问题</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wait()</td>
+<td>表示线程一直等待，直到其他线程通知，与 sleep 不同会释放锁</td>
+</tr>
+<tr>
+<td>wait(long timeout)</td>
+<td>指定等待的毫秒数</td>
+</tr>
+<tr>
+<td>notify()</td>
+<td>唤醒一个处于等待状态的线程</td>
+</tr>
+<tr>
+<td>notifyAll()</td>
+<td>唤醒同一个对象上所有调用 wait（方法的线程，优先级别高的线程优先调度</td>
+</tr>
+</tbody></table>
+<p><strong>注意：均是 Object 类的方法，都只能在同步方法或者同步代码块中使用，否则会抛出异常 llegalMonitorStateException</strong></p>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><h3 id="并发协作模型“生产者-消费者模式”–管程法"><a href="#并发协作模型“生产者-消费者模式”–管程法" class="headerlink" title="并发协作模型“生产者/消费者模式”–管程法"></a>并发协作模型“生产者/消费者模式”–管程法</h3><ul>
+<li>生产者：负责生产数据的模块（可能是方法，对象，线程，进程）</li>
+<li>消费者：负责处理数据的模块（可能是方法，对象，线程，进程）</li>
+<li>缓冲区：消费者不能直接使用生产者的数据，他们之间有个“缓冲区</li>
+<li>生产者将生产好的数据放入缓冲区，消费者从缓冲区拿出数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试生产者消费者模型  利用缓冲区解决：管程法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestProducerConsumers</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SynContainer container = <span class="keyword">new</span> SynContainer();</span><br><span class="line">        <span class="keyword">new</span> Producer(container).start();</span><br><span class="line">        <span class="keyword">new</span> Consumers(container).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生产者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    SynContainer container;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(SynContainer container)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.container = container;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生产</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            container.push(<span class="keyword">new</span> Product(i));</span><br><span class="line">            System.out.println(<span class="string">"生产了"</span> + i + <span class="string">"只鸡"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//消费者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumers</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    SynContainer container;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumers</span><span class="params">(SynContainer container)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.container = container;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"消费了--&gt;"</span> + container.pop().getId() + <span class="string">"只鸡"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//产品</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Product</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//缓冲区</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SynContainer</span> </span>&#123;</span><br><span class="line">    <span class="comment">//容器大小</span></span><br><span class="line">    Product[] products = <span class="keyword">new</span> Product[<span class="number">10</span>];</span><br><span class="line">    <span class="comment">//容器计数器</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生产者放入产品</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Product product)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//如果容器满了，就需要通知消费者消费</span></span><br><span class="line">        <span class="keyword">if</span> (count == products.length) &#123;</span><br><span class="line">            <span class="comment">//通知消费者消费，生产者等待</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果没有满，就丢入产品</span></span><br><span class="line">        products[count] = product;</span><br><span class="line">        count++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通知消费者消费</span></span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//消费者消费产品</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Product <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断能否消费</span></span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//等待生产者生产，消费者等待</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果可以消费</span></span><br><span class="line">        count--;</span><br><span class="line">        Product product = products[count];</span><br><span class="line"></span><br><span class="line">        <span class="comment">//没有产品,通知生产者生产</span></span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="并发协作模型“生产者-消费者模式”–信号灯法"><a href="#并发协作模型“生产者-消费者模式”–信号灯法" class="headerlink" title="并发协作模型“生产者/消费者模式”–信号灯法"></a>并发协作模型“生产者/消费者模式”–信号灯法</h3><ul>
+<li>使用标志位，判断应该做什么</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试生产者消费者模型  利用标志位解决：信号灯</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestProducerConsumers2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Product2 product2 = <span class="keyword">new</span> Product2();</span><br><span class="line">        <span class="keyword">new</span> Producer2(product2).start();</span><br><span class="line">        <span class="keyword">new</span> Consumers2(product2).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生产者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    Product2 product2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer2</span><span class="params">(Product2 product2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.product2 = product2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                product2.production(<span class="string">"正在生产！"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                product2.production(<span class="string">"累了在休息！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//消费者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumers2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    Product2 product2;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumers2</span><span class="params">(Product2 product2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.product2 = product2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            product2.consumption();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//产品</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product2</span> </span>&#123;</span><br><span class="line">    <span class="comment">//生产者生产，消费者等待</span></span><br><span class="line">    <span class="comment">//消费者消费，生产者等待</span></span><br><span class="line">    String products;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生产</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">production</span><span class="params">(String products)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!flag) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"生产者："</span> + products);</span><br><span class="line">        <span class="comment">//通知消费者</span></span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line">        <span class="keyword">this</span>.products = products;</span><br><span class="line">        <span class="keyword">this</span>.flag = !<span class="keyword">this</span>.flag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//消费</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">consumption</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"消费者:"</span> + products);</span><br><span class="line">        <span class="comment">//通知生产者</span></span><br><span class="line">        <span class="keyword">this</span>.notifyAll();</span><br><span class="line">        <span class="keyword">this</span>.flag = !<span class="keyword">this</span>.flag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ul>
+<li>背景：经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大。</li>
+<li>思路：提前创建好多个线程，放入线程池中，使用时直接获取，使用完放回池中。可以避免频繁创建销毁、实现重复利用。类似生活中的公共交通工具。</li>
+<li>好处：<ul>
+<li>提高响应速度（减少了创建新线程的时间）</li>
+<li>降低资源消耗（重复利用线程池中线程，不需要每次都创建）</li>
+<li>便于线程管理（…）<ul>
+<li>corePoolSize：核心池的大小</li>
+<li>maximumPoolSize：最大线程数</li>
+<li>eepAliveTime：线程没有任务时最多保持多长时间后会终止</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JDK 5.0 起提供了线程池相关 API：ExecutorService 和 Executors</li>
+<li>ExecutorService：真正的线程池接口。常见子类 ThreadPoolExecutor<ul>
+<li>void execute（Runnable command）：执行任务/命令，没有返回值，一般用来执行 Runnable</li>
+<li><T>Future<T> submit（Callable<T> task）：执行任务，有返回值，一般又来执行 Callable</T></T></T></li>
+<li>void shutdown（）：关闭连接池</li>
+</ul>
+</li>
+<li>Executors：工具类、线程池的工厂类，用于创建并返回不同类型的线程池</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPool</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建线程池</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        service.execute(<span class="keyword">new</span> MyThread());</span><br><span class="line">        service.execute(<span class="keyword">new</span> MyThread());</span><br><span class="line">        service.execute(<span class="keyword">new</span> MyThread());</span><br><span class="line">        service.execute(<span class="keyword">new</span> MyThread());</span><br><span class="line">        service.execute(<span class="keyword">new</span> MyThread());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭连接</span></span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//回顾总结线程的创建</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadNew</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread1().start();</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread2()).start();</span><br><span class="line">        FutureTask&lt;String&gt; futureTask = <span class="keyword">new</span> FutureTask(<span class="keyword">new</span> Thread3());</span><br><span class="line">        <span class="keyword">new</span> Thread(futureTask).start();</span><br><span class="line">        System.out.println(futureTask.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Thread1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Thread2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread3</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Thread3"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java注解和反射</title>
+    <url>/2020/c882d3b8/</url>
+    <content><![CDATA[<h1 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h1><ul>
+<li>Annotation 是从 JDK5.0 开始引入的新技术</li>
+<li>Annotation 的作用：<ul>
+<li>不是程序本身，可以对程序作出解释。（这一点个注释（comment）没什么区别）</li>
+<li>可以被其他程序（比如：编译器等）读取。</li>
+</ul>
+</li>
+<li>Annotation 的格式：<ul>
+<li>注解是以”@注释名”在代码中存在的，还可以添加一些参数值，例如：@SuppressWarnings（value=”unchecked”）.</li>
+</ul>
+</li>
+<li>Annottation 在哪里使用<ul>
+<li>可以附加在 package、class、methed、field 等上面，相当于给他们添加了额外的辅助信息，我们可以通过<strong>反射机制</strong>编程实现对这些元数据的访问</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="内置注解"><a href="#内置注解" class="headerlink" title="内置注解"></a>内置注解</h2><ul>
+<li>@Override：定义在 java.lang.Override 中，此注释只适用于修辞方法，表示一个方法声明打算重写超类中的另一个方法声明</li>
+<li>@Deprecated：定义在 java.lang.Deprecated 中，此注释可以用于修辞方法、属性、类，表示不鼓励程序员使用这样的元素，通常是因为它很危险或者存在更好的选择</li>
+<li>@SuppressWarnings：定义在 java.lang.SuppressWarnings 中，用来抑制编译时的警告信息.<ul>
+<li>与前两个注释有所不同，你需要添加一个参数才能正确使用，这些参数都是已经定义好了的，我们选择性的使用就好了</li>
+<li>@SuppressWarnings（”all”）</li>
+<li>@SuppressWarnings（”unchecked”）</li>
+<li>@SuppressWarnings（value-（”unchecked”，”deprecation”）</li>
+<li>等等…</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//内置注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test01</span> <span class="keyword">extends</span> <span class="title">Object</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//@Override 重写的注解</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//@Deprecated 不推荐程序员使用，但是可以使用或者存在更好的方式</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Deprecated"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test01();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//SuppressWarnings 用来抑制编译时的警告信息</span></span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"all"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><ul>
+<li>元注解的作用就是负责注解其他注解，Java 定义了 4 个标准的 meta-annotation 类型，他们被用来提供对其他 annotation 类型作说明</li>
+<li>这些类型和它们所支持的类在 java.lang.annotation 包中可以找到（<strong>@Target</strong>，<strong>@Retention，@Documented</strong>，<strong>@Inherited</strong>）<ul>
+<li><strong>@Target</strong>：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）</li>
+<li><strong>@Retention</strong>：表示需要在什么级别保存该注释信息，用于描述注解的生命周期<ul>
+<li>（SOURCE &lt; CLASS &lt; <strong>RUNTIME</strong>）</li>
+</ul>
+</li>
+<li>@Document：说明该注解将被包含在 javadoc 中</li>
+<li>@Inherited：说明子类可以<strong>继承</strong>父类中的该注解</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义一个注解</span></span><br><span class="line"><span class="comment">//Target 表示注解可以在那个地方使用</span></span><br><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.METHOD, ElementType.TYPE&#125;)</span><br><span class="line"><span class="comment">//Retention 表示注解在什么时候还有效</span></span><br><span class="line"><span class="comment">//runtime&gt;class&gt;sources</span></span><br><span class="line"><span class="meta">@Retention</span>(value = RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="comment">//Documented 表示是否将注解生成在Javadoc中</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="comment">//Inherited 子类可以继承父类的注解</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><ul>
+<li>使用@interface 自定义注解时，自动继承了 java.lang.annotation.Annotation 接口</li>
+<li>分析：<ul>
+<li>@interface 用来声明一个注解，格式： <code>public @interface 注解名 {定义内容}</code></li>
+<li>其中的每一个方法实际上是声明了一个配置参数</li>
+<li>方法的名称就是参数的名称</li>
+<li>返回值类型就是参数的类型（返回值只能是基本类型，Class，String，enum）</li>
+<li>可以通过 default 来声明参数的默认值</li>
+<li>如果只有一个参数成员，一般参数名为 value</li>
+<li>注解元素必须要有值，我们定义注解元素时，经常使用空字符串，0 作为默认值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自定义注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test03</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注解可以显示赋值，如果没有默认值，就必须给注解赋值</span></span><br><span class="line">    <span class="meta">@MyAnnotation</span>2(name = <span class="string">"= ="</span>, schools = &#123;<span class="string">"xx"</span>, <span class="string">"yy"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//value默认可以省略</span></span><br><span class="line">    <span class="meta">@MyAnnotation</span>3(<span class="string">"xx"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotation2 &#123;</span><br><span class="line">    <span class="comment">//注解的参数：参数类型 + 参数名();</span></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">age</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">id</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;<span class="comment">//如果默认值为-1，代表不存在</span></span><br><span class="line"></span><br><span class="line">    String[] schools();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotation3 &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h1><h2 id="Java-反射机制概述"><a href="#Java-反射机制概述" class="headerlink" title="Java 反射机制概述"></a>Java 反射机制概述</h2><h3 id="静态语言与动态语言"><a href="#静态语言与动态语言" class="headerlink" title="静态语言与动态语言"></a>静态语言与动态语言</h3><h4 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h4><ul>
+<li>是一类在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构</li>
+<li>主要动态语言：Object-C、C#、JavaScript、PHP、Python 等</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"var a=3;var b=3;alert(a+b)"</span>;</span><br><span class="line">  <span class="built_in">eval</span>(x); <span class="comment">// 6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h4><ul>
+<li>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如 Java、C、C++</li>
+<li>Java 不是动态语言，但 Java 可以称之为“准动态语言”。即 Java 有一定的动态性，我们可以利用反射机制获得类似动态语言的特性。Java 的动态性让编程的时候更加灵活</li>
+</ul>
+<h3 id="Java-Reflection"><a href="#Java-Reflection" class="headerlink" title="Java Reflection"></a>Java Reflection</h3><ul>
+<li>Reflection（反射）是 Java 被视为动态语言的关键，反射机制允许程序在执行期借助于 Reflection API 取得任何类的内部信息，并能直接操作任意对象的内部属性及方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class c = Class.forName（<span class="string">"java.lang.String"</span>）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加载完类之后，在堆内存的方法区中就产生了一个 Class 类型的对象（一个类只有一个 Class 对象），这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，我们形象的称之为：反射</li>
+</ul>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584343007590-782ea2fa-9eb4-48bd-aa14-c0f91fdb4bff.png#align=left&display=inline&height=288&name=image.png&originHeight=288&originWidth=1184&size=208190&status=done&style=none&width=1184" alt="image.png"></p>
+<hr>
+<h3 id="Java-反射机制提供的功能"><a href="#Java-反射机制提供的功能" class="headerlink" title="Java 反射机制提供的功能"></a>Java 反射机制提供的功能</h3><ul>
+<li>在运行时判断任意一个对象所属的类</li>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法</li>
+<li>在运行时获取泛型信息</li>
+<li>在运行时调用任意一个对象的成员变量和方法</li>
+<li>在运行时处理注解</li>
+<li>生成动态代理</li>
+<li>……</li>
+</ul>
+<hr>
+<h3 id="Java-反射优点和缺点"><a href="#Java-反射优点和缺点" class="headerlink" title="Java 反射优点和缺点"></a>Java 反射优点和缺点</h3><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ul>
+<li>可以实现动态创建对象和编译，体现出很大的灵活性</li>
+</ul>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ul>
+<li>对性能有影响。使用反射基本上是一种解释操作，我们可以告诉 JVM，我们希望做什么并且它满足我们的要求。这类操作总是慢于直接执行相同的操作</li>
+</ul>
+<hr>
+<h3 id="反射相关的主要-API"><a href="#反射相关的主要-API" class="headerlink" title="反射相关的主要 API"></a>反射相关的主要 API</h3><ul>
+<li>java.lang.Class：代表一个类</li>
+<li>java.lang.reflect.Method：代表类的方法</li>
+<li>java.lang.reflect.Field：代表类的成员变量</li>
+<li>java.lang.reflect.Constructor：代表类的构造器</li>
+<li>……</li>
+</ul>
+<hr>
+<h2 id="理解-Class-类并获取-Class"><a href="#理解-Class-类并获取-Class" class="headerlink" title="理解 Class 类并获取 Class"></a>理解 Class 类并获取 Class</h2><h3 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h3><p>在 Object 类中定义了以下的方法，此方法将被所有子类继承</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Class <span class="title">getClass</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584343871382-3d5ebae0-78d0-4413-a7a0-84829e9f5740.png#align=left&display=inline&height=525&name=image.png&originHeight=525&originWidth=654&size=259399&status=done&style=none&width=654" alt="image.png"></p>
+<ul>
+<li>以上的方法返回值的类型是一个 Class 类，此类是 Java 反射的源头，实际上所调反射从程序的运行结果来看也很好理解，即：可以通过对象反射求出类的名称</li>
+<li>对象照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个结构（class/interface/enum/annotation/primitive type/void/[]）的有关信息<ul>
+<li>Class 本身也是一个类</li>
+<li>Class 对象只能由系统建立对象</li>
+<li>一个加载的类在 JVM 中只会有一个 Class 实例</li>
+<li>一个 Class 对象对应的是一个加载到 JVM 中的一个.class 文件</li>
+<li>每个类的实例都会记得自己是由哪个 Class 实例所生成</li>
+<li>通过 Class 可以完整地得到一个类中的所有被加载的结构</li>
+<li>Class 类是 Reflection 的根源，针对任何你想动态加载、运行的类，唯有先获得相应的 Class 对象</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Class-类的常用方法"><a href="#Class-类的常用方法" class="headerlink" title="Class 类的常用方法"></a>Class 类的常用方法</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static ClassforName(String name)</td>
+<td>返回指定类名 name 的 Class 对象</td>
+</tr>
+<tr>
+<td>Object newInstance()</td>
+<td>调用缺省构造函数，返回 Class 对象的一个实例</td>
+</tr>
+<tr>
+<td>getName()</td>
+<td>返回此 Class 对象所表示的实体（类，接口，数组类或 void）的名称</td>
+</tr>
+<tr>
+<td>Class getSuperClass()</td>
+<td>返回当前 Class 对象的父类的 Class 对象</td>
+</tr>
+<tr>
+<td>Class[] getinterfaces()</td>
+<td>获取当前 Class 对象的接口</td>
+</tr>
+<tr>
+<td>ClassLoader getClassLoader()</td>
+<td>返回该类的类加载器</td>
+</tr>
+<tr>
+<td>Constructor[] getConstructors()</td>
+<td>返回一个包含某些 Constructor 对象的数组</td>
+</tr>
+<tr>
+<td>Method getMothed(String name.Class.. T)</td>
+<td>返回一个 Method 对象，此对象的形参类型为 paramType</td>
+</tr>
+<tr>
+<td>Field[] getDeclaredFields()</td>
+<td>返回 Field 对象的一个数组</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="获取-Class-类的实例"><a href="#获取-Class-类的实例" class="headerlink" title="获取 Class 类的实例"></a>获取 Class 类的实例</h3><ul>
+<li>若已知具体的类，通过类的 class 属性获取，该方法最为安全可靠，程序性能最高<ul>
+<li><code>Class c1 = Person.class;</code></li>
+</ul>
+</li>
+<li>已知某个类的实例，调用该实例的 getClass()方法获取 Class 对象<ul>
+<li><code>Class c2 =person.getClass()</code></li>
+</ul>
+</li>
+<li>已知一个类的全类名，且该类在类路径下，可通过 Class 类的静态方法 forName()获取，可能抛出 ClassNotFoundException<ul>
+<li><code>Class c3 = Class.forName(&quot;demo.Student&quot;)</code></li>
+</ul>
+</li>
+<li>内置基本数据类型可以直接用类名.Type</li>
+<li>ClassLoader</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Class类的创建方式</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test03</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Student();</span><br><span class="line">        System.out.println(<span class="string">"这个人是："</span> + person.name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式一：通过对象获得</span></span><br><span class="line">        Class c1 = person.getClass();</span><br><span class="line">        System.out.println(c1); <span class="comment">//class ren.guard.reflection.Student</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式二：forname获得</span></span><br><span class="line">        Class c2 = Class.forName(<span class="string">"ren.guard.reflection.Student"</span>);</span><br><span class="line">        System.out.println(c1 == c2); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式三：通过类名.class获得</span></span><br><span class="line">        Class c3 = Student<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        System.out.println(c2 == c3); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//方式四：基本内置类型的包装类有一个TYPE</span></span><br><span class="line">        Class c4 = Integer.TYPE;</span><br><span class="line">        System.out.println(c4); <span class="comment">//int</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//获得父类类型</span></span><br><span class="line">        Class c5 = c1.getSuperclass();</span><br><span class="line">        System.out.println(c5); <span class="comment">//class ren.guard.reflection.Person</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="那些类型可以有-Class-对象"><a href="#那些类型可以有-Class-对象" class="headerlink" title="那些类型可以有 Class 对象"></a>那些类型可以有 Class 对象</h3><ul>
+<li>class：外部类、成员（成员内部类，静态内部类），局部内部类，匿名内部类</li>
+<li>interface：接口</li>
+<li>[]：数组</li>
+<li>enum：枚举</li>
+<li>annotation：注解@interface</li>
+<li>primitive type：基本数据类型</li>
+<li>void</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       Class c1 = Object<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//类</span></span><br><span class="line">       Class c2 = Comparable<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//接口</span></span><br><span class="line">       Class c3 = String[]<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//一维数组</span></span><br><span class="line">       Class c4 = <span class="keyword">int</span>[][]<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//二维数组</span></span><br><span class="line">       Class c5 = Override<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//注解</span></span><br><span class="line">       Class c6 = ElementType<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//枚举</span></span><br><span class="line">       Class c7 = Integer<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//基本数据类型</span></span><br><span class="line">       Class c8 = <span class="keyword">void</span><span class="class">.<span class="keyword">class</span></span>;<span class="comment">//void</span></span><br><span class="line">       Class c9 = Class<span class="class">.<span class="keyword">class</span></span>;<span class="comment">//Class</span></span><br><span class="line"></span><br><span class="line">       System.out.println(c1);<span class="comment">//class java.lang.Object</span></span><br><span class="line">       System.out.println(c2);<span class="comment">//interface java.lang.Comparable</span></span><br><span class="line">       System.out.println(c3);<span class="comment">//class [Ljava.lang.String;</span></span><br><span class="line">       System.out.println(c4);<span class="comment">//class [[I</span></span><br><span class="line">       System.out.println(c5);<span class="comment">//interface java.lang.Override</span></span><br><span class="line">       System.out.println(c6);<span class="comment">//class java.lang.annotation.ElementType</span></span><br><span class="line">       System.out.println(c7);<span class="comment">//class java.lang.Integer</span></span><br><span class="line">       System.out.println(c8);<span class="comment">//void</span></span><br><span class="line">       System.out.println(c9);<span class="comment">//class java.lang.Class</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">//只要元素类型和维度一样，就是同一个Class</span></span><br><span class="line">       <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">       <span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>];</span><br><span class="line">       System.out.println(a.getClass() == b.getClass());<span class="comment">//true</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="类的加载与-ClassLoader"><a href="#类的加载与-ClassLoader" class="headerlink" title="类的加载与 ClassLoader"></a>类的加载与 ClassLoader</h2><h3 id="Java-内存分析"><a href="#Java-内存分析" class="headerlink" title="Java 内存分析"></a>Java 内存分析</h3><h2 id><a href="#" class="headerlink" title></a><img data-src="https://cdn.nlark.com/yuque/0/2020/svg/241578/1584421598454-62a1ca39-0658-4273-8b5a-a2f5f1cbebe5.svg" alt></h2><h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><p>当程序主动使用某个类时，如果该类还未被加载到内存中，则系统会通过如下三个步骤来对该类进行初始化。</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584421646211-dfca5653-f62f-4af1-9fae-aa3a80e6f982.png#align=left&display=inline&height=322&name=image.png&originHeight=322&originWidth=752&size=197916&status=done&style=none&width=752" alt="image.png"></p>
+<ul>
+<li>加载：将 class 文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一个代表这个类的 java.lang.Class 对象</li>
+<li>链接：将 Java 类的二进制代码合并到 JVM 的运行状态之中的过程<ul>
+<li>验证：确保加载的类信息符合 JVM 规范，没有安全方面的问题</li>
+<li>准备：正式为类变量（static）分配内存并设置类变量默认初始值的阶段，这些内存都将在方法区中进行分配</li>
+<li>解析：虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程</li>
+</ul>
+</li>
+<li>初始化<ul>
+<li>执行类构造器<clinit>（）方法的过程。类构造器<clinit>（）方法是由编译期自动收集类中所有类变量的赋值动作和静态代码块中的语句合并产生的。（类构造器是构造类信息的，不是构造该类对象的构造器）</clinit></clinit></li>
+<li>当初始化一个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类的初始化</li>
+<li>虚拟机会保证一个类的<clinit>（）方法在多线程环境中被正确加锁和同步</clinit></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test05</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        System.out.println(A.m);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1.加载到内存,会产生一个类对应Class对象</span></span><br><span class="line"><span class="comment">        2.链接,链接结束后m=0</span></span><br><span class="line"><span class="comment">        3.初始化</span></span><br><span class="line"><span class="comment">            &lt;clinit&gt;()&#123;</span></span><br><span class="line"><span class="comment">                System.out.println("A类静态代码块初始化");</span></span><br><span class="line"><span class="comment">                m = 300;</span></span><br><span class="line"><span class="comment">                m = 100;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//A类静态代码块初始化</span></span><br><span class="line">        <span class="comment">//A类的无参构造初始化</span></span><br><span class="line">        <span class="comment">//100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"A类静态代码块初始化"</span>);</span><br><span class="line">        m = <span class="number">300</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> m = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"A类的无参构造初始化"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="什么时候会发生类初始化"><a href="#什么时候会发生类初始化" class="headerlink" title="什么时候会发生类初始化"></a>什么时候会发生类初始化</h3><ul>
+<li>类的主动引用（一定会发生类的初始化）<ul>
+<li>当虚拟机启动，先初始化 main 方法所在的类</li>
+<li>new 一个类的对象</li>
+<li>调用类的静态成员（除了 final 常量）和静态方法</li>
+<li>使用 java.lang.reflect 包的方法对类进行反射调用</li>
+<li>当初始化一个类，如果其父类没有被初始化，则先会初始化它的父类</li>
+</ul>
+</li>
+<li>类的被动引用（不会发生类的初始化）<ul>
+<li>当访问一个静态域时，只有真正声明这个域的类才会被初始化。如：当通过子类引用父类的静态变量，不会导致子类初始化</li>
+<li>通过数组定义类引用，不会触发此类的初始化</li>
+<li>引用常量不会触发此类的初始化（常量在链接阶段就存入调用类的常量池中了）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//类什么时候会初始化</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test06</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Main类被加载"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//1.主动引用</span></span><br><span class="line">        <span class="comment">//Son son = new Son();</span></span><br><span class="line">        <span class="comment">//Main类被加载</span></span><br><span class="line">        <span class="comment">//父类被加载</span></span><br><span class="line">        <span class="comment">//子类被加载</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.反射也会产生主动引用</span></span><br><span class="line">        <span class="comment">//Class.forName("ren.guard.reflection.Son");</span></span><br><span class="line">        <span class="comment">//Main类被加载</span></span><br><span class="line">        <span class="comment">//父类被加载</span></span><br><span class="line">        <span class="comment">//子类被加载</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//不會产生类的引用</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(Son.b);</span></span><br><span class="line">        <span class="comment">//Main类被加载</span></span><br><span class="line">        <span class="comment">//父类被加载</span></span><br><span class="line">        <span class="comment">//2</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Son[] array = new Son[5];</span></span><br><span class="line">        <span class="comment">//Main类被加载</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(Son.M);</span></span><br><span class="line">        <span class="comment">//Main类被加载</span></span><br><span class="line">        <span class="comment">//1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"父类被加载"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"子类被加载"</span>);</span><br><span class="line">        m = <span class="number">300</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> m = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> M = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="类加载器的作用"><a href="#类加载器的作用" class="headerlink" title="类加载器的作用"></a>类加载器的作用</h3><ul>
+<li>类加载的作用：将 class 文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后在堆中生成一个代表这个类的 java.lang.Class 对象，作为方法区中类数据的访问入口</li>
+<li>类缓存：标准的 JavaSE 类加载器可以按要求查找类，但一旦某个类被加载到类加载器中，它将维持加载（缓存）一段时间。不过 VM 垃圾回收机制可以回收这些 Class 对象</li>
+</ul>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/jpeg/241578/1584424373550-ba66b4b3-bb74-41bd-a9c3-ecaa89fc17e5.jpeg#align=left&display=inline&height=277&originHeight=277&originWidth=600&size=0&status=done&style=none&width=600" alt><br>类加载器作用是用来把类（class）装载进内存的。JVM 规范定义了如下类型的类的加载器</p>
+<ul>
+<li>引导类加载器：用 C++编写的，是 JVM 自带的类加载器，负责 Java 平台核心库，用来装载核心类库。该加载器无法直接获取</li>
+<li>扩展类加载器：负责 jre/lib/ext 目录下的 jar 包或-D java.ext.dirs 指定目录下的 jar 包装入工作库</li>
+<li>系统类加载器：负责 java-classpath 或-D java.class.path 所指的目录下的类与 jar 包装入工作，是最常用的加载器</li>
+</ul>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/jpeg/241578/1584424597049-d22e1fb1-600a-459e-a701-7c8139897dea.jpeg#align=left&display=inline&height=441&originHeight=441&originWidth=690&size=0&status=done&style=none&width=690" alt></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">    <span class="comment">//获取系统类的加载器</span></span><br><span class="line">    ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();</span><br><span class="line">    System.out.println(systemClassLoader);<span class="comment">//sun.misc.Launcher$AppClassLoader@18b4aac2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取系统类加载器的父类加载器--&gt;拓展类加载器</span></span><br><span class="line">    ClassLoader parent = systemClassLoader.getParent();</span><br><span class="line">    System.out.println(parent);<span class="comment">//sun.misc.Launcher$ExtClassLoader@4554617c</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取扩展类加载器的父类加载器--&gt;根加载器(C/C++)</span></span><br><span class="line">    System.out.println(parent.getParent()); <span class="comment">//null</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//当前类时那个加载器加载的</span></span><br><span class="line">    ClassLoader classLoader = Class.forName(<span class="string">"ren.guard.reflection.Test07"</span>).getClassLoader();</span><br><span class="line">    System.out.println(classLoader);<span class="comment">//sun.misc.Launcher$AppClassLoader@18b4aac2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//JDK内置类</span></span><br><span class="line">    classLoader = Class.forName(<span class="string">"java.lang.Object"</span>).getClassLoader();</span><br><span class="line">    System.out.println(classLoader);<span class="comment">//null</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//如何获得系统类加载器可以加载的路径</span></span><br><span class="line">    String property = System.getProperty(<span class="string">"java.class.path"</span>);</span><br><span class="line">    String[] split = property.split(<span class="string">";"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String s : split) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\charsets.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\deploy.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\access-bridge-64.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\cldrdata.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\dnsns.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\jaccess.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\jfxrt.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\localedata.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\nashorn.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\sunec.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\sunjce_provider.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\sunmscapi.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\sunpkcs11.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\ext\zipfs.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\javaws.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\jce.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\jfr.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\jfxswt.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\jsse.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\management-agent.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\plugin.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\resources.jar</span></span><br><span class="line"><span class="comment">     * E:\Java\jdk1.8.0_181\jre\lib\rt.jar</span></span><br><span class="line"><span class="comment">     * E:\ShiYi\Idea\注解和反射\out\production\注解和反射</span></span><br><span class="line"><span class="comment">     * D:\IntelliJ IDEA 2018.2.1\lib\idea_rt.jar</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//双亲委派机制</span></span><br><span class="line">    <span class="comment">//相同的类名，Java加载器只会应用，自身的类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="获取运行时类的完整结构"><a href="#获取运行时类的完整结构" class="headerlink" title="获取运行时类的完整结构"></a>获取运行时类的完整结构</h2><p>通过反射获取运行时类的完整结构<br>Field(字段)、Method(方法)、Constructor(构造器)、Superclass(父类)、Interface(接口)、Annotation(注解)</p>
+<ul>
+<li>实现的接口</li>
+<li>所继承的父类</li>
+<li>全部的构造器</li>
+<li>全部的方法</li>
+<li>全部 Field</li>
+<li>注解</li>
+<li>……</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, NoSuchFieldException, NoSuchMethodException </span>&#123;</span><br><span class="line">    Class c1 = Class.forName(<span class="string">"ren.guard.reflection.User"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得类的名字</span></span><br><span class="line">    <span class="comment">//获得包名 + 类名</span></span><br><span class="line">    System.out.println(c1.getName());<span class="comment">//ren.guard.reflection.User</span></span><br><span class="line">    <span class="comment">//获得类名</span></span><br><span class="line">    System.out.println(c1.getSimpleName());<span class="comment">//User</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得类的属性</span></span><br><span class="line">    System.out.println(<span class="string">"=================================="</span>);</span><br><span class="line">    Field[] fields = c1.getFields(); <span class="comment">//只能找到public属性</span></span><br><span class="line">    <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">        System.out.println(<span class="string">"getFields："</span> + field);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         无</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//找到全部的属性</span></span><br><span class="line">    Field[] declaredFields = c1.getDeclaredFields();</span><br><span class="line">    <span class="keyword">for</span> (Field field : declaredFields) &#123;</span><br><span class="line">        System.out.println(<span class="string">"getDeclaredFields："</span> + field);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        private int ren.guard.reflection.User.id</span></span><br><span class="line"><span class="comment">        private java.lang.String ren.guard.reflection.User.name</span></span><br><span class="line"><span class="comment">        private int ren.guard.reflection.User.age</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得指定属性的值</span></span><br><span class="line">    <span class="comment">//只能获得public</span></span><br><span class="line">    <span class="comment">//Field name = c1.getField("name"); //Exception in thread "main" java.lang.NoSuchFieldException: name</span></span><br><span class="line">    Field name = c1.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">    System.out.println(name);<span class="comment">//private java.lang.String ren.guard.reflection.User.name</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得类的方法</span></span><br><span class="line">    System.out.println(<span class="string">"=================================="</span>);</span><br><span class="line">    <span class="comment">//获得本类己其父类的全部public方法</span></span><br><span class="line">    Method[] methods = c1.getMethods();</span><br><span class="line">    <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">        System.out.println(<span class="string">"getMethods："</span> + method);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获得本类的所有方法</span></span><br><span class="line">    Method[] declaredMethods = c1.getDeclaredMethods();</span><br><span class="line">    <span class="keyword">for</span> (Method method : declaredMethods) &#123;</span><br><span class="line">        System.out.println(<span class="string">"getDeclaredMethods："</span> + method);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得指定方法</span></span><br><span class="line">    <span class="comment">//重载</span></span><br><span class="line">    Method getName = c1.getMethod(<span class="string">"getName"</span>, <span class="keyword">null</span>);</span><br><span class="line">    System.out.println(getName);<span class="comment">//public java.lang.String ren.guard.reflection.User.getName()</span></span><br><span class="line">    Method setName = c1.getMethod(<span class="string">"setName"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    System.out.println(setName);<span class="comment">//public void ren.guard.reflection.User.setName(java.lang.String)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得指定的构造器</span></span><br><span class="line">    System.out.println(<span class="string">"=================================="</span>);</span><br><span class="line">    Constructor[] constructors = c1.getConstructors();</span><br><span class="line">    <span class="keyword">for</span> (Constructor constructor : constructors) &#123;</span><br><span class="line">        System.out.println(<span class="string">"getConstructors："</span> + constructor);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        public ren.guard.reflection.User()</span></span><br><span class="line"><span class="comment">        public ren.guard.reflection.User(int,java.lang.String,int)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Constructor[] declaredConstructors = c1.getDeclaredConstructors();</span><br><span class="line">    <span class="keyword">for</span> (Constructor constructor : declaredConstructors) &#123;</span><br><span class="line">        System.out.println(<span class="string">"declaredConstructors："</span> + constructor);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        public ren.guard.reflection.User()</span></span><br><span class="line"><span class="comment">        public ren.guard.reflection.User(int,java.lang.String,int)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得指定的构造器</span></span><br><span class="line">    Constructor declaredConstructor = c1.getDeclaredConstructor(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>, <span class="title">String</span>.<span class="title">class</span>, <span class="title">int</span>.<span class="title">class</span>)</span>;</span><br><span class="line">    System.out.println(<span class="string">"指定："</span> + declaredConstructor); <span class="comment">//public ren.guard.reflection.User(int,java.lang.String,int)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>有无参构造器时：</p>
+<ul>
+<li>调用 Class 对象的 newInstance()方法</li>
+<li>类必须有一个无参构造器</li>
+<li>要有类的构造器的访问权限</li>
+</ul>
+<p>没有无参构造器时：</p>
+<ul>
+<li>通过 Class 类的 getDeclaredConstructor(Class … parameterTypes)取得本类的指定形参类型的构造器</li>
+<li>向构造器的形参中传递一个对象数组进去，里面包含了构造器中所需要的各个参数</li>
+<li>通过 Constructor 实例化对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException </span>&#123;</span><br><span class="line">    <span class="comment">//获得class对象</span></span><br><span class="line">    Class c1 = Class.forName(<span class="string">"ren.guard.reflection.User"</span>);</span><br><span class="line">    <span class="comment">//构造一个对象</span></span><br><span class="line">    User user = (User) c1.newInstance();<span class="comment">//本质上是调用了类的无参构造器</span></span><br><span class="line">    System.out.println(user);<span class="comment">//User&#123;id=0, name='null', age=0&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过构造器创建对象</span></span><br><span class="line">    Constructor constructor = c1.getDeclaredConstructor(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>, <span class="title">String</span>.<span class="title">class</span>, <span class="title">int</span>.<span class="title">class</span>)</span>;</span><br><span class="line">    user = (User) constructor.newInstance(<span class="number">1</span>, <span class="string">"xxx"</span>, <span class="number">2</span>);</span><br><span class="line">    System.out.println(user);<span class="comment">//User&#123;id=1, name='xxx', age=2&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过反射调用普通方法</span></span><br><span class="line">    user = (User) c1.newInstance();</span><br><span class="line">    <span class="comment">//通过反射获取一个方法</span></span><br><span class="line">    Method setName = c1.getDeclaredMethod(<span class="string">"setName"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="comment">//invoke:激活（对象，"方法值"）</span></span><br><span class="line">    setName.invoke(user,<span class="string">"yyy"</span>);</span><br><span class="line">    System.out.println(user);<span class="comment">//User&#123;id=0, name='yyy', age=0&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过反射操作属性</span></span><br><span class="line">    user = (User) c1.newInstance();</span><br><span class="line">    Field name = c1.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">    <span class="comment">//不能直接操作私有属性，需要关闭程序的安全检测，属性或者方法的setAccessible(true);</span></span><br><span class="line">    name.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    name.set(user,<span class="string">"zzz"</span>);</span><br><span class="line">    System.out.println(user);<span class="comment">//User&#123;id=0, name='zzz', age=0&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="调用指定的方法"><a href="#调用指定的方法" class="headerlink" title="调用指定的方法"></a>调用指定的方法</h3><p>通过反射，调用类中的方法，通过 Method 类完成</p>
+<ul>
+<li><p>通过 Class 类的 getMethod（String name，Class…parameterTypes）方法取一个 Method 对象，并设置此方法操作时所需要的参数类型</p>
+</li>
+<li><p>之后使用 Object invoke（Object obj，ObjectI]args）进行调用，并向方法中传递要设置的 obj 对象的参数信息</p>
+</li>
+<li><p><img data-src="https://cdn.nlark.com/yuque/0/2020/png/241578/1584590106574-28cfb7b6-f8a6-4b51-9abe-d7c33e101311.png#align=left&display=inline&height=330&name=image.png&originHeight=330&originWidth=1309&size=253830&status=done&style=none&width=1309" alt="image.png"></p>
+</li>
+<li><p>Object invoke(Object obj, Object … args)</p>
+<ul>
+<li>Object 对应原方法的返回值，若原方法无返回值，此时返回 null</li>
+<li>若原方法若为静态方法，此时形参 Object obj 可为 null</li>
+<li>若原方法形参列表为空，则 Object]args 为 null</li>
+<li>若原方法声明为 private，则需要在调用此 invoke（）方法前，显式调用方法对象的 setAccessible（true）方法，将可访问 private 的方法。</li>
+<li>setAccessible<ul>
+<li>Method 和 Field、Constructor 对象都有 setAccessible（）方法。</li>
+<li>setAccessible 作用是启动和禁用访问安全检查的开关。</li>
+<li>参数值为 true 则指示反射的对象在使用时应该取消 Java 语言访问检查。<ul>
+<li>提高反射的效率。如果代码中必须用反射，而该句代码需要频繁的被调用，那么请设置为 true.</li>
+<li>使得原本无法访问的私有成员也可以访问</li>
+</ul>
+</li>
+<li>参数值为 false 则指示反射的对象应该实施 Java 语言访问检查</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="反射性能测试"><a href="#反射性能测试" class="headerlink" title="反射性能测试"></a>反射性能测试</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//new User</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</span><br><span class="line">        user.getName();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">    System.out.println(<span class="string">"new User :"</span> + (endTime - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//反射调用</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchMethodException, InvocationTargetException, IllegalAccessException </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    Class c1 = user.getClass();</span><br><span class="line">    Method getName = c1.getDeclaredMethod(<span class="string">"getName"</span>, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</span><br><span class="line">        getName.invoke(user, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">    System.out.println(<span class="string">"反射调用 :"</span> + (endTime - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//反射调用 关闭检测</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchMethodException, InvocationTargetException, IllegalAccessException </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    Class c1 = user.getClass();</span><br><span class="line">    Method getName = c1.getDeclaredMethod(<span class="string">"getName"</span>, <span class="keyword">null</span>);</span><br><span class="line">    getName.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000000</span>; i++) &#123;</span><br><span class="line">        getName.invoke(user, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">    System.out.println(<span class="string">"反射调用 关闭检测 :"</span> + (endTime - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchMethodException, IllegalAccessException, InvocationTargetException </span>&#123;</span><br><span class="line">  test01();<span class="comment">//new User :4ms</span></span><br><span class="line">  test02();<span class="comment">//反射调用 :2779ms</span></span><br><span class="line">  test03();<span class="comment">//反射调用 关闭检测 :1825ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="反射操作泛型"><a href="#反射操作泛型" class="headerlink" title="反射操作泛型"></a>反射操作泛型</h3><ul>
+<li>Java 采用泛型擦除的机制来引入泛型，Java 中的泛型仅仅是给编译器 javac 使用的，确保数据的安全性和免去强制类型转换问题，但是，一旦编译完成，所有和泛型有关的类型全部擦除</li>
+<li>为了通过反射操作这些类型，Java 新增了 ParameterizedType，GenericArrayType TypeVariable 和 WildcardType 几种类型来代表不能被归一到 Class 类中的类型但是又和原始类型齐名的类型<ul>
+<li>ParameterizedType：表示一种参数化类型，比如 Collection<String></String></li>
+<li>GenericArrayType：表示一种元素类型是参数化类型或者类型变量的数组类型</li>
+<li>TypeVariable：是各种类型变量的公共父接口</li>
+<li>WildcardType：代表一种通配符类型表达式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">(Map&lt;String,User&gt; map , List&lt;User&gt; list)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"test01"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String,User&gt; <span class="title">test02</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"test02"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchMethodException </span>&#123;</span><br><span class="line">    Method test01 = Test11.class.getMethod("test01", Map.class, List.class);</span><br><span class="line">    Type[] genericParameterTypes = test01.getGenericParameterTypes();</span><br><span class="line">    <span class="keyword">for</span> (Type type : genericParameterTypes) &#123;</span><br><span class="line">        System.out.println(type);</span><br><span class="line">        <span class="keyword">if</span>(type <span class="keyword">instanceof</span> ParameterizedType)&#123;</span><br><span class="line">            Type[] actualTypeArguments = ((ParameterizedType) type).getActualTypeArguments();</span><br><span class="line">            <span class="keyword">for</span> (Type actualTypeArgument : actualTypeArguments) &#123;</span><br><span class="line">                System.out.println(actualTypeArgument);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * java.util.Map&lt;java.lang.String, ren.guard.reflection.User&gt;</span></span><br><span class="line"><span class="comment">     * class java.lang.String</span></span><br><span class="line"><span class="comment">     * class ren.guard.reflection.User</span></span><br><span class="line"><span class="comment">     * java.util.List&lt;ren.guard.reflection.User&gt;</span></span><br><span class="line"><span class="comment">     * class ren.guard.reflection.User</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    System.out.println(<span class="string">"=================================="</span>);</span><br><span class="line">    Method test02 = Test11.class.getMethod("test02",null);</span><br><span class="line">    Type genericReturnType = test02.getGenericReturnType();</span><br><span class="line">    <span class="keyword">if</span>(genericReturnType <span class="keyword">instanceof</span> ParameterizedType)&#123;</span><br><span class="line">        Type[] actualTypeArguments = ((ParameterizedType) genericReturnType).getActualTypeArguments();</span><br><span class="line">        <span class="keyword">for</span> (Type actualTypeArgument : actualTypeArguments) &#123;</span><br><span class="line">            System.out.println(actualTypeArgument);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * class java.lang.String</span></span><br><span class="line"><span class="comment">     * class ren.guard.reflection.User</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="反射操作注解"><a href="#反射操作注解" class="headerlink" title="反射操作注解"></a>反射操作注解</h3><ul>
+<li>getAnnotations</li>
+<li>getAnnotation</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//反射操作注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test12</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, NoSuchFieldException </span>&#123;</span><br><span class="line">        Class c1 = Class.forName(<span class="string">"ren.guard.reflection.Student2"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过反射获得注解</span></span><br><span class="line">        Annotation[] annotations = c1.getAnnotations();</span><br><span class="line">        <span class="keyword">for</span> (Annotation annotation : annotations) &#123;</span><br><span class="line">            System.out.println(annotation);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获得注解的value的值</span></span><br><span class="line">        TableStudent tableStudent = (TableStudent) c1.getAnnotation(TableStudent<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        String value = tableStudent.value();</span><br><span class="line">        System.out.println(value);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获得类指定的注解</span></span><br><span class="line">        Field name = c1.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">        FieldStudent fieldStudent = name.getAnnotation(FieldStudent<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(fieldStudent.columnName());</span><br><span class="line">        System.out.println(fieldStudent.type());</span><br><span class="line">        System.out.println(fieldStudent.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@TableStudent</span>(<span class="string">"db_student"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@FieldStudent</span>(columnName = <span class="string">"db_id"</span>, type = <span class="string">"int"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@FieldStudent</span>(columnName = <span class="string">"db_name"</span>, type = <span class="string">"varchar"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@FieldStudent</span>(columnName = <span class="string">"db_age"</span>, type = <span class="string">"int"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student2</span><span class="params">(<span class="keyword">int</span> id, String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student2&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类名的注解</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> TableStudent &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//属性的注解</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> FieldStudent &#123;</span><br><span class="line">    <span class="function">String <span class="title">columnName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+  </entry>
+  <entry>
+    <title>Maven</title>
+    <url>/2020/7273cdc/</url>
+    <content><![CDATA[<h3 id="常用-Maven-命令"><a href="#常用-Maven-命令" class="headerlink" title="常用 Maven 命令"></a>常用 Maven 命令</h3><p>执行与构建过程相关的命令，必须进入 pom.xml 所在的目录。<br>与构建过程相关的：编译、测试、打包…</p>
+<ol>
+<li>mvn clean：清理</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装进入仓库</li>
+<li>mvn site：生成站点</li>
+</ol>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
+<li>Maven 的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再 Maven 的核心程序中。</li>
+<li>当我们执行的 Maven 命令需要用到某些插件时，Maven 核心程序首先到本地仓库中查找。</li>
+<li>本地仓库的默认位置：[系统中当前用户的目录].m2\repository</li>
+<li>Maven 核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</li>
+<li>如果此时无法联网，则构建失败。</li>
+<li>修改默认本地仓库的位置可以让 Maven 核心程序到我们事先准备好的目录下查找插件<ol>
+<li>找到 Maven 文件下的\conf\settings.xml</li>
+<li>找到标签<code>localRepository</code></li>
+<li>将标签<code>localRepository</code>从注释中取出</li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
+</ol>
+</li>
+<li>设置阿里 Maven 仓库</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
+<li><p>含义：Project Object Model 项目对象模型</p>
+<pre><code>DOM Document Object Model 文档对象模型</code></pre></li>
+<li><p>pom.xml 对于 Maven 工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于 web.xml 对于动态 Web 工程</p>
+</li>
+</ol>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven 的坐标</p>
+<ol>
+<li>groupid：公司或组织域名倒序+项目名称</li>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ol>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
+<li>仓库的分类<ol>
+<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有 Maven 工程服务</li>
+<li>远程仓库<ol>
+<li>私服：搭建再局域网环境中，为局域网范围内的所有 Maven 工程服务（Nexus）</li>
+<li>中央仓库：架设再 Internet 上，为全世界所有 Maven 工程</li>
+<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>仓库中保存的内容：Maven 工程<ol>
+<li>Maven 自身所需要的插件</li>
+<li>第三方框架或工具的 jar 包</li>
+<li>我们自己开发的 Maven 工程</li>
+</ol>
+</li>
+</ol>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
+<li>Maven 解析依赖信息时会到本地仓库中查找被依赖的 jar 包</li>
+<li>对于我们自己开发的 Maven 工程，使用 install 命令安装后就可以进入仓库</li>
+<li>依赖的范围<ol>
+<li>compile<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+</ol>
+</li>
+<li>test<ol>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>典型例子：junit.jar</li>
+</ol>
+</li>
+<li>provided<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>依赖的传递性<ol>
+<li>在父工程依赖一次既可重复使用</li>
+<li>注意：非 complie 范围的不能传递。所以在各个工程模块中，重复声明</li>
+</ol>
+</li>
+<li>依赖的排除<ol>
+<li>在不需要 j 一些 ar 包或 jar 包重复时，则要排除一部分 jar 包</li>
+<li>排除设置</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>依赖原则<ol>
+<li>作用：解决模块工程之间的 jar 包冲突问题</li>
+<li>Maven 默认解决方案：路径最短者优先</li>
+<li>Maven 默认解决方案：先声明者有限(dependency 先后)</li>
+</ol>
+</li>
+<li>统一管理依赖的版本<ol>
+<li>使用 properties 标签使用自定义标签统一声明版本号</li>
+<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
+<li>其实 properties 标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
+</ol>
+</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</li>
+<li>Maven 的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</li>
+<li>Maven 有三条相互独立的生命周期：<ol>
+<li>Clean Lifecycle 在进行真正的构建之前进行一些清理工作。</li>
+<li>Default Lifecycle 在构建核心部分，编译，测试，打包，安装，部署等等。</li>
+<li>Site Lifecycle 生成项目报告，站点，发布站点。</li>
+</ol>
+</li>
+<li>Maven 核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li>统一管理各个模块工程中的 test 范围的依赖的版本</li>
+<li>将 test 的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</li>
+<li>操作步骤<ol>
+<li>创建一个 Maven 工程为父工程。注意：打包方式为 pom</li>
+</ol>
+</li>
+</ol>
+<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+<ol>
+<li>在子工程中声明对父工程的引用</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>将子工程的坐标中与父工程坐标中重复的内容删除</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在父工程中统一管理 test 依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在子工程中删除 test 依赖的版本号部分</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在配置继承后，执行安装命令时要先安装父工程</li>
+</ol>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
+<li>作用：一键安装各个模块工程</li>
+<li>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用方式：在聚合工程的 pom.xml 上点击 maven install</li>
+</ol>
+<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mvn deploy</code></p>
+<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></p>
+]]></content>
+  </entry>
 </search>
