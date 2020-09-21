@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>后端API接口</title>
+    <url>/2020/446ddbc4/</url>
+    <content><![CDATA[<p><strong>一般系统大致架构如下：</strong><br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784719-8e5d1b4d-dae6-42db-a920-75acd3c65b94.webp#align=left&display=inline&height=518&margin=%5Bobject%20Object%5D&originHeight=518&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<blockquote>
+<p>需要说明的是，有些小伙伴会回复说，这个架构太简单了吧，太 low 了，什么网关啊，缓存啊，消息中间件啊，都没有。因为这篇主要聊 API 接口，所以我们聚焦这一点。</p>
+</blockquote>
+<h1 id="接口交互"><a href="#接口交互" class="headerlink" title="接口交互"></a>接口交互</h1><p>前端和后端进行交互，前端按照约定请求 URL 路径，并传入相关参数，后端服务器接收请求，进行业务处理，返回数据给前端。</p>
+<blockquote>
+<p>针对 URL 路径的 restful 风格，以及传入参数的公共请求头的要求（如：app_version,api_version,device 等），这里就不介绍了，小伙伴们可以自行去了解，也比较简单。</p>
+</blockquote>
+<p>后端服务器如何实现把数据返回给前端？</p>
+<h1 id="返回格式"><a href="#返回格式" class="headerlink" title="返回格式"></a>返回格式</h1><p>后端返回给前端我们一般用 JSON 体方式，定义如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  #返回状态码</span><br><span class="line">  code:integer,</span><br><span class="line">  #返回信息描述</span><br><span class="line">  message:string,</span><br><span class="line">  #返回值</span><br><span class="line">  data:object</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**</p>
+<h3 id="CODE-状态码"><a href="#CODE-状态码" class="headerlink" title="CODE 状态码"></a>CODE 状态码</h3><p>**<br>code 返回状态码，一般小伙伴们是在开发的时候需要什么，就添加什么。</p>
+<p>如接口要返回用户权限异常，我们加一个状态码为 101 吧，下一次又要加一个数据参数异常，就加一个 102 的状态码。这样虽然能够照常满足业务，但状态码太凌乱了</p>
+<p>我们应该可以参考 HTTP 请求返回的状态码</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">下面是常见的HTTP状态码：</span><br><span class="line"><span class="number">200</span> - 请求成功</span><br><span class="line"><span class="number">301</span> - 资源（网页等）被永久转移到其它URL</span><br><span class="line"><span class="number">404</span> - 请求的资源（网页等）不存在</span><br><span class="line"><span class="number">500</span> - 内部服务器错误</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784731-24a7ff8f-207b-4d14-806e-f6b13e4cfb86.webp#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&originHeight=228&originWidth=640&size=0&status=done&style=none&width=640" alt><br>我们可以参考这样的设计，这样的好处就把错误类型归类到某个区间内，如果区间不够，可以设计成 4 位数。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">#<span class="number">1000</span>～<span class="number">1999</span> 区间表示参数错误</span><br><span class="line">#<span class="number">2000</span>～<span class="number">2999</span> 区间表示用户错误</span><br><span class="line">#<span class="number">3000</span>～<span class="number">3999</span> 区间表示接口异常</span><br></pre></td></tr></table></figure>
+
+<p>这样前端开发人员在得到返回值后，根据状态码就可以知道，大概什么错误，再根据 message 相关的信息描述，可以快速定位。</p>
+<h3 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h3><p>###</p>
+<p>这个字段相对理解比较简单，就是发生错误时，如何友好的进行提示。一般的设计是和 code 状态码一起设计，如</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784732-72f38d68-f1e7-4add-ac0a-1ef67ed98750.webp#align=left&display=inline&height=274&margin=%5Bobject%20Object%5D&originHeight=274&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>再在枚举中定义，状态码</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-842fc706-7542-4850-9873-1bda54bde76c.webp#align=left&display=inline&height=595&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>状态码和信息就会一一对应，比较好维护。</p>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>**<br>返回数据体，JSON 格式，根据不同的业务又不同的 JSON 体。</p>
+<p>我们要设计一个返回体类 Result</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784764-d4ec160e-0ac1-4c6b-b4db-f75ad3f2adf4.webp#align=left&display=inline&height=348&margin=%5Bobject%20Object%5D&originHeight=348&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<h1 id="控制层-Controller"><a href="#控制层-Controller" class="headerlink" title="控制层 Controller"></a>控制层 Controller</h1><p>我们会在 controller 层处理业务请求，并返回给前端，以 order 订单为例</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784750-2a46f7a5-ebf7-4d24-b588-6784c1fa028e.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>我们看到在获得 order 对象之后，我们是用的 Result 构造方法进行包装赋值，然后进行返回。小伙伴们有没有发现，构造方法这样的包装是不是很麻烦，我们可以优化一下。</p>
+<h1 id="美观美化"><a href="#美观美化" class="headerlink" title="美观美化"></a>美观美化</h1><p>我们可以在 Result 类中，加入静态方法，一看就懂</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-082e5ccf-84da-4e17-a98b-0ddab7c93958.webp#align=left&display=inline&height=559&margin=%5Bobject%20Object%5D&originHeight=559&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>那我们来改造一下 Controller</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784780-27e478de-86b0-46c7-b8ef-23ac367329ba.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>代码是不是比较简洁了，也美观了。</p>
+<h1 id="优雅优化"><a href="#优雅优化" class="headerlink" title="优雅优化"></a>优雅优化</h1><p>上面我们看到在 Result 类中增加了静态方法，使得业务处理代码简洁了。但小伙伴们有没有发现这样有几个问题：</p>
+<blockquote>
+<p>1、每个方法的返回都是 Result 封装对象，没有业务含义<br>2、在业务代码中，成功的时候我们调用 Result.success，异常错误调用 Result.failure。是不是很多余<br>3、上面的代码，判断 id 是否为 null，其实我们可以使用 validate 做校验，没有必要在方法体中做判断。</p>
+</blockquote>
+<p>我们最好的方式直接返回真实业务对象，最好不要改变之前的业务方式，如下图</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784777-4085f216-da7f-4ba6-9557-d1de5a628da0.webp#align=left&display=inline&height=289&margin=%5Bobject%20Object%5D&originHeight=289&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>这个和我们平时的代码是一样的，非常直观，直接返回 order 对象，这样是不是很完美。那实现方案是什么呢？</p>
+<h1 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h1><p>小伙伴们怎么去实现是不是有点思路，在这个过程中，我们需要做几个事情</p>
+<blockquote>
+<p>1、自定义一个注解@ResponseResult，表示这个接口返回的值需要包装一下<br>2、拦截请求，判断此请求是否需要被@ResponseResult 注解<br>3、核心步骤就是实现接口 ResponseBodyAdvice 和@ControllerAdvice，判断是否需要包装返回值，如果需要，就把 Controller 接口的返回值进行重写。</p>
+</blockquote>
+<p>**</p>
+<h3 id="注解类"><a href="#注解类" class="headerlink" title="注解类"></a>注解类</h3><p>用来标记方法的返回值，是否需要包装</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784775-129682ec-9579-46b9-a949-2e8fbeae2560.webp#align=left&display=inline&height=231&margin=%5Bobject%20Object%5D&originHeight=231&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>**<br>拦截请求，是否此请求返回的值需要包装，其实就是运行的时候，解析@ResponseResult 注解</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784801-d45174ac-0784-47a7-8aeb-bdf45b8df3aa.webp#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&originHeight=339&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>此代码核心思想，就是获取此请求，是否需要返回值包装，设置一个属性标记。</p>
+<p><strong>重写返回体</strong><br>**<br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784797-b151fee3-14f0-431b-bada-e972427c8143.webp#align=left&display=inline&height=292&margin=%5Bobject%20Object%5D&originHeight=292&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>上面代码就是判断是否需要返回值包装，如果需要就直接包装。这里我们只处理了正常成功的包装，如果方法体</p>
+<p>报异常怎么办？处理异常也比较简单，只要判断 body 是否为异常类。</p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784804-3281d852-6665-4cc2-83ab-7324830b0759.webp#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&originHeight=290&originWidth=1080&size=0&status=done&style=none&width=1080" alt></p>
+<h3 id="重写-Controller"><a href="#重写-Controller" class="headerlink" title="重写 Controller"></a>重写 Controller</h3><p>**<br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784825-5321d467-5d85-4d97-b80c-35a5137c5d2e.webp#align=left&display=inline&height=299&margin=%5Bobject%20Object%5D&originHeight=299&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p>在控制器类上或者方法体上加上自定义注解@ResponseResult，这样就 ok 了，简单吧。到此返回的设计思路完成，是不是又简洁，又优雅。</p>
+<p>这个方案还有没有别的优化空间，当然是有的。如：每次请求都要反射一下，获取请求的方法是否需要包装，其实可以做个缓存，不需要每次都需要解析。当然整体思路了解，小伙伴们就可以在此基础上面再自行扩展。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>安装Ubuntu</title>
     <url>/2020/a7df3577/</url>
     <content><![CDATA[<p>准备工作</p>

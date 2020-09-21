@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=2"><meta name=theme-color content=#222><meta name=generator content="Hexo 4.2.0"><link rel=apple-touch-icon sizes=180x180 href=/images/guard.png><link rel=icon type=image/png sizes=32x32 href=/images/guard.png><link rel=icon type=image/png sizes=16x16 href=/images/guard.png><link rel=mask-icon href=/images/guard.svg color=#222><meta name=google-site-verification content=1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk><meta name=msvalidate.01 content=E4B8BD2F04290DD88CD9F8BF5853705F><meta name=baidu-site-verification content=H0FI8ImJtX><link rel=stylesheet href=/css/main.css><link rel=stylesheet href=//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css><link rel=stylesheet href=//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css><script src=//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js></script><script id=hexo-configurations>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.guard.ren","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script><meta name=description content="一般系统大致架构如下： 需要说明的是，有些小伙伴会回复说，这个架构太简单了吧，太 low 了，什么网关啊，缓存啊，消息中间件啊，都没有。因为这篇主要聊 API 接口，所以我们聚焦这一点。 接口交互 前端和后端进行交互，前端按照约定请求 URL 路径，并传入相关参数，后端服务器接收请求，进行业务处理，返回数据给前端。 针对 URL 路径的 restful 风格，以及传入参数的公共请求头的要求"><meta property=og:type content=article><meta property=og:title content=后端API接口><meta property=og:url content=https://blog.guard.ren/2020/446ddbc4/index.html><meta property=og:site_name content=何年何月何时多><meta property=og:description content="一般系统大致架构如下： 需要说明的是，有些小伙伴会回复说，这个架构太简单了吧，太 low 了，什么网关啊，缓存啊，消息中间件啊，都没有。因为这篇主要聊 API 接口，所以我们聚焦这一点。 接口交互 前端和后端进行交互，前端按照约定请求 URL 路径，并传入相关参数，后端服务器接收请求，进行业务处理，返回数据给前端。 针对 URL 路径的 restful 风格，以及传入参数的公共请求头的要求"><meta property=og:locale content=zh_CN><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784719-8e5d1b4d-dae6-42db-a920-75acd3c65b94.webp#align=left&display=inline&height=518&margin=%5Bobject%20Object%5D&originHeight=518&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784731-24a7ff8f-207b-4d14-806e-f6b13e4cfb86.webp#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&originHeight=228&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784732-72f38d68-f1e7-4add-ac0a-1ef67ed98750.webp#align=left&display=inline&height=274&margin=%5Bobject%20Object%5D&originHeight=274&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-842fc706-7542-4850-9873-1bda54bde76c.webp#align=left&display=inline&height=595&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784764-d4ec160e-0ac1-4c6b-b4db-f75ad3f2adf4.webp#align=left&display=inline&height=348&margin=%5Bobject%20Object%5D&originHeight=348&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784750-2a46f7a5-ebf7-4d24-b588-6784c1fa028e.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-082e5ccf-84da-4e17-a98b-0ddab7c93958.webp#align=left&display=inline&height=559&margin=%5Bobject%20Object%5D&originHeight=559&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784780-27e478de-86b0-46c7-b8ef-23ac367329ba.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784777-4085f216-da7f-4ba6-9557-d1de5a628da0.webp#align=left&display=inline&height=289&margin=%5Bobject%20Object%5D&originHeight=289&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784775-129682ec-9579-46b9-a949-2e8fbeae2560.webp#align=left&display=inline&height=231&margin=%5Bobject%20Object%5D&originHeight=231&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784801-d45174ac-0784-47a7-8aeb-bdf45b8df3aa.webp#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&originHeight=339&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784797-b151fee3-14f0-431b-bada-e972427c8143.webp#align=left&display=inline&height=292&margin=%5Bobject%20Object%5D&originHeight=292&originWidth=640&size=0&status=done&style=none&width=640"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784804-3281d852-6665-4cc2-83ab-7324830b0759.webp#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&originHeight=290&originWidth=1080&size=0&status=done&style=none&width=1080"><meta property=og:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784825-5321d467-5d85-4d97-b80c-35a5137c5d2e.webp#align=left&display=inline&height=299&margin=%5Bobject%20Object%5D&originHeight=299&originWidth=640&size=0&status=done&style=none&width=640"><meta property=article:published_time content=2020-09-20T12:26:20.000Z><meta property=article:modified_time content=2020-09-21T14:08:25.253Z><meta property=article:author content=何年何月何时多><meta property=article:tag content=我的身旁是一扇亮了又暗的窗><meta name=twitter:card content=summary><meta name=twitter:image content="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784719-8e5d1b4d-dae6-42db-a920-75acd3c65b94.webp#align=left&display=inline&height=518&margin=%5Bobject%20Object%5D&originHeight=518&originWidth=640&size=0&status=done&style=none&width=640"><link rel=canonical href="https://blog.guard.ren/2020/446ddbc4/"><script id=page-configurations>
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script><meta name=referrer content=no-referrer><title>后端API接口 | 何年何月何时多</title><script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'UA-136832726-1',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script><script pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><noscript><style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style></noscript></head><body itemscope itemtype=http://schema.org/WebPage><div class="container use-motion"><div class=headband></div><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label=切换导航栏><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div></div><div class=site-meta><div><a href="/" class=brand rel=start><span class=logo-line-before><i></i></span> <span class=site-title>何年何月何时多</span> <span class=logo-line-after><i></i></span></a></div><h1 class=site-subtitle itemprop=description>我的身旁是一扇亮了又暗的窗</h1></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul id=menu class=menu><li class="menu-item menu-item-home"><a href="/" rel=section><i class="fa fa-fw fa-home"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel=section><i class="fa fa-fw fa-archive"></i>归档</a></li><li class="menu-item menu-item-search"><a role=button class=popup-trigger><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class=site-search><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocorrect=off autocapitalize=off placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close><i class="fa fa-times-circle"></i></span></div><div id=search-result><div id=no-result><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div></div></div></div></div></header><div class=back-to-top><i class="fa fa-arrow-up"></i> <span>0%</span></div><div class=reading-progress-bar></div><a href=https://github.com/isGuard class=github-corner title="Follow me on GitHub" aria-label="Follow me on GitHub" rel=noopener target=_blank><svg width=80 height=80 viewbox="0 0 250 250" aria-hidden=true><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill=currentColor style="transform-origin: 130px 106px;" class=octo-arm></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill=currentColor class=octo-body></path></svg></a><main class=main><div class=main-inner><div class=content-wrap><div class=content><div class=posts-expand><article itemscope itemtype=http://schema.org/Article class=post-block lang=zh-CN><link itemprop=mainEntityOfPage href="https://blog.guard.ren/2020/446ddbc4/"><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5"><meta itemprop=name content=何年何月何时多><meta itemprop=description content=我的身旁是一扇亮了又暗的窗></span> <span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content=何年何月何时多></span><header class=post-header><h2 class=post-title itemprop="name headline">后端API接口</h2><div class=post-meta><span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-calendar-o"></i></span> <span class=post-meta-item-text>发表于</span><time title="创建时间：2020-09-20 20:26:20" itemprop="dateCreated datePublished" datetime=2020-09-20T20:26:20+08:00>2020-09-20</time></span> <span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-calendar-check-o"></i></span> <span class=post-meta-item-text>更新于</span><time title="修改时间：2020-09-21 22:08:25" itemprop=dateModified datetime=2020-09-21T22:08:25+08:00>2020-09-21</time></span> <span id="/2020/446ddbc4/" class="post-meta-item leancloud_visitors" data-flag-title=后端API接口 title=阅读次数><span class=post-meta-item-icon><i class="fa fa-eye"></i></span> <span class=post-meta-item-text>阅读次数：</span> <span class=leancloud-visitors-count></span></span> <span class=post-meta-item><span class=post-meta-item-icon><i class="fa fa-comment-o"></i></span> <span class=post-meta-item-text>Valine：</span> <a title=valine href=/2020/446ddbc4/#valine-comments itemprop=discussionUrl><span class="post-comments-count valine-comment-count" data-xid="/2020/446ddbc4/" itemprop=commentCount></span></a></span><br><span class=post-meta-item title=本文字数><span class=post-meta-item-icon><i class="fa fa-file-word-o"></i></span> <span class=post-meta-item-text>本文字数：</span> <span>2k</span></span> <span class=post-meta-item title=阅读时长><span class=post-meta-item-icon><i class="fa fa-clock-o"></i></span> <span class=post-meta-item-text>阅读时长 &asymp;</span> <span>2 分钟</span></span></div></header><div class=post-body itemprop=articleBody><p><strong>一般系统大致架构如下：</strong><br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784719-8e5d1b4d-dae6-42db-a920-75acd3c65b94.webp#align=left&display=inline&height=518&margin=%5Bobject%20Object%5D&originHeight=518&originWidth=640&size=0&status=done&style=none&width=640"></p><blockquote><p>需要说明的是，有些小伙伴会回复说，这个架构太简单了吧，太 low 了，什么网关啊，缓存啊，消息中间件啊，都没有。因为这篇主要聊 API 接口，所以我们聚焦这一点。</p></blockquote><h1 id=接口交互><a href=#接口交互 class=headerlink title=接口交互></a>接口交互</h1><p>前端和后端进行交互，前端按照约定请求 URL 路径，并传入相关参数，后端服务器接收请求，进行业务处理，返回数据给前端。</p><blockquote><p>针对 URL 路径的 restful 风格，以及传入参数的公共请求头的要求（如：app_version,api_version,device 等），这里就不介绍了，小伙伴们可以自行去了解，也比较简单。</p></blockquote><p>后端服务器如何实现把数据返回给前端？</p><h1 id=返回格式><a href=#返回格式 class=headerlink title=返回格式></a>返回格式</h1><p>后端返回给前端我们一般用 JSON 体方式，定义如下：</p><figure class=highlight><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre></td><td class=code><pre><span class=line>&#123;</span><br><span class=line>  #返回状态码</span><br><span class=line>  code:integer,</span><br><span class=line>  #返回信息描述</span><br><span class=line>  message:string,</span><br><span class=line>  #返回值</span><br><span class=line>  data:object</span><br><span class=line>&#125;</span><br></pre></td></tr></table></figure><p>**</p><h3 id=CODE-状态码><a href=#CODE-状态码 class=headerlink title="CODE 状态码"></a>CODE 状态码</h3><p>**<br>code 返回状态码，一般小伙伴们是在开发的时候需要什么，就添加什么。</p><p>如接口要返回用户权限异常，我们加一个状态码为 101 吧，下一次又要加一个数据参数异常，就加一个 102 的状态码。这样虽然能够照常满足业务，但状态码太凌乱了</p><p>我们应该可以参考 HTTP 请求返回的状态码</p><figure class="highlight angelscript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br></pre></td><td class=code><pre><span class=line>下面是常见的HTTP状态码：</span><br><span class=line><span class=number>200</span> - 请求成功</span><br><span class=line><span class=number>301</span> - 资源（网页等）被永久转移到其它URL</span><br><span class=line><span class=number>404</span> - 请求的资源（网页等）不存在</span><br><span class=line><span class=number>500</span> - 内部服务器错误</span><br></pre></td></tr></table></figure><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784731-24a7ff8f-207b-4d14-806e-f6b13e4cfb86.webp#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&originHeight=228&originWidth=640&size=0&status=done&style=none&width=640"><br>我们可以参考这样的设计，这样的好处就把错误类型归类到某个区间内，如果区间不够，可以设计成 4 位数。</p><figure class="highlight angelscript"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br></pre></td><td class=code><pre><span class=line>#<span class=number>1000</span>～<span class=number>1999</span> 区间表示参数错误</span><br><span class=line>#<span class=number>2000</span>～<span class=number>2999</span> 区间表示用户错误</span><br><span class=line>#<span class=number>3000</span>～<span class=number>3999</span> 区间表示接口异常</span><br></pre></td></tr></table></figure><p>这样前端开发人员在得到返回值后，根据状态码就可以知道，大概什么错误，再根据 message 相关的信息描述，可以快速定位。</p><h3 id=Message><a href=#Message class=headerlink title=Message></a>Message</h3><p>###</p><p>这个字段相对理解比较简单，就是发生错误时，如何友好的进行提示。一般的设计是和 code 状态码一起设计，如</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784732-72f38d68-f1e7-4add-ac0a-1ef67ed98750.webp#align=left&display=inline&height=274&margin=%5Bobject%20Object%5D&originHeight=274&originWidth=640&size=0&status=done&style=none&width=640"></p><p>再在枚举中定义，状态码</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-842fc706-7542-4850-9873-1bda54bde76c.webp#align=left&display=inline&height=595&margin=%5Bobject%20Object%5D&originHeight=595&originWidth=640&size=0&status=done&style=none&width=640"></p><p>状态码和信息就会一一对应，比较好维护。</p><h3 id=Data><a href=#Data class=headerlink title=Data></a>Data</h3><p>**<br>返回数据体，JSON 格式，根据不同的业务又不同的 JSON 体。</p><p>我们要设计一个返回体类 Result</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784764-d4ec160e-0ac1-4c6b-b4db-f75ad3f2adf4.webp#align=left&display=inline&height=348&margin=%5Bobject%20Object%5D&originHeight=348&originWidth=640&size=0&status=done&style=none&width=640"></p><h1 id=控制层-Controller><a href=#控制层-Controller class=headerlink title="控制层 Controller"></a>控制层 Controller</h1><p>我们会在 controller 层处理业务请求，并返回给前端，以 order 订单为例</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784750-2a46f7a5-ebf7-4d24-b588-6784c1fa028e.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640"></p><p>我们看到在获得 order 对象之后，我们是用的 Result 构造方法进行包装赋值，然后进行返回。小伙伴们有没有发现，构造方法这样的包装是不是很麻烦，我们可以优化一下。</p><h1 id=美观美化><a href=#美观美化 class=headerlink title=美观美化></a>美观美化</h1><p>我们可以在 Result 类中，加入静态方法，一看就懂</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784774-082e5ccf-84da-4e17-a98b-0ddab7c93958.webp#align=left&display=inline&height=559&margin=%5Bobject%20Object%5D&originHeight=559&originWidth=640&size=0&status=done&style=none&width=640"></p><p>那我们来改造一下 Controller</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784780-27e478de-86b0-46c7-b8ef-23ac367329ba.webp#align=left&display=inline&height=324&margin=%5Bobject%20Object%5D&originHeight=324&originWidth=640&size=0&status=done&style=none&width=640"></p><p>代码是不是比较简洁了，也美观了。</p><h1 id=优雅优化><a href=#优雅优化 class=headerlink title=优雅优化></a>优雅优化</h1><p>上面我们看到在 Result 类中增加了静态方法，使得业务处理代码简洁了。但小伙伴们有没有发现这样有几个问题：</p><blockquote><p>1、每个方法的返回都是 Result 封装对象，没有业务含义<br>2、在业务代码中，成功的时候我们调用 Result.success，异常错误调用 Result.failure。是不是很多余<br>3、上面的代码，判断 id 是否为 null，其实我们可以使用 validate 做校验，没有必要在方法体中做判断。</p></blockquote><p>我们最好的方式直接返回真实业务对象，最好不要改变之前的业务方式，如下图</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784777-4085f216-da7f-4ba6-9557-d1de5a628da0.webp#align=left&display=inline&height=289&margin=%5Bobject%20Object%5D&originHeight=289&originWidth=640&size=0&status=done&style=none&width=640"></p><p>这个和我们平时的代码是一样的，非常直观，直接返回 order 对象，这样是不是很完美。那实现方案是什么呢？</p><h1 id=实现方案><a href=#实现方案 class=headerlink title=实现方案></a>实现方案</h1><p>小伙伴们怎么去实现是不是有点思路，在这个过程中，我们需要做几个事情</p><blockquote><p>1、自定义一个注解@ResponseResult，表示这个接口返回的值需要包装一下<br>2、拦截请求，判断此请求是否需要被@ResponseResult 注解<br>3、核心步骤就是实现接口 ResponseBodyAdvice 和@ControllerAdvice，判断是否需要包装返回值，如果需要，就把 Controller 接口的返回值进行重写。</p></blockquote><p>**</p><h3 id=注解类><a href=#注解类 class=headerlink title=注解类></a>注解类</h3><p>用来标记方法的返回值，是否需要包装</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784775-129682ec-9579-46b9-a949-2e8fbeae2560.webp#align=left&display=inline&height=231&margin=%5Bobject%20Object%5D&originHeight=231&originWidth=640&size=0&status=done&style=none&width=640"></p><h3 id=拦截器><a href=#拦截器 class=headerlink title=拦截器></a>拦截器</h3><p>**<br>拦截请求，是否此请求返回的值需要包装，其实就是运行的时候，解析@ResponseResult 注解</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784801-d45174ac-0784-47a7-8aeb-bdf45b8df3aa.webp#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&originHeight=339&originWidth=640&size=0&status=done&style=none&width=640"></p><p>此代码核心思想，就是获取此请求，是否需要返回值包装，设置一个属性标记。</p><p><strong>重写返回体</strong><br>**<br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784797-b151fee3-14f0-431b-bada-e972427c8143.webp#align=left&display=inline&height=292&margin=%5Bobject%20Object%5D&originHeight=292&originWidth=640&size=0&status=done&style=none&width=640"></p><p>上面代码就是判断是否需要返回值包装，如果需要就直接包装。这里我们只处理了正常成功的包装，如果方法体</p><p>报异常怎么办？处理异常也比较简单，只要判断 body 是否为异常类。</p><p><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784804-3281d852-6665-4cc2-83ab-7324830b0759.webp#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&originHeight=290&originWidth=1080&size=0&status=done&style=none&width=1080"></p><h3 id=重写-Controller><a href=#重写-Controller class=headerlink title="重写 Controller"></a>重写 Controller</h3><p>**<br><img data-src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1600604784825-5321d467-5d85-4d97-b80c-35a5137c5d2e.webp#align=left&display=inline&height=299&margin=%5Bobject%20Object%5D&originHeight=299&originWidth=640&size=0&status=done&style=none&width=640"></p><p>在控制器类上或者方法体上加上自定义注解@ResponseResult，这样就 ok 了，简单吧。到此返回的设计思路完成，是不是又简洁，又优雅。</p><p>这个方案还有没有别的优化空间，当然是有的。如：每次请求都要反射一下，获取请求的方法是否需要包装，其实可以做个缓存，不需要每次都需要解析。当然整体思路了解，小伙伴们就可以在此基础上面再自行扩展。</p></div><div><ul class=post-copyright><li class=post-copyright-author><strong>本文作者：</strong>何年何月何时多</li><li class=post-copyright-link><strong>本文链接：</strong> <a href="https://blog.guard.ren/2020/446ddbc4/" title=后端API接口>https://blog.guard.ren/2020/446ddbc4/</a></li><li class=post-copyright-license><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel=noopener target=_blank><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class=post-footer><div class=post-nav><div class=post-nav-item><a href="/2020/a7df3577/" rel=prev title=安装Ubuntu><i class="fa fa-chevron-left"></i> 安装Ubuntu</a></div><div class=post-nav-item></div></div></footer></article></div></div><div class=comments id=valine-comments></div><script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script></div><div class="toggle sidebar-toggle"><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div><aside class=sidebar><div class=sidebar-inner><ul class="sidebar-nav motion-element"><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class="post-toc-wrap sidebar-panel"><div class="post-toc motion-element"><ol class=nav><li class="nav-item nav-level-1"><a class=nav-link href=#接口交互><span class=nav-number>1.</span> <span class=nav-text>接口交互</span></a></li><li class="nav-item nav-level-1"><a class=nav-link href=#返回格式><span class=nav-number>2.</span> <span class=nav-text>返回格式</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#CODE-状态码><span class=nav-number>2.0.1.</span> <span class=nav-text>CODE 状态码</span></a></li><li class="nav-item nav-level-3"><a class=nav-link href=#Message><span class=nav-number>2.0.2.</span> <span class=nav-text>Message</span></a></li><li class="nav-item nav-level-3"><a class=nav-link href=#Data><span class=nav-number>2.0.3.</span> <span class=nav-text>Data</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class=nav-link href=#控制层-Controller><span class=nav-number>3.</span> <span class=nav-text>控制层 Controller</span></a></li><li class="nav-item nav-level-1"><a class=nav-link href=#美观美化><span class=nav-number>4.</span> <span class=nav-text>美观美化</span></a></li><li class="nav-item nav-level-1"><a class=nav-link href=#优雅优化><span class=nav-number>5.</span> <span class=nav-text>优雅优化</span></a></li><li class="nav-item nav-level-1"><a class=nav-link href=#实现方案><span class=nav-number>6.</span> <span class=nav-text>实现方案</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#注解类><span class=nav-number>6.0.1.</span> <span class=nav-text>注解类</span></a></li><li class="nav-item nav-level-3"><a class=nav-link href=#拦截器><span class=nav-number>6.0.2.</span> <span class=nav-text>拦截器</span></a></li><li class="nav-item nav-level-3"><a class=nav-link href=#重写-Controller><span class=nav-number>6.0.3.</span> <span class=nav-text>重写 Controller</span></a></li></ol></li></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=何年何月何时多 src="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=5"><p class=site-author-name itemprop=name>何年何月何时多</p><div class=site-description itemprop=description>我的身旁是一扇亮了又暗的窗</div></div><div class="site-state-wrap motion-element"><nav class=site-state><div class="site-state-item site-state-posts"><a href="/archives/"><span class=site-state-item-count>7</span> <span class=site-state-item-name>日志</span></a></div></nav></div><div class="links-of-author motion-element"><span class=links-of-author-item><a href=https://github.com/isGuard title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isGuard" rel=noopener target=_blank><i class="fa fa-fw fa-github"></i>GitHub</a></span> <span class=links-of-author-item><a href=mailto:isguard@outlook.com title="E-Mail → mailto:isguard@outlook.com" rel=noopener target=_blank><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="cc-license motion-element" itemprop=license><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class=cc-opacity rel=noopener target=_blank><img src=/images/cc-by-nc-sa.svg alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element"><div class=links-of-blogroll-title><i class="fa fa-fw fa-link"></i> 友链</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href="https://www.lostdeer.cn/" title=https:&#x2F;&#x2F;www.lostdeer.cn rel=noopener target=_blank>LostDeer</a></li></ul></div></div></div></aside><div id=sidebar-dimmer></div></div></main><footer class=footer><div class=footer-inner><div class=copyright>&copy; 2019 – <span itemprop=copyrightYear>2020</span> <span class=with-love><i class="fa fa-heart"></i></span> <span class=author itemprop=copyrightHolder>何年何月何时多</span> <span class=post-meta-divider>|</span> <span class=post-meta-item-icon><i class="fa fa-area-chart"></i></span> <span class=post-meta-item-text>站点总字数：</span> <span title=站点总字数>53k</span> <span class=post-meta-divider>|</span> <span class=post-meta-item-icon><i class="fa fa-coffee"></i></span> <span class=post-meta-item-text>站点阅读时长 &asymp;</span> <span title=站点阅读时长>48 分钟</span></div><div class=addthis_inline_share_toolbox><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c9a39fa0e8d042b" async></script></div><div style="display: none;"><script pjax src="//s95.cnzz.com/z_stat.php?id=1261517279&web_id=1261517279"></script></div></div></footer></div><script src=/lib/anime.min.js></script><script src=//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js></script><script src=//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js></script><script src=//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js></script><script src=//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js></script><script src=//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js></script><script src=/js/utils.js></script><script src=/js/motion.js></script><script src=/js/schemes/muse.js></script><script src=/js/next-boot.js></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script><script defer src=//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js></script><script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script><script src=/js/local-search.js></script><div id=pjax><script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'C9AAW8SB4K7bNBlRqfu6rywU-gzGzoHsz',
+      appKey     : 'ChKeqxyh2HFkQT23TV4lEEWE',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！快活啊！",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><script type=text/javascript>
+if(document.getElementById('guard')){
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.src= 'https://v1.hitokoto.cn/?encode=js&select=%23guard';
+    head.appendChild(script);
+}
+</script></div><script src=/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
