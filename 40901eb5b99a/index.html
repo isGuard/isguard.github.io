@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Fool">
+  <meta name="keywords" content="">
+  
+  <title>表格计算 - 梦里的竹蜻蜓</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.gurad.ren","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"2d6a21bdd6e9c407e7e8a37193a8230b","google":"ga:192080150","gtag":"UA-136832726-1","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"XhzUk14bCmCVREHE5ROg559J","app_key":"c8Fw7RQke0iYCjQb2NX4jwSW","server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>梦里的竹蜻蜓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                时间轴
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                简介
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default_post.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="表格计算">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-04-17 23:43" pubdate>
+        2018-04-17 23:43
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">表格计算</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2019-04-06 23:43
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>某次无聊中， atm 发现了一个很老的程序。这个程序的功能类似于 Excel ，它对一个表格进行操作。<br>不妨设表格有 n 行，每行有 m 个格子。<br>每个格子的内容可以是一个正整数，也可以是一个公式。<br>公式包括三种：</p>
+<ol>
+<li>SUM(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的和。</li>
+<li>AVG(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的平均数。</li>
+<li>STD(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的标准差。</li>
+</ol>
+<p>标准差即为方差的平方根。<br>方差就是：每个数据与平均值的差的平方的平均值，用来衡量单个数据离开平均数的程度。</p>
+<p>公式都不会出现嵌套。</p>
+<p>如果这个格子内是一个数，则这个格子的值等于这个数，否则这个格子的值等于格子公式求值结果。</p>
+<p>输入这个表格后，程序会输出每个格子的值。atm 觉得这个程序很好玩，他也想实现一下这个程序。</p>
+<p>「输入格式」<br>第一行两个数 n, m 。<br>接下来 n 行输入一个表格。每行 m 个由空格隔开的字符串，分别表示对应格子的内容。<br>输入保证不会出现循环依赖的情况，即不会出现两个格子 a 和 b 使得 a 的值依赖 b 的值且 b 的值依赖 a 的值。</p>
+<p>「输出格式」<br>输出一个表格，共 n 行，每行 m 个保留两位小数的实数。<br>数据保证不会有格子的值超过 1e6 。</p>
+<p>「样例输入」<br>3 2<br>1 SUM(2,1:3,1)<br>2 AVG(1,1:1,2)<br>SUM(1,1:2,1) STD(1,1:2,2)</p>
+<p>「样例输出」<br>1.00 5.00<br>2.00 3.00<br>3.00 1.48</p>
+<p>「数据范围」<br>对于 30% 的数据，满足： n, m &lt;= 5<br>对于 100% 的数据，满足： n, m &lt;= 50</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 512M<br>CPU消耗 &lt; 2000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
+<figure class="highlight processing"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs processing"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-keyword">public</span> class Main &#123;<br>	<span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span>[][] form;<br><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">String</span>[] args) &#123;<br>		input();<span class="hljs-comment">// 输入</span><br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; form.length; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; form[i].length; j++) &#123;<br>				form[i][j] = judgment(form[i][j]);<br>			&#125;<br>		&#125;<br>		out();<br>	&#125;<br><br>	<span class="hljs-comment">// 判断</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> judgment(<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br><br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;A&#x27;</span>) &#123;<span class="hljs-comment">// 平均数</span><br>			<span class="hljs-keyword">return</span> average(<span class="hljs-built_in">str</span>);<br>		&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;S&#x27;</span>) &#123;<br>			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">str</span>.charAt(<span class="hljs-number">1</span>) == <span class="hljs-string">&#x27;U&#x27;</span>) &#123; <span class="hljs-comment">// 和</span><br>				<span class="hljs-keyword">return</span> with(<span class="hljs-built_in">str</span>);<br>			&#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">// 标准差</span><br>				<span class="hljs-keyword">return</span> standardDeviation(<span class="hljs-built_in">str</span>);<br>			&#125;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">// 数</span><br>			<span class="hljs-keyword">return</span> <span class="hljs-keyword">String</span>.format(<span class="hljs-string">&quot;%.2f&quot;</span>, Double.parseDouble(<span class="hljs-built_in">str</span>));<br>		&#125;<br><br>	&#125;<br><br>	<span class="hljs-comment">// 标准差</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> standardDeviation(<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>		<span class="hljs-built_in">int</span>[] number = axis(<span class="hljs-built_in">str</span>);<br>		ArrayList squ = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>		<span class="hljs-keyword">double</span> ave = <span class="hljs-number">0</span>, square = <span class="hljs-number">0</span>, num = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = number[<span class="hljs-number">0</span>]; i &lt;= number[<span class="hljs-number">2</span>]; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = number[<span class="hljs-number">1</span>]; j &lt;= number[<span class="hljs-number">3</span>]; j++) &#123;<br>				ave += Double.parseDouble(judgment(form[i][j]));<br>				squ.<span class="hljs-built_in">add</span>(Double.parseDouble(judgment(form[i][j])));<br>				num++;<br>			&#125;<br>		&#125;<br>		ave = ave / num;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; squ.<span class="hljs-built_in">size</span>(); i++) &#123;<br>			square += (squ.<span class="hljs-built_in">get</span>(i) - ave) * (squ.<span class="hljs-built_in">get</span>(i) - ave);<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">String</span>.format(<span class="hljs-string">&quot;%.2f&quot;</span>, Math.<span class="hljs-built_in">sqrt</span>(square / num));<br>	&#125;<br><br>	<span class="hljs-comment">// 和</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> with(<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>		<span class="hljs-built_in">int</span>[] number = axis(<span class="hljs-built_in">str</span>);<br>		<span class="hljs-keyword">double</span> sum = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = number[<span class="hljs-number">0</span>]; i &lt;= number[<span class="hljs-number">2</span>]; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = number[<span class="hljs-number">1</span>]; j &lt;= number[<span class="hljs-number">3</span>]; j++) &#123;<br>				sum += Double.parseDouble(judgment(form[i][j]));<br><br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">String</span>.format(<span class="hljs-string">&quot;%.2f&quot;</span>, sum);<br>	&#125;<br><br>	<span class="hljs-comment">// 平均数</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> average(<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>		<span class="hljs-built_in">int</span>[] number = axis(<span class="hljs-built_in">str</span>);<br>		<span class="hljs-keyword">double</span> ave = <span class="hljs-number">0</span>, num = <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = number[<span class="hljs-number">0</span>]; i &lt;= number[<span class="hljs-number">2</span>]; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = number[<span class="hljs-number">1</span>]; j &lt;= number[<span class="hljs-number">3</span>]; j++) &#123;<br>				ave += Double.parseDouble(judgment(form[i][j]));<br>				num++;<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">String</span>.format(<span class="hljs-string">&quot;%.2f&quot;</span>, ave / num);<br>	&#125;<br><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span>[] axis(<span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span>) &#123;<br>		<span class="hljs-built_in">int</span>[] number = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">4</span>];<br>		<span class="hljs-built_in">int</span> a = <span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&quot;(&quot;</span>);<br>		<span class="hljs-built_in">int</span> b = <span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&quot;,&quot;</span>);<br>		<span class="hljs-built_in">int</span> c = <span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&quot;:&quot;</span>);<br>		<span class="hljs-built_in">int</span> d = <span class="hljs-built_in">str</span>.lastIndexOf(<span class="hljs-string">&quot;,&quot;</span>);<br>		<span class="hljs-built_in">int</span> e = <span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&quot;)&quot;</span>);<br>		<span class="hljs-keyword">String</span> x1 = <span class="hljs-built_in">str</span>.substring(a + <span class="hljs-number">1</span>, b);<br>		<span class="hljs-keyword">String</span> y1 = <span class="hljs-built_in">str</span>.substring(b + <span class="hljs-number">1</span>, c);<br>		<span class="hljs-keyword">String</span> x2 = <span class="hljs-built_in">str</span>.substring(c + <span class="hljs-number">1</span>, d);<br>		<span class="hljs-keyword">String</span> y2 = <span class="hljs-built_in">str</span>.substring(d + <span class="hljs-number">1</span>, e);<br>		number[<span class="hljs-number">0</span>] = Integer.parseInt(x1) - <span class="hljs-number">1</span>;<br>		number[<span class="hljs-number">1</span>] = Integer.parseInt(y1) - <span class="hljs-number">1</span>;<br>		number[<span class="hljs-number">2</span>] = Integer.parseInt(x2) - <span class="hljs-number">1</span>;<br>		number[<span class="hljs-number">3</span>] = Integer.parseInt(y2) - <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">return</span> number;<br>	&#125;<br><br>	<span class="hljs-comment">// 输入</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> input() &#123;<br>		Scanner scanner = <span class="hljs-keyword">new</span> Scanner(System.in);<br>		<span class="hljs-built_in">int</span> row = scanner.nextInt();<br>		<span class="hljs-built_in">int</span> col = scanner.nextInt();<br>		form = <span class="hljs-keyword">new</span> <span class="hljs-keyword">String</span>[row][col];<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; form.length; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; form[i].length; j++) &#123;<br>				form[i][j] = scanner.next();<br>			&#125;<br>		&#125;<br>		scanner.close();<br>	&#125;<br><br>	<span class="hljs-comment">// 输出</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> out() &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; form.length; i++) &#123;<br>			<span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; form[i].length; j++) &#123;<br>				System.out.<span class="hljs-built_in">print</span>(form[i][j] + <span class="hljs-string">&quot; &quot;</span>);<br>			&#125;<br>			System.out.<span class="hljs-built_in">println</span>();<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/1698a47fcf6a/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/9865be07681a/">
+                        <span class="hidden-mobile">穿越雷区</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"XhzUk14bCmCVREHE5ROg559J-MdYXbMMI","appKey":"c8Fw7RQke0iYCjQb2NX4jwSW","placeholder":"说点什么...","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Powered By - <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Theme - <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'ga:192080150', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-136832726-1');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
