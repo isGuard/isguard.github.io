@@ -663,6 +663,64 @@
   
   
   <entry>
+    <title>Ubuntu 20.04安装配置过程</title>
+    <link href="/6f2cd147c9da.html"/>
+    <url>/6f2cd147c9da.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="背-景-简-介"><a href="#背-景-简-介" class="headerlink" title="背 景 简 介"></a><strong>背 景 简 介</strong></h1><p>放了好久的 Ubuntu18.04 没打开使用，最近打开发现有些文件找不到路径，也懒得去找哪里错了，刚好最新的 Ubuntu20.04 已经出来了，干脆重新装一个最新版本的得了。<br>   话不多说，开干！</p><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul><li><p>Windows 10 专业版，64 位操作系统；</p></li><li><p>VMware15 Pro，版本：15.0.0 build-10134415；</p></li><li><p>Ubuntu 版本：ubuntu-20.04.1-desktop-amd64.iso</p></li></ul><h1 id="安装过程记录"><a href="#安装过程记录" class="headerlink" title="安装过程记录"></a>安装过程记录</h1><h3 id="打开-VMware15-软件，选择创建新的虚拟机；"><a href="#打开-VMware15-软件，选择创建新的虚拟机；" class="headerlink" title="打开 VMware15 软件，选择创建新的虚拟机；"></a>打开 VMware15 软件，选择创建新的虚拟机；</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129183-aa2e1835-de0e-4ef7-a911-dc47c689460d.webp#align=left&display=inline&height=427&margin=%5Bobject%20Object%5D&originHeight=427&originWidth=947&size=0&status=done&style=none&width=947"></p><h3 id="默认选择自定义配置，下一步"><a href="#默认选择自定义配置，下一步" class="headerlink" title="默认选择自定义配置，下一步"></a>默认选择自定义配置，下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129159-a1a2b330-059f-4d87-925f-07fcfbb37c7c.webp#align=left&display=inline&height=424&margin=%5Bobject%20Object%5D&originHeight=424&originWidth=497&size=0&status=done&style=none&width=497"></p><h3 id="虚拟机硬件兼容性，直接使用默认即可，然后下一步"><a href="#虚拟机硬件兼容性，直接使用默认即可，然后下一步" class="headerlink" title="虚拟机硬件兼容性，直接使用默认即可，然后下一步"></a>虚拟机硬件兼容性，直接使用默认即可，然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129159-4eea0890-9955-4674-86db-e2e2a6fdada9.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="选择：稍后安装操作系统，然后下一步"><a href="#选择：稍后安装操作系统，然后下一步" class="headerlink" title="选择：稍后安装操作系统，然后下一步"></a>选择：稍后安装操作系统，然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1606200129153-c3244dd4-670e-45f2-9ed9-d98822d8c5c4.png#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="系统选择：Linux，Ubuntu-64-位，然后下一步"><a href="#系统选择：Linux，Ubuntu-64-位，然后下一步" class="headerlink" title="系统选择：Linux，Ubuntu 64 位，然后下一步"></a>系统选择：Linux，Ubuntu 64 位，然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129167-2ef3b562-4331-41af-9f0a-c07241c0da2c.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="虚拟机名称可以根据自己需要修改，安装路径也可以自定义，不建议放-C-盘，然后下一步"><a href="#虚拟机名称可以根据自己需要修改，安装路径也可以自定义，不建议放-C-盘，然后下一步" class="headerlink" title="虚拟机名称可以根据自己需要修改，安装路径也可以自定义，不建议放 C 盘，然后下一步"></a>虚拟机名称可以根据自己需要修改，安装路径也可以自定义，不建议放 C 盘，然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129141-0d01887e-05bd-446b-aee6-501492e41a60.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="处理器配置需要根据自己电脑实际情况，进行配置（PS：内核总数越多，可以加快编译速度，提高效率）。配置完成后点击下一步"><a href="#处理器配置需要根据自己电脑实际情况，进行配置（PS：内核总数越多，可以加快编译速度，提高效率）。配置完成后点击下一步" class="headerlink" title="处理器配置需要根据自己电脑实际情况，进行配置（PS：内核总数越多，可以加快编译速度，提高效率）。配置完成后点击下一步"></a>处理器配置需要根据自己电脑实际情况，进行配置（PS：内核总数越多，可以加快编译速度，提高效率）。配置完成后点击下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129163-cf9f782b-ee45-454b-b35f-ae05c72cf107.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="虚拟机分配的内存，根据实际情况来，当然越大越好，系统运行速度什么的会更快。然后下一步"><a href="#虚拟机分配的内存，根据实际情况来，当然越大越好，系统运行速度什么的会更快。然后下一步" class="headerlink" title="虚拟机分配的内存，根据实际情况来，当然越大越好，系统运行速度什么的会更快。然后下一步"></a>虚拟机分配的内存，根据实际情况来，当然越大越好，系统运行速度什么的会更快。然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129242-973b1145-5446-440e-898c-1a1319aa533e.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="网络类型使用默认，然后下一步。"><a href="#网络类型使用默认，然后下一步。" class="headerlink" title="网络类型使用默认，然后下一步。"></a>网络类型使用默认，然后下一步。</h3><ul><li>（PS：如果后续想要给 Ubuntu 设置静态 IP 地址，可以参考：<a href="https://blog.csdn.net/Fighting_Boom/article/details/102755385" rel="external nofollow noreferrer">https://blog.csdn.net/Fighting_Boom/article/details/102755385</a></li></ul><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129182-1ba46526-264a-4c37-90e2-942e076000a9.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="I-O-控制器类型，默认即可，下一步"><a href="#I-O-控制器类型，默认即可，下一步" class="headerlink" title="I/O 控制器类型，默认即可，下一步"></a>I/O 控制器类型，默认即可，下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129205-f5ace47b-6028-4fd9-9f63-b15fae95f6c6.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="磁盘类型，默认即可，下一步"><a href="#磁盘类型，默认即可，下一步" class="headerlink" title="磁盘类型，默认即可，下一步"></a>磁盘类型，默认即可，下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1606200129194-abb2d9dc-f684-4d83-af4d-d7b87a583572.png#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="选择磁盘：默认即可，下一步"><a href="#选择磁盘：默认即可，下一步" class="headerlink" title="选择磁盘：默认即可，下一步"></a>选择磁盘：默认即可，下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129196-cd880bf4-903b-42f3-ae02-acab802d6ca8.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="磁盘大小，根据需要，不过由于这个是虚拟大小"><a href="#磁盘大小，根据需要，不过由于这个是虚拟大小" class="headerlink" title="磁盘大小，根据需要，不过由于这个是虚拟大小"></a>磁盘大小，根据需要，不过由于这个是虚拟大小</h3><ul><li>（虚拟大小：你给 Ubuntu 分配这么多内存，实际可能用不到这么多，会以实际使用的内存大小为准，虚拟大小就相当于一个上限），因此可以适当大一点也无所谓。</li><li>其他使用默认即可，下一步</li></ul><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129199-102eb3c0-219f-4563-a412-8771fdbb711d.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="文件名使用默认，路径与之前安装虚拟机的路径保持一致，然后下一步"><a href="#文件名使用默认，路径与之前安装虚拟机的路径保持一致，然后下一步" class="headerlink" title="文件名使用默认，路径与之前安装虚拟机的路径保持一致，然后下一步"></a>文件名使用默认，路径与之前安装虚拟机的路径保持一致，然后下一步</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/webp/241578/1606200129256-9a5622d8-5e95-4ab9-985a-09ab9078ca94.webp#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&originHeight=433&originWidth=499&size=0&status=done&style=none&width=499"></p><h3 id="都设置完成后，可以再确认一遍信息，有问题点击-“自定义硬件”-进行修改，若无问题，点击-“完成”-。"><a href="#都设置完成后，可以再确认一遍信息，有问题点击-“自定义硬件”-进行修改，若无问题，点击-“完成”-。" class="headerlink" title="都设置完成后，可以再确认一遍信息，有问题点击 “自定义硬件” 进行修改，若无问题，点击 “完成” 。"></a>都设置完成后，可以再确认一遍信息，有问题点击 “自定义硬件” 进行修改，若无问题，点击 “完成” 。</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>Ubuntu</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>安装Ubuntu</title>
+    <link href="/c5e01090a818.html"/>
+    <url>/c5e01090a818.html</url>
+    
+    <content type="html"><![CDATA[<p>准备工作</p><ul><li>需要 VMware</li></ul><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu 下载地址:<a href="http://releases.ubuntu.com/" rel="external nofollow noreferrer">http://releases.ubuntu.com/</a></p><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040136643-2bdf1374-b38b-4157-bd87-90693b620088.png#align=left&display=inline&height=404&margin=%5Bobject%20Object%5D&name=image-20200403154017477.png&originHeight=404&originWidth=1101&size=211638&status=done&style=none&width=1101" alt="image-20200403154017477.png"><br><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040177477-7f99bf31-43f9-40b4-91ec-d9e508dc36cb.png#align=left&display=inline&height=729&margin=%5Bobject%20Object%5D&name=image-20200403155024305.png&originHeight=729&originWidth=1183&size=176892&status=done&style=none&width=1183" alt="image-20200403155024305.png"></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040183821-52f75162-72b7-4b03-969c-c52caf59fcb2.png#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&name=image-20200403154049421.png&originHeight=433&originWidth=530&size=21557&status=done&style=none&width=530" alt="image-20200403154049421.png"></p><h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在 VMware 里面准备好虚拟机</p><h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040198076-ee0f3a17-6adf-4f9a-81ca-22caf3e80202.png#align=left&display=inline&height=401&margin=%5Bobject%20Object%5D&name=image-20200403154231003.png&originHeight=401&originWidth=846&size=17684&status=done&style=none&width=846" alt="image-20200403154231003.png"></p><h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040216586-83783de6-f5e0-401a-983a-7914185fe360.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image-20200403154423758.png&originHeight=435&originWidth=500&size=35323&status=done&style=none&width=500" alt="image-20200403154423758.png"></p><h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040231549-e065865f-0f7c-49d8-b4df-0818d163f478.png#align=left&display=inline&height=433&margin=%5Bobject%20Object%5D&name=image-20200403154528596.png&originHeight=433&originWidth=496&size=17032&status=done&style=none&width=496" alt="image-20200403154528596.png"></p><h4 id="创建-64-位的虚拟机"><a href="#创建-64-位的虚拟机" class="headerlink" title="创建 64 位的虚拟机"></a>创建 64 位的虚拟机</h4><p>因为默认下载的为 64 位的<br><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040244266-53eaf6dc-b74b-49db-bfc2-2dd742ca585a.png#align=left&display=inline&height=437&margin=%5Bobject%20Object%5D&name=image-20200403154642694.png&originHeight=437&originWidth=533&size=25230&status=done&style=none&width=533" alt="image-20200403154642694.png"><br>所在在选择系统的时候选择 64 位的系统<br><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040261176-c9fad022-696f-49c6-88d7-943b6ba748ce.png#align=left&display=inline&height=437&margin=%5Bobject%20Object%5D&name=image-20200403154754885.png&originHeight=437&originWidth=496&size=15956&status=done&style=none&width=496" alt="image-20200403154754885.png"></p><h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多 40G~60G）</p><table><thead><tr><th><strong>挂载点(目录)</strong></th><th><strong>建议大小</strong></th><th><strong>格式</strong></th><th><strong>作用</strong></th></tr></thead><tbody><tr><td>/</td><td>20G 左右</td><td>ext4</td><td>根目录</td></tr><tr><td>/home</td><td>越大越好</td><td>ext4</td><td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td></tr><tr><td>/boot</td><td>300M 左右</td><td>ext4</td><td>一般几百 M，主要存放 linux 内核及一些引导文件</td></tr><tr><td>/tmp</td><td>10G 左右</td><td>ext4</td><td>系统的一些临时文件</td></tr><tr><td>/swap</td><td>8G 左右</td><td>swap 交换空间</td><td>相当于虚拟内存</td></tr></tbody></table><p><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040297954-996f08b2-a2ea-4aad-bef7-76966763624c.png#align=left&display=inline&height=434&margin=%5Bobject%20Object%5D&name=image-20200403154918626.png&originHeight=434&originWidth=499&size=12992&status=done&style=none&width=499" alt="image-20200403154918626.png"></p><h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件<br><img src="https://cdn.nlark.com/yuque/0/2020/png/241578/1599040312928-1c342206-6187-4c65-b7c1-b33bf61e2fb6.png#align=left&display=inline&height=429&margin=%5Bobject%20Object%5D&name=image-20200403155511139.png&originHeight=429&originWidth=500&size=15687&status=done&style=none&width=500" alt="image-20200403155511139.png"><br>然后下一步，就好了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>Ubuntu</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>请不要再泥淖中停留</title>
     <link href="/ed9501b8d471.html"/>
     <url>/ed9501b8d471.html</url>
@@ -670,6 +728,20 @@
     <content type="html"><![CDATA[<p>喂？你还有什么没说完的吗<br>我说的是真的！没有跟你开玩笑，我们不要联系了<br>我已经考虑过了<br>哎呀！<br>我说了我已经想好了，我早就想好了，别墨迹了求求你，行不行<br>对，我是说过我们可以做朋友<br>但你是不是不懂什么叫礼貌啊<br>你表白的时候说的那么诚恳那么深情，你觉得我能说什么<br>你对我特别好，真的挺谢谢你的<br>前段时间我也比较困难，多亏了有你帮我<br>我只是觉得不太好，再这么拖着你不好<br>已经太久了，你不觉得吗<br>我都替你觉得累</p><p>我说过了，你应该有你自己的幸福，我给不了你<br>我？这个用不着你担心吧，我有我自己的生活，过的挺好的<br>你能不能想想你自己，你不觉得很可怜吗<br>你这是什么问题？你没有自己的事情吗<br>你能不能不要每天就知道问我吃什么穿什么冷不冷开不开心难不难过啊<br>还有一大堆你自己的大事小事<br>你很闲吗？<br>我跟你说我根本就不关心，我不想再听你叨叨了可以吗<br>你自己看看聊天记录，我一天回你几条<br>你没有朋友劝过你吗</p><p>呼~<br>我实话给你说了，其实你发的消息，我当时就收到了<br>现在什么年代啊<br>哪有那么多人，哪有那么忙的工作，连看手机消息的时间都没有啊<br>我就是不想回，就直接点掉划出去了<br>结果你还在还在说，真的看不下去<br>手机一直响，那就回你一下<br>我关静音，我还得收别人消息啊<br>我说什么忙啊，累啊，睡着了，你自己心里没数吗<br>还一句一句回我等你，你是不是觉得自己特别温柔、特别体贴<br>你烦不烦啊？烦不烦啊？<br>哎！你为什么要拿我说的那些话当什么证据<br>你不觉得你现在的语气挺可笑的吗</p><p>“我也挺关心你的”<br>“我不想你难过”<br>“我们还是好朋友吧”<br>“你是我很重要的人啊”<br>啊！这些……是，是我说的，那又如何<br>我不认，我现在不认，你怎么办呢<br>我只是不想伤你心伤的太狠<br>我不想把事情做绝，我不想我们之间没有余地，我才那样说的<br>你连礼貌客套和真心话都分不清，你怎么跟人谈恋爱啊</p><p>我为什么现在跟你说这些，呵，因为……因为我发现我没有必要在乎你怎么想<br>对吧，我再在乎下去，你会一直一直一直一直一直烦我啊<br>跟我聊那些没有意义的狗屁天，能当饭吃吗<br>唉！你该不会以为这样下去总有一天我会发现你的好，被你感动，我会发现你是这个世界上对我最好的人，我会喜欢上你，我会跟你在一起吧<br>你是不是有这种念头，有这种希望<br>你真挺有意思，我发现你们这些男的都挺有意思<br>很难理解吗，你换位思考一下一个女的你看不<br>她天天缠着你说一些你不感兴趣的事，还要管你的日常生活，你会喜欢上她<br>你少看点电视剧吧<br>你对我？重要啊<br>也没那么一无是处，你对我，当然是很重要的存在</p><p>那既然话都说到这份上了，你就当我在支教吧<br>我是怎么想的<br>我看你跟在我屁股后面，像条狗一样，我叫便来，还就挺高兴的<br>这就说明我还是很招人喜欢，是有魅力的<br>啊，那天晚上我是跟你说的多了点<br>那是因为我当时看上的小哥对我有点冷淡，心情很低落<br>但跟你聊几句吧，我就觉得能量又回上来了<br>我又有勇气继续对他主动了<br>你明白我的意思吗？<br>这…..你不过是我的血包罢了<br>我想聊天了、想上分了、想找个人吃饭了、想听点夸夸、想被供着了就打几个字就行了<br>谁知道你这么好上钩啊<br>都没没怎么费力气，日常的一些相处你就开始说喜欢什么的了<br>甚至我越不理你，你越来劲，怎么<br>是没人对你好过吗</p><p>我对谁都那样<br>我跟谁都那样<br>跟你是谁没关系<br>这就是我和一个人熟悉的流程<br>我也不是故意的啊，那交朋友不就是要多接触吗<br>谁知道跟你打几天游戏，连几天麦，你就动心了啊<br>我跟你说几句晚安，然后说一些私事，什么都代表不了<br>你清楚吗<br>如果当时和我聊天的不是你，是别人，我还是会说同样的话<br>因为我就是想这样表达，想这样说，和你是谁没关系，能听懂吗<br>是你，是我微信新加一天的人，还是我随便揪一个老同学，都一样的<br>你明白吗<br>我根本就不在乎跟谁说这些事情<br>所以我说，所以我说你们这些小男生是真挺有意思的</p><p>呵呵，你自己想一想<br>你觉得你在我这像个人吗<br>你看看自己卑微的样子，正常人有像你这样的吗<br>你是温柔是体贴是为我着想，我用你呢？<br>你这副失去自我的样子，你觉的还有个人样吗？你觉的还有个人样吗？<br>我要跟一个完整的人谈恋爱，我再问你一遍，你觉得你在我这里，你像个人吗</p><p>哎…..我跟你废话那么多干什么<br>你人真的挺好的，你还是找个真心对你好的人吧，啊<br>我不值得，好不好<br>真心为你好的人，怎么舍得看你这样子啊<br>天天失魂落魄，自己的事情都做不好，满脑子都是别人，时间都等着别人安排<br>没有这样的，啊<br>行了，行了行了<br>别再找我了<br>好吧<br>就当是我积德了<br>你不要再找我了<br>对大家都好<br>祝你幸福啊</p>]]></content>
     
     
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>生活</tag>
+      
+    </tags>
     
   </entry>
   
