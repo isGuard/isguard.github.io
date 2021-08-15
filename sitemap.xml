@@ -23,20 +23,6 @@
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/c5e01090a818.html</loc>
-    
-    <lastmod>2021-08-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.guard.ren/6f2cd147c9da.html</loc>
-    
-    <lastmod>2021-08-15</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.guard.ren/da07fbdb9fd0.html</loc>
     
     <lastmod>2021-08-15</lastmod>
@@ -1110,13 +1096,6 @@
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2021-08-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.guard.ren/tags/Java/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1167,13 +1146,6 @@
   
   <url>
     <loc>https://blog.guard.ren/tags/Maven/</loc>
-    <lastmod>2021-08-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.guard.ren/tags/Ubuntu/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1271,6 +1243,13 @@
   </url>
   
   <url>
+    <loc>https://blog.guard.ren/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2021-08-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.guard.ren/tags/%E5%AD%A6%E8%BD%A6/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1321,6 +1300,13 @@
   
   <url>
     <loc>https://blog.guard.ren/tags/%E9%9F%B3%E4%B9%90/</loc>
+    <lastmod>2021-08-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.guard.ren/tags/Ubuntu/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
