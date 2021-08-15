@@ -576,6 +576,35 @@
   
   
   <entry>
+    <title>Maven 配置 (备份文件方便复制)</title>
+    <link href="/a911b7f249e6.html"/>
+    <url>/a911b7f249e6.html</url>
+    
+    <content type="html"><![CDATA[<p>路径:<code>/conf/settings.xml</code></p><figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">settings</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>D:\develop\repository<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">pluginGroups</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">pluginGroups</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">proxies</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">proxies</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">servers</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">servers</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">mirrors</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Nexus aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">mirrors</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">profiles</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">profiles</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">settings</span>&gt;</span><br><br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>Maven</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>请不要再泥淖中停留</title>
     <link href="/ed9501b8d471.html"/>
     <url>/ed9501b8d471.html</url>
