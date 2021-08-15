@@ -23,6 +23,13 @@
   </url>
   
   <url>
+    <loc>https://blog.guard.ren/c5e01090a818.html</loc>
+    
+    <lastmod>2021-08-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.guard.ren/6f2cd147c9da.html</loc>
     
     <lastmod>2021-08-15</lastmod>
@@ -1103,6 +1110,13 @@
   </url>
   
   <url>
+    <loc>https://blog.guard.ren/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2021-08-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.guard.ren/tags/Java/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
@@ -1251,13 +1265,6 @@
   
   <url>
     <loc>https://blog.guard.ren/tags/Travis/</loc>
-    <lastmod>2021-08-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.guard.ren/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2021-08-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
