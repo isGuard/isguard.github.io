@@ -85,6 +85,122 @@
   
   
   <entry>
+    <title>RSocket 属性</title>
+    <link href="/83e4d5ba76f4.html"/>
+    <url>/83e4d5ba76f4.html</url>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.rsocket.server.address</code></td><td></td><td>服务器应该绑定的网络地址。</td></tr><tr><td><code>spring.rsocket.server.mapping-path</code></td><td></td><td>RSocket 处理请求的路径（仅适用于 websocket 传输）</td></tr><tr><td><code>spring.rsocket.server.port</code></td><td></td><td>服务器端口。</td></tr><tr><td><code>spring.rsocket.server.transport</code></td><td><code>tcp</code></td><td>RSocket 传输协议。</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>SpringBoot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>安全属性</title>
+    <link href="/fdb3287fae31.html"/>
+    <url>/fdb3287fae31.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="ldap"><a href="#ldap" class="headerlink" title="ldap"></a>ldap</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.ldap.anonymous-read-only</code></td><td></td><td>是否只读操作应使用匿名环境。除非设置了用户名，否则默认为禁用。</td></tr><tr><td><code>spring.ldap.base</code></td><td></td><td>基础后缀，所有操作都应从这里开始。</td></tr><tr><td><code>spring.ldap.base-environment.*</code></td><td></td><td>LDAP 规范设置。</td></tr><tr><td><code>spring.ldap.embedded.base-dn</code></td><td></td><td>基础 DN 清单。</td></tr><tr><td><code>spring.ldap.embedded.credential.password</code></td><td></td><td>嵌入式 LDAP 密码。</td></tr><tr><td><code>spring.ldap.embedded.credential.username</code></td><td></td><td>嵌入式 LDAP 用户名。</td></tr><tr><td><code>spring.ldap.embedded.ldif</code></td><td><code>classpath:schema.ldif</code></td><td>Schema（LDIF）脚本资源参考。</td></tr><tr><td><code>spring.ldap.embedded.port</code></td><td><code>0.0</code></td><td>嵌入式 LDAP 端口。</td></tr><tr><td><code>spring.ldap.embedded.validation.enabled</code></td><td><code>true</code></td><td>是否启用 LDAP 模式验证。</td></tr><tr><td><code>spring.ldap.embedded.validation.schema</code></td><td></td><td>自定义模式的路径。</td></tr><tr><td><code>spring.ldap.password</code></td><td></td><td>服务器的登录密码。</td></tr><tr><td><code>spring.ldap.urls</code></td><td></td><td>服务器的 LDAP URL。</td></tr><tr><td><code>spring.ldap.username</code></td><td></td><td>服务器的登录用户名。</td></tr></tbody></table><h2 id="security"><a href="#security" class="headerlink" title="security"></a>security</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.security.filter.dispatcher-types</code></td><td><code>[async, error, request]</code></td><td>安全过滤链调度器类型。</td></tr><tr><td><code>spring.security.filter.order</code></td><td><code>-100.0</code></td><td>安全过滤链顺序。</td></tr><tr><td><code>spring.security.oauth2.client.provider.*</code></td><td></td><td>OAuth 提供商的详细信息。</td></tr><tr><td><code>spring.security.oauth2.client.registration.*</code></td><td></td><td>OAuth 客户端注册。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.jwt.issuer-uri</code></td><td></td><td>URI 可以是 OpenID Connect 发现端点，也可以是 RFC 8414 定义的 OAuth 2.0 授权服务器元数据端点。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.jwt.jwk-set-uri</code></td><td></td><td>JSON Web Key URI 用于验证 JWT 标记。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.jwt.jws-algorithm</code></td><td><code>RS256</code></td><td>JSON 网络算法用于验证数字签名。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.jwt.public-key-location</code></td><td></td><td>包含用于验证 JWT 的公钥的文件位置。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.opaquetoken.client-id</code></td><td></td><td>客户端 ID 用于使用令牌反省端点进行验证。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.opaquetoken.client-secret</code></td><td></td><td>客户端秘密用于与令牌反省端点进行身份验证。</td></tr><tr><td><code>spring.security.oauth2.resourceserver.opaquetoken.introspection-uri</code></td><td></td><td>OAuth 2.0 端点，通过它来完成令牌反省。</td></tr><tr><td><code>spring.security.saml2.relyingparty.registration.*</code></td><td></td><td>SAML2 依赖方注册。</td></tr><tr><td><code>spring.security.user.name</code></td><td><code>user</code></td><td>默认用户名。</td></tr><tr><td><code>spring.security.user.password</code></td><td></td><td>默认用户名的密码。</td></tr><tr><td><code>spring.security.user.roles</code></td><td></td><td>授予默认用户名的角色。</td></tr></tbody></table><h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.session.hazelcast.flush-mode</code></td><td><code>on-save</code></td><td>会话刷新模式。决定何时将会话变更写入会话存储。</td></tr><tr><td><code>spring.session.hazelcast.map-name</code></td><td><code>spring:session:sessions</code></td><td>用于存储会话的地图的名称。</td></tr><tr><td><code>spring.session.hazelcast.save-mode</code></td><td><code>on-set-attribute</code></td><td>会话保存模式。决定如何跟踪会话更改并保存到会话存储中。</td></tr><tr><td><code>spring.session.jdbc.cleanup-cron</code></td><td><code>0 * * * * *</code></td><td>过期会话清理工作的 Cron 表达式。</td></tr><tr><td><code>spring.session.jdbc.flush-mode</code></td><td><code>on-save</code></td><td>会话刷新模式。决定何时将会话变更写入会话存储。</td></tr><tr><td><code>spring.session.jdbc.initialize-schema</code></td><td><code>embedded</code></td><td>数据库模式初始化模式。</td></tr><tr><td><code>spring.session.jdbc.save-mode</code></td><td><code>on-set-attribute</code></td><td>会话保存模式。决定如何跟踪会话更改并保存到会话存储中。</td></tr><tr><td><code>spring.session.jdbc.schema</code></td><td><code>classpath:org/springframework/session/jdbc/schema-@@platform@@.sql</code></td><td>用于初始化数据库模式的 SQL 文件的路径。</td></tr><tr><td><code>spring.session.jdbc.table-name</code></td><td><code>SPRING_SESSION</code></td><td>用于存储会话的数据库表的名称。</td></tr><tr><td><code>spring.session.mongodb.collection-name</code></td><td><code>sessions</code></td><td>用于存储会话的集合名称。</td></tr><tr><td><code>spring.session.redis.cleanup-cron</code></td><td><code>0 * * * * *</code></td><td>过期会话清理工作的 Cron 表达式。</td></tr><tr><td><code>spring.session.redis.configure-action</code></td><td><code>notify-keyspace-events</code></td><td>当没有用户定义的 ConfigureRedisAction bean 时要应用的配置动作。</td></tr><tr><td><code>spring.session.redis.flush-mode</code></td><td><code>on-save</code></td><td>会话刷新模式。决定何时将会话变更写入会话存储。</td></tr><tr><td><code>spring.session.redis.namespace</code></td><td><code>spring:session</code></td><td>用于存储会话的键的命名空间。</td></tr><tr><td><code>spring.session.redis.save-mode</code></td><td><code>on-set-attribute</code></td><td>会话保存模式。决定如何跟踪会话更改并保存到会话存储中。</td></tr><tr><td><code>spring.session.servlet.filter-dispatcher-types</code></td><td><code>[async, error, request]</code></td><td>会话存储库过滤调度器类型。</td></tr><tr><td><code>spring.session.servlet.filter-order</code></td><td></td><td>会话存储库过滤顺序。</td></tr><tr><td><code>spring.session.store-type</code></td><td></td><td>会话存储类型。</td></tr><tr><td><code>spring.session.timeout</code></td><td></td><td>会话超时。如果没有指定持续时间后缀，将使用秒。</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>SpringBoot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>服务器属性</title>
+    <link href="/3004cf782434.html"/>
+    <url>/3004cf782434.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.address</code></td><td></td><td>服务器应该绑定的网络地址。</td></tr><tr><td><code>server.forward-headers-strategy</code></td><td></td><td>处理 X-Forwarded-*头的策略。</td></tr><tr><td><code>server.max-http-header-size</code></td><td><code>8KB</code></td><td>HTTP 消息头的最大尺寸。</td></tr><tr><td><code>server.port</code></td><td><code>8080.0</code></td><td>HTTP 服务器端口。</td></tr><tr><td><code>server.server-header</code></td><td></td><td>用于服务器响应头的值（如果为空，则不发送头）。</td></tr><tr><td><code>server.shutdown</code></td><td></td><td>服务器将支持的关机类型。</td></tr></tbody></table><h2 id="comprrssion"><a href="#comprrssion" class="headerlink" title="comprrssion"></a>comprrssion</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.compression.enabled</code></td><td><code>false</code></td><td>是否启用响应压缩。</td></tr><tr><td><code>server.compression.excluded-user-agents</code></td><td></td><td>不应压缩响应的用户代理的逗号分隔的列表。</td></tr><tr><td><code>server.compression.mime-types</code></td><td><code>[text/html, text/xml, text/plain, text/css, text/javascript, application/javascript, application/json, application/xml]</code></td><td>应该压缩的 MIME 类型的逗号分隔的列表。</td></tr><tr><td><code>server.compression.min-response-size</code></td><td><code>2KB</code></td><td>执行压缩所需的最小 “内容-长度 “值。</td></tr></tbody></table><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.error.include-binding-errors</code></td><td><code>never</code></td><td>什么时候加入 “错误 “属性。</td></tr><tr><td><code>server.error.include-exception</code></td><td><code>false</code></td><td>包括 “异常 “属性。</td></tr><tr><td><code>server.error.include-message</code></td><td><code>never</code></td><td>何时加入 “消息 “属性。</td></tr><tr><td><code>server.error.include-stacktrace</code></td><td><code>never</code></td><td>什么时候加入 “trace “属性。</td></tr><tr><td><code>server.error.path</code></td><td><code>/error</code></td><td>误差控制器的路径。</td></tr><tr><td><code>server.error.whitelabel.enabled</code></td><td><code>true</code></td><td>是否启用服务器出错时在浏览器中显示的默认错误页面。</td></tr></tbody></table><h2 id="http2"><a href="#http2" class="headerlink" title="http2"></a>http2</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.http2.enabled</code></td><td><code>false</code></td><td>是否启用 HTTP/2 支持，如果当前环境支持。</td></tr></tbody></table><h2 id="jetty"><a href="#jetty" class="headerlink" title="jetty"></a>jetty</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.jetty.accesslog.append</code></td><td><code>false</code></td><td>添加到日志中。</td></tr><tr><td><code>server.jetty.accesslog.custom-format</code></td><td></td><td>自定义日志格式，参见 org.eclipse.jetty.server.CustomRequestLog。如果定义了，则覆盖 “格式 “配置键。</td></tr><tr><td><code>server.jetty.accesslog.enabled</code></td><td><code>false</code></td><td>启用访问日志。</td></tr><tr><td><code>server.jetty.accesslog.file-date-format</code></td><td></td><td>日期格式要放在日志文件名中。</td></tr><tr><td><code>server.jetty.accesslog.filename</code></td><td></td><td>日志文件名。如果没有指定，日志会重定向到 “System.err”。</td></tr><tr><td><code>server.jetty.accesslog.format</code></td><td><code>ncsa</code></td><td>日志格式。</td></tr><tr><td><code>server.jetty.accesslog.ignore-paths</code></td><td></td><td>不应该被记录的请求路径。</td></tr><tr><td><code>server.jetty.accesslog.retention-period</code></td><td><code>31.0</code></td><td>删除轮换日志文件前的天数。</td></tr><tr><td><code>server.jetty.connection-idle-timeout</code></td><td></td><td>连接关闭前可以闲置的时间。</td></tr><tr><td><code>server.jetty.max-http-form-post-size</code></td><td><code>200000B</code></td><td>任何 HTTP 帖子请求中表单内容的最大尺寸。</td></tr><tr><td><code>server.jetty.threads.acceptors</code></td><td><code>-1.0</code></td><td>要使用的接受者线程数。当值为-1 时，为默认值，接受器的数量由操作环境得出。</td></tr><tr><td><code>server.jetty.threads.idle-timeout</code></td><td><code>60000ms</code></td><td>最大线程空闲时间。</td></tr><tr><td><code>server.jetty.threads.max</code></td><td><code>200.0</code></td><td>最大线程数。</td></tr><tr><td><code>server.jetty.threads.max-queue-capacity</code></td><td></td><td>线程池后备队列的最大容量。根据线程配置计算出默认值。</td></tr><tr><td><code>server.jetty.threads.min</code></td><td><code>8.0</code></td><td>最少的线程数。</td></tr><tr><td><code>server.jetty.threads.selectors</code></td><td><code>-1.0</code></td><td>要使用的选择器线程数。当值为-1 时，为默认值，选择器的数量来自于操作环境。</td></tr></tbody></table><h2 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.netty.connection-timeout</code></td><td></td><td>Netty 通道的连接超时。</td></tr></tbody></table><h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.servlet.application-display-name</code></td><td><code>application</code></td><td>显示应用程序的名称。</td></tr><tr><td><code>server.servlet.context-parameters.*</code></td><td></td><td>Servlet 上下文初始化参数。</td></tr><tr><td><code>server.servlet.context-path</code></td><td></td><td>应用程序的上下文路径。</td></tr><tr><td><code>server.servlet.encoding.charsets</code></td><td></td><td></td></tr><tr><td><code>server.servlet.encoding.enabled</code></td><td><code>true</code></td><td>是否启用 http 编码支持。</td></tr><tr><td><code>server.servlet.encoding.force</code></td><td></td><td></td></tr><tr><td><code>server.servlet.encoding.force-request</code></td><td></td><td></td></tr><tr><td><code>server.servlet.encoding.force-response</code></td><td></td><td></td></tr><tr><td><code>server.servlet.encoding.mapping.*</code></td><td></td><td></td></tr><tr><td><code>server.servlet.jsp.class-name</code></td><td><code>org.apache.jasper.servlet.JspServlet</code></td><td>要用于 JSP 的 servlet 的类名。如果注册为真，并且这个类*在 classpath 上，那么它将被注册。</td></tr><tr><td><code>server.servlet.jsp.init-parameters.*</code></td><td></td><td>用于配置 JSP servlet 的初始参数。</td></tr><tr><td><code>server.servlet.jsp.registered</code></td><td><code>true</code></td><td>是否注册了 JSP servlet。</td></tr><tr><td><code>server.servlet.register-default-servlet</code></td><td><code>true</code></td><td>是否在容器中注册默认的 Servlet。</td></tr><tr><td><code>server.servlet.session.cookie.comment</code></td><td></td><td>对会话 cookie 的注释。</td></tr><tr><td><code>server.servlet.session.cookie.domain</code></td><td></td><td>会话 cookie 的域。</td></tr><tr><td><code>server.servlet.session.cookie.http-only</code></td><td></td><td>是否对会话 cookie 使用 “HttpOnly “cookie。</td></tr><tr><td><code>server.servlet.session.cookie.max-age</code></td><td></td><td>会话 cookie 的最大年龄。如果没有指定持续时间后缀，将使用秒。</td></tr><tr><td><code>server.servlet.session.cookie.name</code></td><td></td><td>会话 cookie 名称。</td></tr><tr><td><code>server.servlet.session.cookie.path</code></td><td></td><td>会话 cookie 的路径。</td></tr><tr><td><code>server.servlet.session.cookie.secure</code></td><td></td><td>是否总是将会话 cookie 标记为安全。</td></tr><tr><td><code>server.servlet.session.persistent</code></td><td><code>false</code></td><td>是否在重启之间坚持会话数据。</td></tr><tr><td><code>server.servlet.session.store-dir</code></td><td></td><td>用于存储会话数据的目录。</td></tr><tr><td><code>server.servlet.session.timeout</code></td><td><code>30m</code></td><td>会话超时。如果没有指定持续时间后缀，将使用秒。</td></tr><tr><td><code>server.servlet.session.tracking-modes</code></td><td></td><td>会话跟踪模式。</td></tr></tbody></table><h2 id="ssl"><a href="#ssl" class="headerlink" title="ssl"></a>ssl</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.ssl.ciphers</code></td><td></td><td>支持的 SSL 密码。</td></tr><tr><td><code>server.ssl.client-auth</code></td><td></td><td>客户端认证模式。需要一个信任存储。</td></tr><tr><td><code>server.ssl.enabled</code></td><td><code>true</code></td><td>是否启用 SSL 支持。</td></tr><tr><td><code>server.ssl.enabled-protocols</code></td><td></td><td>启用 SSL 协议。</td></tr><tr><td><code>server.ssl.key-alias</code></td><td></td><td>在钥匙库中标识钥匙的别名。</td></tr><tr><td><code>server.ssl.key-password</code></td><td></td><td>用于访问钥匙库中钥匙的密码。</td></tr><tr><td><code>server.ssl.key-store</code></td><td></td><td>存放 SSL 证书的密钥存储路径（通常是一个 jks 文件）。</td></tr><tr><td><code>server.ssl.key-store-password</code></td><td></td><td>用于访问钥匙库的密码。</td></tr><tr><td><code>server.ssl.key-store-provider</code></td><td></td><td>钥匙库的提供者。</td></tr><tr><td><code>server.ssl.key-store-type</code></td><td></td><td>钥匙库的类型。</td></tr><tr><td><code>server.ssl.protocol</code></td><td><code>TLS</code></td><td>要使用的 SSL 协议。</td></tr><tr><td><code>server.ssl.trust-store</code></td><td></td><td>持有 SSL 证书的信任商店。</td></tr><tr><td><code>server.ssl.trust-store-password</code></td><td></td><td>用于访问信托商店的密码。</td></tr><tr><td><code>server.ssl.trust-store-provider</code></td><td></td><td>信托商店的提供者。</td></tr><tr><td><code>server.ssl.trust-store-type</code></td><td></td><td>信托商店的类型。</td></tr></tbody></table><h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.tomcat.accept-count</code></td><td><code>100.0</code></td><td>当所有可能的请求处理线程都在使用时，传入连接请求的最大队列长度。</td></tr><tr><td><code>server.tomcat.accesslog.buffered</code></td><td><code>true</code></td><td>是否对输出进行缓冲，使其只定期刷新。</td></tr><tr><td><code>server.tomcat.accesslog.check-exists</code></td><td><code>false</code></td><td>是否要检查日志文件是否存在，以便在外部进程重新命名时可以重新创建。</td></tr><tr><td><code>server.tomcat.accesslog.condition-if</code></td><td></td><td>是否只有在 “ServletRequest.getAttribute(conditionIf) “没有产生 null 时，才会启用请求的日志记录。</td></tr><tr><td><code>server.tomcat.accesslog.condition-unless</code></td><td></td><td>是否只有在 “ServletRequest.getAttribute(conditionUnless) “产生 null 时，才会启用请求的日志记录。</td></tr><tr><td><code>server.tomcat.accesslog.directory</code></td><td><code>logs</code></td><td>创建日志文件的目录。可以是绝对的，也可以是相对于 Tomcat 基础目录的。</td></tr><tr><td><code>server.tomcat.accesslog.enabled</code></td><td><code>false</code></td><td>启用访问日志。</td></tr><tr><td><code>server.tomcat.accesslog.encoding</code></td><td></td><td>日志文件使用的字符集。默认为系统默认字符集。</td></tr><tr><td><code>server.tomcat.accesslog.file-date-format</code></td><td><code>.yyyy-MM-dd</code></td><td>要放在日志文件名中的日期格式。</td></tr><tr><td><code>server.tomcat.accesslog.ipv6-canonical</code></td><td><code>false</code></td><td>是否使用 RFC 5952 定义的 IPv6 规范表示格式。</td></tr><tr><td><code>server.tomcat.accesslog.locale</code></td><td></td><td>用于在日志条目和日志文件名后缀中格式化时间戳的地域。默认为 Java 进程的默认 locale。</td></tr><tr><td><code>server.tomcat.accesslog.max-days</code></td><td><code>-1.0</code></td><td>在删除访问日志文件之前，保留这些文件的天数。</td></tr><tr><td><code>server.tomcat.accesslog.pattern</code></td><td><code>common</code></td><td>访问日志的格式模式。</td></tr><tr><td><code>server.tomcat.accesslog.prefix</code></td><td><code>access_log</code></td><td>日志文件名前缀。</td></tr><tr><td><code>server.tomcat.accesslog.rename-on-rotate</code></td><td><code>false</code></td><td>是否将文件名中的日期戳推迟到轮换时间。</td></tr><tr><td><code>server.tomcat.accesslog.request-attributes-enabled</code></td><td><code>false</code></td><td>设置请求的属性，包括 IP 地址、主机名、协议和请求使用的端口。</td></tr><tr><td><code>server.tomcat.accesslog.rotate</code></td><td><code>true</code></td><td>是否启用访问日志轮换。</td></tr><tr><td><code>server.tomcat.accesslog.suffix</code></td><td><code>.log</code></td><td>日志文件名后缀。</td></tr><tr><td><code>server.tomcat.additional-tld-skip-patterns</code></td><td></td><td>以逗号分隔的附加模式列表，这些模式与 TLD 扫描时要忽略的 jar 相匹配。特殊的’?’和’*‘字符可用于在模式中分别匹配一个且仅匹配一个字符和零个或多个字符。</td></tr><tr><td><code>server.tomcat.background-processor-delay</code></td><td><code>10s</code></td><td>backgroundProcess 方法调用之间的延迟。如果没有指定持续时间后缀，将使用秒。</td></tr><tr><td><code>server.tomcat.basedir</code></td><td></td><td>Tomcat 基础目录。如果没有指定，则使用临时目录。</td></tr><tr><td><code>server.tomcat.connection-timeout</code></td><td></td><td>连接器在接受连接后，等待请求 URI 行呈现的时间。</td></tr><tr><td><code>server.tomcat.max-connections</code></td><td><code>8192.0</code></td><td>服务器在任何时间接受和处理的最大连接数。一旦达到限制，操作系统仍可根据 “acceptCount “属性接受连接。</td></tr><tr><td><code>server.tomcat.max-http-form-post-size</code></td><td><code>2MB</code></td><td>任何 HTTP 帖子请求中表单内容的最大尺寸。</td></tr><tr><td><code>server.tomcat.max-swallow-size</code></td><td><code>2MB</code></td><td>吞下的请求体的最大数量。</td></tr><tr><td><code>server.tomcat.mbeanregistry.enabled</code></td><td><code>false</code></td><td>Tomcat 的 MBean 注册表是否应该被启用。</td></tr><tr><td><code>server.tomcat.processor-cache</code></td><td><code>200.0</code></td><td>缓存中保留的空闲处理器的最大数量，并在后续请求中重复使用。当设置为-1 时，缓存将是无限制的，理论上的最大大小等于最大连接数</td></tr><tr><td><code>server.tomcat.redirect-context-root</code></td><td><code>true</code></td><td>Whether requests to the context root should be redirected by appending a / to the path.</td></tr><tr><td><code>server.tomcat.relaxed-path-chars</code></td><td></td><td>逗号分隔的 URI 路径中允许使用的附加未编码字符列表。只允许使用”&lt; &gt; [ \ ] ^ ` {</td></tr><tr><td><code>server.tomcat.relaxed-query-chars</code></td><td></td><td>逗号分隔的 URI 查询字符串中应该允许的额外的未编码字符列表。只允许使用”&lt; &gt; [ \ ] ^ ` {</td></tr><tr><td><code>server.tomcat.remoteip.host-header</code></td><td><code>X-Forwarded-Host</code></td><td>Name of the HTTP header from which the remote host is extracted.</td></tr><tr><td><code>server.tomcat.remoteip.internal-proxies</code></td><td>`10\.\d{1,3}\.\d{1,3}\.\d{1,3}</td><td>192\.168\.\d{1,3}\.\d{1,3}</td></tr><tr><td><code>server.tomcat.remoteip.port-header</code></td><td><code>X-Forwarded-Port</code></td><td>用于覆盖原始端口值的 HTTP 头的名称。</td></tr><tr><td><code>server.tomcat.remoteip.protocol-header</code></td><td></td><td>保存传入协议的头，通常命名为 “X-Forwarded-Proto”。</td></tr><tr><td><code>server.tomcat.remoteip.protocol-header-https-value</code></td><td><code>https</code></td><td>协议头的值，表示输入的请求是否使用 SSL。</td></tr><tr><td><code>server.tomcat.remoteip.remote-ip-header</code></td><td></td><td>提取远程 IP 的 HTTP 头的名称。例如，<code>X-FORWARDED-FOR</code>。</td></tr><tr><td><code>server.tomcat.resource.allow-caching</code></td><td><code>true</code></td><td>是否允许该 Web 应用程序进行静态资源缓存。</td></tr><tr><td><code>server.tomcat.resource.cache-ttl</code></td><td></td><td>静态资源缓存的有效时间。</td></tr><tr><td><code>server.tomcat.threads.max</code></td><td><code>200.0</code></td><td>工作线程的最大数量。</td></tr><tr><td><code>server.tomcat.threads.min-spare</code></td><td><code>10.0</code></td><td>最小的工作线程数量。</td></tr><tr><td><code>server.tomcat.uri-encoding</code></td><td><code>UTF-8</code></td><td>用来解码 URI 的字符编码。</td></tr><tr><td><code>server.tomcat.use-relative-redirects</code></td><td><code>false</code></td><td>调用 sendRedirect 生成的 HTTP 1.1 及以后版本的位置头是否会使用相对重定向或绝对重定向。</td></tr></tbody></table><h2 id="undertow"><a href="#undertow" class="headerlink" title="undertow"></a>undertow</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>server.undertow.accesslog.dir</code></td><td></td><td>底槽访问日志目录。</td></tr><tr><td><code>server.undertow.accesslog.enabled</code></td><td><code>false</code></td><td>是否启用访问日志。</td></tr><tr><td><code>server.undertow.accesslog.pattern</code></td><td><code>common</code></td><td>访问日志的格式模式。</td></tr><tr><td><code>server.undertow.accesslog.prefix</code></td><td><code>access_log.</code></td><td>日志文件名前缀。</td></tr><tr><td><code>server.undertow.accesslog.rotate</code></td><td><code>true</code></td><td>是否启用访问日志轮换。</td></tr><tr><td><code>server.undertow.accesslog.suffix</code></td><td><code>log</code></td><td>日志文件名后缀。</td></tr><tr><td><code>server.undertow.allow-encoded-slash</code></td><td><code>false</code></td><td>服务器是否应该对百分比编码的斜线字符进行解码。由于不同的服务器对斜线的解释不同，启用编码的斜线可能会产生安全影响。只有当您的遗留应用程序需要时才启用此功能。</td></tr><tr><td><code>server.undertow.always-set-keep-alive</code></td><td><code>true</code></td><td>Connection: keep-alive “头是否应该被添加到所有的响应中，即使 HTTP 规范没有要求。</td></tr><tr><td><code>server.undertow.buffer-size</code></td><td></td><td>每个缓冲区的大小。默认值来自于 JVM 可用的最大内存量。</td></tr><tr><td><code>server.undertow.decode-url</code></td><td><code>true</code></td><td>URL 是否应该被解码。当禁用时，URL 中的百分比编码字符将保持原样。</td></tr><tr><td><code>server.undertow.direct-buffers</code></td><td></td><td>是否在 Java 堆外分配缓冲区。默认值来自于 JVM 可用的最大内存量。</td></tr><tr><td><code>server.undertow.eager-filter-init</code></td><td><code>true</code></td><td>是否应该在启动时初始化 servlet 过滤器。</td></tr><tr><td><code>server.undertow.max-cookies</code></td><td><code>200.0</code></td><td>允许的最大 cookie 数量。这个限制是为了防止基于哈希碰撞的 DOS 攻击。</td></tr><tr><td><code>server.undertow.max-headers</code></td><td></td><td>允许的最大头数。这个限制是为了防止基于哈希碰撞的 DOS 攻击。</td></tr><tr><td><code>server.undertow.max-http-post-size</code></td><td><code>-1B</code></td><td>HTTP 帖子内容的最大尺寸。当值为-1 时，默认，大小不受限制。</td></tr><tr><td><code>server.undertow.max-parameters</code></td><td></td><td>允许查询或路径参数的最大数量。这个限制是为了防止基于哈希碰撞的 DOS 攻击。</td></tr><tr><td><code>server.undertow.no-request-timeout</code></td><td></td><td>在服务器关闭连接之前，一个连接在不处理请求的情况下可以闲置的时间。</td></tr><tr><td><code>server.undertow.options.server.*</code></td><td></td><td></td></tr><tr><td><code>server.undertow.options.socket.*</code></td><td></td><td></td></tr><tr><td><code>server.undertow.threads.io</code></td><td></td><td>要为 Worker 创建的 I/O 线程的数量。默认值由可用处理器的数量决定。</td></tr><tr><td><code>server.undertow.threads.worker</code></td><td></td><td>工作线程的数量。默认为 8 倍的 I/O 线程数。</td></tr><tr><td><code>server.undertow.url-charset</code></td><td><code>UTF-8</code></td><td>用来解码 URL 的 Charset。</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>SpringBoot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>模板属性</title>
+    <link href="/1b9dca731c12.html"/>
+    <url>/1b9dca731c12.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="freemarker"><a href="#freemarker" class="headerlink" title="freemarker"></a>freemarker</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.freemarker.allow-request-override</code></td><td><code>false</code></td><td>是否允许 HttpServletRequest 属性覆盖（隐藏）控制器生成的同名模型属性。</td></tr><tr><td><code>spring.freemarker.allow-session-override</code></td><td><code>false</code></td><td>是否允许 HttpSession 属性覆盖（隐藏）控制器生成的同名模型属性。</td></tr><tr><td><code>spring.freemarker.cache</code></td><td><code>false</code></td><td>是否启用模板缓存。</td></tr><tr><td><code>spring.freemarker.charset</code></td><td><code>UTF-8</code></td><td>模板编码。</td></tr><tr><td><code>spring.freemarker.check-template-location</code></td><td><code>true</code></td><td>是否检查模板位置是否存在。</td></tr><tr><td><code>spring.freemarker.content-type</code></td><td><code>text/html</code></td><td>Content-Type 值。</td></tr><tr><td><code>spring.freemarker.enabled</code></td><td><code>true</code></td><td>是否启用本技术的 MVC 视图解析。</td></tr><tr><td><code>spring.freemarker.expose-request-attributes</code></td><td><code>false</code></td><td>是否应该在与模板合并之前将所有请求属性添加到模型中。</td></tr><tr><td><code>spring.freemarker.expose-session-attributes</code></td><td><code>false</code></td><td>在与模板合并之前，是否应该将所有 HttpSession 属性添加到模型中。</td></tr><tr><td><code>spring.freemarker.expose-spring-macro-helpers</code></td><td><code>true</code></td><td>是否以 “springMacroRequestContext “为名，公开一个 RequestContext 供 Spring 的宏库使用。</td></tr><tr><td><code>spring.freemarker.prefer-file-system-access</code></td><td><code>true</code></td><td>是否选择文件系统访问来加载模板。文件系统访问可以实现模板更改的热检测。</td></tr><tr><td><code>spring.freemarker.prefix</code></td><td></td><td>当建立一个 URL 时，前缀被添加到视图名称中。</td></tr><tr><td><code>spring.freemarker.request-context-attribute</code></td><td></td><td>所有视图的 RequestContext 属性的名称。</td></tr><tr><td><code>spring.freemarker.settings.*</code></td><td></td><td>众所周知的 FreeMarker 键被传递给 FreeMarker 的配置。</td></tr><tr><td><code>spring.freemarker.suffix</code></td><td><code>.ftlh</code></td><td>建立 URL 时附加到视图名称的后缀。</td></tr><tr><td><code>spring.freemarker.template-loader-path</code></td><td><code>[classpath:/templates/]</code></td><td>逗号分隔的模板路径列表。</td></tr><tr><td><code>spring.freemarker.view-names</code></td><td></td><td>查看可以解决的名字。</td></tr></tbody></table><h2 id="groovy"><a href="#groovy" class="headerlink" title="groovy"></a>groovy</h2><table><thead><tr><th><code>spring.groovy.template.allow-request-override</code></th><th><code>false</code></th><th>是否允许 HttpServletRequest 属性覆盖（隐藏）控制器生成的同名模型属性。</th></tr></thead><tbody><tr><td><code>spring.groovy.template.allow-session-override</code></td><td><code>false</code></td><td>是否允许 HttpSession 属性覆盖（隐藏）控制器生成的同名模型属性。</td></tr><tr><td><code>spring.groovy.template.cache</code></td><td><code>false</code></td><td>是否启用模板缓存。</td></tr><tr><td><code>spring.groovy.template.charset</code></td><td><code>UTF-8</code></td><td>模板编码。</td></tr><tr><td><code>spring.groovy.template.check-template-location</code></td><td><code>true</code></td><td>是否检查模板位置是否存在。</td></tr><tr><td><code>spring.groovy.template.configuration.auto-escape</code></td><td><code>spring.groovy.template.configuration.auto-indent</code></td><td>参见 GroovyMarkupConfigurer</td></tr><tr><td><code>spring.groovy.template.content-type</code></td><td><code>text/html</code></td><td>Content-Type 值。</td></tr><tr><td><code>spring.groovy.template.enabled</code></td><td><code>true</code></td><td>是否启用本技术的 MVC 视图解析。</td></tr><tr><td><code>spring.groovy.template.expose-request-attributes</code></td><td><code>false</code></td><td>是否应该在与模板合并之前将所有请求属性添加到模型中。</td></tr><tr><td><code>spring.groovy.template.expose-session-attributes</code></td><td><code>false</code></td><td>在与模板合并之前，是否应该将所有 HttpSession 属性添加到模型中。</td></tr><tr><td><code>spring.groovy.template.expose-spring-macro-helpers</code></td><td><code>true</code></td><td>是否以 “springMacroRequestContext “为名，公开一个 RequestContext 供 Spring 的宏库使用。</td></tr><tr><td><code>spring.groovy.template.prefix</code></td><td></td><td>当建立一个 URL 时，前缀被添加到视图名称中。</td></tr><tr><td><code>spring.groovy.template.request-context-attribute</code></td><td></td><td>所有视图的 RequestContext 属性的名称。</td></tr><tr><td><code>spring.groovy.template.resource-loader-path</code></td><td><code>classpath:/templates/</code></td><td>模板路径。</td></tr><tr><td><code>spring.groovy.template.suffix</code></td><td><code>.tpl</code></td><td>建立 URL 时附加到视图名称的后缀。</td></tr><tr><td><code>spring.groovy.template.view-names</code></td><td></td><td>查看可以解决的名字。</td></tr></tbody></table><h2 id="mustache"><a href="#mustache" class="headerlink" title="mustache"></a>mustache</h2><table><thead><tr><th><code>spring.mustache.allow-request-override</code></th><th><code>false</code></th><th>是否允许 HttpServletRequest 属性覆盖（隐藏）控制器生成的同名模型属性。</th></tr></thead><tbody><tr><td><code>spring.mustache.allow-session-override</code></td><td><code>false</code></td><td>是否允许 HttpSession 属性覆盖（隐藏）控制器生成的同名模型属性。</td></tr><tr><td><code>spring.mustache.cache</code></td><td><code>false</code></td><td>是否启用模板缓存。</td></tr><tr><td><code>spring.mustache.charset</code></td><td><code>UTF-8</code></td><td>模板编码。</td></tr><tr><td><code>spring.mustache.check-template-location</code></td><td><code>true</code></td><td>是否检查模板位置是否存在。</td></tr><tr><td><code>spring.mustache.content-type</code></td><td><code>text/html</code></td><td>Content-Type 值。</td></tr><tr><td><code>spring.mustache.enabled</code></td><td><code>true</code></td><td>是否启用本技术的 MVC 视图解析。</td></tr><tr><td><code>spring.mustache.expose-request-attributes</code></td><td><code>false</code></td><td>是否应该在与模板合并之前将所有请求属性添加到模型中。</td></tr><tr><td><code>spring.mustache.expose-session-attributes</code></td><td><code>false</code></td><td>在与模板合并之前，是否应该将所有 HttpSession 属性添加到模型中。</td></tr><tr><td><code>spring.mustache.expose-spring-macro-helpers</code></td><td><code>true</code></td><td>是否以 “springMacroRequestContext “为名，公开一个 RequestContext 供 Spring 的宏库使用。</td></tr><tr><td><code>spring.mustache.prefix</code></td><td><code>classpath:/templates/</code></td><td>适用于模板名称的前缀。</td></tr><tr><td><code>spring.mustache.request-context-attribute</code></td><td></td><td>所有视图的 RequestContext 属性的名称。</td></tr><tr><td><code>spring.mustache.suffix</code></td><td><code>.mustache</code></td><td>适用于模板名称的后缀。</td></tr><tr><td><code>spring.mustache.view-names</code></td><td></td><td>查看可以解决的名字。</td></tr></tbody></table><h2 id="thymeleaf"><a href="#thymeleaf" class="headerlink" title="thymeleaf"></a>thymeleaf</h2><table><thead><tr><th><code>spring.thymeleaf.cache</code></th><th><code>true</code></th><th>是否启用模板缓存。</th></tr></thead><tbody><tr><td><code>spring.thymeleaf.check-template</code></td><td><code>true</code></td><td>是否在渲染前检查模板是否存在。</td></tr><tr><td><code>spring.thymeleaf.check-template-location</code></td><td><code>true</code></td><td>是否检查模板位置是否存在。</td></tr><tr><td><code>spring.thymeleaf.enable-spring-el-compiler</code></td><td><code>false</code></td><td>在 SpringEL 表达式中启用 SpringEL 编译器。</td></tr><tr><td><code>spring.thymeleaf.enabled</code></td><td><code>true</code></td><td>是否为 Web 框架启用 Thymeleaf 视图解析。</td></tr><tr><td><code>spring.thymeleaf.encoding</code></td><td><code>UTF-8</code></td><td>模板文件编码。</td></tr><tr><td><code>spring.thymeleaf.excluded-view-names</code></td><td></td><td>以逗号分隔的应排除在决议之外的视图名称列表（允许的模式）。</td></tr><tr><td><code>spring.thymeleaf.mode</code></td><td><code>HTML</code></td><td>应用于模板的模板模式。参见 Thymeleaf 的 TemplateMode 枚举。</td></tr><tr><td><code>spring.thymeleaf.prefix</code></td><td><code>classpath:/templates/</code></td><td>当建立一个 URL 时，前缀被添加到视图名称中。</td></tr><tr><td><code>spring.thymeleaf.reactive.chunked-mode-view-names</code></td><td></td><td>以逗号分隔的视图名称列表（允许的模式），当设置最大分块大小时，这些视图名称应该是在 CHUNKED 模式下唯一被执行的。</td></tr><tr><td><code>spring.thymeleaf.reactive.full-mode-view-names</code></td><td></td><td>以逗号分隔的视图名称列表（允许的模式），即使设置了最大分块大小，也应该在 FULL 模式下执行。</td></tr><tr><td><code>spring.thymeleaf.reactive.max-chunk-size</code></td><td><code>0B</code></td><td>用于写入响应的数据缓冲区的最大大小。如果设置了这个，模板将默认以 CHUNKED 模式执行。</td></tr><tr><td><code>spring.thymeleaf.reactive.media-types</code></td><td></td><td>视图技术支持的媒体类型。</td></tr><tr><td><code>spring.thymeleaf.render-hidden-markers-before-checkboxes</code></td><td><code>false</code></td><td>作为复选框标记的隐藏表单输入是否应该在复选框元素之前呈现。</td></tr><tr><td><code>spring.thymeleaf.servlet.content-type</code></td><td><code>text/html</code></td><td>写到 HTTP 响应的 Content-Type 值。</td></tr><tr><td><code>spring.thymeleaf.servlet.produce-partial-output-while-processing</code></td><td><code>true</code></td><td>Thymeleaf 是应该尽快开始写入部分输出，还是缓冲到模板处理完成。</td></tr><tr><td><code>spring.thymeleaf.suffix</code></td><td><code>.html</code></td><td>建立 URL 时附加到视图名称的后缀。</td></tr><tr><td><code>spring.thymeleaf.template-resolver-order</code></td><td></td><td>模板解析器在链中的顺序。默认情况下，模板解析器是链中的第一个。顺序从 1 开始，只有当你定义了额外的 “TemplateResolver “Bean 时才能设置。</td></tr><tr><td><code>spring.thymeleaf.view-names</code></td><td></td><td>以逗号分隔的可解析的视图名称列表（允许模式）。</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>语雀</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>语雀</tag>
+      
+      <tag>Java</tag>
+      
+      <tag>SpringBoot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>网络属性</title>
     <link href="/e877f7d30bd2.html"/>
     <url>/e877f7d30bd2.html</url>
@@ -2480,9 +2596,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3324,9 +3440,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3353,9 +3469,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3382,9 +3498,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3411,9 +3527,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3440,9 +3556,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3469,9 +3585,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3498,9 +3614,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3527,9 +3643,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3556,9 +3672,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3585,9 +3701,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3614,9 +3730,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3643,9 +3759,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
@@ -3672,9 +3788,9 @@
     
     <tags>
       
-      <tag>算法</tag>
-      
       <tag>Java</tag>
+      
+      <tag>算法</tag>
       
       <tag>蓝桥杯</tag>
       
