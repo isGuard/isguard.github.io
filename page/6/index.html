@@ -1,1 +1,650 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>梦里的竹蜻蜓 - 假话全不说 真话不全说</title><meta name="keywords" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客"><meta name="author" content="竹蜻蜓"><meta name="copyright" content="竹蜻蜓"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一个写bug的程序员"><meta property="og:type" content="website"><meta property="og:title" content="梦里的竹蜻蜓"><meta property="og:url" content="https://blog.guard.ren/page/6/index.html"><meta property="og:site_name" content="梦里的竹蜻蜓"><meta property="og:description" content="一个写bug的程序员"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640"><meta property="article:author" content="竹蜻蜓"><meta property="article:tag" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.guard.ren/page/6/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk"><meta name="baidu-site-verification" content="code-yIv1xTa1ed"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/pwa/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/pwa/icons/icon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/pwa/icons/icon-16x16.png"><link rel="mask-icon" href="/pwa/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media=&quot;all&quot;"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media=&quot;all&quot;"><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-136832726-1")</script><script>const GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:void 0,translate:void 0,noticeOutdate:{limitDay:365,position:"top",messagePrev:"距离上次更新已过",messageNext:"天，文章内容可能已过时，请选择观看。"},highlight:{plugin:"highlighjs",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:!1},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!1,post:!1},runtime:"天",date_suffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:{limitCount:50,languages:{author:"作者: 竹蜻蜓",link:"链接: ",source:"来源: 梦里的竹蜻蜓",info:"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},lightbox:"fancybox",Snackbar:{chs_to_cht:"你已切换为繁体",cht_to_chs:"你已切换为简体",day_to_night:"你已切换为深色模式",night_to_day:"你已切换为浅色模式",bgLight:"#49b1f5",bgDark:"#121212",position:"bottom-left"},source:{jQuery:"https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js",justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js",css:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css"},fancybox:{js:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js",css:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"}},isPhotoFigcaption:!1,islazyload:!0,isanchor:!0}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"梦里的竹蜻蜓",isPost:!1,isHome:!0,isHighlightShrink:!1,isToc:!1,postUpdate:"2021-08-17 12:55:10"}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(e=>{e.saveToLocal={set:function(e,t,o){if(0===o)return;const a=864e5*o,c={value:t,expiry:(new Date).getTime()+a};localStorage.setItem(e,JSON.stringify(c))},get:function(e){const t=localStorage.getItem(e);if(!t)return;const o=JSON.parse(t);if(!((new Date).getTime()>o.expiry))return o.value;localStorage.removeItem(e)}},e.getScript=e=>new Promise((t,o)=>{const a=document.createElement("script");a.src=e,a.async=!0,a.onerror=o,a.onload=a.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(a.onload=a.onreadystatechange=null,t())},document.head.appendChild(a)}),e.activateDarkMode=function(){document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=function(){document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#ffffff")};const t=saveToLocal.get("theme"),o=window.matchMedia("(prefers-color-scheme: dark)").matches,a=window.matchMedia("(prefers-color-scheme: light)").matches,c=window.matchMedia("(prefers-color-scheme: no-preference)").matches,n=!o&&!a&&!c;if(void 0===t){if(a)activateLightMode();else if(o)activateDarkMode();else if(c||n){const e=(new Date).getHours();e<=6||e>=18?activateDarkMode():activateLightMode()}window.matchMedia("(prefers-color-scheme: dark)").addListener((function(e){void 0===saveToLocal.get("theme")&&(e.matches?activateDarkMode():activateLightMode())}))}else"light"===t?activateLightMode():activateDarkMode();const i=saveToLocal.get("aside-status");void 0!==i&&("hide"===i?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside"));const d=()=>{GLOBAL_CONFIG_SITE.isHome&&/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)&&document.documentElement.classList.add("apple")};d(),document.addEventListener("pjax:complete",d)})(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="onerror=null,src=&quot;/img/friend_404.gif&quot;" alt="avatar"></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">154</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image:url(/img/default.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">梦里的竹蜻蜓</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">梦里的竹蜻蜓</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/isGuard" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/b3946cdad917.html" title="包装类"><img class="post_bg" src="https://api.dongmanxingkong.com/suijitupian/acg/1080p/index.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="包装类"></a></div><div class="recent-post-info"><a class="article-title" href="/b3946cdad917.html" title="包装类">包装类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-14T06:48:45.000Z" title="发表于 2020-04-14 14:48:45">2020-04-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-14T06:48:45.000Z" title="更新于 2020-04-14 14:48:45">2020-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述Java提供了两个类型系统，基本类型与引用类型，使用基本类型在于效率，然而很多情况，会创建对象使用，因为对象可以做更多的功能，如果想要我们的基本类型像对象一样操作，就可以使用基本类型对应的包装类，如下： 基本类型 对应的包装类（位于java.lang包中） byte Byte short Short int Integer long Long float Float double Double char Character boolean Boolean 装箱与拆箱基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“： 装箱：从基本类型转换为对应的包装类对象。 拆箱：从包装类对象转换为对应的基本类型。 用Integer与 int为例：（看懂代码即可） 基本数值—-&gt;包装对象 12Integer i = new Integer(4);//使用构造函数函数Integer iii = Integer.valueOf(4);//使用包装类中的valueOf方法 包装对象—-&gt;基本数值 1int num = ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/a8e99b664015.html" title="StringBuilder类"><img class="post_bg" src="https://api.dujin.org/pic/" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="StringBuilder类"></a></div><div class="recent-post-info"><a class="article-title" href="/a8e99b664015.html" title="StringBuilder类">StringBuilder类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-13T06:48:17.000Z" title="发表于 2020-04-13 14:48:17">2020-04-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-13T06:48:17.000Z" title="更新于 2020-04-13 14:48:17">2020-04-13</time></span></div><div class="content">字符串拼接问题由于String类的对象内容不可改变，所以每当进行字符串拼接时，总是会在内存中创建一个新的对象。例如： 1234567public class StringDemo { public static void main(String[] args) { String s = "Hello"; s += "World"; System.out.println(s); }} 在API中对String类有这样的描述：字符串是常量，它们的值在创建后不能被更改。 根据这句话分析我们的代码，其实总共产生了三个字符串，即"Hello"、"World"和"HelloWorld"。引用变量s首先指向Hello对象，最终指向拼接出来的新字符串对象，即HelloWord 。 由此可知，如果对字符串进行拼接操作，每次拼接，都会构建一个新的String对象，既耗时，又浪费空间。为了解决这一问题，可以使用ja ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/ca04d468491e.html" title="System类"><img class="post_bg" src="https://www.dmoe.cc/random.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="System类"></a></div><div class="recent-post-info"><a class="article-title" href="/ca04d468491e.html" title="System类">System类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-12T06:47:33.000Z" title="发表于 2020-04-12 14:47:33">2020-04-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-12T06:47:33.000Z" title="更新于 2020-04-12 14:47:33">2020-04-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">java.lang.System类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有： public static long currentTimeMillis()：返回以毫秒为单位的当前时间。 public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：将数组中指定的数据拷贝到另一个数组中。 currentTimeMillis方法实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值 12345678import java.util.Date;public class SystemDemo { public static void main(String[] args) { //获取当前时间毫秒值 System.out.println(System.currentTimeMillis()) ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/e43d8e1e85d5.html" title="日期时间类"><img class="post_bg" src="https://api.btstu.cn/sjbz/?lx=suiji" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="日期时间类"></a></div><div class="recent-post-info"><a class="article-title" href="/e43d8e1e85d5.html" title="日期时间类">日期时间类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-11T06:47:00.000Z" title="发表于 2020-04-11 14:47:00">2020-04-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-11T06:47:00.000Z" title="更新于 2020-04-11 14:47:00">2020-04-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">Date类概述 java.util.Date类 表示特定的瞬间，精确到毫秒（1000毫秒=1秒）。 继续查阅Date类的描述，发现Date拥有多个构造函数，只是部分已经过时，但是其中有未过时的构造函数可以把毫秒值转成日期对象。 public Date()：分配Date对象并初始化此对象，以表示分配它的时间（精确到毫秒）。 public Date(long date)：分配Date对象并初始化此对象，以表示自从标准基准时间（称为“历元（epoch）”，即1970年1月1日00:00:00 GMT）以来的指定毫秒数。 由于我们处于东八区，所以我们的基准时间为1970年1月1日8时0分0秒。 简单来说：使用无参构造，可以自动设置当前系统时间的毫秒时刻；指定long类型的构造参数，可以自定义毫秒时刻。例如： 12345678910111213141516171819202122232425262728293031323334353637383940414243public static void main(String[] args) { test1(); test2 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/675ab52ded3d.html" title="Object类"><img class="post_bg" src="https://cdn.seovx.com/d/?mom=302" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Object类"></a></div><div class="recent-post-info"><a class="article-title" href="/675ab52ded3d.html" title="Object类">Object类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-10T06:46:25.000Z" title="发表于 2020-04-10 14:46:25">2020-04-10</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-10T06:46:25.000Z" title="更新于 2020-04-10 14:46:25">2020-04-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述java.lang.Object类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。 如果一个类没有特别指定父类，那么默认则继承自Object类。例如： 123public class MyClass /*extends Object*/ { // ...} toString方法方法摘要 public String toString()：返回该对象的字符串表示。 toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。 由于toString方法返回的结果是内存地址，而在开发中，经常需要按照对象的属性得到相应的字符串表现形式，因此也需要重写它。 覆盖重写如果不希望使用toString方法的默认行为，则可以对它进行覆盖重写。例如自定义的Person类： 1234567891011public class Person { private String name; private int age; @Override ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/0cc7ddcf0032.html" title="内部类"><img class="post_bg" src="https://api.dujin.org/pic/" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="内部类"></a></div><div class="recent-post-info"><a class="article-title" href="/0cc7ddcf0032.html" title="内部类">内部类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-09T06:45:49.000Z" title="发表于 2020-04-09 14:45:49">2020-04-09</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-09T06:45:49.000Z" title="更新于 2020-04-09 14:45:49">2020-04-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述内部类：将一个类A定义再另外一个类B里面，里面的那个类A就称为内部类，B则程为外部类 成员内部类 成员内部类：定义再类中方法外的类 格式 12345修饰符 class 外部类{ 修饰符 class 内部类{ }} 访问特点 内部类可以直接访问外部类的成员，包括私有成员 外部类要访问内部类的成员，必须要简历内部类的对象 格式：外部类名.内部类名 对象名 = new 外部类型().new 内部类型(); 内部类依然是一个独立的类，再编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号 局部内部类 局部内部类：只有当前所属的方法才能使用它，除了这个方法外面就不能用了 格式 1234567修饰符 class 外部类名称{ 修饰符 返回值类型 外部类方法名称(参数列表){ class 局部内部类名称{ } } } 访问 在局部内部类中实现类的初始化 匿名内部类 匿名内部类：是内部类的简化写法。它的本质是一个带具体实 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/af0c06af727c.html" title="权限修饰符"><img class="post_bg" src="https://api.btstu.cn/sjbz/?lx=suiji" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="权限修饰符"></a></div><div class="recent-post-info"><a class="article-title" href="/af0c06af727c.html" title="权限修饰符">权限修饰符</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-08T06:45:02.000Z" title="发表于 2020-04-08 14:45:02">2020-04-08</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-08T06:45:02.000Z" title="更新于 2020-04-08 14:45:02">2020-04-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限 public：公共的。 protected：受保护的 default：默认的 private：私有的 不同权限的访问能力 public protected default private 同一类中 √ √ √ √ 同一包中（子类于无关类） √ √ √ 不同包的子类 √ √ 不同包中的无关类 √ 编写代码时，如果没有特殊的考虑，建议这样使用权限： 成员变量使用private，隐藏细节。 构造方法使用public，方便创建对象。 成员方法使用public，方便调用方法。 不加权限修饰符，其访问能力与default修饰符相同</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/546c10072d86.html" title="Final关键字"><img class="post_bg" src="https://api.ixiaowai.cn/api/api.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Final关键字"></a></div><div class="recent-post-info"><a class="article-title" href="/546c10072d86.html" title="Final关键字">Final关键字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-07T06:44:25.000Z" title="发表于 2020-04-07 14:44:25">2020-04-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-07T06:44:25.000Z" title="更新于 2020-04-07 14:44:25">2020-04-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述为了避免随意改写的情况，Java提供了final关键字，用于修饰不可变内容 final：不可以改变，可以用于修饰类、方法和变量 类：被修饰的类，不能被继承 方法：被修饰的方法，不能被重写 变量：被修饰的变量，不能被重新赋值 使用方法 修饰类 123final class 类名{ } 修饰方法 123修饰符 final 返回值类型 方法名(参数列表){ } 对于类、方法来说，abstract和final关键字不能同时使用 修饰变量 局部变量：基本类型 只能赋值一次，第二次赋值就会报错 ```javafinal 基本类型 名称; 1234567- 局部变量：引用类型 - 不能修改引用对象的地址，但是可以修改对象内部的成员变量 - ```java final 类名 对象名 = new 类名(); 成员变量 因为成员变量具有默认值，所以使用final关键字之后必须手动赋值，不会再给默认值了 对于final的成员变量，只能初始化完成 显示初始化 构造方法初始化 被final修饰的常量名称， ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/7b851fc8c287.html" title="VMware虚拟机系统Ubuntu安装VMware Tools工具"><img class="post_bg" src="https://api.ixiaowai.cn/api/api.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="VMware虚拟机系统Ubuntu安装VMware Tools工具"></a></div><div class="recent-post-info"><a class="article-title" href="/7b851fc8c287.html" title="VMware虚拟机系统Ubuntu安装VMware Tools工具">VMware虚拟机系统Ubuntu安装VMware Tools工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-06T14:27:46.000Z" title="发表于 2020-04-06 22:27:46">2020-04-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-06T14:27:46.000Z" title="更新于 2020-04-06 22:27:46">2020-04-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Ubuntu/">Ubuntu</a></span></div><div class="content">VMware虚拟机系统Ubuntu安装VMware tools工具在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。 启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools 双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包， 将该文件复制到下载文件夹，至于复制到什么文件夹。大家可以自行选择。 ![image-20200403172438473](VMware虚拟机系统Ubuntu安装VMware tools工具/image-20200403172438473.png) 右键点击该文件，选择“提取到此处” 打开解压后的vmwaretools文件夹，右键点击vmware-tools-dist ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/b28bf5bb0dae.html" title="修改Ubuntu分辨率"><img class="post_bg" src="https://img.paulzzh.tech/touhou/random" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="修改Ubuntu分辨率"></a></div><div class="recent-post-info"><a class="article-title" href="/b28bf5bb0dae.html" title="修改Ubuntu分辨率">修改Ubuntu分辨率</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-06T14:26:45.000Z" title="发表于 2020-04-06 22:26:45">2020-04-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-06T14:26:45.000Z" title="更新于 2020-04-06 22:26:45">2020-04-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Ubuntu/">Ubuntu</a></span></div><div class="content">设置 点设备 修改分辨率 应用</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">…</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">…</span><a class="page-number" href="/page/16/#content-inner">16</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="this.onerror=null,this.src=&quot;/img/friend_404.gif&quot;" alt="avatar"></div><div class="author-info__name">竹蜻蜓</div><div class="author-info__description">一个写bug的程序员</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">154</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/isGuard"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/isGuard" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这是一个很巧的误会</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/918110f64071.html" title="毒瓶子二进制法"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="毒瓶子二进制法"></a><div class="content"><a class="title" href="/918110f64071.html" title="毒瓶子二进制法">毒瓶子二进制法</a><time datetime="2021-07-29T13:42:50.000Z" title="发表于 2021-07-29 21:42:50">2021-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)"><img src="https://api.dujin.org/pic/" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Optional (一个为了 Null 元素和Lambda设计的类)"></a><div class="content"><a class="title" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)">Optional (一个为了 Null 元素和Lambda设计的类)</a><time datetime="2021-07-26T12:59:51.000Z" title="发表于 2021-07-26 20:59:51">2021-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)"><img src="https://api.btstu.cn/sjbz/?lx=suiji" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="SpringBoot 请求 (随笔写的很少)"></a><div class="content"><a class="title" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)">SpringBoot 请求 (随笔写的很少)</a><time datetime="2021-07-25T11:10:29.000Z" title="发表于 2021-07-25 19:10:29">2021-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/0af545735672.html" title="Devtools 属性"><img src="https://cdn.seovx.com/d/?mom=302" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="Devtools 属性"></a><div class="content"><a class="title" href="/0af545735672.html" title="Devtools 属性">Devtools 属性</a><time datetime="2021-07-14T08:51:43.000Z" title="发表于 2021-07-14 16:51:43">2021-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/63d02054b042.html" title="执行器属性"><img src="https://api.ixiaowai.cn/api/api.php" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" alt="执行器属性"></a><div class="content"><a class="title" href="/63d02054b042.html" title="执行器属性">执行器属性</a><time datetime="2021-07-14T08:44:16.000Z" title="发表于 2021-07-14 16:44:16">2021-07-14</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i> <span>分类</span> <a class="card-more-btn" href="/categories/" title="查看更多"><i class="fas fa-angle-right"></i></a></div><ul class="card-category-list" id="aside-cat-list"><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Html/"><span class="card-category-list-name">Html</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">75</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Maven/"><span class="card-category-list-name">Maven</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="card-category-list-name">日常</span><span class="card-category-list-count">2</span></a></li></ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%AD%E9%9B%80/" style="font-size:1.43em;color:#c15c9e">语雀</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size:1.33em;color:#25159c">生活</a><a href="/tags/Java/" style="font-size:1.45em;color:#ad1569">Java</a><a href="/tags/SpringBoot/" style="font-size:1.38em;color:#0e7897">SpringBoot</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size:1.4em;color:#92777e">算法</a><a href="/tags/Linux/" style="font-size:1.31em;color:#b18554">Linux</a><a href="/tags/Contos/" style="font-size:1.17em;color:#0b8326">Contos</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size:1.24em;color:#9a4a54">数据库</a><a href="/tags/SQL-Server/" style="font-size:1.15em;color:#b65a0e">SQL Server</a><a href="/tags/Maven/" style="font-size:1.2em;color:#74b045">Maven</a><a href="/tags/Ubuntu/" style="font-size:1.27em;color:#0d8099">Ubuntu</a><a href="/tags/Node/" style="font-size:1.15em;color:#ba778e">Node</a><a href="/tags/Hexo/" style="font-size:1.29em;color:#7b856d">Hexo</a><a href="/tags/Log4j/" style="font-size:1.15em;color:#1f1c8c">Log4j</a><a href="/tags/Rest/" style="font-size:1.15em;color:#5822b5">Rest</a><a href="/tags/SSM/" style="font-size:1.17em;color:#ba7e9d">SSM</a><a href="/tags/Socket/" style="font-size:1.15em;color:#29799a">Socket</a><a href="/tags/WebService/" style="font-size:1.15em;color:#53829b">WebService</a><a href="/tags/Solr/" style="font-size:1.15em;color:#1c61c8">Solr</a><a href="/tags/Html/" style="font-size:1.2em;color:#20784e">Html</a><a href="/tags/Ajax/" style="font-size:1.15em;color:#0e5aa7">Ajax</a><a href="/tags/JQuery/" style="font-size:1.17em;color:#2f093b">JQuery</a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size:1.17em;color:#4ab83f">日常</a><a href="/tags/Travis/" style="font-size:1.15em;color:#1c5936">Travis</a><a href="/tags/%E5%AD%A6%E8%BD%A6/" style="font-size:1.15em;color:#218b50">学车</a><a href="/tags/%E6%B5%81%E4%B9%A6/" style="font-size:1.15em;color:#bc2564">流书</a><a href="/tags/MySQL/" style="font-size:1.17em;color:#0f03b0">MySQL</a><a href="/tags/Redis/" style="font-size:1.17em;color:#64aec4">Redis</a><a href="/tags/IntelliJ-IDEA/" style="font-size:1.17em;color:#5e69b2">IntelliJ IDEA</a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size:1.22em;color:#749e26">工具</a><a href="/tags/JMeter/" style="font-size:1.15em;color:#ab3a36">JMeter</a><a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size:1.2em;color:#b58e99">音乐</a><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size:1.36em;color:#4b7ea0">蓝桥杯</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多"> <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">40</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">27</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">154</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishdate="2016-10-13T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">155.7k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2021-08-17T04:55:08.812Z"></div></div></div></div></div></div></main><footer id="footer" style="background:ture"><div id="footer-wrap"><div class="copyright">©2016 - 2021 By 竹蜻蜓</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn(){"object"==typeof pangu?pangu.autoSpacingPage():getScript("https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js").then(()=>{pangu.autoSpacingPage()})}function panguInit(){GLOBAL_CONFIG_SITE.isPost&&panguFn()}document.addEventListener("DOMContentLoaded",panguInit)</script><script>var preloader={endLoading:()=>{document.body.style.overflow="auto",document.getElementById("loading-box").classList.add("loaded")},initLoading:()=>{document.body.style.overflow="",document.getElementById("loading-box").classList.remove("loaded")}};window.addEventListener("load",preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType(){new Typed("#subtitle",{strings:"假话全不说 真话不全说".split(","),startDelay:300,typeSpeed:150,loop:!1,backSpeed:50})}"function"==typeof Typed?subtitleType():getScript("https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js").then(subtitleType)</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener("load",()=>{const e=(e,t)=>{if(e)return e;return"https://gravatar.loli.net/avatar/"+(md5(t.toLowerCase())+"?d=retro")},t=e=>{let t="";if(e.length)for(let a=0;a<e.length;a++){t+="<div class='aside-list-item'>";{const n="data-lazy-src";t+=`<a href='${e[a].url}' class='thumbnail'><img ${n}='${e[a].avatar}' alt='${e[a].nick}'></a>`}t+=`<div class='content'>\n        <a class='comment' href='${e[a].url}'>${e[a].content}</a>\n        <div class='name'><span>${e[a].nick} / </span><time datetime="${e[a].date}">${btf.diffDate(e[a].date,!0)}</time></div>\n        </div></div>`}else t+="没有评论";let a=document.querySelector("#card-newest-comments .aside-list");a.innerHTML=t,window.lazyLoadInstance&&window.lazyLoadInstance.update(),window.pjax&&window.pjax.refresh(a)},a=()=>{if(document.querySelector("#card-newest-comments .aside-list")){const a=saveToLocal.get("valine-newest-comments");a?t(JSON.parse(a)):fetch("https://XhzUk14b.api.lncldglobal.com/1.1/classes/Comment?limit=6&order=-createdAt",{method:"GET",headers:{"X-LC-Id":"XhzUk14bCmCVREHE5ROg559J-MdYXbMMI","X-LC-Key":"c8Fw7RQke0iYCjQb2NX4jwSW","Content-Type":"application/json"}}).then(e=>e.json()).then(a=>{const n=a.results.map((function(t){return{avatar:e(t.QQAvatar,t.mail),content:(a=t.comment,""===a||(a=(a=(a=(a=a.replace(/<img.*?src="(.*?)"?[^\>]+>/gi,"[图片]")).replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi,"[链接]")).replace(/<pre><code>.*?<\/pre>/gi,"[代码]")).replace(/<[^>]+>/g,"")).length>150&&(a=a.substring(0,150)+"..."),a),nick:t.nick,url:t.url+"#"+t.objectId,date:t.updatedAt};var a}));saveToLocal.set("valine-newest-comments",JSON.stringify(n),10/1440),t(n)}).catch(e=>{document.querySelector("#card-newest-comments .aside-list").innerHTML="无法获取评论，请确认相关配置是否正确"})}};a(),document.addEventListener("pjax:complete",a)})</script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,POWERMODE.mobile=!1,document.body.addEventListener("input",POWERMODE)</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors=["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"];var pjax=new Pjax({elements:'a:not([target="_blank"])',selectors:pjaxSelectors,cacheBust:!1,analytics:!0,scrollRestoration:!1});document.addEventListener("pjax:send",(function(){if(window.removeEventListener("scroll",window.tocScrollFn),window.removeEventListener("scroll",scrollCollect),"object"==typeof preloader&&preloader.initLoading(),window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].options.fixed||window.aplayers[e].destroy();"object"==typeof typed&&typed.destroy();const e=document.body.classList;e.contains("read-mode")&&e.remove("read-mode")})),document.addEventListener("pjax:complete",(function(){window.refreshFn(),document.querySelectorAll("script[data-pjax]").forEach(e=>{const t=document.createElement("script"),o=e.text||e.textContent||e.innerHTML||"";Array.from(e.attributes).forEach(e=>t.setAttribute(e.name,e.value)),t.appendChild(document.createTextNode(o)),e.parentNode.replaceChild(t,e)}),GLOBAL_CONFIG.islazyload&&window.lazyLoadInstance.update(),"function"==typeof chatBtnFn&&chatBtnFn(),"function"==typeof panguInit&&panguInit(),"function"==typeof gtag&&gtag("config","UA-136832726-1",{page_path:window.location.pathname}),"object"==typeof _hmt&&_hmt.push(["_trackPageview",window.location.pathname]),"function"==typeof loadMeting&&document.getElementsByClassName("aplayer").length&&loadMeting(),"object"==typeof Prism&&Prism.highlightAll(),"object"==typeof preloader&&preloader.endLoading()})),document.addEventListener("pjax:error",e=>{404===e.request.status&&pjax.loadUrl("/404.html")})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script type="text/javascript" src="/js/bundle.js"></script></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>梦里的竹蜻蜓 - 假话全不说 真话不全说</title><meta name="keywords" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客"><meta name="author" content="竹蜻蜓"><meta name="copyright" content="竹蜻蜓"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一个写bug的程序员">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梦里的竹蜻蜓">
+<meta property="og:url" content="https://blog.guard.ren/page/6/index.html">
+<meta property="og:site_name" content="梦里的竹蜻蜓">
+<meta property="og:description" content="一个写bug的程序员">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=640">
+<meta property="article:author" content="竹蜻蜓">
+<meta property="article:tag" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=640"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://blog.guard.ren/page/6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk"/><meta name="baidu-site-verification" content="code-yIv1xTa1ed"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#183255"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/icons/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/icons/favicon-16x16.png"/><link rel="mask-icon" href="/pwa/icons/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-136832726-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已过","messageNext":"天，文章内容可能已过时，请选择性观看。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 竹蜻蜓","link":"链接: ","source":"来源: 梦里的竹蜻蜓","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '梦里的竹蜻蜓',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-08-17 23:15:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">154</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">梦里的竹蜻蜓</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">梦里的竹蜻蜓</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/isGuard" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/b3946cdad917.html" title="包装类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="包装类"></a></div><div class="recent-post-info"><a class="article-title" href="/b3946cdad917.html" title="包装类">包装类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-14T06:48:45.000Z" title="发表于 2020-04-14 14:48:45">2020-04-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-14T06:48:45.000Z" title="更新于 2020-04-14 14:48:45">2020-04-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述Java提供了两个类型系统，基本类型与引用类型，使用基本类型在于效率，然而很多情况，会创建对象使用，因为对象可以做更多的功能，如果想要我们的基本类型像对象一样操作，就可以使用基本类型对应的包装类，如下：
+
+
+
+基本类型
+对应的包装类（位于java.lang包中）
+
+
+
+byte
+Byte
+
+
+short
+Short
+
+
+int
+Integer
+
+
+long
+Long
+
+
+float
+Float
+
+
+double
+Double
+
+
+char
+Character
+
+
+boolean
+Boolean
+
+
+
+装箱与拆箱基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“：
+
+装箱：从基本类型转换为对应的包装类对象。
+
+拆箱：从包装类对象转换为对应的基本类型。
+
+
+用Integer与 int为例：（看懂代码即可）
+基本数值—-&gt;包装对象
+12Integer i = new Integer(4);//使用构造函数函数Integer iii = Integer.valueOf(4);//使用包装类中的valueOf方法
+
+包装对象—-&gt;基本数值
+1int num =  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/a8e99b664015.html" title="StringBuilder类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="StringBuilder类"></a></div><div class="recent-post-info"><a class="article-title" href="/a8e99b664015.html" title="StringBuilder类">StringBuilder类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-13T06:48:17.000Z" title="发表于 2020-04-13 14:48:17">2020-04-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-13T06:48:17.000Z" title="更新于 2020-04-13 14:48:17">2020-04-13</time></span></div><div class="content">字符串拼接问题由于String类的对象内容不可改变，所以每当进行字符串拼接时，总是会在内存中创建一个新的对象。例如：
+1234567public class StringDemo &#123;    public static void main(String[] args) &#123;        String s = &quot;Hello&quot;;        s += &quot;World&quot;;        System.out.println(s);    &#125;&#125;
+
+在API中对String类有这样的描述：字符串是常量，它们的值在创建后不能被更改。
+根据这句话分析我们的代码，其实总共产生了三个字符串，即&quot;Hello&quot;、&quot;World&quot;和&quot;HelloWorld&quot;。引用变量s首先指向Hello对象，最终指向拼接出来的新字符串对象，即HelloWord 。
+由此可知，如果对字符串进行拼接操作，每次拼接，都会构建一个新的String对象，既耗时，又浪费空间。为了解决这一问题，可以使用ja ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/ca04d468491e.html" title="System类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="System类"></a></div><div class="recent-post-info"><a class="article-title" href="/ca04d468491e.html" title="System类">System类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-12T06:47:33.000Z" title="发表于 2020-04-12 14:47:33">2020-04-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-12T06:47:33.000Z" title="更新于 2020-04-12 14:47:33">2020-04-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">java.lang.System类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：
+
+public static long currentTimeMillis()：返回以毫秒为单位的当前时间。
+public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：将数组中指定的数据拷贝到另一个数组中。
+
+currentTimeMillis方法实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值
+12345678import java.util.Date;public class SystemDemo &#123;    public static void main(String[] args) &#123;       	//获取当前时间毫秒值        System.out.println(System.currentTimeMillis()) ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/e43d8e1e85d5.html" title="日期时间类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="日期时间类"></a></div><div class="recent-post-info"><a class="article-title" href="/e43d8e1e85d5.html" title="日期时间类">日期时间类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-11T06:47:00.000Z" title="发表于 2020-04-11 14:47:00">2020-04-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-11T06:47:00.000Z" title="更新于 2020-04-11 14:47:00">2020-04-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">Date类概述 java.util.Date类 表示特定的瞬间，精确到毫秒（1000毫秒=1秒）。
+继续查阅Date类的描述，发现Date拥有多个构造函数，只是部分已经过时，但是其中有未过时的构造函数可以把毫秒值转成日期对象。
+
+public Date()：分配Date对象并初始化此对象，以表示分配它的时间（精确到毫秒）。
+public Date(long date)：分配Date对象并初始化此对象，以表示自从标准基准时间（称为“历元（epoch）”，即1970年1月1日00:00:00 GMT）以来的指定毫秒数。
+
+
+由于我们处于东八区，所以我们的基准时间为1970年1月1日8时0分0秒。
+
+简单来说：使用无参构造，可以自动设置当前系统时间的毫秒时刻；指定long类型的构造参数，可以自定义毫秒时刻。例如：
+12345678910111213141516171819202122232425262728293031323334353637383940414243public static void main(String[] args) &#123;   test1();   test2 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/675ab52ded3d.html" title="Object类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object类"></a></div><div class="recent-post-info"><a class="article-title" href="/675ab52ded3d.html" title="Object类">Object类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-10T06:46:25.000Z" title="发表于 2020-04-10 14:46:25">2020-04-10</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-10T06:46:25.000Z" title="更新于 2020-04-10 14:46:25">2020-04-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述java.lang.Object类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。
+如果一个类没有特别指定父类，那么默认则继承自Object类。例如：
+123public class MyClass /*extends Object*/ &#123;  	// ...&#125;
+
+toString方法方法摘要
+public String toString()：返回该对象的字符串表示。
+
+toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。
+由于toString方法返回的结果是内存地址，而在开发中，经常需要按照对象的属性得到相应的字符串表现形式，因此也需要重写它。
+覆盖重写如果不希望使用toString方法的默认行为，则可以对它进行覆盖重写。例如自定义的Person类：
+1234567891011public class Person &#123;      private String name;    private int age;    @Override   ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/0cc7ddcf0032.html" title="内部类">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内部类"></a></div><div class="recent-post-info"><a class="article-title" href="/0cc7ddcf0032.html" title="内部类">内部类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-09T06:45:49.000Z" title="发表于 2020-04-09 14:45:49">2020-04-09</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-09T06:45:49.000Z" title="更新于 2020-04-09 14:45:49">2020-04-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述内部类：将一个类A定义再另外一个类B里面，里面的那个类A就称为内部类，B则程为外部类
+成员内部类
+成员内部类：定义再类中方法外的类
+格式
+
+12345修饰符 class 外部类&#123; 修饰符 class 内部类&#123;    &#125;&#125;
+
+
+访问特点
+内部类可以直接访问外部类的成员，包括私有成员
+外部类要访问内部类的成员，必须要简历内部类的对象
+格式：外部类名.内部类名 对象名 = new 外部类型().new 内部类型();
+
+
+
+
+内部类依然是一个独立的类，再编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号
+
+局部内部类
+局部内部类：只有当前所属的方法才能使用它，除了这个方法外面就不能用了
+格式
+
+1234567修饰符 class 外部类名称&#123; 修饰符 返回值类型 外部类方法名称(参数列表)&#123;   class 局部内部类名称&#123;        &#125; &#125; &#125;
+
+
+访问
+在局部内部类中实现类的初始化
+
+
+
+匿名内部类
+匿名内部类：是内部类的简化写法。它的本质是一个带具体实 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/af0c06af727c.html" title="权限修饰符">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="权限修饰符"></a></div><div class="recent-post-info"><a class="article-title" href="/af0c06af727c.html" title="权限修饰符">权限修饰符</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-08T06:45:02.000Z" title="发表于 2020-04-08 14:45:02">2020-04-08</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-08T06:45:02.000Z" title="更新于 2020-04-08 14:45:02">2020-04-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限
+
+public：公共的。
+protected：受保护的
+default：默认的
+private：私有的
+
+不同权限的访问能力
+
+
+
+public
+protected
+default
+private
+
+
+
+同一类中
+√
+√
+√
+√
+
+
+同一包中（子类于无关类）
+√
+√
+√
+
+
+
+不同包的子类
+√
+√
+
+
+
+
+不同包中的无关类
+√
+
+
+
+
+
+编写代码时，如果没有特殊的考虑，建议这样使用权限：
+
+成员变量使用private，隐藏细节。
+构造方法使用public，方便创建对象。
+成员方法使用public，方便调用方法。
+
+
+不加权限修饰符，其访问能力与default修饰符相同
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/546c10072d86.html" title="Final关键字">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Final关键字"></a></div><div class="recent-post-info"><a class="article-title" href="/546c10072d86.html" title="Final关键字">Final关键字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-07T06:44:25.000Z" title="发表于 2020-04-07 14:44:25">2020-04-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-07T06:44:25.000Z" title="更新于 2020-04-07 14:44:25">2020-04-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">概述为了避免随意改写的情况，Java提供了final关键字，用于修饰不可变内容
+
+final：不可以改变，可以用于修饰类、方法和变量
+类：被修饰的类，不能被继承
+方法：被修饰的方法，不能被重写
+变量：被修饰的变量，不能被重新赋值
+
+
+
+使用方法
+修饰类
+
+123final class 类名&#123;  &#125;
+
+
+修饰方法
+
+123修饰符 final 返回值类型 方法名(参数列表)&#123;  &#125;
+
+对于类、方法来说，abstract和final关键字不能同时使用
+
+修饰变量
+
+局部变量：基本类型
+
+只能赋值一次，第二次赋值就会报错
+
+```javafinal 基本类型 名称;
+1234567- 局部变量：引用类型  - 不能修改引用对象的地址，但是可以修改对象内部的成员变量  - ```java    final 类名 对象名 = new 类名();
+
+
+成员变量
+
+因为成员变量具有默认值，所以使用final关键字之后必须手动赋值，不会再给默认值了
+对于final的成员变量，只能初始化完成
+显示初始化
+构造方法初始化
+
+
+
+
+
+
+
+
+
+被final修饰的常量名称， ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/7b851fc8c287.html" title="VMware虚拟机系统Ubuntu安装VMware Tools工具">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VMware虚拟机系统Ubuntu安装VMware Tools工具"></a></div><div class="recent-post-info"><a class="article-title" href="/7b851fc8c287.html" title="VMware虚拟机系统Ubuntu安装VMware Tools工具">VMware虚拟机系统Ubuntu安装VMware Tools工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-06T14:27:46.000Z" title="发表于 2020-04-06 22:27:46">2020-04-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-06T14:27:46.000Z" title="更新于 2020-04-06 22:27:46">2020-04-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Ubuntu/">Ubuntu</a></span></div><div class="content">VMware虚拟机系统Ubuntu安装VMware tools工具在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。
+启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools
+
+双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，
+将该文件复制到下载文件夹，至于复制到什么文件夹。大家可以自行选择。
+![image-20200403172438473](VMware虚拟机系统Ubuntu安装VMware tools工具/image-20200403172438473.png)
+
+右键点击该文件，选择“提取到此处”
+
+打开解压后的vmwaretools文件夹，右键点击vmware-tools-dist ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/b28bf5bb0dae.html" title="修改Ubuntu分辨率">     <img class="post_bg" src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="修改Ubuntu分辨率"></a></div><div class="recent-post-info"><a class="article-title" href="/b28bf5bb0dae.html" title="修改Ubuntu分辨率">修改Ubuntu分辨率</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-06T14:26:45.000Z" title="发表于 2020-04-06 22:26:45">2020-04-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-04-06T14:26:45.000Z" title="更新于 2020-04-06 22:26:45">2020-04-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Ubuntu/">Ubuntu</a></span></div><div class="content">设置
+点设备
+修改分辨率
+应用
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#content-inner">16</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">竹蜻蜓</div><div class="author-info__description">一个写bug的程序员</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">154</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/isGuard"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/isGuard" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这是一个很巧的误会</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/918110f64071.html" title="毒瓶子二进制法"><img src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毒瓶子二进制法"/></a><div class="content"><a class="title" href="/918110f64071.html" title="毒瓶子二进制法">毒瓶子二进制法</a><time datetime="2021-07-29T13:42:50.000Z" title="发表于 2021-07-29 21:42:50">2021-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)"><img src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Optional (一个为了 Null 元素和Lambda设计的类)"/></a><div class="content"><a class="title" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)">Optional (一个为了 Null 元素和Lambda设计的类)</a><time datetime="2021-07-26T12:59:51.000Z" title="发表于 2021-07-26 20:59:51">2021-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)"><img src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot 请求 (随笔写的很少)"/></a><div class="content"><a class="title" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)">SpringBoot 请求 (随笔写的很少)</a><time datetime="2021-07-25T11:10:29.000Z" title="发表于 2021-07-25 19:10:29">2021-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/0af545735672.html" title="Devtools 属性"><img src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Devtools 属性"/></a><div class="content"><a class="title" href="/0af545735672.html" title="Devtools 属性">Devtools 属性</a><time datetime="2021-07-14T08:51:43.000Z" title="发表于 2021-07-14 16:51:43">2021-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/63d02054b042.html" title="执行器属性"><img src="https://api.paugram.com/wallpaper/?source=gt" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="执行器属性"/></a><div class="content"><a class="title" href="/63d02054b042.html" title="执行器属性">执行器属性</a><time datetime="2021-07-14T08:44:16.000Z" title="发表于 2021-07-14 16:44:16">2021-07-14</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Html/"><span class="card-category-list-name">Html</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">75</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Maven/"><span class="card-category-list-name">Maven</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="card-category-list-name">日常</span><span class="card-category-list-count">2</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%AD%E9%9B%80/" style="font-size: 1.43em; color: rgb(147, 30, 73)">语雀</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.33em; color: rgb(110, 117, 125)">生活</a><a href="/tags/Java/" style="font-size: 1.45em; color: rgb(94, 173, 52)">Java</a><a href="/tags/SpringBoot/" style="font-size: 1.38em; color: rgb(95, 84, 131)">SpringBoot</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.4em; color: rgb(71, 176, 135)">算法</a><a href="/tags/Linux/" style="font-size: 1.31em; color: rgb(123, 103, 8)">Linux</a><a href="/tags/Contos/" style="font-size: 1.17em; color: rgb(88, 180, 8)">Contos</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.24em; color: rgb(12, 0, 55)">数据库</a><a href="/tags/SQL-Server/" style="font-size: 1.15em; color: rgb(140, 45, 190)">SQL Server</a><a href="/tags/Maven/" style="font-size: 1.2em; color: rgb(73, 156, 151)">Maven</a><a href="/tags/Ubuntu/" style="font-size: 1.27em; color: rgb(11, 125, 35)">Ubuntu</a><a href="/tags/Node/" style="font-size: 1.15em; color: rgb(136, 111, 111)">Node</a><a href="/tags/Hexo/" style="font-size: 1.29em; color: rgb(135, 50, 161)">Hexo</a><a href="/tags/Log4j/" style="font-size: 1.15em; color: rgb(193, 19, 131)">Log4j</a><a href="/tags/Rest/" style="font-size: 1.15em; color: rgb(144, 54, 84)">Rest</a><a href="/tags/SSM/" style="font-size: 1.17em; color: rgb(135, 12, 142)">SSM</a><a href="/tags/Socket/" style="font-size: 1.15em; color: rgb(119, 50, 38)">Socket</a><a href="/tags/WebService/" style="font-size: 1.15em; color: rgb(190, 163, 77)">WebService</a><a href="/tags/Solr/" style="font-size: 1.15em; color: rgb(77, 167, 141)">Solr</a><a href="/tags/Html/" style="font-size: 1.2em; color: rgb(124, 151, 29)">Html</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(73, 34, 195)">Ajax</a><a href="/tags/JQuery/" style="font-size: 1.17em; color: rgb(59, 109, 171)">JQuery</a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 1.17em; color: rgb(94, 112, 124)">日常</a><a href="/tags/Travis/" style="font-size: 1.15em; color: rgb(171, 176, 21)">Travis</a><a href="/tags/%E5%AD%A6%E8%BD%A6/" style="font-size: 1.15em; color: rgb(25, 150, 180)">学车</a><a href="/tags/%E6%B5%81%E4%B9%A6/" style="font-size: 1.15em; color: rgb(92, 58, 58)">流书</a><a href="/tags/MySQL/" style="font-size: 1.17em; color: rgb(124, 40, 49)">MySQL</a><a href="/tags/Redis/" style="font-size: 1.17em; color: rgb(183, 4, 11)">Redis</a><a href="/tags/IntelliJ-IDEA/" style="font-size: 1.17em; color: rgb(4, 52, 39)">IntelliJ IDEA</a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.22em; color: rgb(190, 107, 4)">工具</a><a href="/tags/JMeter/" style="font-size: 1.15em; color: rgb(124, 10, 89)">JMeter</a><a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 1.2em; color: rgb(118, 178, 38)">音乐</a><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.36em; color: rgb(66, 49, 8)">蓝桥杯</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">40</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">27</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">154</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2016-10-13T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">155.7k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-08-17T15:15:19.354Z"></div></div></div></div></div></div></main><footer id="footer" style="background: ture"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2021 By 竹蜻蜓</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "假话全不说 真话不全说".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: false,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '假话全不说 真话不全说'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=retro'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://XhzUk14b.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'XhzUk14bCmCVREHE5ROg559J-MdYXbMMI',
+        "X-LC-Key": 'c8Fw7RQke0iYCjQb2NX4jwSW',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'UA-136832726-1', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
