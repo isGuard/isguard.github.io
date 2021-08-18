@@ -198,21 +198,21 @@
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/pwa/manifest.json</loc>
+    <loc>https://blog.guard.ren/static/pwa/manifest.json</loc>
     
     <lastmod>2021-08-18</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/pwa/icons/README.html</loc>
+    <loc>https://blog.guard.ren/static/pwa/icons/README.html</loc>
     
     <lastmod>2021-08-18</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/about/index.html</loc>
+    <loc>https://blog.guard.ren/menu/about/index.html</loc>
     
     <lastmod>2021-08-18</lastmod>
     
@@ -226,21 +226,21 @@
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/link/index.html</loc>
+    <loc>https://blog.guard.ren/menu/link/index.html</loc>
     
     <lastmod>2021-08-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/categories/index.html</loc>
+    <loc>https://blog.guard.ren/menu/categories/index.html</loc>
     
     <lastmod>2021-08-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/tags/index.html</loc>
+    <loc>https://blog.guard.ren/menu/tags/index.html</loc>
     
     <lastmod>2021-08-16</lastmod>
     
