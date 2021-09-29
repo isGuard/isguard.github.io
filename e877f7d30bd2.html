@@ -1,1 +1,730 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络属性 | 梦里的竹蜻蜓</title><meta name="keywords" content="语雀,Java,SpringBoot"><meta name="author" content="竹蜻蜓"><meta name="copyright" content="竹蜻蜓"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="hateoas   配置项 默认值 说明    spring.hateoas.use-hal-as-default-json-media-type true 是否应该向接受申请&#x2F;json 的请求发送申请&#x2F;hal+json 响应。   jersey   配置项 默认值 说明    spring.jersey.application-path  作为应用程序的基本 URI 的路径，如果指定，则覆盖”@"><meta property="og:type" content="article"><meta property="og:title" content="网络属性"><meta property="og:url" content="https://blog.guard.ren/e877f7d30bd2.html"><meta property="og:site_name" content="梦里的竹蜻蜓"><meta property="og:description" content="hateoas   配置项 默认值 说明    spring.hateoas.use-hal-as-default-json-media-type true 是否应该向接受申请&#x2F;json 的请求发送申请&#x2F;hal+json 响应。   jersey   配置项 默认值 说明    spring.jersey.application-path  作为应用程序的基本 URI 的路径，如果指定，则覆盖”@"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.guard.ren/static/cover/cover-140.png"><meta property="article:published_time" content="2021-07-14T08:27:30.000Z"><meta property="article:modified_time" content="2021-08-26T09:50:05.162Z"><meta property="article:author" content="竹蜻蜓"><meta property="article:tag" content="语雀"><meta property="article:tag" content="Java"><meta property="article:tag" content="SpringBoot"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://blog.guard.ren/static/cover/cover-140.png"><link rel="shortcut icon" href="/static/img/favicon.ico"><link rel="canonical" href="https://blog.guard.ren/e877f7d30bd2"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//www.clarity.ms"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk"><meta name="baidu-site-verification" content="code-yIv1xTa1ed"><link rel="manifest" href="/static/pwa/manifest.json"><meta name="msapplication-TileColor" content="#183255"><link rel="apple-touch-icon" sizes="180x180" href="/static/pwa/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/static/pwa/icons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/static/pwa/icons/favicon-16x16.png"><link rel="mask-icon" href="/static/pwa/icons/safari-pinned-tab.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload='this.media="all"'><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-136832726-1")</script><script>!function(t,e,n,c,s,a,i){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(a=e.createElement(c)).async=1,a.src="https://www.clarity.ms/tag/82cohssi9b",(i=e.getElementsByTagName(c)[0]).parentNode.insertBefore(a,i)}(window,document,"clarity","script")</script><script>const GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:{path:"search.xml",languages:{hits_empty:"找不到您查询的内容：${query}"}},translate:void 0,noticeOutdate:{limitDay:365,position:"top",messagePrev:"距离上次更新已过",messageNext:"天，文章内容可能已过时，请选择性观看。"},highlight:{plugin:"highlighjs",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:!1},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!1,post:!1},runtime:"天",date_suffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:{limitCount:50,languages:{author:"作者: 竹蜻蜓",link:"链接: ",source:"来源: 梦里的竹蜻蜓",info:"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},lightbox:"fancybox",Snackbar:{chs_to_cht:"你已切换为繁体",cht_to_chs:"你已切换为简体",day_to_night:"你已切换为深色模式",night_to_day:"你已切换为浅色模式",bgLight:"#49b1f5",bgDark:"#121212",position:"bottom-left"},source:{jQuery:"https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js",justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js",css:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css"},fancybox:{js:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js",css:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"}},isPhotoFigcaption:!1,islazyload:!0,isanchor:!0}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"网络属性",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2021-08-26 17:50:05"}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(e=>{e.saveToLocal={set:function(e,t,o){if(0===o)return;const a=864e5*o,c={value:t,expiry:(new Date).getTime()+a};localStorage.setItem(e,JSON.stringify(c))},get:function(e){const t=localStorage.getItem(e);if(!t)return;const o=JSON.parse(t);if(!((new Date).getTime()>o.expiry))return o.value;localStorage.removeItem(e)}},e.getScript=e=>new Promise((t,o)=>{const a=document.createElement("script");a.src=e,a.async=!0,a.onerror=o,a.onload=a.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(a.onload=a.onreadystatechange=null,t())},document.head.appendChild(a)}),e.activateDarkMode=function(){document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=function(){document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#ffffff")};const t=saveToLocal.get("theme"),o=window.matchMedia("(prefers-color-scheme: dark)").matches,a=window.matchMedia("(prefers-color-scheme: light)").matches,c=window.matchMedia("(prefers-color-scheme: no-preference)").matches,n=!o&&!a&&!c;if(void 0===t){if(a)activateLightMode();else if(o)activateDarkMode();else if(c||n){const e=(new Date).getHours();e<=6||e>=18?activateDarkMode():activateLightMode()}window.matchMedia("(prefers-color-scheme: dark)").addListener((function(e){void 0===saveToLocal.get("theme")&&(e.matches?activateDarkMode():activateLightMode())}))}else"light"===t?activateLightMode():activateDarkMode();const i=saveToLocal.get("aside-status");void 0!==i&&("hide"===i?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside"));GLOBAL_CONFIG_SITE.isHome&&/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)&&document.documentElement.classList.add("apple")})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">156</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(/static/cover/cover-140.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">梦里的竹蜻蜓</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络属性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:27:30.000Z" title="发表于 2021-07-14 16:27:30">2021-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-26T09:50:05.162Z" title="更新于 2021-08-26 17:50:05">2021-08-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title="网络属性"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="hateoas"><a href="#hateoas" class="headerlink" title="hateoas"></a>hateoas</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.hateoas.use-hal-as-default-json-media-type</code></td><td><code>true</code></td><td>是否应该向接受申请/json 的请求发送申请/hal+json 响应。</td></tr></tbody></table><h2 id="jersey"><a href="#jersey" class="headerlink" title="jersey"></a>jersey</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.jersey.application-path</code></td><td></td><td>作为应用程序的基本 URI 的路径，如果指定，则覆盖”@ApplicationPath “的值。如果指定，则覆盖”@ApplicationPath “的值。</td></tr><tr><td><code>spring.jersey.filter.order</code></td><td><code>0.0</code></td><td>泽西滤链顺序。</td></tr><tr><td><code>spring.jersey.init.*</code></td><td></td><td>通过 servlet 或过滤器传递给 Jersey 的初始参数。</td></tr><tr><td><code>spring.jersey.servlet.load-on-startup</code></td><td><code>-1.0</code></td><td>加载在 Jersey servlet 的启动优先级上。</td></tr><tr><td><code>spring.jersey.type</code></td><td><code>servlet</code></td><td>泽西岛一体化类型。</td></tr></tbody></table><h2 id="mvc"><a href="#mvc" class="headerlink" title="mvc"></a>mvc</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.dispatch-options-request</code></td><td><code>true</code></td><td>是否向 FrameworkServlet doService 方法派遣 OPTIONS 请求。</td></tr><tr><td><code>spring.mvc.dispatch-trace-request</code></td><td><code>false</code></td><td>是否向 FrameworkServlet doService 方法发送 TRACE 请求。</td></tr><tr><td><code>spring.mvc.ignore-default-model-on-redirect</code></td><td><code>true</code></td><td>在重定向场景中是否应该忽略 “默认 “模型的内容。</td></tr><tr><td><code>spring.mvc.locale</code></td><td></td><td>要使用的语言环境。默认情况下，这个 locale 会被 “Accept-Language “头覆盖。</td></tr><tr><td><code>spring.mvc.locale-resolver</code></td><td><code>accept-header</code></td><td>定义如何解决定位问题。</td></tr><tr><td><code>spring.mvc.log-request-details</code></td><td><code>false</code></td><td>是否允许在 DEBUG 和 TRACE 级别记录（潜在的敏感）请求细节。</td></tr><tr><td><code>spring.mvc.log-resolved-exception</code></td><td><code>false</code></td><td>除 “DefaultHandlerExceptionResolver “外，是否启用 “HandlerExceptionResolver “解决的异常的警告记录。</td></tr><tr><td><code>spring.mvc.message-codes-resolver-format</code></td><td></td><td>信息代码的格式化策略。例如，`PREFIX_ERROR_CODE’。</td></tr><tr><td><code>spring.mvc.publish-request-handled-events</code></td><td><code>true</code></td><td>是否在每个请求结束时发布一个 ServletRequestHandledEvent。</td></tr><tr><td><code>spring.mvc.servlet.load-on-startup</code></td><td><code>-1.0</code></td><td>在调度器 servlet 的启动优先级上加载。</td></tr><tr><td><code>spring.mvc.servlet.path</code></td><td><code>/</code></td><td>调度器 servlet 的路径。</td></tr><tr><td><code>spring.mvc.static-path-pattern</code></td><td><code>/**</code></td><td>用于静态资源的路径模式。</td></tr><tr><td><code>spring.mvc.throw-exception-if-no-handler-found</code></td><td><code>false</code></td><td>如果没有找到处理程序来处理请求，是否应该抛出 “NoHandlerFoundException”。</td></tr><tr><td><code>spring.mvc.view.prefix</code></td><td></td><td>Spring MVC 视图前缀。</td></tr><tr><td><code>spring.mvc.view.suffix</code></td><td></td><td>Spring MVC 视图后缀。</td></tr></tbody></table><h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.async.request-timeout</code></td><td></td><td>异步请求处理超时前的时间量。如果没有设置这个值，则使用底层实现的默认超时。</td></tr></tbody></table><h3 id="contentengotiation"><a href="#contentengotiation" class="headerlink" title="contentengotiation"></a>contentengotiation</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.contentnegotiation.favor-parameter</code></td><td><code>false</code></td><td>是否应该使用请求参数（默认为 “格式”）来确定请求的媒体类型。</td></tr><tr><td><code>spring.mvc.contentnegotiation.media-types.*</code></td><td></td><td>将文件扩展名映射到媒体类型，以便进行内容协商。例如，将 yml 映射为 text/yaml。</td></tr><tr><td><code>spring.mvc.contentnegotiation.parameter-name</code></td><td></td><td>启用 “favor-parameter “时要使用的查询参数名称。</td></tr></tbody></table><h3 id="converters"><a href="#converters" class="headerlink" title="converters"></a>converters</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.converters.preferred-json-mapper</code></td><td></td><td>首选用于 HTTP 消息转换的 JSON 映射器。默认情况下，根据环境自动检测。</td></tr></tbody></table><h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.format.date</code></td><td></td><td>要使用的日期格式，例如<code>dd/MM/yyyy</code>。</td></tr><tr><td><code>spring.mvc.format.date-time</code></td><td></td><td>要使用的日期-时间格式，例如<code>yyyy-MM-dd HH:mm:ss</code>。</td></tr><tr><td><code>spring.mvc.format.time</code></td><td></td><td>要使用的时间格式，例如 <code>HH:mm:ss</code>。</td></tr></tbody></table><h3 id="formcontent"><a href="#formcontent" class="headerlink" title="formcontent"></a>formcontent</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.formcontent.filter.enabled</code></td><td><code>true</code></td><td>是否启用 Spring 的 FormContentFilter。</td></tr></tbody></table><h3 id="hiddenmethod"><a href="#hiddenmethod" class="headerlink" title="hiddenmethod"></a>hiddenmethod</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.mvc.hiddenmethod.filter.enabled</code></td><td><code>false</code></td><td>是否启用 Spring 的 HiddenHttpMethodFilter。</td></tr></tbody></table><h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.resources.add-mappings</code></td><td><code>true</code></td><td>是否启用默认资源处理。</td></tr><tr><td><code>spring.resources.static-locations</code></td><td><code>[classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/public/]</code></td><td>静态资源的位置。默认为 classpath：[/META-INF/resources/, /resources/, /static/, /public/]。</td></tr></tbody></table><h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.resources.cache.cachecontrol.cache-private</code></td><td></td><td>表示响应消息是为单个用户准备的，不得由共享缓存存储。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.cache-public</code></td><td></td><td>表示任何缓存可以存储响应。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.max-age</code></td><td></td><td>响应应该被缓存的最长时间，如果没有指定持续时间后缀，以秒为单位。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.must-revalidate</code></td><td></td><td>表示一旦变质，在没有与服务器重新验证的情况下，缓存不得使用响应。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.no-cache</code></td><td></td><td>表示缓存的响应只有在与服务器重新验证的情况下才能被重新使用。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.no-store</code></td><td></td><td>表示在任何情况下都不要缓存响应。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.no-transform</code></td><td></td><td>示意中间人（缓存和其他）不要转换响应内容。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.proxy-revalidate</code></td><td></td><td>与 “must-revalidate “指令含义相同，只是它不适用于私有缓存。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.s-max-age</code></td><td></td><td>如果没有指定持续时间后缀，响应应该被共享缓存的最大时间，单位是秒。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.stale-if-error</code></td><td></td><td>遇到错误时，响应可以使用的最长时间，如果没有指定持续时间后缀，则以秒为单位。</td></tr><tr><td><code>spring.resources.cache.cachecontrol.stale-while-revalidate</code></td><td></td><td>如果没有指定持续时间后缀，则响应在变质后可以提供的最长时间，单位为秒。</td></tr><tr><td><code>spring.resources.cache.period</code></td><td></td><td>资源处理程序所服务的资源的缓存周期。如果没有指定持续时间后缀，则使用秒。可以被’spring.resources.cache.cachecontrol’属性重写。</td></tr><tr><td><code>spring.resources.chain.cache</code></td><td><code>true</code></td><td>是否启用资源链中的缓存。</td></tr><tr><td><code>spring.resources.chain.compressed</code></td><td><code>false</code></td><td>是否启用已压缩资源的解析(gzip, brotli)。检查资源名是否为’.gz’或’.br’文件扩展名。</td></tr><tr><td><code>spring.resources.chain.enabled</code></td><td></td><td>是否启用 Spring 资源处理链。默认情况下，禁用，除非至少有一个策略被启用。</td></tr><tr><td><code>spring.resources.chain.html-application-cache</code></td><td><code>false</code></td><td>是否启用 HTML5 应用缓存清单重写。</td></tr><tr><td><code>spring.resources.chain.strategy.content.enabled</code></td><td><code>false</code></td><td>是否启用内容版本策略。</td></tr><tr><td><code>spring.resources.chain.strategy.content.paths</code></td><td><code>[/**]</code></td><td>逗号分隔的模式列表，适用于内容版本策略。</td></tr><tr><td><code>spring.resources.chain.strategy.fixed.enabled</code></td><td><code>false</code></td><td>是否启用固定版本策略。</td></tr><tr><td><code>spring.resources.chain.strategy.fixed.paths</code></td><td><code>[/**]</code></td><td>逗号分隔的模式列表，适用于固定版本策略。</td></tr><tr><td><code>spring.resources.chain.strategy.fixed.version</code></td><td></td><td>用于固定版本策略的版本字符串。</td></tr></tbody></table><h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.servlet.multipart.enabled</code></td><td><code>true</code></td><td>是否启用支持多部分上传。</td></tr><tr><td><code>spring.servlet.multipart.file-size-threshold</code></td><td><code>0B</code></td><td>文件写入磁盘的阈值。</td></tr><tr><td><code>spring.servlet.multipart.location</code></td><td></td><td>上传文件的中间位置。</td></tr><tr><td><code>spring.servlet.multipart.max-file-size</code></td><td><code>1MB</code></td><td>最大文件大小。</td></tr><tr><td><code>spring.servlet.multipart.max-request-size</code></td><td><code>10MB</code></td><td>最大请求量。</td></tr><tr><td><code>spring.servlet.multipart.resolve-lazily</code></td><td><code>false</code></td><td>在文件或参数访问时，是否对多部分请求进行懒惰解析。</td></tr></tbody></table><h2 id="webflux"><a href="#webflux" class="headerlink" title="webflux"></a>webflux</h2><table><thead><tr><th>配置项</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>spring.webflux.base-path</code></td><td></td><td>所有网络处理程序的基本路径。</td></tr><tr><td><code>spring.webflux.format.date</code></td><td></td><td>要使用的日期格式，例如<code>dd/MM/yyyy</code>。</td></tr><tr><td><code>spring.webflux.format.date-time</code></td><td></td><td>要使用的日期-时间格式，例如<code>yyyy-MM-dd HH:mm:ss</code>。</td></tr><tr><td><code>spring.webflux.format.time</code></td><td></td><td>要使用的时间格式，例如 <code>HH:mm:ss</code>。</td></tr><tr><td><code>spring.webflux.hiddenmethod.filter.enabled</code></td><td><code>false</code></td><td>是否启用 Spring 的 HiddenHttpMethodFilter。</td></tr><tr><td><code>spring.webflux.static-path-pattern</code></td><td><code>/**</code></td><td>用于静态资源的路径模式。</td></tr></tbody></table></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">竹蜻蜓</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.guard.ren/e877f7d30bd2.html">https://blog.guard.ren/e877f7d30bd2.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.guard.ren" target="_blank">梦里的竹蜻蜓</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></div><div class="post_share"><div class="social-share" data-image="/static/cover/cover-140.png" data-sites="qzone,qq,weibo,wechat,douban,linkedin,facebook,twitter,google"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/b69418481828.html"><img class="prev-cover" src="/static/cover/cover-141.png" onerror='onerror=null,src="/img/404.jpg"' alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">集成属性</div></div></a></div><div class="next-post pull-right"><a href="/1b9dca731c12.html"><img class="next-cover" src="/static/cover/cover-61.png" onerror='onerror=null,src="/img/404.jpg"' alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">模板属性</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/0af545735672.html" title="Devtools 属性"><img class="cover" src="/static/cover/cover-138.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">Devtools 属性</div></div></a></div><div><a href="/18ac9d961f0b.html" title="自动配置原理入门"><img class="cover" src="/static/cover/cover-105.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">自动配置原理入门</div></div></a></div><div><a href="/1b9dca731c12.html" title="模板属性"><img class="cover" src="/static/cover/cover-61.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">模板属性</div></div></a></div><div><a href="/83e4d5ba76f4.html" title="RSocket 属性"><img class="cover" src="/static/cover/cover-207.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">RSocket 属性</div></div></a></div><div><a href="/e337a70add48.html" title="数据迁移属性"><img class="cover" src="/static/cover/cover-16.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">数据迁移属性</div></div></a></div><div><a href="/fdb3287fae31.html" title="安全属性"><img class="cover" src="/static/cover/cover-92.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">安全属性</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info__name">竹蜻蜓</div><div class="author-info__description">一个写bug的程序员</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">156</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/isGuard"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/isGuard" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这是一个很巧的误会</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hateoas"><span class="toc-number">1.</span> <span class="toc-text">hateoas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jersey"><span class="toc-number">2.</span> <span class="toc-text">jersey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mvc"><span class="toc-number">3.</span> <span class="toc-text">mvc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#async"><span class="toc-number">3.1.</span> <span class="toc-text">async</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contentengotiation"><span class="toc-number">3.2.</span> <span class="toc-text">contentengotiation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#converters"><span class="toc-number">3.3.</span> <span class="toc-text">converters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format"><span class="toc-number">3.4.</span> <span class="toc-text">format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#formcontent"><span class="toc-number">3.5.</span> <span class="toc-text">formcontent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hiddenmethod"><span class="toc-number">3.6.</span> <span class="toc-text">hiddenmethod</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resources"><span class="toc-number">4.</span> <span class="toc-text">resources</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cache"><span class="toc-number">4.1.</span> <span class="toc-text">cache</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servlet"><span class="toc-number">5.</span> <span class="toc-text">servlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webflux"><span class="toc-number">6.</span> <span class="toc-text">webflux</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令"><img src="/ea288665459e/cover.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="Hexo搭建教程(二)-熟悉官方文件、配置、命令"></a><div class="content"><a class="title" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令">Hexo搭建教程(二)-熟悉官方文件、配置、命令</a><time datetime="2021-08-26T10:11:30.000Z" title="发表于 2021-08-26 18:11:30">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始"><img src="/a27d16b8d0e7/cover.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="Hexo搭建教程(一)-快速开始"></a><div class="content"><a class="title" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始">Hexo搭建教程(一)-快速开始</a><time datetime="2021-08-19T08:44:30.000Z" title="发表于 2021-08-19 16:44:30">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/918110f64071.html" title="毒瓶子二进制法"><img src="/static/cover/cover-71.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="毒瓶子二进制法"></a><div class="content"><a class="title" href="/918110f64071.html" title="毒瓶子二进制法">毒瓶子二进制法</a><time datetime="2021-07-29T13:42:50.000Z" title="发表于 2021-07-29 21:42:50">2021-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)"><img src="/static/cover/cover-182.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="Optional (一个为了 Null 元素和Lambda设计的类)"></a><div class="content"><a class="title" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)">Optional (一个为了 Null 元素和Lambda设计的类)</a><time datetime="2021-07-26T12:59:51.000Z" title="发表于 2021-07-26 20:59:51">2021-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)"><img src="/static/cover/cover-15.png" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="SpringBoot 请求 (随笔写的很少)"></a><div class="content"><a class="title" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)">SpringBoot 请求 (随笔写的很少)</a><time datetime="2021-07-25T11:10:29.000Z" title="发表于 2021-07-25 19:10:29">2021-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background:#183255"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2021 By 竹蜻蜓</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div></div><hr><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn(){"object"==typeof pangu?pangu.autoSpacingPage():getScript("https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js").then(()=>{pangu.autoSpacingPage()})}function panguInit(){panguFn()}document.addEventListener("DOMContentLoaded",panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader={endLoading:()=>{document.body.style.overflow="auto",document.getElementById("loading-box").classList.add("loaded")},initLoading:()=>{document.body.style.overflow="",document.getElementById("loading-box").classList.remove("loaded")}};window.addEventListener("load",preloader.endLoading())</script><div class="js-pjax"><script>function loadValine(){function e(){new Valine(Object.assign({el:"#vcomment",appId:"XhzUk14bCmCVREHE5ROg559J-MdYXbMMI",appKey:"c8Fw7RQke0iYCjQb2NX4jwSW",placeholder:"说点什么...",avatar:"retro",meta:"nick,mail,link".split(","),pageSize:"10",lang:"zh-CN",recordIP:!1,serverURLs:"",emojiCDN:"",emojiMaps:"",enableQQ:!0,path:window.location.pathname,requiredFields:["nick,mail"],visitor:!1},null))}"function"==typeof Valine?e():getScript("https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js").then(e)}{function loadOtherComment(){loadValine()}btf.loadComment(document.getElementById("vcomment"),loadValine)}</script></div><div class="app-refresh" id="app-refresh"><div class="app-refresh-wrap"><label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">点击刷新</a></div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",(function(){showNotification()})),window.addEventListener("load",(function(){navigator.serviceWorker.register("/sw.js")})))</script><script>!function(e,t,o,c,n,i,a){e.DaoVoiceObject=n,e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},e[n].l=1*new Date,i=t.createElement(o),a=t.getElementsByTagName(o)[0],i.async=1,i.src=c,i.charset="utf-8",a.parentNode.insertBefore(i,a)}(window,document,"script",("https:"==document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/e745f117.js","daovoice")</script><script>var isChatBtn=!0;if(daovoice("init",{app_id:"e745f117"},{launcher:{disableLauncherIcon:isChatBtn}}),daovoice("update"),isChatBtn){var chatBtnFn=()=>{document.getElementById("chat_btn").addEventListener("click",(function(){daovoice("show")}))};chatBtnFn()}else{function chatBtnHide(){daovoice("update",{},{launcher:{disableLauncherIcon:!0}})}function chatBtnShow(){daovoice("update",{},{launcher:{disableLauncherIcon:!1}})}}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络属性 | 梦里的竹蜻蜓</title><meta name="keywords" content="语雀,Java,SpringBoot"><meta name="author" content="竹蜻蜓"><meta name="copyright" content="竹蜻蜓"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="hateoas   配置项 默认值 说明    spring.hateoas.use-hal-as-default-json-media-type true 是否应该向接受申请&#x2F;json 的请求发送申请&#x2F;hal+json 响应。   jersey   配置项 默认值 说明    spring.jersey.application-path  作为应用程序的基本 URI 的路径，如果指定，则覆盖”@">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络属性">
+<meta property="og:url" content="https://blog.guard.ren/e877f7d30bd2.html">
+<meta property="og:site_name" content="梦里的竹蜻蜓">
+<meta property="og:description" content="hateoas   配置项 默认值 说明    spring.hateoas.use-hal-as-default-json-media-type true 是否应该向接受申请&#x2F;json 的请求发送申请&#x2F;hal+json 响应。   jersey   配置项 默认值 说明    spring.jersey.application-path  作为应用程序的基本 URI 的路径，如果指定，则覆盖”@">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.guard.ren/static/cover/cover-170.png">
+<meta property="article:published_time" content="2021-07-14T08:27:30.000Z">
+<meta property="article:modified_time" content="2021-09-29T03:05:31.534Z">
+<meta property="article:author" content="竹蜻蜓">
+<meta property="article:tag" content="语雀">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.guard.ren/static/cover/cover-170.png"><link rel="shortcut icon" href="/static/img/favicon.ico"><link rel="canonical" href="https://blog.guard.ren/e877f7d30bd2"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk"/><meta name="baidu-site-verification" content="code-yIv1xTa1ed"/><link rel="manifest" href="/static/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#183255"/><link rel="apple-touch-icon" sizes="180x180" href="/static/pwa/icons/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/static/pwa/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/static/pwa/icons/favicon-16x16.png"/><link rel="mask-icon" href="/static/pwa/icons/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-136832726-1');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "82cohssi9b");</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已过","messageNext":"天，文章内容可能已过时，请选择性观看。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 竹蜻蜓","link":"链接: ","source":"来源: 梦里的竹蜻蜓","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络属性',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-29 11:05:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">156</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li><li><a class="site-page child" href="/menu/10.1/"><i class="fa-fw fas fa-download"></i><span> 十一头像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/static/cover/cover-170.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">梦里的竹蜻蜓</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li><li><a class="site-page child" href="/menu/10.1/"><i class="fa-fw fas fa-download"></i><span> 十一头像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络属性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:27:30.000Z" title="发表于 2021-07-14 16:27:30">2021-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-29T03:05:31.534Z" title="更新于 2021-09-29 11:05:31">2021-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络属性"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="hateoas"><a href="#hateoas" class="headerlink" title="hateoas"></a>hateoas</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.hateoas.use-hal-as-default-json-media-type</code></td>
+<td><code>true</code></td>
+<td>是否应该向接受申请/json 的请求发送申请/hal+json 响应。</td>
+</tr>
+</tbody></table>
+<h2 id="jersey"><a href="#jersey" class="headerlink" title="jersey"></a>jersey</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.jersey.application-path</code></td>
+<td></td>
+<td>作为应用程序的基本 URI 的路径，如果指定，则覆盖”@ApplicationPath “的值。如果指定，则覆盖”@ApplicationPath “的值。</td>
+</tr>
+<tr>
+<td><code>spring.jersey.filter.order</code></td>
+<td><code>0.0</code></td>
+<td>泽西滤链顺序。</td>
+</tr>
+<tr>
+<td><code>spring.jersey.init.*</code></td>
+<td></td>
+<td>通过 servlet 或过滤器传递给 Jersey 的初始参数。</td>
+</tr>
+<tr>
+<td><code>spring.jersey.servlet.load-on-startup</code></td>
+<td><code>-1.0</code></td>
+<td>加载在 Jersey servlet 的启动优先级上。</td>
+</tr>
+<tr>
+<td><code>spring.jersey.type</code></td>
+<td><code>servlet</code></td>
+<td>泽西岛一体化类型。</td>
+</tr>
+</tbody></table>
+<h2 id="mvc"><a href="#mvc" class="headerlink" title="mvc"></a>mvc</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.dispatch-options-request</code></td>
+<td><code>true</code></td>
+<td>是否向 FrameworkServlet doService 方法派遣 OPTIONS 请求。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.dispatch-trace-request</code></td>
+<td><code>false</code></td>
+<td>是否向 FrameworkServlet doService 方法发送 TRACE 请求。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.ignore-default-model-on-redirect</code></td>
+<td><code>true</code></td>
+<td>在重定向场景中是否应该忽略 “默认 “模型的内容。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.locale</code></td>
+<td></td>
+<td>要使用的语言环境。默认情况下，这个 locale 会被 “Accept-Language “头覆盖。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.locale-resolver</code></td>
+<td><code>accept-header</code></td>
+<td>定义如何解决定位问题。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.log-request-details</code></td>
+<td><code>false</code></td>
+<td>是否允许在 DEBUG 和 TRACE 级别记录（潜在的敏感）请求细节。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.log-resolved-exception</code></td>
+<td><code>false</code></td>
+<td>除 “DefaultHandlerExceptionResolver “外，是否启用 “HandlerExceptionResolver “解决的异常的警告记录。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.message-codes-resolver-format</code></td>
+<td></td>
+<td>信息代码的格式化策略。例如，`PREFIX_ERROR_CODE’。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.publish-request-handled-events</code></td>
+<td><code>true</code></td>
+<td>是否在每个请求结束时发布一个 ServletRequestHandledEvent。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.servlet.load-on-startup</code></td>
+<td><code>-1.0</code></td>
+<td>在调度器 servlet 的启动优先级上加载。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.servlet.path</code></td>
+<td><code>/</code></td>
+<td>调度器 servlet 的路径。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.static-path-pattern</code></td>
+<td><code>/**</code></td>
+<td>用于静态资源的路径模式。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.throw-exception-if-no-handler-found</code></td>
+<td><code>false</code></td>
+<td>如果没有找到处理程序来处理请求，是否应该抛出 “NoHandlerFoundException”。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.view.prefix</code></td>
+<td></td>
+<td>Spring MVC 视图前缀。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.view.suffix</code></td>
+<td></td>
+<td>Spring MVC 视图后缀。</td>
+</tr>
+</tbody></table>
+<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.async.request-timeout</code></td>
+<td></td>
+<td>异步请求处理超时前的时间量。如果没有设置这个值，则使用底层实现的默认超时。</td>
+</tr>
+</tbody></table>
+<h3 id="contentengotiation"><a href="#contentengotiation" class="headerlink" title="contentengotiation"></a>contentengotiation</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.contentnegotiation.favor-parameter</code></td>
+<td><code>false</code></td>
+<td>是否应该使用请求参数（默认为 “格式”）来确定请求的媒体类型。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.contentnegotiation.media-types.*</code></td>
+<td></td>
+<td>将文件扩展名映射到媒体类型，以便进行内容协商。例如，将 yml 映射为 text/yaml。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.contentnegotiation.parameter-name</code></td>
+<td></td>
+<td>启用 “favor-parameter “时要使用的查询参数名称。</td>
+</tr>
+</tbody></table>
+<h3 id="converters"><a href="#converters" class="headerlink" title="converters"></a>converters</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.converters.preferred-json-mapper</code></td>
+<td></td>
+<td>首选用于 HTTP 消息转换的 JSON 映射器。默认情况下，根据环境自动检测。</td>
+</tr>
+</tbody></table>
+<h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.format.date</code></td>
+<td></td>
+<td>要使用的日期格式，例如<code>dd/MM/yyyy</code>。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.format.date-time</code></td>
+<td></td>
+<td>要使用的日期-时间格式，例如<code>yyyy-MM-dd HH:mm:ss</code>。</td>
+</tr>
+<tr>
+<td><code>spring.mvc.format.time</code></td>
+<td></td>
+<td>要使用的时间格式，例如 <code>HH:mm:ss</code>。</td>
+</tr>
+</tbody></table>
+<h3 id="formcontent"><a href="#formcontent" class="headerlink" title="formcontent"></a>formcontent</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.formcontent.filter.enabled</code></td>
+<td><code>true</code></td>
+<td>是否启用 Spring 的 FormContentFilter。</td>
+</tr>
+</tbody></table>
+<h3 id="hiddenmethod"><a href="#hiddenmethod" class="headerlink" title="hiddenmethod"></a>hiddenmethod</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.mvc.hiddenmethod.filter.enabled</code></td>
+<td><code>false</code></td>
+<td>是否启用 Spring 的 HiddenHttpMethodFilter。</td>
+</tr>
+</tbody></table>
+<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.resources.add-mappings</code></td>
+<td><code>true</code></td>
+<td>是否启用默认资源处理。</td>
+</tr>
+<tr>
+<td><code>spring.resources.static-locations</code></td>
+<td><code>[classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/public/]</code></td>
+<td>静态资源的位置。默认为 classpath：[/META-INF/resources/, /resources/, /static/, /public/]。</td>
+</tr>
+</tbody></table>
+<h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.resources.cache.cachecontrol.cache-private</code></td>
+<td></td>
+<td>表示响应消息是为单个用户准备的，不得由共享缓存存储。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.cache-public</code></td>
+<td></td>
+<td>表示任何缓存可以存储响应。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.max-age</code></td>
+<td></td>
+<td>响应应该被缓存的最长时间，如果没有指定持续时间后缀，以秒为单位。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.must-revalidate</code></td>
+<td></td>
+<td>表示一旦变质，在没有与服务器重新验证的情况下，缓存不得使用响应。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.no-cache</code></td>
+<td></td>
+<td>表示缓存的响应只有在与服务器重新验证的情况下才能被重新使用。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.no-store</code></td>
+<td></td>
+<td>表示在任何情况下都不要缓存响应。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.no-transform</code></td>
+<td></td>
+<td>示意中间人（缓存和其他）不要转换响应内容。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.proxy-revalidate</code></td>
+<td></td>
+<td>与 “must-revalidate “指令含义相同，只是它不适用于私有缓存。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.s-max-age</code></td>
+<td></td>
+<td>如果没有指定持续时间后缀，响应应该被共享缓存的最大时间，单位是秒。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.stale-if-error</code></td>
+<td></td>
+<td>遇到错误时，响应可以使用的最长时间，如果没有指定持续时间后缀，则以秒为单位。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.cachecontrol.stale-while-revalidate</code></td>
+<td></td>
+<td>如果没有指定持续时间后缀，则响应在变质后可以提供的最长时间，单位为秒。</td>
+</tr>
+<tr>
+<td><code>spring.resources.cache.period</code></td>
+<td></td>
+<td>资源处理程序所服务的资源的缓存周期。如果没有指定持续时间后缀，则使用秒。可以被’spring.resources.cache.cachecontrol’属性重写。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.cache</code></td>
+<td><code>true</code></td>
+<td>是否启用资源链中的缓存。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.compressed</code></td>
+<td><code>false</code></td>
+<td>是否启用已压缩资源的解析(gzip, brotli)。检查资源名是否为’.gz’或’.br’文件扩展名。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.enabled</code></td>
+<td></td>
+<td>是否启用 Spring 资源处理链。默认情况下，禁用，除非至少有一个策略被启用。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.html-application-cache</code></td>
+<td><code>false</code></td>
+<td>是否启用 HTML5 应用缓存清单重写。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.strategy.content.enabled</code></td>
+<td><code>false</code></td>
+<td>是否启用内容版本策略。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.strategy.content.paths</code></td>
+<td><code>[/**]</code></td>
+<td>逗号分隔的模式列表，适用于内容版本策略。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.strategy.fixed.enabled</code></td>
+<td><code>false</code></td>
+<td>是否启用固定版本策略。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.strategy.fixed.paths</code></td>
+<td><code>[/**]</code></td>
+<td>逗号分隔的模式列表，适用于固定版本策略。</td>
+</tr>
+<tr>
+<td><code>spring.resources.chain.strategy.fixed.version</code></td>
+<td></td>
+<td>用于固定版本策略的版本字符串。</td>
+</tr>
+</tbody></table>
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.servlet.multipart.enabled</code></td>
+<td><code>true</code></td>
+<td>是否启用支持多部分上传。</td>
+</tr>
+<tr>
+<td><code>spring.servlet.multipart.file-size-threshold</code></td>
+<td><code>0B</code></td>
+<td>文件写入磁盘的阈值。</td>
+</tr>
+<tr>
+<td><code>spring.servlet.multipart.location</code></td>
+<td></td>
+<td>上传文件的中间位置。</td>
+</tr>
+<tr>
+<td><code>spring.servlet.multipart.max-file-size</code></td>
+<td><code>1MB</code></td>
+<td>最大文件大小。</td>
+</tr>
+<tr>
+<td><code>spring.servlet.multipart.max-request-size</code></td>
+<td><code>10MB</code></td>
+<td>最大请求量。</td>
+</tr>
+<tr>
+<td><code>spring.servlet.multipart.resolve-lazily</code></td>
+<td><code>false</code></td>
+<td>在文件或参数访问时，是否对多部分请求进行懒惰解析。</td>
+</tr>
+</tbody></table>
+<h2 id="webflux"><a href="#webflux" class="headerlink" title="webflux"></a>webflux</h2><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spring.webflux.base-path</code></td>
+<td></td>
+<td>所有网络处理程序的基本路径。</td>
+</tr>
+<tr>
+<td><code>spring.webflux.format.date</code></td>
+<td></td>
+<td>要使用的日期格式，例如<code>dd/MM/yyyy</code>。</td>
+</tr>
+<tr>
+<td><code>spring.webflux.format.date-time</code></td>
+<td></td>
+<td>要使用的日期-时间格式，例如<code>yyyy-MM-dd HH:mm:ss</code>。</td>
+</tr>
+<tr>
+<td><code>spring.webflux.format.time</code></td>
+<td></td>
+<td>要使用的时间格式，例如 <code>HH:mm:ss</code>。</td>
+</tr>
+<tr>
+<td><code>spring.webflux.hiddenmethod.filter.enabled</code></td>
+<td><code>false</code></td>
+<td>是否启用 Spring 的 HiddenHttpMethodFilter。</td>
+</tr>
+<tr>
+<td><code>spring.webflux.static-path-pattern</code></td>
+<td><code>/**</code></td>
+<td>用于静态资源的路径模式。</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">竹蜻蜓</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.guard.ren/e877f7d30bd2.html">https://blog.guard.ren/e877f7d30bd2.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.guard.ren" target="_blank">梦里的竹蜻蜓</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></div><div class="post_share"><div class="social-share" data-image="/static/cover/cover-170.png" data-sites="qzone,qq,weibo,wechat,douban,linkedin,facebook,twitter,google"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/b69418481828.html"><img class="prev-cover" src="/static/cover/cover-183.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">集成属性</div></div></a></div><div class="next-post pull-right"><a href="/1b9dca731c12.html"><img class="next-cover" src="/static/cover/cover-24.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">模板属性</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/0af545735672.html" title="Devtools 属性"><img class="cover" src="/static/cover/cover-81.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">Devtools 属性</div></div></a></div><div><a href="/18ac9d961f0b.html" title="自动配置原理入门"><img class="cover" src="/static/cover/cover-191.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-07</div><div class="title">自动配置原理入门</div></div></a></div><div><a href="/1b9dca731c12.html" title="模板属性"><img class="cover" src="/static/cover/cover-24.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">模板属性</div></div></a></div><div><a href="/83e4d5ba76f4.html" title="RSocket 属性"><img class="cover" src="/static/cover/cover-153.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">RSocket 属性</div></div></a></div><div><a href="/e337a70add48.html" title="数据迁移属性"><img class="cover" src="/static/cover/cover-107.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">数据迁移属性</div></div></a></div><div><a href="/fdb3287fae31.html" title="安全属性"><img class="cover" src="/static/cover/cover-182.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-14</div><div class="title">安全属性</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">竹蜻蜓</div><div class="author-info__description">一个写bug的程序员</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">156</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/isGuard"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/isGuard" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这是一个很巧的误会</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hateoas"><span class="toc-number">1.</span> <span class="toc-text">hateoas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jersey"><span class="toc-number">2.</span> <span class="toc-text">jersey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mvc"><span class="toc-number">3.</span> <span class="toc-text">mvc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#async"><span class="toc-number">3.1.</span> <span class="toc-text">async</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contentengotiation"><span class="toc-number">3.2.</span> <span class="toc-text">contentengotiation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#converters"><span class="toc-number">3.3.</span> <span class="toc-text">converters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format"><span class="toc-number">3.4.</span> <span class="toc-text">format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#formcontent"><span class="toc-number">3.5.</span> <span class="toc-text">formcontent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hiddenmethod"><span class="toc-number">3.6.</span> <span class="toc-text">hiddenmethod</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resources"><span class="toc-number">4.</span> <span class="toc-text">resources</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cache"><span class="toc-number">4.1.</span> <span class="toc-text">cache</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servlet"><span class="toc-number">5.</span> <span class="toc-text">servlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webflux"><span class="toc-number">6.</span> <span class="toc-text">webflux</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令"><img src="/ea288665459e/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo搭建教程(二)-熟悉官方文件、配置、命令"/></a><div class="content"><a class="title" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令">Hexo搭建教程(二)-熟悉官方文件、配置、命令</a><time datetime="2021-08-26T10:11:30.000Z" title="发表于 2021-08-26 18:11:30">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始"><img src="/a27d16b8d0e7/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo搭建教程(一)-快速开始"/></a><div class="content"><a class="title" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始">Hexo搭建教程(一)-快速开始</a><time datetime="2021-08-19T08:44:30.000Z" title="发表于 2021-08-19 16:44:30">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/918110f64071.html" title="毒瓶子二进制法"><img src="/static/cover/cover-155.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毒瓶子二进制法"/></a><div class="content"><a class="title" href="/918110f64071.html" title="毒瓶子二进制法">毒瓶子二进制法</a><time datetime="2021-07-29T13:42:50.000Z" title="发表于 2021-07-29 21:42:50">2021-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)"><img src="/static/cover/cover-194.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Optional (一个为了 Null 元素和Lambda设计的类)"/></a><div class="content"><a class="title" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)">Optional (一个为了 Null 元素和Lambda设计的类)</a><time datetime="2021-07-26T12:59:51.000Z" title="发表于 2021-07-26 20:59:51">2021-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)"><img src="/static/cover/cover-145.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot 请求 (随笔写的很少)"/></a><div class="content"><a class="title" href="/e6ddddcf68e6.html" title="SpringBoot 请求 (随笔写的很少)">SpringBoot 请求 (随笔写的很少)</a><time datetime="2021-07-25T11:10:29.000Z" title="发表于 2021-07-25 19:10:29">2021-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background: #183255"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2021 By 竹蜻蜓</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'XhzUk14bCmCVREHE5ROg559J-MdYXbMMI',
+      appKey: 'c8Fw7RQke0iYCjQb2NX4jwSW',
+      placeholder: '说点什么...',
+      avatar: 'retro',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e745f117.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'e745f117',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
