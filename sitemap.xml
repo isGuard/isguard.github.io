@@ -1180,6 +1180,27 @@
   </url>
   
   <url>
+    <loc>https://blog.guard.ren/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2022-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.guard.ren/tags/SyncToy/</loc>
+    <lastmod>2022-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.guard.ren/tags/%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2022-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.guard.ren/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-02-21</lastmod>
     <changefreq>daily</changefreq>
@@ -1355,13 +1376,6 @@
   </url>
   
   <url>
-    <loc>https://blog.guard.ren/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2022-02-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.guard.ren/tags/JMeter/</loc>
     <lastmod>2022-02-21</lastmod>
     <changefreq>daily</changefreq>
@@ -1386,6 +1400,13 @@
   
   <url>
     <loc>https://blog.guard.ren/categories/%E8%AF%AD%E9%9B%80/</loc>
+    <lastmod>2022-02-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.guard.ren/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2022-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1428,13 +1449,6 @@
   
   <url>
     <loc>https://blog.guard.ren/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2022-02-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.guard.ren/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2022-02-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
