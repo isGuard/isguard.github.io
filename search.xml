@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>使用Microsoft SyncToy 文件同步/备份 自动化处理</title>
+      <link href="/23f67448dc56.html"/>
+      <url>/23f67448dc56.html</url>
+      
+        <content type="html"><![CDATA[<p><strong>SyncToy</strong> 是由 微软 推出的一款免费的文件夹同步工具。百度搜索<strong>Microsoft SyncToy，官网可以直接下载</strong><br><strong>安装完成后</strong><br><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/241578/1645429974657-eeb76207-8a09-4c55-bb35-8cb5c3f89e6d.png#clientId=uf854586d-2dd0-4&from=paste&id=u36763fc1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=608&originWidth=737&originalType=url%E2%88%B6=1&size=59485&status=done&style=none&taskId=u8811c79b-36e2-4a5e-9975-71d6a8619b0" alt="image.png" referrerpolicy="no-referrer"><br>操作也非常简单，主要有三种模式</p><ul><li><strong>synchronize ：</strong>在这个模式下，SyncToy 会使得两个文件夹完全一致，无论在哪一个文件夹中操作，对应的操作相当于都在另一个文件夹中执行了一次。（也就是我们所说的”同步”）。</li><li><strong>echo：</strong>echo 模式的效果是，使得在左边文件夹中新增加的和被改变的内容会被备份到右边的文件夹中。在左侧被重命名的文件以及被删除了的文件，将也会在右侧的文件夹中删除。（这种模式与 synchronize 很像，差别就在于这里只会从左边同步到右边，右边的操作对左边的文件夹无效~）。</li><li><strong>Contribute ：</strong>也就是我们常说的”增量备份”，相当于在 echo 的基础上，把所有的删除操作都屏蔽掉了，只要在左边文件夹中存在过的文件都会在右侧文件夹中存在。</li></ul><p>界面操作需要手动处理，没有自动化处理的选项。但是翻看帮助文档，发现有 schedule 的设置<br><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/241578/1645429974763-56fe1d35-cada-44f0-86fa-bb6b7e93d39e.png#clientId=uf854586d-2dd0-4&from=paste&id=u00c10a35&margin=%5Bobject%20Object%5D&name=image.png&originHeight=699&originWidth=1355&originalType=url%E2%88%B6=1&size=127377&status=done&style=none&taskId=u0f9bb50e-288c-4670-98ee-a35ea6ec011" alt="image.png" referrerpolicy="no-referrer"><br>是通过 windows 定时任务的方式来运行，定时任务的设置不多说了，不同的是这里需要调用<strong>SyncToy</strong>安装目录下的 SyncToyCmd.exe，并且参数需要加上 -R<br><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/241578/1645429974731-b1cd5858-3af8-499f-9d01-34ac639e8896.png#clientId=uf854586d-2dd0-4&from=paste&id=u7b190686&margin=%5Bobject%20Object%5D&name=image.png&originHeight=391&originWidth=564&originalType=url%E2%88%B6=1&size=35798&status=done&style=none&taskId=u190cb874-2bfe-470e-89ff-66f73779017" alt="image.png" referrerpolicy="no-referrer"><br><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2022/png/241578/1645429974786-8e243b63-7895-42e7-a4f7-66992fc555b1.png#clientId=uf854586d-2dd0-4&from=paste&id=uf99344d4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=551&originWidth=704&originalType=url%E2%88%B6=1&size=25824&status=done&style=none&taskId=uc786c639-4162-4317-b094-33d867e7d69" alt="image.png" referrerpolicy="no-referrer"><br>-R 后面的参数可选，如果不填的话，就是运行之前在<strong>SyncToy 配置的所有的同步任务，上图中配置的是 001，是我之前在 SyncToy 中新建的同步特定文件夹的任务</strong></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo搭建教程(二)-熟悉官方文件、配置、命令</title>
       <link href="/ea288665459e.html"/>
       <url>/ea288665459e.html</url>
