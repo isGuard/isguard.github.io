@@ -1,861 +1,570 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>梦里的竹蜻蜓 - 假话全不说 真话不全说</title><meta name="keywords" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客"><meta name="author" content="竹蜻蜓"><meta name="copyright" content="竹蜻蜓"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一个写bug的程序员">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.48626.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个简单的博客">
 <meta property="og:type" content="website">
-<meta property="og:title" content="梦里的竹蜻蜓">
-<meta property="og:url" content="https://blog.guard.ren/page/2/index.html">
-<meta property="og:site_name" content="梦里的竹蜻蜓">
-<meta property="og:description" content="一个写bug的程序员">
+<meta property="og:title" content="zea">
+<meta property="og:url" content="https://blog.48626.xyz/page/2/index.html">
+<meta property="og:site_name" content="zea">
+<meta property="og:description" content="一个简单的博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=640">
-<meta property="article:author" content="竹蜻蜓">
-<meta property="article:tag" content="Hexo,JavaScript,html5,css3,Jquery,NodeJs,github,css,js,html,java,blog,博客">
+<meta property="article:author" content="初。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&nk=770600073&s=640"><link rel="shortcut icon" href="/static/img/favicon.ico"><link rel="canonical" href="https://blog.guard.ren/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="1zwyY4tiPsHyxK1HeGG9l5f7srBaAW3y7T6oyfo-7Vk"/><meta name="baidu-site-verification" content="code-yIv1xTa1ed"/><link rel="manifest" href="/static/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#183255"/><link rel="apple-touch-icon" sizes="180x180" href="/static/pwa/icons/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/static/pwa/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/static/pwa/icons/favicon-16x16.png"/><link rel="mask-icon" href="/static/pwa/icons/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?2d6a21bdd6e9c407e7e8a37193a8230b";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-136832726-1"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-136832726-1');
-</script><script>(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "82cohssi9b");</script><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
-  translate: undefined,
-  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已过","messageNext":"天，文章内容可能已过时，请选择性观看。"},
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: {"limitCount":50,"languages":{"author":"作者: 竹蜻蜓","link":"链接: ","source":"来源: 梦里的竹蜻蜓","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isanchor: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '梦里的竹蜻蜓',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2022-02-21 20:40:09'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
+<link rel="canonical" href="https://blog.48626.xyz/page/2/">
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
 
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+  <title>zea</title>
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zea</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.48626.xyz/2024/04/08/docker/Docker%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="初。">
+      <meta itemprop="description" content="一个简单的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zea">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/08/docker/Docker%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">Docker安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-08 23:34:58" itemprop="dateCreated datePublished" datetime="2024-04-08T23:34:58+08:00">2024-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-06-26 00:29:52" itemprop="dateModified" datetime="2024-06-26T00:29:52+08:00">2024-06-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
-          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-          if (t === undefined) {
-            if (isLightMode) activateLightMode()
-            else if (isDarkMode) activateDarkMode()
-            else if (isNotSpecified || hasNoSupport) {
-              const now = new Date()
-              const hour = now.getHours()
-              const isNight = hour <= 6 || hour >= 18
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
     
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="使用官方安装脚本自动安装"><a href="#使用官方安装脚本自动安装" class="headerlink" title="使用官方安装脚本自动安装"></a>使用官方安装脚本自动安装</h2><p>安装命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用国内 daocloud 一键安装命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><h3 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                 docker-client \</span><br><span class="line">                 docker-client-latest \</span><br><span class="line">                 docker-common \</span><br><span class="line">                 docker-latest \</span><br><span class="line">                 docker-latest-logrotate \</span><br><span class="line">                 docker-logrotate \</span><br><span class="line">                 docker-engine</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Docker-仓库进行安装"><a href="#使用-Docker-仓库进行安装" class="headerlink" title="使用 Docker 仓库进行安装"></a>使用 Docker 仓库进行安装</h3><p>在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。</p>
+<h4 id="设置仓库"><a href="#设置仓库" class="headerlink" title="设置仓库"></a>设置仓库</h4><p>安装所需的软件包。yum-utils 提供了 yum-config-manager ，并且 device mapper 存储驱动程序需要 device-mapper-persistent-data 和 lvm2。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令来设置稳定的仓库。</p>
+<h5 id="使用官方源地址（比较慢）"><a href="#使用官方源地址（比较慢）" class="headerlink" title="使用官方源地址（比较慢）"></a>使用官方源地址（比较慢）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h5 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h5 id="清华大学源"><a href="#清华大学源" class="headerlink" title="清华大学源"></a>清华大学源</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Docker-Engine-Community"><a href="#安装-Docker-Engine-Community" class="headerlink" title="安装 Docker Engine-Community"></a>安装 Docker Engine-Community</h3><p>安装</p>
+<p>最新版本的 Docker Engine-Community 和 containerd，或者转到下一步安装特定版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>如果提示您接受 GPG 密钥，请选是。</p>
+<blockquote>
+<p><strong>有多个 Docker 仓库吗？</strong></p>
+<p>如果启用了多个 Docker 仓库，则在未在 yum install 或 yum update 命令中指定版本的情况下，进行的安装或更新将始终安装最高版本，这可能不适合您的稳定性需求。</p>
+</blockquote>
+<p>Docker 安装完默认未启动。并且已经创建好 docker 用户组，但该用户组下没有用户。</p>
+<p><strong>要安装特定版本的 Docker Engine-Community，请在存储库中列出可用版本，然后选择并安装：</strong></p>
+<p>1、列出并排序您存储库中可用的版本。此示例按版本号（从高到低）对结果进行排序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | <span class="built_in">sort</span> -r</span><br><span class="line"></span><br><span class="line">docker-ce.x86_64  3:18.09.1-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64  3:18.09.0-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64  18.06.1.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64  18.06.0.ce-3.el7                    docker-ce-stable</span><br></pre></td></tr></table></figure>
+
+<p>2、通过其完整的软件包名称安装特定版本，该软件包名称是软件包名称（docker-ce）加上版本字符串（第二列），从第一个冒号（:）一直到第一个连字符，并用连字符（-）分隔。例如：docker-ce-18.09.1。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>启动 Docker。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>通过运行 hello-world 映像来验证是否正确安装了 Docker Engine-Community 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载-docker"><a href="#卸载-docker" class="headerlink" title="卸载 docker"></a>卸载 docker</h3><p>删除安装包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure>
+
+<p>删除镜像、容器、配置文件等内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.48626.xyz/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="初。">
+      <meta itemprop="description" content="一个简单的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zea">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/" class="post-title-link" itemprop="url">IDEA链接Docker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-08 23:34:58" itemprop="dateCreated datePublished" datetime="2024-04-08T23:34:58+08:00">2024-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-06-26 00:29:52" itemprop="dateModified" datetime="2024-06-26T00:29:52+08:00">2024-06-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="下载证书（非必要）"><a href="#下载证书（非必要）" class="headerlink" title="下载证书（非必要）"></a>下载证书（非必要）</h2><p>下载生成的证书</p>
+<p><img src="/./IDEA%E9%93%BE%E6%8E%A5docker.assets/image-20240408230409631-1712588650822-1.png" alt="image-20240408230409631"></p>
+<h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
+<p><img src="/./IDEA%E9%93%BE%E6%8E%A5docker.assets/62166578b51f4a3bacffc428e936942dtplv-k3u1fbpfcp-zoom-in-crop-mark3024000.awebp" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.48626.xyz/2024/04/08/docker/%E5%86%85%E7%BD%91%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="初。">
+      <meta itemprop="description" content="一个简单的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zea">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/08/docker/%E5%86%85%E7%BD%91%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">docker内网安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-08 23:34:58" itemprop="dateCreated datePublished" datetime="2024-04-08T23:34:58+08:00">2024-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-06-26 00:29:52" itemprop="dateModified" datetime="2024-06-26T00:29:52+08:00">2024-06-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><p><a target="_blank" rel="noopener" href="https://download.docker.com/">https://download.docker.com/</a></p>
+<p><img src="/./%E5%86%85%E7%BD%91%E5%AE%89%E8%A3%85.assets/image-20240408225206609.png" alt="image-20240408225206609"></p>
+<h2 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h2><p>略</p>
+<h2 id="剪切文件"><a href="#剪切文件" class="headerlink" title="剪切文件"></a>剪切文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /home/weihu/docker-20.10.9.tgz /home/docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf docker-20.10.9.tgz</span><br></pre></td></tr></table></figure>
+
+<h2 id="将二进制文件移到可执行文件目录下"><a href="#将二进制文件移到可执行文件目录下" class="headerlink" title="将二进制文件移到可执行文件目录下"></a>将二进制文件移到可执行文件目录下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> docker/* /usr/bin/</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置docker-service"><a href="#配置docker-service" class="headerlink" title="配置docker.service"></a>配置docker.service</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Docker Application Container Engine</span><br><span class="line">Documentation=https://docs.docker.com</span><br><span class="line">After=network-online.target firewalld.service</span><br><span class="line">Wants=network-online.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">ExecStart=/usr/bin/dockerd</span><br><span class="line">ExecReload=/bin/kill -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">LimitNOFILE=infinity</span><br><span class="line">LimitNPROC=infinity</span><br><span class="line">TimeoutStartSec=0</span><br><span class="line">Delegate=<span class="built_in">yes</span></span><br><span class="line">KillMode=process</span><br><span class="line">Restart=on-failure</span><br><span class="line">StartLimitBurst=3</span><br><span class="line">StartLimitInterval=60s</span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动dockerd服务"><a href="#启动dockerd服务" class="headerlink" title="启动dockerd服务"></a>启动dockerd服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start docker.service</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<h3 id="将docker设置为开机自启动"><a href="#将docker设置为开机自启动" class="headerlink" title="将docker设置为开机自启动"></a>将docker设置为开机自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="导出镜像或者容器"><a href="#导出镜像或者容器" class="headerlink" title="导出镜像或者容器"></a>导出镜像或者容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 容器 记得指定tag</span></span><br><span class="line">docker save -o rabbitmqmanagement.tar xxx </span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line">docker <span class="built_in">export</span> -o SMSServer.tar CONTAINER ID</span><br><span class="line"></span><br><span class="line">docker load &lt; rabbitmqmanagement.tar </span><br><span class="line"></span><br><span class="line">docker import SMSServer.tar smsserver</span><br><span class="line"><span class="comment">#重命名</span></span><br><span class="line">docker tag [镜像<span class="built_in">id</span>] [新镜像名称]:[新镜像标签]</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="Error-response-from-daemon-No-command-specified"><a href="#Error-response-from-daemon-No-command-specified" class="headerlink" title="Error response from daemon: No command specified."></a>Error response from daemon: No command specified.</h3><p>run 后缀添加 <code>/bin/ash</code> <code>/bin/bash</code> <code>/bin/sh</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
     }
-    detectApple()
-    })(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">157</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li><li><a class="site-page child" href="/menu/10.1/"><i class="fa-fw fas fa-download"></i><span> 十一头像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/static/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">梦里的竹蜻蜓</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/menu/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/menu/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 插件</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/menu/aria2/"><i class="fa-fw fas fa-download"></i><span> Aria2</span></a></li><li><a class="site-page child" href="/menu/10.1/"><i class="fa-fw fas fa-download"></i><span> 十一头像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/menu/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/menu/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">梦里的竹蜻蜓</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/isGuard" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/3004cf782434.html" title="服务器属性">     <img class="post_bg" src="/static/cover/cover-176.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="服务器属性"></a></div><div class="recent-post-info"><a class="article-title" href="/3004cf782434.html" title="服务器属性">服务器属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:36:52.000Z" title="发表于 2021-07-14 16:36:52">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.622Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">server
-
-
-配置项
-默认值
-说明
-
-
-
-server.address
-
-服务器应该绑定的网络地址。
-
-
-server.forward-headers-strategy
-
-处理 X-Forwarded-*头的策略。
-
-
-server.max-http-header-size
-8KB
-HTTP 消息头的最大尺寸。
-
-
-server.port
-8080.0
-HTTP 服务器端口。
-
-
-server.server-header
-
-用于服务器响应头的值（如果为空，则不发送头）。
-
-
-server.shutdown
-
-服务器将支持的关机类型。
-
-
-comprrssion
-
-
-配置项
-默认值
-说明
-
-
-
-server.compression.enabled
-false
-是否启用响应压缩。
-
-
-server.compression.excluded-user-agents
-
-不应压缩响应的用户代理的逗号分隔的列表。
-
-
-server.compression.mime-types
-[text/html, text/xml, text/plain, text/css, text/javascript ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/1b9dca731c12.html" title="模板属性">     <img class="post_bg" src="/static/cover/cover-190.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模板属性"></a></div><div class="recent-post-info"><a class="article-title" href="/1b9dca731c12.html" title="模板属性">模板属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:34:05.000Z" title="发表于 2021-07-14 16:34:05">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.678Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">freemarker
-
-
-配置项
-默认值
-说明
-
-
-
-spring.freemarker.allow-request-override
-false
-是否允许 HttpServletRequest 属性覆盖（隐藏）控制器生成的同名模型属性。
-
-
-spring.freemarker.allow-session-override
-false
-是否允许 HttpSession 属性覆盖（隐藏）控制器生成的同名模型属性。
-
-
-spring.freemarker.cache
-false
-是否启用模板缓存。
-
-
-spring.freemarker.charset
-UTF-8
-模板编码。
-
-
-spring.freemarker.check-template-location
-true
-是否检查模板位置是否存在。
-
-
-spring.freemarker.content-type
-text/html
-Content-Type 值。
-
-
-spring.freemarker.enabled
-true
-是否启用本技术的 MVC 视图解析。
-
-
-spring.freemarker.expose-request-a ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/e877f7d30bd2.html" title="网络属性">     <img class="post_bg" src="/static/cover/cover-120.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络属性"></a></div><div class="recent-post-info"><a class="article-title" href="/e877f7d30bd2.html" title="网络属性">网络属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:27:30.000Z" title="发表于 2021-07-14 16:27:30">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.726Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">hateoas
-
-
-配置项
-默认值
-说明
-
-
-
-spring.hateoas.use-hal-as-default-json-media-type
-true
-是否应该向接受申请/json 的请求发送申请/hal+json 响应。
-
-
-jersey
-
-
-配置项
-默认值
-说明
-
-
-
-spring.jersey.application-path
-
-作为应用程序的基本 URI 的路径，如果指定，则覆盖”@ApplicationPath “的值。如果指定，则覆盖”@ApplicationPath “的值。
-
-
-spring.jersey.filter.order
-0.0
-泽西滤链顺序。
-
-
-spring.jersey.init.*
-
-通过 servlet 或过滤器传递给 Jersey 的初始参数。
-
-
-spring.jersey.servlet.load-on-startup
--1.0
-加载在 Jersey servlet 的启动优先级上。
-
-
-spring.jersey.type
-servlet
-泽西岛一体化类型。
-
-
-mvc
-
-
-配置项
-默认值
-说明
-
-
-
-spring.mvc.dispat ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/b69418481828.html" title="集成属性">     <img class="post_bg" src="/static/cover/cover-102.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="集成属性"></a></div><div class="recent-post-info"><a class="article-title" href="/b69418481828.html" title="集成属性">集成属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:05:42.000Z" title="发表于 2021-07-14 16:05:42">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.870Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">activemq
-
-
-配置项
-默认值
-说明
-
-
-
-spring.activemq.broker-url
-
-ActiveMQ broker 的 URL。默认情况下自动生成。
-
-
-spring.activemq.close-timeout
-15s
-等到时间到了再考虑接近完整。
-
-
-spring.activemq.in-memory
-true
-默认的 broker URL 是否应该在内存中。如果已经指定了显式经纪商，则忽略。
-
-
-spring.activemq.non-blocking-redelivery
-false
-是否在从回滚的事务中重新传送消息之前停止消息传送。这意味着当启用该功能时，消息顺序不会被保留。
-
-
-spring.activemq.packages.trust-all
-
-是否信任所有的包。
-
-
-spring.activemq.packages.trusted
-
-以逗号分隔的特定软件包信任列表（当不信任所有软件包时）。
-
-
-spring.activemq.password
-
-经纪人的登录密码。
-
-
-spring.activemq.pool.block-if-full
-true ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/e337a70add48.html" title="数据迁移属性">     <img class="post_bg" src="/static/cover/cover-182.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据迁移属性"></a></div><div class="recent-post-info"><a class="article-title" href="/e337a70add48.html" title="数据迁移属性">数据迁移属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T08:04:03.000Z" title="发表于 2021-07-14 16:04:03">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.910Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">flyway
-
-
-配置项
-默认值
-说明
-
-
-
-spring.flyway.baseline-description
-&lt;&lt; Flyway Baseline &gt;&gt;
-在应用基线时，对现有模式进行标记的描述。
-
-
-spring.flyway.baseline-on-migrate
-false
-迁移非空模式时是否自动调用基线。
-
-
-spring.flyway.baseline-version
-1
-在执行基线时，对现有模式进行标记的版本。
-
-
-spring.flyway.batch
-
-执行 SQL 语句时，是否要批处理。需要 Flyway Pro 或 Flyway Enterprise。
-
-
-spring.flyway.check-location
-true
-是否检查迁移脚本的位置是否存在。
-
-
-spring.flyway.clean-disabled
-false
-是否禁止清理数据库。
-
-
-spring.flyway.clean-on-validation-error
-false
-当发生验证错误时，是否自动调用 clean。
-
-
-spring.flyway.connect- ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/69f998dd7524.html" title="交易属性">     <img class="post_bg" src="/static/cover/cover-184.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="交易属性"></a></div><div class="recent-post-info"><a class="article-title" href="/69f998dd7524.html" title="交易属性">交易属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T07:59:00.000Z" title="发表于 2021-07-14 15:59:00">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:39:59.966Z" title="更新于 2022-02-21 20:39:59">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">jta
-
-
-配置项
-默认值
-说明
-
-
-
-spring.jta.enabled
-true
-是否启用 JTA 支持。
-
-
-spring.jta.log-dir
-
-交易日志目录。
-
-
-spring.jta.transaction-manager-id
-
-交易管理人唯一标识符。
-
-
-atomikos
-
-
-配置项
-默认值
-说明
-
-
-
-spring.jta.atomikos.connectionfactory.borrow-connection-timeout
-30.0
-从池中借用连接的超时时间，以秒为单位。
-
-
-spring.jta.atomikos.connectionfactory.ignore-session-transacted-flag
-true
-创建会话时是否忽略 transacted 标志。
-
-
-spring.jta.atomikos.connectionfactory.local-transaction-mode
-false
-是否需要本地交易。
-
-
-spring.jta.atomikos.connectionfactory.maintenance-interval
-60.0
-池的 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/837862e41b91.html" title="数据属性">     <img class="post_bg" src="/static/cover/cover-91.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据属性"></a></div><div class="recent-post-info"><a class="article-title" href="/837862e41b91.html" title="数据属性">数据属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T07:46:07.000Z" title="发表于 2021-07-14 15:46:07">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:40:00.090Z" title="更新于 2022-02-21 20:40:00">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">couchbase
-
-
-配置项
-默认值
-说明
-
-
-
-spring.couchbase.connection-string
-
-用于定位 Couchbase 集群的连接字符串。
-
-
-spring.couchbase.env.io.idle-http-connection-timeout
-4500ms
-一个 HTTP 连接在被关闭和从池中移除之前可能保持空闲的时间长度。
-
-
-spring.couchbase.env.io.max-endpoints
-12.0
-每个节点的最大套接字数。
-
-
-spring.couchbase.env.io.min-endpoints
-1.0
-每个节点的最低套接字数。
-
-
-spring.couchbase.env.ssl.enabled
-
-是否启用 SSL 支持。如果提供了 “keyStore”，则自动启用，除非另有规定。
-
-
-spring.couchbase.env.ssl.key-store
-
-通往存放证书的 JVM 密钥库的路径。
-
-
-spring.couchbase.env.ssl.key-store-password
-
-用于访问钥匙库的密码。
-
-
-spr ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/091f0d83f102.html" title="JSON 属性">     <img class="post_bg" src="/static/cover/cover-58.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JSON 属性"></a></div><div class="recent-post-info"><a class="article-title" href="/091f0d83f102.html" title="JSON 属性">JSON 属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T07:44:35.000Z" title="发表于 2021-07-14 15:44:35">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:40:00.114Z" title="更新于 2022-02-21 20:40:00">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">gson
-
-
-配置项
-默认值
-说明
-
-
-
-spring.gson.date-format
-
-序列化 Date 对象时使用的格式。
-
-
-spring.gson.disable-html-escaping
-
-是否禁用 HTML 字符的转义，如’&lt;’、’&gt;’等。
-
-
-spring.gson.disable-inner-class-serialization
-
-是否在序列化过程中排除内部类。
-
-
-spring.gson.enable-complex-map-key-serialization
-
-是否启用复杂映射键（即非基元）的序列化。
-
-
-spring.gson.exclude-fields-without-expose-annotation
-
-是否将没有 “暴露 “注解的所有字段排除在序列化或反序列化的考虑范围之外。
-
-
-spring.gson.field-naming-policy
-
-在序列化和反序列化过程中应适用于对象字段的命名策略。
-
-
-spring.gson.generate-non-executable-json
-
-是否在输出前加上一些特殊的文字，生成不可执行的 JSO ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/8193ae6cfd9c.html" title="邮件属性">     <img class="post_bg" src="/static/cover/cover-38.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="邮件属性"></a></div><div class="recent-post-info"><a class="article-title" href="/8193ae6cfd9c.html" title="邮件属性">邮件属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T07:39:54.000Z" title="发表于 2021-07-14 15:39:54">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:40:00.122Z" title="更新于 2022-02-21 20:40:00">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">mail
-
-
-配置项
-默认值
-说明
-
-
-
-spring.mail.default-encoding
-UTF-8
-默认的 MimeMessage 编码。
-
-
-spring.mail.host
-
-SMTP 服务器主机。例如，smtp.example.com。
-
-
-spring.mail.jndi-name
-
-会话 JNDI 名称。设置后，优先于其他会话设置。
-
-
-spring.mail.password
-
-SMTP 服务器的登录密码。
-
-
-spring.mail.port
-
-SMTP 服务器端口。
-
-
-spring.mail.properties.*
-
-附加的 JavaMail 会话属性。
-
-
-spring.mail.protocol
-smtp
-SMTP 服务器使用的协议。
-
-
-spring.mail.test-connection
-false
-是否要测试邮件服务器在启动时是否可用。
-
-
-spring.mail.username
-
-SMTP 服务器的登录用户。
-
-
-sendgrid
-
-
-配置项
-默认值
-说明
-
-
-
-spring.sendgrid.api-key
-
-SendGrid API  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/cfa84fd74626.html" title="缓存属性">     <img class="post_bg" src="/static/cover/cover-139.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="缓存属性"></a></div><div class="recent-post-info"><a class="article-title" href="/cfa84fd74626.html" title="缓存属性">缓存属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-14T07:39:18.000Z" title="发表于 2021-07-14 15:39:18">2021-07-14</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T12:40:00.134Z" title="更新于 2022-02-21 20:40:00">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%AD%E9%9B%80/">语雀</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AF%AD%E9%9B%80/">语雀</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">cache
-
-
-配置项
-默认值
-说明
-
-
-
-spring.cache.cache-names
-
-逗号分隔的缓存名称列表，如果底层缓存管理器支持的话，可以创建。通常情况下，这将禁用创建额外缓存的功能。
-
-
-spring.cache.caffeine.spec
-
-用来创建缓存的规格。关于规格格式的更多细节请参见 CaffeineSpec。
-
-
-spring.cache.couchbase.expiration
-
-条目过期。默认情况下，条目永不过期。请注意，这个值最终会换算成秒。
-
-
-spring.cache.ehcache.config
-
-用于初始化 EhCache 的配置文件的位置。
-
-
-spring.cache.infinispan.config
-
-用于初始化 Infinispan 的配置文件的位置。
-
-
-spring.cache.jcache.config
-
-用于初始化缓存管理器的配置文件的位置。配置文件的位置取决于底层的缓存实现。
-
-
-spring.cache.jcache.provider
-
-CachingProvider 实现的完全限定名称，用于检索符合 JSR-107 的缓存 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#content-inner">16</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://q1.qlogo.cn/g?b=qq&amp;nk=770600073&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">竹蜻蜓</div><div class="author-info__description">一个写bug的程序员</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">157</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/isGuard"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/isGuard" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:isguard@outlook.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tencent://message/?uin=770600073&amp;Site=&amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这是一个很巧的误会</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/23f67448dc56.html" title="使用Microsoft SyncToy 文件同步/备份 自动化处理"><img src="/static/cover/cover-44.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Microsoft SyncToy 文件同步/备份 自动化处理"/></a><div class="content"><a class="title" href="/23f67448dc56.html" title="使用Microsoft SyncToy 文件同步/备份 自动化处理">使用Microsoft SyncToy 文件同步/备份 自动化处理</a><time datetime="2022-02-21T07:52:37.000Z" title="发表于 2022-02-21 15:52:37">2022-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令"><img src="/ea288665459e/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo搭建教程(二)-熟悉官方文件、配置、命令"/></a><div class="content"><a class="title" href="/ea288665459e.html" title="Hexo搭建教程(二)-熟悉官方文件、配置、命令">Hexo搭建教程(二)-熟悉官方文件、配置、命令</a><time datetime="2021-08-26T10:11:30.000Z" title="发表于 2021-08-26 18:11:30">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始"><img src="/a27d16b8d0e7/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo搭建教程(一)-快速开始"/></a><div class="content"><a class="title" href="/a27d16b8d0e7.html" title="Hexo搭建教程(一)-快速开始">Hexo搭建教程(一)-快速开始</a><time datetime="2021-08-19T08:44:30.000Z" title="发表于 2021-08-19 16:44:30">2021-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/918110f64071.html" title="毒瓶子二进制法"><img src="/static/cover/cover-214.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="毒瓶子二进制法"/></a><div class="content"><a class="title" href="/918110f64071.html" title="毒瓶子二进制法">毒瓶子二进制法</a><time datetime="2021-07-29T13:42:50.000Z" title="发表于 2021-07-29 21:42:50">2021-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)"><img src="/static/cover/cover-130.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Optional (一个为了 Null 元素和Lambda设计的类)"/></a><div class="content"><a class="title" href="/d71834e48b4e.html" title="Optional (一个为了 Null 元素和Lambda设计的类)">Optional (一个为了 Null 元素和Lambda设计的类)</a><time datetime="2021-07-26T12:59:51.000Z" title="发表于 2021-07-26 20:59:51">2021-07-26</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            <a class="card-more-btn" href="/categories/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a>
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Html/"><span class="card-category-list-name">Html</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">75</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Maven/"><span class="card-category-list-name">Maven</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">工具</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="card-category-list-name">数据库</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="card-category-list-name">日常</span><span class="card-category-list-count">2</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%AF%AD%E9%9B%80/" style="font-size: 1.42em; color: rgb(35, 82, 54)">语雀</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.31em; color: rgb(49, 159, 186)">生活</a><a href="/tags/Java/" style="font-size: 1.45em; color: rgb(192, 158, 9)">Java</a><a href="/tags/SpringBoot/" style="font-size: 1.37em; color: rgb(56, 97, 183)">SpringBoot</a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.23em; color: rgb(61, 170, 154)">工具</a><a href="/tags/SyncToy/" style="font-size: 1.15em; color: rgb(49, 195, 176)">SyncToy</a><a href="/tags/%E5%90%8C%E6%AD%A5/" style="font-size: 1.15em; color: rgb(60, 86, 0)">同步</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.4em; color: rgb(92, 163, 147)">算法</a><a href="/tags/Linux/" style="font-size: 1.29em; color: rgb(144, 64, 105)">Linux</a><a href="/tags/Contos/" style="font-size: 1.18em; color: rgb(127, 164, 66)">Contos</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.23em; color: rgb(180, 109, 82)">数据库</a><a href="/tags/SQL-Server/" style="font-size: 1.15em; color: rgb(34, 75, 113)">SQL Server</a><a href="/tags/Maven/" style="font-size: 1.2em; color: rgb(16, 32, 41)">Maven</a><a href="/tags/Ubuntu/" style="font-size: 1.26em; color: rgb(17, 101, 111)">Ubuntu</a><a href="/tags/Node/" style="font-size: 1.15em; color: rgb(17, 153, 21)">Node</a><a href="/tags/Hexo/" style="font-size: 1.31em; color: rgb(34, 32, 176)">Hexo</a><a href="/tags/Log4j/" style="font-size: 1.15em; color: rgb(156, 16, 139)">Log4j</a><a href="/tags/Rest/" style="font-size: 1.15em; color: rgb(95, 104, 99)">Rest</a><a href="/tags/SSM/" style="font-size: 1.18em; color: rgb(177, 106, 25)">SSM</a><a href="/tags/Socket/" style="font-size: 1.15em; color: rgb(2, 164, 179)">Socket</a><a href="/tags/WebService/" style="font-size: 1.15em; color: rgb(61, 102, 90)">WebService</a><a href="/tags/Solr/" style="font-size: 1.15em; color: rgb(143, 40, 95)">Solr</a><a href="/tags/Html/" style="font-size: 1.2em; color: rgb(169, 198, 69)">Html</a><a href="/tags/Ajax/" style="font-size: 1.15em; color: rgb(56, 164, 153)">Ajax</a><a href="/tags/JQuery/" style="font-size: 1.18em; color: rgb(111, 170, 114)">JQuery</a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 1.18em; color: rgb(113, 90, 28)">日常</a><a href="/tags/Travis/" style="font-size: 1.15em; color: rgb(21, 190, 85)">Travis</a><a href="/tags/%E5%AD%A6%E8%BD%A6/" style="font-size: 1.15em; color: rgb(31, 18, 26)">学车</a><a href="/tags/%E6%B5%81%E4%B9%A6/" style="font-size: 1.15em; color: rgb(200, 143, 141)">流书</a><a href="/tags/MySQL/" style="font-size: 1.18em; color: rgb(76, 48, 124)">MySQL</a><a href="/tags/Redis/" style="font-size: 1.18em; color: rgb(46, 146, 54)">Redis</a><a href="/tags/IntelliJ-IDEA/" style="font-size: 1.18em; color: rgb(170, 177, 177)">IntelliJ IDEA</a><a href="/tags/JMeter/" style="font-size: 1.15em; color: rgb(35, 100, 108)">JMeter</a><a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 1.2em; color: rgb(47, 89, 9)">音乐</a><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.34em; color: rgb(70, 147, 49)">蓝桥杯</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">二月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">21</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">40</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">27</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">157</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2016-10-13T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">161.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-02-21T12:40:08.509Z"></div></div></div></div></div></div></main><footer id="footer" style="background: #183255"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2022 By 竹蜻蜓</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.autoSpacingPage()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
-      .then(() => {
-        pangu.autoSpacingPage()
-      })
-  }
-}
-
-function panguInit () {
-  if (false){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
-
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    var typed = new Typed("#subtitle", {
-      strings: "假话全不说 真话不全说".split(","),
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: false,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '假话全不说 真话不全说'
-  }
-}
-
-if (true) {
-  if (typeof Typed === 'function') {
-    subtitleType()
-  } else {
-    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
-  }
-} else {
-  subtitleType()
-}</script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
-  const changeContent = (content) => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g,"") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0,150) + '...'
-    }
-    return content
-  }
-
-  const getIcon = (icon, mail) => {
-    if (icon) return icon
-    let defaultIcon = '?d=retro'
-    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
-    return iconUrl
-  }
-
-  const generateHtml = array => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class=\'aside-list-item\'>'
-
-        if (true) {
-          const name = 'data-lazy-src'
-          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
-        }
-
-        result += `<div class='content'>
-        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
-        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '没有评论'
-    }
-
-    let $dom = document.querySelector('#card-newest-comments .aside-list')
-    $dom.innerHTML= result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh($dom)
-  }
-
-  const getComment = () => {
-    const serverURL = 'https://XhzUk14b.api.lncldglobal.com'
-
-    var settings = {
-      "method": "GET",
-      "headers": {
-        "X-LC-Id": 'XhzUk14bCmCVREHE5ROg559J-MdYXbMMI',
-        "X-LC-Key": 'c8Fw7RQke0iYCjQb2NX4jwSW',
-        "Content-Type": "application/json"
-      },
-    }
-
-    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
-      .then(response => response.json())
-      .then(data => {
-        const valineArray = data.results.map(function (e) {
-          return {
-            'avatar': getIcon(e.QQAvatar, e.mail),
-            'content': changeContent(e.comment),
-            'nick': e.nick,
-            'url': e.url + '#' + e.objectId,
-            'date': e.updatedAt,
-          }
-        })
-        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
-        generateHtml(valineArray)
-      }).catch(e => {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
-      }) 
-  }
-
-  const newestCommentInit = () => {
-    if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('valine-newest-comments')
-      if (data) {
-        generateHtml(JSON.parse(data))
-      } else {
-        getComment()
-      }
-    }
-  }
-
-  newestCommentInit()
-  document.addEventListener('pjax:complete', newestCommentInit)
-})</script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" rel="external nofollow noreferrer" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e745f117.js","daovoice")
-</script><script>var isChatBtn = true
-daovoice('init', {
-  app_id: 'e745f117',},{
-  launcher: { 
-     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
-  },
-});
-daovoice('update');
-
-if (isChatBtn) {
-  var chatBtnFn = () => {
-    var chatBtn = document.getElementById("chat_btn")
-    chatBtn.addEventListener("click", function(){
-      daovoice('show')
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
   }
-  chatBtnFn()
-} else {
-  if (true) {
-    function chatBtnHide () {
-      daovoice('update', {},{
-        launcher: { 
-        disableLauncherIcon: true // 悬浮 ICON 是否显示
-        },
-      });
-    }
-    function chatBtnShow () {
-      daovoice('update', {},{
-        launcher: { 
-        disableLauncherIcon: false // 悬浮 ICON 是否显示
-        },
-      });
-    }
-  }
-}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">初。</p>
+  <div class="site-description" itemprop="description">一个简单的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">初。</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
