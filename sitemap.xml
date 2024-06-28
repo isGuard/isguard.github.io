@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.48626.xyz/2024/05/15/gitLab/GitLab%E4%BC%81%E4%B8%9A%E7%89%88%E7%A0%B4%E8%A7%A3/</loc>
+    
+    <lastmod>2024-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/2024/06/20/hexo/Hexo01/</loc>
+    
+    <lastmod>2024-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/2024/06/29/hexo/Next%20%E4%B8%BB%E9%A2%98%E5%9C%A8%20Hexo%20%E4%B8%AD%E6%B7%BB%E5%8A%A0GA4/</loc>
+    
+    <lastmod>2024-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/2019/02/01/java/Java-8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B1/</loc>
     
     <lastmod>2024-06-28</lastmod>
@@ -83,34 +110,25 @@
   </url>
   
   <url>
+    <loc>https://blog.48626.xyz/2024/04/08/docker/%E5%86%85%E7%BD%91%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2024-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/2024/05/15/docker/%E5%BC%80%E6%94%BE2375%E5%8F%8A%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6/</loc>
+    
+    <lastmod>2024-06-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/2024/05/15/gitLab/Docker%E5%AE%89%E8%A3%85GitLab/</loc>
-    
-    <lastmod>2024-06-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/2024/05/15/gitLab/GitLab%E4%BC%81%E4%B8%9A%E7%89%88%E7%A0%B4%E8%A7%A3/</loc>
-    
-    <lastmod>2024-06-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/2024/06/20/hexo/Hexo01/</loc>
-    
-    <lastmod>2024-06-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/2024/06/29/hexo/Next%20%E4%B8%BB%E9%A2%98%E5%9C%A8%20Hexo%20%E4%B8%AD%E6%B7%BB%E5%8A%A0GA4/</loc>
     
     <lastmod>2024-06-28</lastmod>
     
@@ -138,24 +156,6 @@
   
   <url>
     <loc>https://blog.48626.xyz/2024/05/15/docker/docker-compose%E5%AE%89%E8%A3%85/</loc>
-    
-    <lastmod>2024-06-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/2024/04/08/docker/%E5%86%85%E7%BD%91%E5%AE%89%E8%A3%85/</loc>
-    
-    <lastmod>2024-06-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/2024/05/15/docker/%E5%BC%80%E6%94%BE2375%E5%8F%8A%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6/</loc>
     
     <lastmod>2024-06-28</lastmod>
     
