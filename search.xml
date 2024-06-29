@@ -33,6 +33,9 @@
 <img data-src="/2024/06/24/cloudflare/%E4%BB%A3%E7%90%86Google%E7%AB%99%E7%82%B9/image-7.png" class="" alt="alt text">
 
 ]]></content>
+      <categories>
+        <category>cloudflare</category>
+      </categories>
       <tags>
         <tag>cloudflare</tag>
       </tags>
@@ -87,6 +90,9 @@
 
 <p>删除镜像、容器、配置文件等内容：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /var/lib/docker</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
@@ -108,6 +114,10 @@
 <h2 id="快速运行"><a href="#快速运行" class="headerlink" title="快速运行"></a>快速运行</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -vp /data/redis/&#123;data,conf,<span class="built_in">log</span>&#125;</span><br><span class="line"><span class="built_in">touch</span> /data/redis/conf/redis.conf</span><br><span class="line"><span class="built_in">touch</span> /data/redis/log/redis.log</span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">EOF &gt; /data/redis/conf/data.conf</span></span><br><span class="line"><span class="string">bind *</span></span><br><span class="line"><span class="string">protected-mode yes</span></span><br><span class="line"><span class="string">port 6379</span></span><br><span class="line"><span class="string">tcp-backlog 511</span></span><br><span class="line"><span class="string">timeout 0</span></span><br><span class="line"><span class="string">tcp-keepalive 300</span></span><br><span class="line"><span class="string">supervised no</span></span><br><span class="line"><span class="string">pidfile /var/run/redis_6379.pid</span></span><br><span class="line"><span class="string">loglevel notice</span></span><br><span class="line"><span class="string">logfile &quot;/data/redis.log&quot;</span></span><br><span class="line"><span class="string">databases 16</span></span><br><span class="line"><span class="string">always-show-logo yes</span></span><br><span class="line"><span class="string">save 900 1</span></span><br><span class="line"><span class="string">save 300 10</span></span><br><span class="line"><span class="string">save 60 10000</span></span><br><span class="line"><span class="string">stop-writes-on-bgsave-error yes</span></span><br><span class="line"><span class="string">rdbcompression yes</span></span><br><span class="line"><span class="string">rdbchecksum yes</span></span><br><span class="line"><span class="string">dbfilename dump.rdb</span></span><br><span class="line"><span class="string">dir ./</span></span><br><span class="line"><span class="string">slave-serve-stale-data yes</span></span><br><span class="line"><span class="string">slave-read-only yes</span></span><br><span class="line"><span class="string">repl-diskless-sync no</span></span><br><span class="line"><span class="string">repl-diskless-sync-delay 5</span></span><br><span class="line"><span class="string">repl-disable-tcp-nodelay no</span></span><br><span class="line"><span class="string">slave-priority 100</span></span><br><span class="line"><span class="string">requirepass 123456</span></span><br><span class="line"><span class="string">lazyfree-lazy-eviction no</span></span><br><span class="line"><span class="string">lazyfree-lazy-expire no</span></span><br><span class="line"><span class="string">lazyfree-lazy-server-del no</span></span><br><span class="line"><span class="string">slave-lazy-flush no</span></span><br><span class="line"><span class="string">appendonly no</span></span><br><span class="line"><span class="string">appendfilename &quot;appendonly.aof&quot;</span></span><br><span class="line"><span class="string">appendfsync everysec</span></span><br><span class="line"><span class="string">no-appendfsync-on-rewrite no</span></span><br><span class="line"><span class="string">auto-aof-rewrite-percentage 100</span></span><br><span class="line"><span class="string">auto-aof-rewrite-min-size 64mb</span></span><br><span class="line"><span class="string">aof-load-truncated yes</span></span><br><span class="line"><span class="string">aof-use-rdb-preamble no</span></span><br><span class="line"><span class="string">lua-time-limit 5000</span></span><br><span class="line"><span class="string">slowlog-log-slower-than 10000</span></span><br><span class="line"><span class="string">slowlog-max-len 128</span></span><br><span class="line"><span class="string">latency-monitor-threshold 0</span></span><br><span class="line"><span class="string">notify-keyspace-events &quot;&quot;</span></span><br><span class="line"><span class="string">hash-max-ziplist-entries 512</span></span><br><span class="line"><span class="string">hash-max-ziplist-value 64</span></span><br><span class="line"><span class="string">list-max-ziplist-size -2</span></span><br><span class="line"><span class="string">list-compress-depth 0</span></span><br><span class="line"><span class="string">set-max-intset-entries 512</span></span><br><span class="line"><span class="string">zset-max-ziplist-entries 128</span></span><br><span class="line"><span class="string">zset-max-ziplist-value 64</span></span><br><span class="line"><span class="string">hll-sparse-max-bytes 3000</span></span><br><span class="line"><span class="string">activerehashing yes</span></span><br><span class="line"><span class="string">client-output-buffer-limit normal 0 0 0</span></span><br><span class="line"><span class="string">client-output-buffer-limit slave 256mb 64mb 60</span></span><br><span class="line"><span class="string">client-output-buffer-limit pubsub 32mb 8mb 60</span></span><br><span class="line"><span class="string">hz 10</span></span><br><span class="line"><span class="string">aof-rewrite-incremental-fsync yes</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="comment"># 运行</span></span><br><span class="line">docker run --name redis --restart=always -p 6379:6379 -v ~/redis/log/redis.log:/data/redis.log -v /etc/localtime:/etc/localtime:ro -v ~/redis/conf/redis.conf:/etc/redis/redis.conf -v ~/redis/data:/data -d redis:latest redis-server /etc/redis/redis.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>docker</category>
+        <category>redis</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>redis</tag>
@@ -185,6 +195,10 @@
 
 <h3 id="一键设置镜像加速"><a href="#一键设置镜像加速" class="headerlink" title="一键设置镜像加速"></a>一键设置镜像加速</h3><p>修改文件 &#x2F;etc&#x2F;docker&#x2F;daemon.json（如果不存在则创建）</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://dockerpull.com&quot;</span>]  <span class="comment"># 请替换为您自己的Worker自定义域名</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+        <category>cloudflare</category>
+      </categories>
       <tags>
         <tag>cloudflare</tag>
         <tag>docker</tag>
@@ -198,6 +212,10 @@
 
 <h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
 ]]></content>
+      <categories>
+        <category>docker</category>
+        <category>IDEA</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>IDEA</tag>
@@ -221,6 +239,10 @@
 <h2 id="给普通用户docker权限"><a href="#给普通用户docker权限" class="headerlink" title="给普通用户docker权限"></a>给普通用户docker权限</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个名为 docker 的用户组。</span></span><br><span class="line">sudo groupadd docker</span><br><span class="line"><span class="comment"># 将当前用户（$USER）添加到 docker 用户组中，使得该用户能够运行 Docker 命令而无需使用 sudo。</span></span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 启动一个新的 shell，将其当前用户组切换为 docker，这样该 shell 中的命令执行时将具有 docker 组的权限。 </span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>docker</category>
+        <category>WSL</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>WSL</tag>
@@ -253,6 +275,9 @@
 <h3 id="pip安装"><a href="#pip安装" class="headerlink" title="pip安装"></a>pip安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
@@ -282,6 +307,9 @@
 
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="Error-response-from-daemon-No-command-specified"><a href="#Error-response-from-daemon-No-command-specified" class="headerlink" title="Error response from daemon: No command specified."></a>Error response from daemon: No command specified.</h3><p>run 后缀添加 <code>/bin/ash</code> <code>/bin/bash</code> <code>/bin/sh</code></p>
 ]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
@@ -309,6 +337,9 @@
 <h3 id="连接验证"><a href="#连接验证" class="headerlink" title="连接验证"></a>连接验证</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl 127.0.0.1:9999/info --cert /data/docker/cert.pem --key /data/docker/key.pem --cacert /data/docker/ca.pem</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
       <tags>
         <tag>docker</tag>
       </tags>
@@ -338,6 +369,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>gitLab</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>gitLab</tag>
@@ -394,6 +428,9 @@
 
 <p>将当前的密钥添加到许可证密钥中即可</p>
 ]]></content>
+      <categories>
+        <category>gitLab</category>
+      </categories>
       <tags>
         <tag>docker</tag>
         <tag>gitLab</tag>
@@ -411,6 +448,9 @@
 <h2 id="设置目录和子目录"><a href="#设置目录和子目录" class="headerlink" title="设置目录和子目录"></a>设置目录和子目录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page about</span><br><span class="line">hexo new page categories</span><br><span class="line">hexo new page archives</span><br></pre></td></tr></table></figure>
 
 <h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
         <tag>Hexo</tag>
       </tags>
@@ -659,6 +699,684 @@
 
 
 
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础1</title>
+    <url>/2019/01/24/java/Java%E5%9F%BA%E7%A1%801/</url>
+    <content><![CDATA[<h1 id="Java的加载与执行"><a href="#Java的加载与执行" class="headerlink" title="Java的加载与执行"></a>Java的加载与执行</h1><img data-src="/2019/01/24/java/Java%E5%9F%BA%E7%A1%801/1.png" class="">
+
+
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><ul>
+<li>btye：Java中最小的数据类型，在内存中占8位(bit)，即1个字节，取值范围-128~127，默认值0</li>
+<li>short：短整型，在内存中占16位，即2个字节，取值范围-32768~32717，默认值0</li>
+<li>int：整型，用于存储整数，在内在中占32位，即4个字节，取值范围-2147483648~2147483647，默认值0</li>
+<li>long：长整型，在内存中占64位，即8个字节-2^63~2^63-1，默认值0L</li>
+<li>float：浮点型，在内存中占32位，即4个字节，用于存储带小数点的数字（与double的区别在于float类型有效小数点只有6~7位），默认值0</li>
+<li>double：双精度浮点型，用于存储带有小数点的数字，在内存中占64位，即8个字节，默认值0</li>
+<li>char：字符型，用于存储单个字符，占16位，即2个字节，取值范围0~65535，默认值为空</li>
+<li>boolean：布尔类型，占1个字节，用于判断真或假（仅有两个值，即true、false），默认值false</li>
+</ul>
+<h1 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h1><ul>
+<li>\n：表示换一行</li>
+<li>\t：表示制表符</li>
+<li>\\：表示输出一个\</li>
+<li>&quot;:表示输出一个”</li>
+<li>&#39;:表示输出一个’</li>
+<li>\u0000：表示unicode转义序列符，输出一个空格</li>
+</ul>
+<h1 id="变量的内存分析"><a href="#变量的内存分析" class="headerlink" title="变量的内存分析"></a>变量的内存分析</h1><ol>
+<li>当运行程序时，在内存中JVM会自动分配空间</li>
+<li>内存中包含：<ul>
+<li>栈：存放方法及方法中的局部变量</li>
+<li>堆：存方法对象</li>
+<li>方法区：代码片段、常量池（常量池中存放的时字符串的值）、静态属性</li>
+</ul>
+</li>
+<li>基本数据类型内存中存放真正的值、引用数据类型内存中存放地址</li>
+</ol>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><ol>
+<li>算术运算符：+、-、*、&#x2F;、%、++、–</li>
+<li>链接运算符：+</li>
+<li>赋值运算符：&#x3D;、+&#x3D;、-&#x3D;、*&#x3D;、&#x2F;&#x3D;、%&#x3D;</li>
+<li>关系运算符：&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D;、&#x3D;&#x3D;</li>
+<li>逻辑运算符：&amp;、|、^、！、&amp;&amp;、||</li>
+<li>三目运算符：条件 ？代码1 ：代码2</li>
+</ol>
+<h1 id="控制台输入"><a href="#控制台输入" class="headerlink" title="控制台输入"></a>控制台输入</h1><p><code>Scanner input = new Scanner(System.in);</code></p>
+<h1 id="IF"><a href="#IF" class="headerlink" title="IF"></a>IF</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(代码1）&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">if(代码1）&#123;</span><br><span class="line"></span><br><span class="line">&#125;else if(代码2)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">if(代码1）&#123;</span><br><span class="line"></span><br><span class="line">&#125;else if(代码2)&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Java中，字符串比较，使用&#x3D;&#x3D;比较的时地址是否一致，equals()比较内容</p>
+<h1 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h1><p>表达式 &#x3D; byte、short、int、char、String（JDK7.0）、枚举</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">switsh(表达式)&#123;</span><br><span class="line">case 常量1：	break；</span><br><span class="line">case 常量2： break；</span><br><span class="line">default：</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for(int i=0;i&lt;=100;i++)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while(条件)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="do-while"><a href="#do-while" class="headerlink" title="do while"></a>do while</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">&#125;while(条件)</span><br></pre></td></tr></table></figure>
+
+<h2 id="跳过及中断"><a href="#跳过及中断" class="headerlink" title="跳过及中断"></a>跳过及中断</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">break；中断</span><br><span class="line">continue；跳过</span><br></pre></td></tr></table></figure>
+<h1 id="方法的内存分析"><a href="#方法的内存分析" class="headerlink" title="方法的内存分析"></a>方法的内存分析</h1><ul>
+<li>当执行该方法时，则方法进栈（压栈）</li>
+<li>当方法执行完毕，则该方法出栈（弹栈），局部变量也随之释放</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础2</title>
+    <url>/2019/01/26/java/Java%E5%9F%BA%E7%A1%802/</url>
+    <content><![CDATA[<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><p>Object类是Java中所有类的根父类，Java中的类要么直接继承Object，要么间接继承Object类</p>
+<p>Java中类的继承是可传递的，Object类中定义的方法，所有的类都能继承到</p>
+<table>
+<thead>
+<tr>
+<th align="center">Object</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">clone</td>
+<td align="center">对象克隆</td>
+</tr>
+<tr>
+<td align="center">equals</td>
+<td align="center">用于判断两个对象的内容是否一样</td>
+</tr>
+<tr>
+<td align="center">finalize</td>
+<td align="center">当对象被垃圾回收器回收时，会执行对象的finalize()方法，但是垃圾回收器在什么时候回收这个对象不确定，即这个方法的执行时间不确定，一般不用</td>
+</tr>
+<tr>
+<td align="center">getClass</td>
+<td align="center">返回对象的运行时类对象，可以简单的理解为返回对象的类的字节码文件</td>
+</tr>
+<tr>
+<td align="center">hashCode</td>
+<td align="center">返回对象的哈希码</td>
+</tr>
+<tr>
+<td align="center">notify</td>
+<td align="center">在线程中用于唤醒等待中的线程</td>
+</tr>
+<tr>
+<td align="center">notifyAll</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">toString</td>
+<td align="center">把对象转换为字符串</td>
+</tr>
+<tr>
+<td align="center">wait</td>
+<td align="center">在多线程中，让线程等待</td>
+</tr>
+</tbody></table>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p>Collection存储数据时是单个存储的，只能存储引用类型数据</p>
+<p><code>add(),remove(),contains(),iterator()</code></p>
+<ul>
+<li>list集合<ul>
+<li>有序，可重复</li>
+<li>为每个元素指定了一个索引值</li>
+<li>add(index,0),remove(index),get(index),sort(Comparator)</li>
+<li>ArrayList</li>
+<li>Vector<ul>
+<li>底层是数组，访问快，添加&#x2F;删除慢</li>
+<li>初始化容量：10</li>
+<li>扩容：ArrayList是1.5倍，Vector是2倍</li>
+<li>Vector是线程安全的，ArrayList不是线程安全的</li>
+</ul>
+</li>
+<li>LinkedList<ul>
+<li>底层是双向链表，添加&#x2F;删除效率高，访问慢</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ArrayList应用于以查询访问为主，很少进行添加&#x2F;删除操作<br>LinkedList应用于频繁的进行添加&#x2F;删除操作的情况</p>
+<ul>
+<li>Set集合<ul>
+<li>无序，不可重复</li>
+<li>HashSet<ul>
+<li>底层是HashMap</li>
+<li>HashSet就是HashMap键的集合</li>
+</ul>
+</li>
+<li>TreeSet<ul>
+<li>底层是TreeMap</li>
+<li>TreeSet就是TreeMap键的集合</li>
+<li>TreeSet实现了SortedSet接口，可以对元素自然排序，要求元素必须是可比较的<ul>
+<li>创建TreeSet时指定Comparator比较器</li>
+<li>如果没有指定Comparator比较器，元素类需要实现Comparable接口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>List集合与HashSet集合中判断是否同一个元素，需要调用对象的equals()方法，元素的类需要重写equals()方法</p>
+<p>TreeSet集合判断是否同一个元素，根据Comparator&#x2F;Comparable的比较结果是否为0判断，如果比较结果为0就认为是同一个元素</p>
+<img data-src="/2019/01/26/java/Java%E5%9F%BA%E7%A1%802/1.png" class="">
+
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><ul>
+<li>HashSet底层是HashMap<ul>
+<li>向HashSet中添加元素，实际上是把元素作为键添加到底层的HashMap中</li>
+<li>HashSet就是HashMap键的集合</li>
+</ul>
+</li>
+</ul>
+<h2 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h2><ul>
+<li>TreeSet实现了SortedSet接口，可以对元素自然排序，要求集合中的元素必须是可比较的<ul>
+<li>在创建TreeSet时，可以指定Comparator比较器</li>
+<li>没有指定Comparator比较器，要求元素的类实现Comparable接口</li>
+</ul>
+</li>
+<li>TreeSet底层是TreeMap<ul>
+<li>向TreeSett中添加元素，实际上是把元素作为键添加到底层的TreeMap中</li>
+<li>TreeSet就是TreeMap键的集合</li>
+</ul>
+</li>
+</ul>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>Map是按&lt;键,值&gt;对的形式存储数据的</p>
+<img data-src="/2019/01/26/java/Java%E5%9F%BA%E7%A1%802/2.png" class="">
+
+<table>
+<thead>
+<tr>
+<th align="center">Map</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">clear</td>
+<td align="center">清除所有的&lt;键,值&gt;对</td>
+</tr>
+<tr>
+<td align="center">containsKey</td>
+<td align="center">判断是否包含指定的键</td>
+</tr>
+<tr>
+<td align="center">containsValue</td>
+<td align="center">判断是否包含指定的值</td>
+</tr>
+<tr>
+<td align="center">entrySet</td>
+<td align="center">返回Entry的集合，一个&lt;键,值&gt;对就是一个entry</td>
+</tr>
+<tr>
+<td align="center">equals</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">get</td>
+<td align="center">返回Key对应的值</td>
+</tr>
+<tr>
+<td align="center">isEmpty</td>
+<td align="center">判断是否为空</td>
+</tr>
+<tr>
+<td align="center">ketSet</td>
+<td align="center">返回键的集合</td>
+</tr>
+<tr>
+<td align="center">put</td>
+<td align="center">向Map中添加&lt;键,值&gt;对，如果这个键Key已存在，使用value替换原来的值，Map中的键是不重复的</td>
+</tr>
+<tr>
+<td align="center">putAll</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">remove</td>
+<td align="center">只要key匹配就删除对应的&lt;键,值&gt;对</td>
+</tr>
+<tr>
+<td align="center">remove</td>
+<td align="center">要求&lt;键,值&gt;都匹配才会删除</td>
+</tr>
+<tr>
+<td align="center">replace</td>
+<td align="center">替换</td>
+</tr>
+<tr>
+<td align="center">size</td>
+<td align="center">返回&lt;键,值&gt;对的数量</td>
+</tr>
+<tr>
+<td align="center">values</td>
+<td align="center">返回值的集合</td>
+</tr>
+</tbody></table>
+<img data-src="/2019/01/26/java/Java%E5%9F%BA%E7%A1%802/3.png" class="">
+
+<h2 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h2><ul>
+<li>底层都是哈希表（散列表），但是HashTable事线程安全的，HashMap不是线程安全的</li>
+<li>HashMap的父类是AbstractMap,HashTable的父类是Dictionary</li>
+<li>HashMap默认的初始化容量：16，HashTable默认的初始化容量：11</li>
+<li>加载因子：0.75，当&lt;键,值&gt;对的数量大于数组的容量（哈希桶的容量）*加载因子时，数组要扩容</li>
+<li>HashMap扩容默认：2倍大小，HashTable扩容默认：2倍+1</li>
+<li>HashMap的键与值都可以为null，HashTable的键与值都不可以为null</li>
+<li>HashMap在创建时，可以指定一个初始化容量，系统会调整为2的幂次方，为了快速计算出数组的下标</li>
+<li>HashTable也可以指定初始化容量，系统不调整</li>
+</ul>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><ul>
+<li>继承了HashTable</li>
+<li>他的键与值都是String字符串</li>
+<li>常用于设置读取系统属性值</li>
+</ul>
+<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><ul>
+<li>TreeMap实现了SortedMap，可以根据键自然排序，排序原理是二叉树原理</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础3</title>
+    <url>/2019/01/28/java/Java%E5%9F%BA%E7%A1%803/</url>
+    <content><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><p>流是有起点和终点的有序字节序列</p>
+<p>流的分类</p>
+<ul>
+<li>输入流&#x2F;输出流：是当前程序为参照点，程序从外面读取数据这是输入流，把程序的数据保存到外面是输出流</li>
+<li>字节流&#x2F;字符流：如果是以字节为单位处理流中的数据就是字节流，如果是以字符为单位处理流中的数据就是字符流</li>
+<li>节点流&#x2F;处理流：如果直接从设备（数据源）上读写数据就是节点流，处理流是对节点流的包装</li>
+</ul>
+<p>在程序中从文件里读写数据需要使用IO流.Java定义了相关的流类，在java.io包中，如果这个类是以Stream单词结尾就是流类，如果是以Reader结尾就是字符输入流，以Writer单词结尾就是字符输出流。</p>
+<ul>
+<li>FileInputStream&#x2F;FileOutputStream<ul>
+<li>以节为单位读写文件内容</li>
+</ul>
+</li>
+<li>FileReader&#x2F;FileWriter<ul>
+<li>FileReader&#x2F;FileWriter只能读写与当前环境编码兼容的文本文件</li>
+</ul>
+</li>
+<li>InputStreamReader&#x2F;OutputStreamwriter<ul>
+<li>如果文本文件与当前环境编码不兼容，使用InputStreamReader&#x2F;OutputStreamwriter转换流读写</li>
+</ul>
+</li>
+<li>BufferedReader&#x2F;Bufferedwriter<ul>
+<li>字符缓冲流BufferedReader&#x2F;Bufferedwriter也是一种处理流，包装流</li>
+</ul>
+</li>
+<li>ObjectinputStream&#x2F;ObjectOutputStream<ul>
+<li>对象序列化：把对象转换为01二进制序列就是对象序列化</li>
+<li>对象反序列化：把一组01二进制序列转换为对象</li>
+<li>注意：对象序列化&#x2F;反序列化前提是对象的类要实现Serializable接口，该接口是一个标志性接口，没有任何方法</li>
+</ul>
+</li>
+<li>PrintStream&#x2F;PrintWriter</li>
+<li>File类<ul>
+<li>读取文件内容使用IO流，操作文件&#x2F;文件来使用File类，如创建&#x2F;遍历&#x2F;删除文件来，查看文件的相关属性等操作</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">File</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getAbsolutePath</td>
+<td align="center">返回绝对路径（从根目录开始的路径）</td>
+</tr>
+<tr>
+<td align="center">getPath</td>
+<td align="center">返回路径</td>
+</tr>
+<tr>
+<td align="center">getParent</td>
+<td align="center">返回上一级文件夹</td>
+</tr>
+<tr>
+<td align="center">getName</td>
+<td align="center">对象名</td>
+</tr>
+<tr>
+<td align="center">length</td>
+<td align="center">文件大小</td>
+</tr>
+<tr>
+<td align="center">exists</td>
+<td align="center">是否存在</td>
+</tr>
+<tr>
+<td align="center">isFile</td>
+<td align="center">是否为文件</td>
+</tr>
+<tr>
+<td align="center">isAbsolute</td>
+<td align="center">是否绝对路径</td>
+</tr>
+<tr>
+<td align="center">lastModified</td>
+<td align="center">最后一次修改的时间</td>
+</tr>
+</tbody></table>
+<h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><p>进程：进程就是操作系统运行的一个程序。</p>
+<p>线程：线程就是进程的一个执行单元，一个进程至少有一个线程，如果进程有多个线程，则它就是多线程应用程序。每个线程都有独立的栈空间。</p>
+<p>主线程：JVM启动主线程，主线程运行main方法</p>
+<p>用户线程：开启的新的线程，也称子线程。</p>
+<p>守护线程：守护线程是为其他线程提供服务的线程，不能独立运行，当JVM中只有守护线程时，JVM会退出。（垃圾回收器就是一个守护线程）</p>
+<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><ul>
+<li><p>继承Thread</p>
+</li>
+<li><p>实现Runnable接口</p>
+</li>
+<li><p>实现Callable接口</p>
+</li>
+</ul>
+<h2 id="线程常用操作"><a href="#线程常用操作" class="headerlink" title="线程常用操作"></a>线程常用操作</h2><table>
+<thead>
+<tr>
+<th align="center">Thread</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">activeCount</td>
+<td align="center">当前活动线程的数量</td>
+</tr>
+<tr>
+<td align="center">currentThread</td>
+<td align="center">返回当前线程</td>
+</tr>
+<tr>
+<td align="center">getContextClassLoader</td>
+<td align="center">线程的上下文类加载器</td>
+</tr>
+<tr>
+<td align="center">getId</td>
+<td align="center">返回线程的ID，每个线程都有唯一的id</td>
+</tr>
+<tr>
+<td align="center">getName</td>
+<td align="center">返回线程名称</td>
+</tr>
+<tr>
+<td align="center">getPriority</td>
+<td align="center">返回线程优先级</td>
+</tr>
+<tr>
+<td align="center">getState</td>
+<td align="center">返回线程状态</td>
+</tr>
+<tr>
+<td align="center">interrupt</td>
+<td align="center">中断线程</td>
+</tr>
+<tr>
+<td align="center">interrupted</td>
+<td align="center">测试线程是否被中断</td>
+</tr>
+<tr>
+<td align="center">isAlive</td>
+<td align="center">测试线程是否结束</td>
+</tr>
+<tr>
+<td align="center">isDaemon</td>
+<td align="center">是否守护线程</td>
+</tr>
+<tr>
+<td align="center">isInterrupted</td>
+<td align="center">测试线程是否被中断</td>
+</tr>
+<tr>
+<td align="center">join</td>
+<td align="center">合并线程（加入）</td>
+</tr>
+<tr>
+<td align="center">run</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">setDaemon</td>
+<td align="center">设置线程为守护线程</td>
+</tr>
+<tr>
+<td align="center">setName</td>
+<td align="center">设置线程名称</td>
+</tr>
+<tr>
+<td align="center">setPriority</td>
+<td align="center">设置优先级</td>
+</tr>
+<tr>
+<td align="center">sleep</td>
+<td align="center">线程休眠</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">开启线程</td>
+</tr>
+<tr>
+<td align="center">stop</td>
+<td align="center">终止线程</td>
+</tr>
+<tr>
+<td align="center">toString</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">yield</td>
+<td align="center">线程让步</td>
+</tr>
+</tbody></table>
+<h2 id="线程生命周期"><a href="#线程生命周期" class="headerlink" title="线程生命周期"></a>线程生命周期</h2><img data-src="/2019/01/28/java/Java%E5%9F%BA%E7%A1%803/1.png" class="">
+
+<p>线程优先级</p>
+<ul>
+<li>每个线程都有一个优先级，取值范围：1~10</li>
+<li>所有线程默认的优先级为：5</li>
+<li>优先级越高，获得CPU执行权的记录越大</li>
+</ul>
+<p>线程休眠（Thread.sleep(2000)）</p>
+<ul>
+<li>静态方法，通过类名直接调用</li>
+<li>睡眠的单位是毫秒</li>
+<li>sleep()有受检异常需要预处理</li>
+<li>sleep()方法所在的线程睡眠</li>
+</ul>
+<p>线程中断（t1.interrupt()）</p>
+<ul>
+<li>一般情况下，是把处于睡眠&#x2F;等待中的线程给中断</li>
+</ul>
+<p>线程让步（Thread.yield()）</p>
+<ul>
+<li>把线程转换为就绪状态，重新争抢CPU执行权</li>
+</ul>
+<p>线程加入（合并，t1.join()）</p>
+<p>终止线程</p>
+<ul>
+<li>想办法让run()</li>
+<li>在线程中设置一个标志，定期判断这个标志是否发生变化，标志发生变化就退出run()方法</li>
+</ul>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><ul>
+<li>线程安全问题。<ul>
+<li>当多个线程同时操作堆区或者方法区的某个数据时，可能会出现数据不一致的现象，称为线程安全问题。</li>
+</ul>
+</li>
+<li>出现线程安全问题怎么办？<ul>
+<li>每个线程都访问自己的局部变量。</li>
+<li>如果多个线程必须同时操作实例变量&#x2F;静态变量时，可以采用线程同步技术</li>
+</ul>
+</li>
+<li>线程同步技术解决什么问题？<ul>
+<li>当一个线程在操作期间，不允许其他的线程加入。</li>
+<li>某一段代码在某一时刻只能由一个线程执行</li>
+</ul>
+</li>
+</ul>
+<p>同步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">synchronized（锁对象）&#123;</span><br><span class="line">	同步代码块</span><br><span class="line">&#125;</span><br><span class="line">工作原理：</span><br><span class="line">	1）任意对象都可以作为锁对象，每个对象有一个内置锁</span><br><span class="line">	2）某一时刻，锁对象最多只能被一个线程持有。</span><br><span class="line">	3）如果线程获得了锁对象后，会一直持有，直到执行完同步代码块后才释放</span><br><span class="line">	4）线程要执行同步代码块，必须先获得锁对象。</span><br><span class="line">场景描述：假设有线程A和线程B两个线程都想要执行同步代码块。</span><br><span class="line">	1）线程A获得CPU执行权，获得了锁对象后，开始执行同步代码块</span><br><span class="line">	2）线程A在执行同步代码块期间，CPU执行权被线程B抢走了，线程A转为就绪状态</span><br><span class="line">	3）线程B获得CPU执行权，也想要执行同步代码块，必须先获得锁对象，现在锁对象被线程A持有，线程B转到等待锁对象池中进行阻塞</span><br><span class="line">	4）线程A重新获得CPU执行权，执行完同步代码块后释放锁对象。</span><br><span class="line">	5）等待锁对象池中的线程B获得了锁对象，转为就绪状态。</span><br></pre></td></tr></table></figure>
+
+<p>死锁</p>
+<p>当多个线程同步时，获得锁的顺序不一致，导致线程相互等待的情况，称为死锁现象</p>
+<p>如何避免</p>
+<p>保证锁的顺序都一直</p>
+<img data-src="/2019/01/28/java/Java%E5%9F%BA%E7%A1%803/2.png" class="">
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java数组</title>
+    <url>/2024/06/30/java/Java%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h2 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		 // 这样拷贝数组没有隔离性</span><br><span class="line">		 String[] ss1 = &#123; &quot;1&quot;, &quot;2&quot;, &quot;3&quot; &#125;;</span><br><span class="line">		 // 把ss1对数组的引用传递给变量ss2,两个变量指向的是用一个数组</span><br><span class="line">		 String[] ss2 = ss1;</span><br><span class="line">		 ss2[0] = &quot;4&quot;;</span><br><span class="line">		 System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// 方法1</span><br><span class="line">		// 推荐</span><br><span class="line">		String[] ss1 = &#123; &quot;1&quot;, &quot;2&quot;, &quot;3&quot; &#125;;</span><br><span class="line">		// 通过new关键字再内存中开辟一块空间，ss2指向的是新的数组对象</span><br><span class="line">		String[] ss2 = new String[ss1.length];</span><br><span class="line">		for (int i = 0; i &lt; ss2.length; i++) &#123;</span><br><span class="line">			ss2[i] = ss1[i];</span><br><span class="line">		&#125;</span><br><span class="line">		ss2[0] = &quot;张三&quot;;</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// 方法2</span><br><span class="line">		// API提供的方式，底层用C++写的，所以速度很快，比for循环的效率高</span><br><span class="line">		String[] ss1 = &#123; &quot;1&quot;, &quot;2&quot;, &quot;3&quot; &#125;;</span><br><span class="line">		String[] ss2 = new String[ss1.length];</span><br><span class="line">		System.arraycopy(ss1, 0, ss2, 0, ss1.length);</span><br><span class="line">		/**</span><br><span class="line">		 * (Object src,int srcPos,Object dest,int destPos,int length)</span><br><span class="line">		 * src:源数组,srcPos:源数组要复制的起始位置;dest:目的数组;destPos:目的数组放置的起始位置;length:复制的长度</span><br><span class="line">		 * 注意：src and dest都必须是同类型或者可以进行转换类型的数组．</span><br><span class="line">		 * 有趣的是这个函数可以实现自己到自己复制，比如：</span><br><span class="line">		 * int[] fun =&#123;0,1,2,3,4,5,6&#125;; </span><br><span class="line">		 * System.arraycopy(fun,0,fun,3,3);</span><br><span class="line">		 * 则结果为：&#123;0,1,2,0,1,2,6&#125;;</span><br><span class="line">		 */</span><br><span class="line">		System.out.println(Arrays.toString(ss2));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		//方法3</span><br><span class="line">		String[] ss1 = &#123; &quot;1&quot;, &quot;2&quot;, &quot;3&quot; &#125;;</span><br><span class="line">		String[] ss2 = Arrays.copyOf(ss1, ss1.length);</span><br><span class="line">		/**</span><br><span class="line">		 *该方法对应不同的数据类型都有各自的重载方法</span><br><span class="line">		 *original - 要复制的数组</span><br><span class="line">		 *newLength - 要返回的副本的长度</span><br><span class="line">		 *newType - 要返回的副本的类型</span><br><span class="line">		 *仔细观察发现，copyOf()内部调用了System.arraycopy()方法</span><br><span class="line">		 *区别在于：</span><br><span class="line">		 *arraycopy()需要目标数组，将原数组拷贝到你自己定义的数组里，而且可以选择拷贝的起点和长度以及放入新数组中的位置</span><br><span class="line">		 *copyOf()是系统自动在内部新建一个数组，调用arraycopy()将original内容复制到copy中去，并且长度为newLength。返回copy; 即将原数组拷贝到一个长度为newLength的新数组中，并返回该数组。</span><br><span class="line">		 *总结</span><br><span class="line">		 *Array.copyOf()可以看作是受限的System.arraycopy()，它主要是用来将原数组全部拷贝到一个新长度的数组，适用于数组扩容。</span><br><span class="line">		 */</span><br><span class="line">		System.out.println(Arrays.toString(ss2));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数组扩容"><a href="#数组扩容" class="headerlink" title="数组扩容"></a>数组扩容</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		String[] ss1 = &#123; &quot;1&quot;, &quot;2&quot;, &quot;3&quot; &#125;;</span><br><span class="line">		ss1 = Arrays.copyOf(ss1, ss1.length + 2);</span><br><span class="line">		System.out.println(ss1.length);</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">		// 5</span><br><span class="line">		// [1, 2, 3, null, null]</span><br><span class="line">	&#125;</span><br><span class="line">常见面试题: 统计字符的位置</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String str = &quot;统计一个字符再字符串中的所有位置&quot;;</span><br><span class="line">		int[] arry = countAll(str, &#x27;字&#x27;);</span><br><span class="line">		System.out.println(Arrays.toString(arry));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int[] countAll(String str, char ch) &#123;</span><br><span class="line">		int[] array = &#123;&#125;;// 创建一个空数组</span><br><span class="line">		for (int i = 0; i &lt; str.length(); i++) &#123;</span><br><span class="line">			if (ch == str.charAt(i)) &#123;</span><br><span class="line">				// charAt(i)遍历String每个字符</span><br><span class="line">				array = Arrays.copyOf(array, array.length + 1);</span><br><span class="line">				// 扩容</span><br><span class="line">				array[array.length - 1] = i;</span><br><span class="line">				// 刚扩容的位置</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return array;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		//Java提供排序方法</span><br><span class="line">		int[] ss1= &#123;2,3,1&#125;;</span><br><span class="line">		Arrays.sort(ss1);</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// 方法1</span><br><span class="line">		// 冒泡排序，前一个数与后一个数进行比较</span><br><span class="line">		int[] ss1 = &#123; 2, 3, 1 &#125;;</span><br><span class="line">		int temp = 0;</span><br><span class="line">		for (int i = 0; i &lt; ss1.length - 1; i++) &#123;</span><br><span class="line">			for (int j = i + 1; j &lt; ss1.length; j++) &#123;</span><br><span class="line">				if (ss1[j] &lt; ss1[i]) &#123;</span><br><span class="line">					temp = ss1[i];</span><br><span class="line">					ss1[i] = ss1[j];</span><br><span class="line">					ss1[j] = temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// 方法2</span><br><span class="line">		// 选择排序</span><br><span class="line">		int[] ss1 = &#123; 2, 3, 1 &#125;;</span><br><span class="line">		int temp = 0;</span><br><span class="line">		for (int i = 0; i &lt; ss1.length - 1; i++) &#123;</span><br><span class="line">			int min = i;</span><br><span class="line">			for (int j = i + 1; j &lt; ss1.length; j++) &#123;</span><br><span class="line">				if (ss1[min] &gt; ss1[j]) &#123;</span><br><span class="line">					// 找到比选定下标小的数</span><br><span class="line">					min = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (min != i) &#123;</span><br><span class="line">				// 交换位置</span><br><span class="line">				temp = ss1[i];</span><br><span class="line">				ss1[i] = ss1[min];</span><br><span class="line">				ss1[min] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		// 方法3</span><br><span class="line">		// 插入排序</span><br><span class="line">		int[] ss1 = &#123; 2, 3, 1 &#125;;</span><br><span class="line">		int temp = 0;</span><br><span class="line">		for (int i = 1; i &lt; ss1.length; i++) &#123;</span><br><span class="line">			for (int j = i; j &gt; 0; j--) &#123;</span><br><span class="line">				if (ss1[j] &lt; ss1[j - 1]) &#123;</span><br><span class="line">					temp = ss1[j];</span><br><span class="line">					ss1[j] = ss1[j - 1];</span><br><span class="line">					ss1[j - 1] = temp;</span><br><span class="line">				&#125; else</span><br><span class="line">					break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(Arrays.toString(ss1));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 有序数组,二分查找</span><br><span class="line">	static int bingarySerarch(int[] array, int num) &#123;</span><br><span class="line">		int low = 0;</span><br><span class="line">		int high = array.length - 1;</span><br><span class="line">		while (low &lt;= high) &#123;</span><br><span class="line">			int mid = (low + high) / 2;</span><br><span class="line">			if (num &gt; array[mid]) &#123;</span><br><span class="line">				low = mid + 1;</span><br><span class="line">			&#125; else if (num &lt; array[mid]) &#123;</span><br><span class="line">				high = mid - 1;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				return mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">// 无序数组，采用遍历，也可以先排序，后采用二分查找</span><br><span class="line">	static int search(int[] array, int num) &#123;</span><br><span class="line">		int index = -1;</span><br><span class="line">		for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">			if (num == array[i]) &#123;</span><br><span class="line">				index = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return index;</span><br><span class="line">	&#125;</span><br><span class="line">// Java 提供的查找方式。查看源码，它的本质就是二分查找</span><br><span class="line">	static void test(int[] array, int num) &#123;</span><br><span class="line">		/**</span><br><span class="line">		 * binarySearch(Object[], Object key) a: 要搜索的数组 key：要搜索的值</span><br><span class="line">		 * 如果key在数组中，则返回搜索值的索引；否则返回-1或“-”（插入点）。插入点是索引键将要插入数组的那一点，即第一个大于该键的元素的索引。 技巧： [1]</span><br><span class="line">		 * 搜索值不是数组元素，且在数组范围内，从1开始计数，得“ - 插入点索引值”； [2] 搜索值是数组元素，从0开始计数，得搜索值的索引值； [3]</span><br><span class="line">		 * 搜索值不是数组元素，且大于数组内元素，索引值为 – (length + 1); [4] 搜索值不是数组元素，且小于数组内元素，索引值为 – 1。</span><br><span class="line">		 */</span><br><span class="line">		int index = Arrays.binarySearch(array, 8);</span><br><span class="line">		System.out.println(index);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java核心数据结构(List、Map、Set)原理与使用技巧</title>
+    <url>/2019/04/06/java/Java%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(List%E3%80%81Map%E3%80%81Set)%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<blockquote>
+<p>JDK提供了一组主要的数据结构实现，如List、Map、Set等常用数据结构。这些数据都继承自java.util.Collection接口，并位于java.util包内</p>
+</blockquote>
+<h1 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h1><p>最重要的三种List接口实现：ArrayList、Vector、LinkedList。它们的类图如下：</p>
+<img data-src="/2019/04/06/java/Java%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(List%E3%80%81Map%E3%80%81Set)%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/1.png" class="">
+
+<p>可以看到，3种List均来自AbstratList的实现。</p>
+<p>而AbstratList直接实现了List接口，并扩展自AbstratCollection。</p>
+<p>ArrayList和Vector使用了数组实现，可以认为，ArrayList封装了对内部数组的操作。比如向数组中添加、删除、插入新的元素或数组的扩展和重定义。对ArrayList或者Vector的操作，等价于对内部对象数组的操作。</p>
+<p>ArrayList和Vector几乎使用了相同的算法，它们的唯一区别可以认为是对多线程的支持。ArrayList没有对一个方法做线程同步，因此不是线程安全的。Vector中绝大多数方法都做了线程同步，是一种线程安全的实现。因此ArrayList和Vector的性能特性相差无几。</p>
+<p>LinkedList使用了循环双向链表数据结构。LinkedList由一系列表项连接而成。一个表项总是包含3个部分：元素内容、前驱表项和后驱表项。如图所示：</p>
+<img data-src="/2019/04/06/java/Java%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(List%E3%80%81Map%E3%80%81Set)%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/2.png" class="">
+
+<p>LinkedList的表项源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无论LinkedList是否为空，链表都有一个header表项，它既是链表的开始，也表示链表的结尾。它的后驱表项便是链表的第一个元素，前驱表项便是链表的最后一个元素。如图所示：</p>
+<img data-src="/2019/04/06/java/Java%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(List%E3%80%81Map%E3%80%81Set)%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/3.png" class="">
+
+<p>下面比较下ArrayList和LinkedList的不同。</p>
+<h2 id="增加元素到列表尾端"><a href="#增加元素到列表尾端" class="headerlink" title="增加元素到列表尾端"></a>增加元素到列表尾端</h2><p>对于ArrayList来说，只要当前容量足够大，add()操作的效率是非常高的。</p>
+<p>只有当ArrayList对容量的需求超过当前数组的大小时，才需要进行扩容。扩容会进行大量的数组复制操作。而复制时最终调用的是System.arraycopy()方法，因此，add()效率还是相当高的。</p>
+<p>LinkedList由于使用了链表的结构，因此不需要维护容量的大小。这点比ArrayList有优势，不过，由于每次元素增加都需要新建Node对象，并进行更多的赋值操作。在频繁的系统调用中，对性能会产生一定影响。</p>
+<h2 id="插入元素到列表任意位置"><a href="#插入元素到列表任意位置" class="headerlink" title="插入元素到列表任意位置"></a>插入元素到列表任意位置</h2><p>ArrayList是基于数组实现的，而数组是一块连续的内存空间，每次插入操作，都会进行一次数组复制。大量的数组复制会导致系统性能低下。</p>
+<p>LinkedList是基于链表实现的，在任意位置插入和在尾端增加是一样的。所以，如果系统应用需要对List对象在任意位置进行频繁的插入操作，可以考虑用LinkedList替代ArrayList。</p>
+<h2 id="容量参数"><a href="#容量参数" class="headerlink" title="容量参数"></a>容量参数</h2><p>容量参数是ArrayList 和 Vector等基于数组的List的特有性能参数，它表示初始数组的大小。</p>
+<p>合理的设置容量参数，可以减少数组扩容，提升系统性能。</p>
+<p>默认ArrayList的数组初始大小为10。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h2><p>常用的三种列表遍历方式：ForEach操作、迭代器和for循环。</p>
+<p>对于ForEach操作，反编译可知实际上是将ForEach循环体作为迭代器处理。不过ForEach比自定义的迭代器多了一步赋值操作，性能不如直接使用迭代器的方式。</p>
+<p>使用For循环通过随机访问遍历列表，ArrayList表现很好，速度最快；但是LinkedList的表现非常差，应避免使用，这是因为对LinkedList的随机访问时，总会进行一次列表的遍历操作。</p>
+<h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><p>Map是一种非常常用的数据结构。围绕着Map接口，最主要的实现类有Hashtable, HashMap, LinkedHashMap 和 TreeMap，在Hashtable中，还有Properties 类的实现。</p>
+<img data-src="/2019/04/06/java/Java%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84(List%E3%80%81Map%E3%80%81Set)%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/4.png" class="">
+
+<p>Hashtable和hashMap的区别在于Hashtable的大部分方法都做了线程同步，而HashMap没有，</p>
+<p>因此，Hashtable是线程安全的，HashMap不是。</p>
+<p>其次，Hashtable 不允许key或value使用null值，而HashMap可以。</p>
+<p>第三，它们在内部对key的hash算法和hash值到内存索引的映射算法不同。</p>
+<p>由于HashMap使用广泛，本文以HashMap为例，阐述它的实现原理。</p>
+<h2 id="HashMap的实现原理"><a href="#HashMap的实现原理" class="headerlink" title="HashMap的实现原理"></a>HashMap的实现原理</h2><p>简单来说，HashMap就是将key做hash算法，然后将hash值映射到内存地址，直接取得key所对应的数据。</p>
+<p>在HashMap中，底层数据结构使用的是数组。所谓的内存地址，就是数组的下标索引。</p>
+<p>用代码简单表示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">object[key_hash] = value;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hash冲突"><a href="#Hash冲突" class="headerlink" title="Hash冲突"></a>Hash冲突</h2><p>当需要存放的两个元素1和2经hash计算后，发现对应在内存中的同一个地址。此时HashMap又会如何处理以保证数据的完整存放？</p>
+<p>在HashMap的底层使用数组，但数组内的元素不是简单的值，而是一个Entity类的对象。每一个Entity表项包括key，value，next，hash几项。注意这里的next部分，它指向另外一个Entity。</p>
+<p>当put()操作有冲突时，新的Entity会替换原有的值，为了保证旧值不丢失，会将next指向旧值。这便实现了在一个数组空间内存放多个值项。因此，HashMap实际上是一个链表的数组。</p>
+<p>而在进行get()操作时，如果定位到的数组元素不含链表（当前entry的next指向null），则直接返回；如果定位到的数组元素包含链表，则需要遍历链表，通过key对象的equals方法逐一比对查找。</p>
+<h2 id="容量参数-1"><a href="#容量参数-1" class="headerlink" title="容量参数"></a>容量参数</h2><p>和ArrayList一样，基于数组的结构，不可避免的需要在数组空间不足时，进行扩展。而数组的重组比较耗时，因此对其做一定的优化很有必要了。</p>
+<p>HashMap提供了两个可以指定初始化大小的构造函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HashMap(int initialCapacity) </span><br><span class="line">          构造一个带指定初始容量和默认负载因子 (0.75) 的空 HashMap。</span><br><span class="line"></span><br><span class="line">HashMap(int initialCapacity, float loadFactor) </span><br><span class="line">          构造一个带指定初始容量和负载因子的空 HashMap。</span><br></pre></td></tr></table></figure>
+
+<p>其中，HashMap会使用大于等于initialCapacity并且是2的指数次幂的最小的整数作为内置数组的大小。</p>
+<p>负载因子又叫做填充比，它是介于0和1之间的浮点数。</p>
+<p>负载因子 &#x3D; 实际元素个数 &#x2F; 内部数组总大小</p>
+<p>负载因子的作用就是决定HashMap的阈值（threshold）。</p>
+<p>阈值 &#x3D; 数组总容量 × 负载因子</p>
+<p>当HashMap的实际容量超过阈值便会进行扩容，每次扩容将新的数组大小设置为原大小的1.5倍。</p>
+<p>默认情况下，HashMap的初始大小是16，负载因子为0.75。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16</span><br><span class="line">static final float DEFAULT_LOAD_FACTOR = 0.75f;</span><br></pre></td></tr></table></figure>
+
+<h2 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h2><p>LinkedHashMap继承自HashMap，因此，它具备了HashMap的优良特性，并在此基础上，LinkedHashMap又在内部增加了一个链表，用以存放元素的顺序。</p>
+<p>因此，LinkedHashMap可以简单理解为一个维护了元素次序表的HashMap.</p>
+<p>LinkedHashMap提供两种类型的顺序：一是元素插入时的顺序；二是最近访问的顺序。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder) </span><br><span class="line">          构造一个带指定初始容量、负载因子和排序模式的空 LinkedHashMap 实例</span><br></pre></td></tr></table></figure>
+
+<p>其中accessOrder为true时，按照元素最后访问时间排序；当accessOrder为false 时，按照插入顺序排序。默认为 false 。</p>
+<p>在内部实现中，LinkedHashMap通过继承HashMap.Entity类，实现LinkedHashMap.Entity，为HashMap.Entity增加了before和after属性用以记录某一表项的前驱和后继，并构成循环链表。</p>
+<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p>TreeMap可以简单理解为一种可以进行排序的Map实现。与LinkedHashMap不同，LinkedHashMap是根据元素增加或者访问的先后顺序进行排序，而TreeMap则根据元素的Key进行排序。为了确定Key的排序算法，可以使用两种方式指定：</p>
+<ul>
+<li>在TreeMap的构造函数中注入一个Comparator：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">TreeMap(Comparator&lt;? super K&gt; comparator) </span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用一个实现了 Comparable 接口的 Key。</li>
+</ul>
+<p>TreeMap的内部实现是基于红黑树的。红黑树是一种平衡查找树，这里不做过多介绍。</p>
+<p>TreeMap 其它排序接口如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subMap(K fromKey, K toKey) </span><br><span class="line">          返回此映射的部分视图，其键值的范围从 fromKey（包括）到 toKey（不包括）。</span><br><span class="line"></span><br><span class="line">tailMap(K fromKey) </span><br><span class="line">          返回此映射的部分视图，其键大于等于 fromKey。</span><br><span class="line"></span><br><span class="line">firstKey() </span><br><span class="line">          返回此映射中当前第一个（最低）键。</span><br><span class="line"></span><br><span class="line">headMap(K toKey) </span><br><span class="line">          返回此映射的部分视图，其键值严格小于 toKey。</span><br><span class="line"></span><br><span class="line">一个简单示例如下：</span><br><span class="line">public class MyKey implements Comparable&lt;MyKey&gt; &#123;</span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    public MyKey(int id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int compareTo(MyKey o) &#123;</span><br><span class="line">        if (o.id &lt; this.id)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;else if (o.id &gt; this.id)&#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyKey myKey1 = new MyKey(1);</span><br><span class="line">        MyKey myKey2 = new MyKey(2);</span><br><span class="line">        MyKey myKey3 = new MyKey(3);</span><br><span class="line">        Map&lt;MyKey,Object&gt; map = new TreeMap&lt;&gt;();</span><br><span class="line">        map.put(myKey1,&quot;一号&quot;);</span><br><span class="line">        map.put(myKey3,&quot;三号&quot;);</span><br><span class="line">        map.put(myKey2,&quot;二号&quot;);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;MyKey&gt; iterator = map.keySet().iterator();</span><br><span class="line">        while (iterator.hasNext())&#123;</span><br><span class="line">            System.out.println(map.get(iterator.next()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h1><p>Set并没有在Collection接口之上增加额外的操作，Set集合中的元素是不能重复的。<br>其中最为重要的是HashSet、LinkedHashSet、TreeSet 的实现。这里不再一一赘述，因为所有的这些Set实现都只是对应的Map的一种封装而已。</p>
+<h1 id="优化集合访问代码"><a href="#优化集合访问代码" class="headerlink" title="优化集合访问代码"></a>优化集合访问代码</h1><h2 id="分离循环中被重复调用的代码"><a href="#分离循环中被重复调用的代码" class="headerlink" title="分离循环中被重复调用的代码"></a>分离循环中被重复调用的代码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">举个例子，当我们要使用for循环遍历集合时</span><br><span class="line">for (int i =0;i&lt;collection.size();i++)&#123;</span><br><span class="line">    //.....</span><br><span class="line">&#125;</span><br><span class="line">很明显，每次循环都会调用size()方法，并且每次都会返回相同的数值。分离所有类似的代码对提升循环性能有着积极地意义。因此，可以将上段代码改造成</span><br><span class="line">int size= collection.size();</span><br><span class="line">for (int i =0;i&lt;size;i++)&#123;</span><br><span class="line">    //.....</span><br><span class="line">&#125;</span><br><span class="line">当元素的数量越多时，这样的处理就越有意义。</span><br></pre></td></tr></table></figure>
+
+<h2 id="省略相同的操作"><a href="#省略相同的操作" class="headerlink" title="省略相同的操作"></a>省略相同的操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">假设我们有一段类似的操作如下</span><br><span class="line">int size= collection.size();</span><br><span class="line">for (int i =0;i&lt;size;i++)&#123;</span><br><span class="line">    if (list.get(i)==1||list.get(i)==2||list.get(i)==3)&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">虽然每次循环调用get(i)的返回值不同，但在同一次调用中，结果是相同的，因此可以提取这些相同的操作。</span><br><span class="line">int size= collection.size();</span><br><span class="line">int k=0;</span><br><span class="line">for (int i =0;i&lt;size;i++)&#123;</span><br><span class="line">    if ((k = list.get(i))==1||k==2||k==3)&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="减少方法调用"><a href="#减少方法调用" class="headerlink" title="减少方法调用"></a>减少方法调用</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方法调用是需要消耗系统堆栈的，如果可以，则尽量访问内部元素，而不要调用对应的接口，函数调用是需要消耗系统资源的，直接访问元素会更高效。</span><br><span class="line">假设上面的代码是Vector.class的子类的部分代码，那么可以这么改写</span><br><span class="line">int size = this.elementCount;</span><br><span class="line">Object k=null;</span><br><span class="line">for (int i =0;i&lt;size;i++)&#123;</span><br><span class="line">    if ((k = elementData[i])==&quot;1&quot;||k==&quot;2&quot;||k==&quot;3&quot;)&#123;</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">可以看到，原本的 size() 和 get() 方法被直接替代为访问原始变量，这对系统性能的提升是非常有用的。</span><br></pre></td></tr></table></figure>
+
+<h1 id="RandomAccess接口"><a href="#RandomAccess接口" class="headerlink" title="RandomAccess接口"></a>RandomAccess接口</h1><p>RandomAccess接口是一个标志接口，本身并没有提供任何方法，任何实现RandomAccess接口的对象都可以认为是支持快速随机访问的对象。此接口的主要目的是标识那些可以支持快速随机访问的List实现。</p>
+<p>在JDK中，任何一个基于数组的List实现都实现了RandomAccess接口，而基于链表的实现则没有。这很好理解，只有数组能够快速随机访问，（比如：通过 object[5]，object[6]可以直接查找并返回对象），而对链表的随机访问需要进行链表的遍历。</p>
+<p>在实际操作中，可以根据list instanceof RandomAccess来判断对象是否实现 RandomAccess接口，从而选择是使用随机访问还是iterator迭代器进行访问。</p>
+<p>在应用程序中，如果需要通过索引下标对 List 做随机访问，尽量不要使用 LinkedList，ArrayList和Vector都是不错的选择。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Thread Local</title>
+    <url>/2019/04/06/java/Thread%20Local/</url>
+    <content><![CDATA[<blockquote>
+<p>高并发处理 : 在当前进程取出对象，不会冲突<br>放入的东西<br>各个线程保存的东西是分开只与进程有关系<br>每个进程会处理自己的内容</p>
+</blockquote>
+<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><p>ThreadLocal的是一个本地线程副本变量工具类。</p>
+<p>主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可以实现无状态的调用，特别适用于各个线程依赖不通的变量值完成操作的场景。</p>
+<p>原理大佬说的很清楚了》<a href="https://www.jianshu.com/p/98b68c97df9b">https://www.jianshu.com/p/98b68c97df9b</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例：</span><br><span class="line">   private static final ThreadLocal&lt;SysUser&gt; userHolder = new ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">   private static final ThreadLocal&lt;HttpServletRequest&gt; requestHolder = new ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">   public static void add(SysUser sysUser)&#123;</span><br><span class="line">       userHolder.set(sysUser);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static void add(HttpServletRequest request)&#123;</span><br><span class="line">       requestHolder.set(request);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static SysUser getCurrentUser()&#123;</span><br><span class="line">       return userHolder.get();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static HttpServletRequest getCurrentRequest()&#123;</span><br><span class="line">       return requestHolder.get();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static void remove()&#123;</span><br><span class="line">       userHolder.remove();</span><br><span class="line">       requestHolder.remove();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
