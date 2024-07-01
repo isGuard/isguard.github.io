@@ -1,4 +1,8 @@
 [
+{"title":"第39级台阶","url":"/2018/04/05/算法/第39级台阶/"},
+{"title":"分机号","url":"/2018/04/13/算法/分机号/"},
+{"title":"穿越雷区","url":"/2018/04/16/算法/穿越雷区/"},
+{"title":"表格计算","url":"/2018/04/17/算法/表格计算/"},
 {"title":"Could-not-find-result-map","url":"/2019/01/19/问题/Could-not-find-result-map-20190119/"},
 {"title":"Java基础1","url":"/2019/01/24/java/Java基础1/"},
 {"title":"Java基础2","url":"/2019/01/26/java/Java基础2/"},
@@ -8,6 +12,8 @@
 {"title":"Java核心数据结构(List、Map、Set)原理与使用技巧","url":"/2019/04/06/java/Java核心数据结构(List、Map、Set)原理与使用技巧/"},
 {"title":"Thread Local","url":"/2019/04/06/java/Thread Local/"},
 {"title":"获取ip","url":"/2019/04/06/java/获取ip/"},
+{"title":"Ajax(原生,JQ)","url":"/2019/04/06/javaScript/Ajax(原生,JQ)/"},
+{"title":"那年你27、8岁","url":"/2019/11/01/摘要/那年你27、8岁/"},
 {"title":"Docker安装","url":"/2024/04/08/docker/Docker安装/"},
 {"title":"IDEA链接Docker","url":"/2024/04/08/docker/IDEA链接docker/"},
 {"title":"docker内网安装","url":"/2024/04/08/docker/内网安装/"},
@@ -23,4 +29,5 @@
 {"title":"WSL安装Docker","url":"/2024/06/25/docker/WSL安装Docker/"},
 {"title":"Next 主题在 Hexo 中添加GA4","url":"/2024/06/29/hexo/Next 主题在 Hexo 中添加GA4/"},
 {"title":"Java数组","url":"/2024/06/30/java/Java数组/"},
+{"title":"mysql主从设置","url":"/2024/07/01/mysql/mysql主从设置/"},
 ]
