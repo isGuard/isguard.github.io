@@ -333,6 +333,23 @@
       </tags>
   </entry>
   <entry>
+    <title>IDEA链接Docker</title>
+    <url>/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/</url>
+    <content><![CDATA[<h2 id="下载证书（非必要）"><a href="#下载证书（非必要）" class="headerlink" title="下载证书（非必要）"></a>下载证书（非必要）</h2><p>下载生成的证书</p>
+
+
+<h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>IDEA</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker镜像代理加速</title>
     <url>/2024/06/23/docker/Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<h2 id="打开大善人网站"><a href="#打开大善人网站" class="headerlink" title="打开大善人网站"></a>打开大善人网站</h2><p><a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a></p>
@@ -411,23 +428,6 @@
       <tags>
         <tag>cloudflare</tag>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDEA链接Docker</title>
-    <url>/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/</url>
-    <content><![CDATA[<h2 id="下载证书（非必要）"><a href="#下载证书（非必要）" class="headerlink" title="下载证书（非必要）"></a>下载证书（非必要）</h2><p>下载生成的证书</p>
-
-
-<h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-        <category>IDEA</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -681,6 +681,29 @@
 <li>最下方的 查看代碼操作說明</li>
 <li>選擇右邊的 手動安裝 就可以看到追蹤程式碼了</li>
 </ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对Hexo博客静态资源进行压缩</title>
+    <url>/2024/07/02/hexo/%E5%AF%B9Hexo%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E8%BF%9B%E8%A1%8C%E5%8E%8B%E7%BC%A9/</url>
+    <content><![CDATA[<p>注意包的版本，这里只展示glup4</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install @babel/core@^7.24.7 \</span><br><span class="line">            @babel/preset-env@^7.24.7 \</span><br><span class="line">            gulp-babel@^8.0.0 \</span><br><span class="line">            gulp-cache@^1.1.3 \</span><br><span class="line">            gulp-clean-css@^4.3.0 \</span><br><span class="line">            gulp-htmlclean@^2.7.22 \</span><br><span class="line">            gulp-htmlmin@^5.0.1 \</span><br><span class="line">            gulp-imagemin@^6.2.0 \</span><br><span class="line">            gulp-minify-css@^1.2.4 \</span><br><span class="line">            gulp-uglify@^3.0.2 \</span><br><span class="line">            imagemin-pngquant@^10.0.0 \</span><br><span class="line">            gulp@4.0.2</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建-gulpfile-js"><a href="#创建-gulpfile-js" class="headerlink" title="创建 gulpfile.js"></a>创建 gulpfile.js</h2><p>在 <code>Hexo</code> 博客的根目录下面，创建一个 <code>gulpfile.js</code> 文件，这个名字不可改，必须是这个名字。<br>在刚创建的文件中写入如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> minifycss = <span class="built_in">require</span>(<span class="string">&#x27;gulp-minify-css&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> uglify = <span class="built_in">require</span>(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> htmlmin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> htmlclean = <span class="built_in">require</span>(<span class="string">&#x27;gulp-htmlclean&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">&#x27;gulp-babel&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> cache = <span class="built_in">require</span>(<span class="string">&#x27;gulp-cache&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">&#x27;gulp-imagemin&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩css文件</span></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;minify-css&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.<span class="title function_">src</span>(<span class="string">&#x27;./public/**/*.css&#x27;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">minifycss</span>())</span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩js文件，支持将ES6代码转换成ES5代码</span></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;minify-js&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.<span class="title function_">src</span>(<span class="string">&#x27;./public/**/*.js&#x27;</span>)</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">babel</span>(&#123;</span><br><span class="line">        <span class="attr">presets</span>: [<span class="string">&#x27;@babel/preset-env&#x27;</span>]</span><br><span class="line">      &#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">uglify</span>())</span><br><span class="line">      .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩html文件</span></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;minify-html&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.<span class="title function_">src</span>(<span class="string">&#x27;./public/**/*.html&#x27;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">htmlclean</span>())</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">htmlmin</span>(&#123;</span><br><span class="line">      <span class="attr">removeComments</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">minifyJS</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">minifyCSS</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">minifyURLs</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;))</span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">getPngquant</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable language_">module</span> = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&#x27;imagemin-pngquant&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">module</span>.<span class="property">default</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 压缩图片(深度压缩)</span></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;minify-images&#x27;</span>, <span class="keyword">async</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> pngquant = <span class="keyword">await</span> <span class="title function_">getPngquant</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> gulp.<span class="title function_">src</span>(<span class="string">&#x27;./public/**/*.&#123;png,jpg,gif,ico&#125;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">cache</span>(<span class="title function_">imagemin</span>(&#123;                   <span class="comment">// 启用缓存，只压缩发生变化的图片</span></span><br><span class="line">        <span class="attr">progressive</span>: <span class="literal">true</span>,                     <span class="comment">// 是否无损压缩 jpg 图片</span></span><br><span class="line">        <span class="attr">interlaced</span>: <span class="literal">false</span>,                     <span class="comment">// 是否隔行扫描 gif 进行渲染</span></span><br><span class="line">        <span class="attr">svgoPlugins</span>: [&#123;<span class="attr">removeViewBox</span>: <span class="literal">false</span>&#125;], <span class="comment">// 是否移除 svg 的 viewbox 属性</span></span><br><span class="line">        <span class="attr">multipass</span>: <span class="literal">false</span>,                      <span class="comment">// 是否多次优化 svg 直到完全优化</span></span><br><span class="line">        <span class="attr">optimizationLevel</span>: <span class="number">5</span>,                  <span class="comment">// 优化等级，取值范围：0-7，默认值：3</span></span><br><span class="line">        <span class="attr">use</span>: [<span class="title function_">pngquant</span>()]                      <span class="comment">// 使用 pngquant 深度压缩 png 图片的 imagemin 插件</span></span><br><span class="line">      &#125;)))</span><br><span class="line">      .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public&#x27;</span>));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp4的写法</span></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;default&#x27;</span>,gulp.<span class="title function_">series</span>(gulp.<span class="title function_">parallel</span>(<span class="string">&#x27;minify-css&#x27;</span>, <span class="string">&#x27;minify-js&#x27;</span>,<span class="string">&#x27;minify-html&#x27;</span>, <span class="string">&#x27;minify-images&#x27;</span>,<span class="keyword">function</span>(<span class="params">done</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Gulp is running!&#x27;</span>);</span><br><span class="line">    <span class="title function_">done</span>();</span><br><span class="line">  &#125;)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ul>
+<li>以上代码是运行在 <code>gulp4</code> 环境的，与 <code>gulp3</code> 不通用</li>
+<li>图片压缩速度很慢，若不需要压缩图片，请将第52行的代码中的 <code>&#39;minify-img&#39;</code> 删除，忽略其它文件压缩同理。</li>
+</ul>
+<h2 id="对代码进行压缩"><a href="#对代码进行压缩" class="headerlink" title="对代码进行压缩"></a>对代码进行压缩</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">gulp build</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>先清空文件，生成静态文件，然后使用 <code>gulp</code> 命令对代码进行压缩，最后将其推送到服务器就行了</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -6929,6 +6952,198 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Maven</title>
+    <url>/2020/03/08/maven/Maven/</url>
+    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
+<p>与构建过程相关的：编译、测试、打包…</p>
+<ol>
+<li>mvn clean：清理</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装进入仓库</li>
+<li>mvn site：生成站点</li>
+</ol>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
+<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
+</li>
+<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
+</li>
+<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
+</li>
+<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
+</li>
+<li><p>如果此时无法联网，则构建失败。</p>
+</li>
+<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
+<ol>
+<li>找到Maven文件下的\conf\settings.xml</li>
+<li>找到标签<code>localRepository</code></li>
+<li>将标签<code>localRepository</code>从注释中取出</li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
+</ol>
+</li>
+<li><p>设置阿里Maven仓库</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
+<li><p>含义：Project Object Model 项目对象模型</p>
+<p>​			DOM Document Object Model 文档对象模型</p>
+</li>
+<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
+</li>
+</ol>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
+<ol>
+<li>groupid：公司或组织域名倒序+项目名称</li>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ol>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
+<li><p>仓库的分类</p>
+<ol>
+<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
+<li>远程仓库<ol>
+<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
+<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
+<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>仓库中保存的内容：Maven工程</p>
+<ol>
+<li>Maven自身所需要的插件</li>
+<li>第三方框架或工具的jar包</li>
+<li>我们自己开发的Maven工程</li>
+</ol>
+</li>
+</ol>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
+<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
+</li>
+<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
+</li>
+<li><p>依赖的范围</p>
+<ol>
+<li>compile<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+</ol>
+</li>
+<li>test<ol>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>典型例子：junit.jar</li>
+</ol>
+</li>
+<li>provided<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>依赖的传递性</p>
+<ol>
+<li>在父工程依赖一次既可重复使用</li>
+<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
+</ol>
+</li>
+<li><p>依赖的排除</p>
+<ol>
+<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
+</li>
+<li><p>排除设置</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖原则</p>
+<ol>
+<li>作用：解决模块工程之间的jar包冲突问题</li>
+<li>Maven默认解决方案：路径最短者优先</li>
+<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
+</ol>
+</li>
+<li><p>统一管理依赖的版本</p>
+<ol>
+<li>使用properties标签使用自定义标签统一声明版本号</li>
+<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
+<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
+</li>
+<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
+</li>
+<li><p>Maven有三条相互独立的生命周期：</p>
+<ol>
+<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
+<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
+<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
+</ol>
+</li>
+<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
+</li>
+<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
+</li>
+<li><p>操作步骤</p>
+<ol>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
+<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+</li>
+<li><p>在子工程中声明对父工程的引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父工程中统一管理test依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在子工程中删除test依赖的版本号部分</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
+<li><p>作用：一键安装各个模块工程</p>
+</li>
+<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
+</li>
+</ol>
+<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mvn deploy</code></p>
+<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
     <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
@@ -7132,198 +7347,6 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven</title>
-    <url>/2020/03/08/maven/Maven/</url>
-    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
-<p>与构建过程相关的：编译、测试、打包…</p>
-<ol>
-<li>mvn clean：清理</li>
-<li>mvn compile：编译主程序</li>
-<li>mvn test-compile：编译测试程序</li>
-<li>mvn test：执行测试</li>
-<li>mvn package：打包</li>
-<li>mvn install：安装进入仓库</li>
-<li>mvn site：生成站点</li>
-</ol>
-<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
-<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
-</li>
-<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
-</li>
-<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
-</li>
-<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
-</li>
-<li><p>如果此时无法联网，则构建失败。</p>
-</li>
-<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
-<ol>
-<li>找到Maven文件下的\conf\settings.xml</li>
-<li>找到标签<code>localRepository</code></li>
-<li>将标签<code>localRepository</code>从注释中取出</li>
-<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
-</ol>
-</li>
-<li><p>设置阿里Maven仓库</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
-<li><p>含义：Project Object Model 项目对象模型</p>
-<p>​			DOM Document Object Model 文档对象模型</p>
-</li>
-<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
-</li>
-</ol>
-<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
-<ol>
-<li>groupid：公司或组织域名倒序+项目名称</li>
-<li>artifactid：模块名</li>
-<li>version：版本</li>
-</ol>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
-<li><p>仓库的分类</p>
-<ol>
-<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
-<li>远程仓库<ol>
-<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
-<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
-<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>仓库中保存的内容：Maven工程</p>
-<ol>
-<li>Maven自身所需要的插件</li>
-<li>第三方框架或工具的jar包</li>
-<li>我们自己开发的Maven工程</li>
-</ol>
-</li>
-</ol>
-<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
-<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
-</li>
-<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
-</li>
-<li><p>依赖的范围</p>
-<ol>
-<li>compile<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：参与</li>
-</ol>
-</li>
-<li>test<ol>
-<li>对主程序是否有效：无效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>典型例子：junit.jar</li>
-</ol>
-</li>
-<li>provided<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>是否参与部署：不参与</li>
-<li>典型例子：servlet-api.jar</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>依赖的传递性</p>
-<ol>
-<li>在父工程依赖一次既可重复使用</li>
-<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
-</ol>
-</li>
-<li><p>依赖的排除</p>
-<ol>
-<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
-</li>
-<li><p>排除设置</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>依赖原则</p>
-<ol>
-<li>作用：解决模块工程之间的jar包冲突问题</li>
-<li>Maven默认解决方案：路径最短者优先</li>
-<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
-</ol>
-</li>
-<li><p>统一管理依赖的版本</p>
-<ol>
-<li>使用properties标签使用自定义标签统一声明版本号</li>
-<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
-<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
-<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
-</li>
-<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
-</li>
-<li><p>Maven有三条相互独立的生命周期：</p>
-<ol>
-<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
-<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
-<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
-</ol>
-</li>
-<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
-</li>
-</ol>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
-<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
-</li>
-<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
-</li>
-<li><p>操作步骤</p>
-<ol>
-<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
-<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
-</li>
-<li><p>在子工程中声明对父工程的引用</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在父工程中统一管理test依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在子工程中删除test依赖的版本号部分</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
-<li><p>作用：一键安装各个模块工程</p>
-</li>
-<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
-</li>
-</ol>
-<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>mvn deploy</code></p>
-<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
-]]></content>
-      <categories>
-        <category>Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
