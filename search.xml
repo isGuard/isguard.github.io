@@ -690,229 +690,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
-    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
-<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
-
-<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
-<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
-
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
-
-<p>右键点击该文件，选择“提取到此处”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
-
-<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
-
-<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
-
-<p>一路回车进行安装，出现以下的画面，安装完成。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
-
-<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu的系统源</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
-    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
-
-<p>点击软件和更新</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
-
-<p>点击中国的服务器</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
-
-<p>点击其他站点</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
-
-<p>测试或者选择你觉得可以快一点的镜像</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
-
-<p>点击确定输入用户密码就好</p>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Ubuntu</title>
-    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
-    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
-<ul>
-<li>需要VMware</li>
-</ul>
-<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
-
-<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
-<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
-
-<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
-
-<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
-
-<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
-
-<p>所在在选择系统的时候选择64位的系统</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
-
-<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
-<table>
-<thead>
-<tr>
-<th><strong>挂载点(目录)</strong></th>
-<th><strong>建议大小</strong></th>
-<th><strong>格式</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;</td>
-<td>20G左右</td>
-<td>ext4</td>
-<td>根目录</td>
-</tr>
-<tr>
-<td>&#x2F;home</td>
-<td>越大越好</td>
-<td>ext4</td>
-<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
-</tr>
-<tr>
-<td>&#x2F;boot</td>
-<td>300M左右</td>
-<td>ext4</td>
-<td>一般几百M，主要存放linux内核及一些引导文件</td>
-</tr>
-<tr>
-<td>&#x2F;tmp</td>
-<td>10G左右</td>
-<td>ext4</td>
-<td>系统的一些临时文件</td>
-</tr>
-<tr>
-<td>&#x2F;swap</td>
-<td>8G左右</td>
-<td>swap交换空间</td>
-<td>相当于虚拟内存</td>
-</tr>
-</tbody></table>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
-
-<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
-
-<p>然后下一步，就好了</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
-
-<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
-
-<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
-
-<p>然后点开启虚拟机就等待了</p>
-<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
-
-<p>点安装Ubuntu</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
-
-<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
-
-<p>点继续</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
-
-<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
-
-<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
-
-<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
-<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
-<p>关闭虚拟机后，修改镜像</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
-
-<p>到此就完成安装了</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ArrayList类</title>
     <url>/2020/03/29/java/ArrayList%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="什么是ArrayList类"><a href="#什么是ArrayList类" class="headerlink" title="什么是ArrayList类"></a>什么是ArrayList类</h2><p><code>java.utiL.ArrayList</code>是大小可变的数组的实现，存储在内的数据称为元素。</p>
@@ -7135,6 +6912,229 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
+    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
+<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
+
+<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
+<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
+
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
+
+<p>右键点击该文件，选择“提取到此处”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
+
+<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
+
+<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
+
+<p>一路回车进行安装，出现以下的画面，安装完成。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
+
+<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu的系统源</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
+    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
+
+<p>点击软件和更新</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
+
+<p>点击中国的服务器</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
+
+<p>点击其他站点</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
+
+<p>测试或者选择你觉得可以快一点的镜像</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
+
+<p>点击确定输入用户密码就好</p>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Ubuntu</title>
+    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
+    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
+<ul>
+<li>需要VMware</li>
+</ul>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
+
+<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
+<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
+
+<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
+
+<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
+
+<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
+
+<p>所在在选择系统的时候选择64位的系统</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
+
+<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点(目录)</strong></th>
+<th><strong>建议大小</strong></th>
+<th><strong>格式</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>20G左右</td>
+<td>ext4</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>越大越好</td>
+<td>ext4</td>
+<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>300M左右</td>
+<td>ext4</td>
+<td>一般几百M，主要存放linux内核及一些引导文件</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>10G左右</td>
+<td>ext4</td>
+<td>系统的一些临时文件</td>
+</tr>
+<tr>
+<td>&#x2F;swap</td>
+<td>8G左右</td>
+<td>swap交换空间</td>
+<td>相当于虚拟内存</td>
+</tr>
+</tbody></table>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
+
+<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
+
+<p>然后下一步，就好了</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
+
+<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
+
+<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
+
+<p>然后点开启虚拟机就等待了</p>
+<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
+
+<p>点安装Ubuntu</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
+
+<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
+
+<p>点继续</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
+
+<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
+
+<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
+
+<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
+<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
+<p>关闭虚拟机后，修改镜像</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
+
+<p>到此就完成安装了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven</title>
     <url>/2020/03/08/maven/Maven/</url>
     <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
@@ -7372,6 +7372,237 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>你的答案</title>
+    <url>/2020/01/23/%E6%91%98%E8%A6%81/%E4%BD%A0%E7%9A%84%E7%AD%94%E6%A1%88/</url>
+    <content><![CDATA[<p>你的答案<br>作曲 : 刘涛<br>作词 : 林晨阳 &#x2F;刘涛<br>编曲 Arranger：谭侃侃</p>
+<p>也许世界就这样</p>
+<p>我也还在路上</p>
+<p>没有人能诉说</p>
+<p>也许我只能沉默</p>
+<p>眼泪湿润眼眶</p>
+<p>可又不甘懦弱</p>
+<p>低着头 期待白昼</p>
+<p>接受所有的嘲讽</p>
+<p>向着风 拥抱彩虹</p>
+<p>勇敢的向前走</p>
+<p>黎明的那道光</p>
+<p>会越过黑暗</p>
+<p>打破一切恐惧我能</p>
+<p>找到答案</p>
+<p>哪怕要逆着光</p>
+<p>就驱散黑暗</p>
+<p>丢弃所有的负担</p>
+<p>不再孤单</p>
+<p>不再孤单</p>
+<p>也许世界就这样</p>
+<p>我也还在路上</p>
+<p>没有人能诉说</p>
+<p>也许我只能沉默</p>
+<p>眼泪湿润眼眶</p>
+<p>可又不甘懦弱</p>
+<p>低着头 期待白昼</p>
+<p>接受所有的嘲讽</p>
+<p>向着风 拥抱彩虹</p>
+<p>勇敢的向前走</p>
+<p>黎明的那道光</p>
+<p>会越过黑暗</p>
+<p>打破一切恐惧我能</p>
+<p>找到答案</p>
+<p>哪怕要逆着光</p>
+<p>就驱散黑暗</p>
+<p>丢弃所有的负担</p>
+<p>不再孤单</p>
+<p>不再孤单</p>
+<p>黎明的那道光</p>
+<p>会越过黑暗</p>
+<p>打破一切恐惧我能</p>
+<p>找到答案</p>
+<p>哪怕要逆着光</p>
+<p>就驱散黑暗</p>
+<p>有一万种的力量</p>
+<p>淹没孤单</p>
+<p>不再孤单</p>
+<p><video class="media" src="blob:https://music.163.com/f4df5b7f-7d2d-4430-9171-d7a2e264dbc2"></video></p>
+]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+        <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修身(一)</title>
+    <url>/2020/01/14/%E6%91%98%E8%A6%81/%E4%BF%AE%E8%BA%AB%E4%B8%80/</url>
+    <content><![CDATA[<p>一个人在成长的过程里，总会遇到很多，比如心里的矛盾，现实里的阻碍。<br>美好的想法那是自己惬意的美妙的梦想。<br>一个人如何得到自己想要的，如何实现自己的理想，又如何能够改变自己现在的状态？<br>我相信这是太多的人都面临的一个问题。</p>
+<p>只是才疏学浅，希望读者能够提出最为宝贵的意见。</p>
+<p>所以我只谈一点，那就是修身。</p>
+<p>修身齐家治国平天下，这句话都不是陌生的，但是如何做到？<br>且不说治国平天下，那如何齐起家？<br>所以得先修其身啊。</p>
+<p>怎么修身？</p>
+<p>一个很笼统的话题，那有没有标准？<br>有没有规律，有没有可以快速见到效果的？<br>这就是我们在不断总结出来的一些，现在分享给大家。</p>
+<h2 id="1-修口"><a href="#1-修口" class="headerlink" title="1.修口"></a>1.修口</h2><ol>
+<li>你能让别人舒服，能够让这个此时此刻的环境和谐，能够达到基本目标，能够简单易行，这一点能够得到已经很不错了。</li>
+<li>你能通过自己能为，表达清楚和规划执行，能够明确方向的长远，那种高度，深度，并且可以按照别人接受的顺序讲出来，这还只是你做到了一半，最重要就是执行过程里那种利弊得失，时间空间布局，容易出错的，容易变化的也能补充到位，这就很不容易了。这便是个人的基本趋于综合能力了。</li>
+<li>要成为大才，那你还需要按照自然规律，道德，符合规律还不够，还需要创造，得到进步，推动力，你的创造力，奇特的开发在没有条件的时候创造出来的那才是别人震撼和让你口才有魂的基本。这是我粗浅的理解。那么话说回来最基本的修口具体是什么呢？</li>
+</ol>
+<p>我认为要做到四不。</p>
+<h3 id="第一不"><a href="#第一不" class="headerlink" title="第一不"></a>第一不</h3><p>第一不，就是不插嘴。<br>其实很多人有个很不好的习惯，就是喜欢插嘴。<br>试问下，你如果在说话的时候，别人也插嘴你是怎样的感受？<br>既然你不喜欢你很讨厌，那别人说话的时候你插嘴呢？<br>为何不要插嘴！</p>
+<p>我认真的思考了一下有这样的原因。</p>
+<ol>
+<li>你真的把对方的意思理解了吗？还是用你那个人的感觉判断去理解了？</li>
+<li>别人信息情报具体了吗？说清楚了没有？还是根本就没有开始？</li>
+<li>你都不知道别人目的，不仅仅是事的目的，最重要的是还有人，你要知道他如此说是不是因为可以想到兵法里的话，如何激怒对方？还是在隐藏什么？</li>
+</ol>
+<p>所以你​需要安静冷静。<br>这不仅仅是智慧，还会是你能够获得面子与尊重。<br>因为你这个细节决定了说话的气氛。<br>所以千万别乱插嘴！<br>但是还有一点，不是一概而论的，就是当你该插嘴的时候必须要插嘴了，所以这个平衡需要自己能够把握一个度。</p>
+<h3 id="第二不"><a href="#第二不" class="headerlink" title="第二不"></a>第二不</h3><p>第二不，不争论。<br>你争赢了输了关系，你争输了会输得很惨。<br>大家都知道，争锋对麦芒的！<br>可现实里，又有多少人如此愚蠢？<br>我们大家确实都在争都在论，但是我认为我们得有合适的方法需要正确解决眼前的所有。<br>其实这里就如战场一样。<br>其实你的社会也如是战场，那么你知道了战场，就是生死存亡就是你争我夺的地方。<br>所以难免的就是争论也就会出现输赢出现心里的状态中的悲喜与酸痛。<br>而每个人都一样希望自己是一个智者是一个强者是一个得到支持的人，尤其是在自己说话的时候，所以这里我认为，如何做到与得到你的目标，你应该做到的三点:</p>
+<ol>
+<li>快速恢复对得失中利益的判断，调整自己情绪，去认同对方。</li>
+<li>还需要很认真的去思考别人的意思和言外之意。</li>
+<li>明确做的方向，做的方法。</li>
+</ol>
+<p>其实大家最终要得到的只是一个，那就是大伙达成共识。<br>在这里关于争论与不争论就写到这里，其实还有更加具体的希望可以在以后的过程里分享。</p>
+<h3 id="第三不"><a href="#第三不" class="headerlink" title="第三不"></a>第三不</h3><p>第三不，不否定与不反驳。<br>很多时候，我们总是喜欢反驳习惯了否定。<br>你不认同别人别人一辈子都不会认同你，你反驳了别人那是对别人的不尊重最重要的是还会带来了很大的程度伤害。<br>试问下，你懂别人吗？<br>你又了解清楚别人说的事吗？<br>你又明白别人那个时候发生什么？<br>你又明白别人的难处吗？<br>你又知道那个时候别人最应该做的和不得不做的是什么吗？<br>所以人与人之间的相处，就是因为自己往往按照自己的思考去思考，还有很多的时候都是好为人师指手画脚的，试问下你真的是神吗？<br>不，你不是，既然不是的，也无非就是一个凡人，那有必要如此吗？<br>在这里我们得深深思考！<br>为何那些大成家他们能够让身边的人从内心里舒服，明白吗？<br>所以笔者个人认为，一切好商量，就会成为绝大多数的未来的法宝！​<br>所以当我们理解了，明确了我们自己的日子也定然好过起来，尤其是夫妻之间，尤其是最好的关系之间，人往往犯的错就是很难控制住这一切。<br>所以还有更多的法宝，希望读者可以随时与我们交流。</p>
+<h3 id="第四不"><a href="#第四不" class="headerlink" title="第四不"></a>第四不</h3><p>第四不，不嘴巴变形。<br>其实这是最讨厌也是最没用最没有礼貌的。<br>只要你用心观察身边的人，说话嘴巴变形的人，他的性格与命运，就当做实践的作业吧。<br>为何人喜欢菩萨？<br>喜欢拜佛？<br>不喜欢雷公脸？<br>知道吗？<br>这里牵系了我下面要说的眼。<br>还有更多的知识内容，也需要后面发表…<br>所以修口，很重要，有了四不，就不断的检查自己不断的告诉自己修炼好。</p>
+]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>寥寥此生虚度</title>
+    <url>/2020/01/28/%E6%91%98%E8%A6%81/%E5%AF%A5%E5%AF%A5%E6%AD%A4%E7%94%9F%E8%99%9A%E5%BA%A6/</url>
+    <content><![CDATA[<p>寥寥此生虚度<br>作曲 : 暗杠<br>作词 : 竹君<br>编曲：陈夔、暗杠</p>
+<p>摘一道闪电</p>
+<p>甩进黑黝</p>
+<p>造一个深渊</p>
+<p>劈开山谷</p>
+<p>扯一团浓烟</p>
+<p>盖住白骨</p>
+<p>携一方书简</p>
+<p>刻上荒谬</p>
+<p>要多么突兀</p>
+<p>才能蔷薇细嗅</p>
+<p>像外表风平浪静的烈酒</p>
+<p>要多么坚守</p>
+<p>才深爱歧途</p>
+<p>做一个固执己见的山丘</p>
+<p>要多么古旧</p>
+<p>才能踏进坟墓</p>
+<p>像粒心如死灰的珍珠</p>
+<p>要多少尘土</p>
+<p>才能掩埋领悟</p>
+<p>做一棵贪得无厌的树</p>
+<p>折一段笑颜</p>
+<p>长成枯木</p>
+<p>挖一个溪涧</p>
+<p>蒙上薄雾</p>
+<p>展一面山岩</p>
+<p>描摹繁复</p>
+<p>撒一串榆钱</p>
+<p>撕碎早露</p>
+<p>要多么突兀</p>
+<p>才能蔷薇细嗅</p>
+<p>像外表风平浪静的烈酒</p>
+<p>要多么坚守</p>
+<p>才深爱歧途</p>
+<p>做一个固执己见的山丘</p>
+<p>要多么古旧</p>
+<p>才能踏进坟墓</p>
+<p>像粒心如死灰的珍珠</p>
+<p>要多少尘土</p>
+<p>才能掩埋领悟</p>
+<p>做一棵贪得无厌的树</p>
+<p>要怎样弥补</p>
+<p>才能归真返璞</p>
+<p>像内心无动于衷的铁杵</p>
+<p>要多么仓促</p>
+<p>才怪诞谢幕</p>
+<p>做一个是非颠倒的囚徒</p>
+<p>要多么无辜</p>
+<p>才能磨平嫉妒</p>
+<p>像只天生丽质的鸿鹄</p>
+<p>要多少沉浮</p>
+<p>才能生死不顾</p>
+<p>寥寥此生虚度</p>
+<iframe src="//player.bilibili.com/player.html?aid=48944897&cid=85715082&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+        <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异地恋如何维持长久？</title>
+    <url>/2020/01/14/%E6%91%98%E8%A6%81/%E5%BC%82%E5%9C%B0%E6%81%8B%E5%A6%82%E4%BD%95%E7%BB%B4%E6%8C%81%E9%95%BF%E4%B9%85/</url>
+    <content><![CDATA[<p>异地恋，真的不是一张机票就能解决的事，说的很真实，不是我们不在坚持，而是我们遇到了这些…</p>
+<h2 id="表达障碍"><a href="#表达障碍" class="headerlink" title="表达障碍"></a>表达障碍</h2><p>短信听不到语气，电话看不到表情。<br>其实我没生气，你当真了；我在笑呢，你看不到吧；我哭了呢？抱着手机哭倦了睡过又醒了，你在忙吗？</p>
+<h2 id="共同语言"><a href="#共同语言" class="headerlink" title="共同语言"></a>共同语言</h2><p>如果两个人在一起，两个人的交往圈会溶为共同的圈子，话题永远都在更新。<br>而不在一起的两个人，对彼此身边的环境都会因为陌生而失去兴趣，慢慢的，能说的话只有空洞的“我想你”<br>我在努力找话题呢，不要回信息说”喔，嗯，好”了好吗？</p>
+<h2 id="不安全感"><a href="#不安全感" class="headerlink" title="不安全感"></a>不安全感</h2><p>看了10次手机了，你还是没有回信。你在哪，和谁，在干什么？<br>刚刚拒绝了别人的好意，却禁不住想，你身边的莺莺燕燕，一如我身边的花花草草吗？</p>
+<h2 id="远水不救近火"><a href="#远水不救近火" class="headerlink" title="远水不救近火"></a>远水不救近火</h2><p>我这里下雨了，来伞的是同学的弟弟；我吃饭忘带钱了，来解围的是朋友的朋友。原来你不吭声是因为你生病了，可我再担忧，也不能在你身边端一杯水呢。</p>
+<h2 id="距离产生幻觉"><a href="#距离产生幻觉" class="headerlink" title="距离产生幻觉"></a>距离产生幻觉</h2><p>其实我有些小虚荣，照片有时候修掉了眼袋才给你看；其实你有些小自负，认定的事情就以为自己一定对。<br>为了大老远的爱你，我拒绝接受身边一切说你不好的言论，什么都往好的方向想。你也是吧。<br>其实我们都不是对方想象的那样好。</p>
+<h2 id="距离产生误会"><a href="#距离产生误会" class="headerlink" title="距离产生误会"></a>距离产生误会</h2><p>我兴冲冲地发短信给你讲刚刚的趣事，你隔了半天说“喔”，我不知道你在上课的嘛，所以我生闷气了。<br>你给我发了八条短信两个电话我也没回，愤怒得嗷嗷直叫，我在做头发呢，包包寄存了嘛，哪知道手机响着响着没电了。<br>其实我们都知道对方不是故意的，但情绪来了，总需要宣泄的。</p>
+<h2 id="善意的谎言"><a href="#善意的谎言" class="headerlink" title="善意的谎言"></a>善意的谎言</h2><p>我碰巧和相熟的男生去看电影了，想了想，对你说和女生去的。<br>你独自去了我们约好要一起去的地方，犹豫再三，对我说你哪也没去。<br>不愿让对方多想，却因为偶尔的疏忽，放对方想的更多。</p>
+<h2 id="寂寞"><a href="#寂寞" class="headerlink" title="寂寞"></a>寂寞</h2><p>一个人不寂寞，想念一个人才寂寞。<br>你说，来，抱抱。于是我把自己裹在被窝里，闭上眼，恩，抱抱。<br>从学校回家的路上，你还抬头看月亮吗？</p>
+<h2 id="信念坍塌"><a href="#信念坍塌" class="headerlink" title="信念坍塌"></a>信念坍塌</h2><p>我看到身边一对一对的，男生帮女生打开水送饭，在宿舍楼下唧唧我我，周末还能一起爬山，没忍住就对在地图对角线上的你发牢骚，其实是想听你的鼓励。<br>刚刚好你接到朋友异地恋分手倾诉的电话，那么容易就把自己带入了戏，无心的抱怨雪上加霜。<br>有时候折腾一下，只为证明自己的重要性。<br>哪知脆弱基础上的高楼只须多压一根头发的重量，也许就崩溃了…</p>
+<blockquote class="blockquote-center">没有人可以带走你的痛，所以也别让任何人带走你的幸福</blockquote>]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>这个年纪</title>
+    <url>/2020/01/23/%E6%91%98%E8%A6%81/%E8%BF%99%E4%B8%AA%E5%B9%B4%E7%BA%AA/</url>
+    <content><![CDATA[<p>这个年纪<br>作曲 : 齐一<br>作词 : 齐一</p>
+<p>当我发现我已到了该成家的年纪</p>
+<p>但我的女人呢，但我的女人呢</p>
+<p>当我习惯把实话都变成了童话</p>
+<p>那我的单纯呢，那我的单纯呢</p>
+<p>这个年纪我已不再将就有些事情无法强求</p>
+<p>该来的总会来该走的也无法挽留</p>
+<p>青春慢慢从身边溜走我开始变的怀旧</p>
+<p>喝光了这杯酒就再也无法回头</p>
+<p>这个年纪的我们爱情跟不上分开的节奏</p>
+<p>这个年纪的我们更珍惜难得的自由</p>
+<p>这个年纪的我们比起从前更容易感动</p>
+<p>这个年纪的我们徘徊在理想与现实之中</p>
+<p>这个年纪我已不再将就有些事情无法强求</p>
+<p>该来的总会来该走的也无法挽留</p>
+<p>青春慢慢从身边溜走我开始变的怀旧</p>
+<p>喝光了这杯酒就再也无法回头</p>
+<p>这个年纪的我们爱情跟不上分开的节奏</p>
+<p>这个年纪的我们更珍惜难得的自由</p>
+<p>这个年纪的我们比起从前更容易感动</p>
+<p>这个年纪的我们徘徊在理想与现实之中</p>
+<p>不知不觉孤独不再可耻了</p>
+<p>不知不觉爸爸的情绪变得脆弱了</p>
+<p>不知不觉一把柴米油盐也成为压力了</p>
+<p>不知不觉我们也开始懂事了</p>
+<p>呐呐呐呐呐 呐呐呐呐呐</p>
+<p>呐呐呐呐呐 呐呐呐呐呐</p>
+<p>呐呐呐呐呐 呐呐呐呐呐</p>
+<p>呐呐呐呐呐 呐呐呐呐呐</p>
+<p><video class="media" src="blob:https://music.163.com/c7e24f71-cfff-4b58-841c-34464754611a"></video></p>
+]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+        <tag>音乐</tag>
       </tags>
   </entry>
   <entry>
