@@ -6680,6 +6680,212 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
+    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
+<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
+
+<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
+<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
+
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
+
+<p>右键点击该文件，选择“提取到此处”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
+
+<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
+
+<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
+
+<p>一路回车进行安装，出现以下的画面，安装完成。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
+
+<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu的系统源</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
+    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
+
+<p>点击软件和更新</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
+
+<p>点击中国的服务器</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
+
+<p>点击其他站点</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
+
+<p>测试或者选择你觉得可以快一点的镜像</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
+
+<p>点击确定输入用户密码就好</p>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Ubuntu</title>
+    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
+    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
+<ul>
+<li>需要VMware</li>
+</ul>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
+
+<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
+<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
+
+<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
+
+<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
+
+<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
+
+<p>所在在选择系统的时候选择64位的系统</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
+
+<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点(目录)</strong></th>
+<th><strong>建议大小</strong></th>
+<th><strong>格式</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>20G左右</td>
+<td>ext4</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>越大越好</td>
+<td>ext4</td>
+<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>300M左右</td>
+<td>ext4</td>
+<td>一般几百M，主要存放linux内核及一些引导文件</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>10G左右</td>
+<td>ext4</td>
+<td>系统的一些临时文件</td>
+</tr>
+<tr>
+<td>&#x2F;swap</td>
+<td>8G左右</td>
+<td>swap交换空间</td>
+<td>相当于虚拟内存</td>
+</tr>
+</tbody></table>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
+
+<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
+
+<p>然后下一步，就好了</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
+
+<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
+
+<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
+
+<p>然后点开启虚拟机就等待了</p>
+<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
+
+<p>点安装Ubuntu</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
+
+<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
+
+<p>点继续</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
+
+<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
+
+<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
+
+<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
+<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
+<p>关闭虚拟机后，修改镜像</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
+
+<p>到此就完成安装了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql主从设置</title>
     <url>/2024/07/01/mysql/mysql%E4%B8%BB%E4%BB%8E%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>什么是主从，详细百度去吧，我说说我自己的理解</p>
