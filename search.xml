@@ -1,6 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Debug追踪</title>
+    <url>/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/</url>
+    <content><![CDATA[<h2 id="Debug追踪"><a href="#Debug追踪" class="headerlink" title="Debug追踪"></a>Debug追踪</h2><p><strong>使用IDEA的断点调试功能，查看程序的运行过程</strong></p>
+<ol>
+<li><p>在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序 	</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug1.png" class="">
+</li>
+<li><p>点击Debug运行模式       <img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug2.png" class="">                                                                                                                                                                      </p>
+</li>
+<li><p>程序停止在断点上不再执行，而IDEA最下方打开了Debug调试窗口  </p>
+ <img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug4.png" class="">
+</li>
+<li><p>Debug调试窗口介绍</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug5.png" class="">
+</li>
+<li><p>快捷键F8，代码向下执行一行,第九行执行完毕，执行到第10行（第10行还未执行）</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug6.png" class="">
+</li>
+<li><p>切换到控制台面板，控制台显示 请录入一个字符串： 并且等待键盘录入</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug7.png" class="">
+</li>
+<li><p>快捷键F8，程序继续向后执行，执行键盘录入操作，在控制台录入数据 ababcea</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug8.png" class="">
+
+<p>回车之后效果：<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug9.png" class=""></p>
+<p>调试界面效果：<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug0.png" class=""></p>
+</li>
+<li><p>此时到达findChar方法，快捷键F7，进入方法findChar</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug11.png" class="">
+</li>
+<li><p>快捷键F8 接续执行，创建了map对象，变量区域显示</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug12.png" class="">
+</li>
+<li><p>快捷键F8 接续执行，进入到循环中，循环变量i为 0,F8再继续执行，就获取到变量c赋值为字符‘a’ 字节值97</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug13.png" class="">
+</li>
+<li><p>快捷键F8 接续执行，进入到判断语句中，因为该字符 不在Map集合键集中，再按F8执行，进入该判断中</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug14.png" class="">
+</li>
+<li><p>快捷键F8 接续执行，循环结束，进入下次循环，此时map中已经添加一对儿元素</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug15.png" class="">
+</li>
+<li><p>快捷键F8 接续执行，进入下次循环，再继续上面的操作，我们就可以看到代码每次是如何执行的了</p>
+<img data-src="/2020/04/20/Intellij/Debug%E8%BF%BD%E8%B8%AA/debug16.png" class="">
+</li>
+<li><p>如果不想继续debug,那么可以使用快捷键F9,程序正常执行到结束，程序结果在控制台显示</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Intellij</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Intellij</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开发工具Intellij-IDEA</title>
+    <url>/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/</url>
+    <content><![CDATA[<h2 id="开发工具概述"><a href="#开发工具概述" class="headerlink" title="开发工具概述"></a>开发工具概述</h2><p>IDEA是一个专门针对Java的集成开发工具（IDE），由Java语言编写。所以，需要有JRE运行环境并配置好环境变量它可以极大地提升我们的开发效率。可以自动编译，检查错误。在公司中，使用的就是IDEA进行开发。</p>
+<p>下载地址：<a href="https://www.jetbrains.com/idea/">https://www.jetbrains.com/idea/</a></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170317121.png" class="" alt="image-20200402170317121">
+
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170351577.png" class="" alt="image-20200402170351577">
+
+<h2 id="IDEA软件安装"><a href="#IDEA软件安装" class="headerlink" title="IDEA软件安装"></a>IDEA软件安装</h2><p>此软件集成了32位和64位，双击<code>ideaIU-2017.3.2.exe</code>进入安装。</p>
+<h3 id="欢迎界面"><a href="#欢迎界面" class="headerlink" title="欢迎界面"></a>欢迎界面</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170525471.png" class="" alt="image-20200402170525471">
+
+<h3 id="安装路径"><a href="#安装路径" class="headerlink" title="安装路径"></a>安装路径</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170544275.png" class="" alt="image-20200402170544275">
+
+<h3 id="配置安装选项"><a href="#配置安装选项" class="headerlink" title="配置安装选项"></a>配置安装选项</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170608817.png" class="" alt="image-20200402170608817">
+
+<h3 id="开始菜单"><a href="#开始菜单" class="headerlink" title="开始菜单"></a>开始菜单</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170635952.png" class="" alt="image-20200402170635952">
+
+<h3 id="安装完毕"><a href="#安装完毕" class="headerlink" title="安装完毕"></a>安装完毕</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170652435.png" class="" alt="image-20200402170652435">
+
+<h2 id="IDEA首次驱动"><a href="#IDEA首次驱动" class="headerlink" title="IDEA首次驱动"></a>IDEA首次驱动</h2><h3 id="选择不导入任何设置，点击OK"><a href="#选择不导入任何设置，点击OK" class="headerlink" title="选择不导入任何设置，点击OK"></a>选择不导入任何设置，点击OK</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170744130.png" class="" alt="image-20200402170744130">
+
+<h3 id="选择Create-New-Project"><a href="#选择Create-New-Project" class="headerlink" title="选择Create New Project"></a>选择Create New Project</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170816522.png" class="" alt="image-20200402170816522">
+
+<h3 id="点击new按钮，配置安装的JDK版本"><a href="#点击new按钮，配置安装的JDK版本" class="headerlink" title="点击new按钮，配置安装的JDK版本"></a>点击new按钮，配置安装的JDK版本</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170854718.png" class="" alt="image-20200402170854718">
+
+<h3 id="选择自己电脑上的JDK目录，点击确定"><a href="#选择自己电脑上的JDK目录，点击确定" class="headerlink" title="选择自己电脑上的JDK目录，点击确定"></a>选择自己电脑上的JDK目录，点击确定</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402170941742.png" class="" alt="image-20200402170941742">
+
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171012124.png" class="" alt="image-20200402171012124">
+
+<h3 id="不使用模板"><a href="#不使用模板" class="headerlink" title="不使用模板"></a>不使用模板</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171036407.png" class="" alt="image-20200402171036407">
+
+<h3 id="为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建"><a href="#为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建" class="headerlink" title="为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建"></a>为工程起名称，这里未测试就用的demo，选择存储的位置，如果选择的没有这个目录，会自动创建</h3><blockquote>
+<p>首次新建项目时，默认的Project Location路径有问题，如<code>c:\\xxx</code>，正确写法为<code>c:\xxx</code>。更改后不会出现此类问题。</p>
+</blockquote>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171237437.png" class="" alt="image-20200402171237437">
+
+<h3 id="打开一个每日一帖对话框，勾掉每次启动显示，点击close"><a href="#打开一个每日一帖对话框，勾掉每次启动显示，点击close" class="headerlink" title="打开一个每日一帖对话框，勾掉每次启动显示，点击close"></a>打开一个每日一帖对话框，勾掉每次启动显示，点击close</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171303668.png" class="" alt="image-20200402171303668">
+
+<h3 id="IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-new-Project"><a href="#IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-new-Project" class="headerlink" title="IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-&gt;new-&gt;Project"></a>IDEA的工作界面，我们的项目已经创建好了，如果再新建项目，点击File-&gt;new-&gt;Project</h3><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171333076.png" class="" alt="image-20200402171333076">
+
+<h2 id="IDEA的项目结构"><a href="#IDEA的项目结构" class="headerlink" title="IDEA的项目结构"></a>IDEA的项目结构</h2><img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/02-IDEA%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" class="" alt="02-IDEA的项目结构">
+
+<h3 id="创建包和类"><a href="#创建包和类" class="headerlink" title="创建包和类"></a>创建包和类</h3><p>展开创建的工程，在源代码目录<code>src</code>上，鼠标右键，选择<code>new-&gt;package</code>，输入包名<code>com.itheima.demo</code>（随便你自己）点击确定。</p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171834576.png" class="" alt="image-20200402171834576">
+
+<p>右键点击<code>com.itheima.demo</code>，选择<code>Show in Explorer</code>，会发现创建包的目录结构。</p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402171910062.png" class="" alt="image-20200402171910062">
+
+<p>在创建好的包上，鼠标右键，选择<code>new-&gt;class </code>创建类，键入类名。</p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172005458.png" class="" alt="image-20200402172005458">
+
+<p>在代码编辑区，键入主方法，并输出<code>HelloWorld</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172028412.png" class="" alt="image-20200402172028412">
+
+<p>运行程序，在代码编辑区鼠标右键，选择<code>Run HelloWorld</code>即可，或在菜单中选择<code>Run-&gt;Run HelloWor1d</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172155375.png" class="" alt="image-20200402172155375">
+
+<h2 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h2><p>IDEA工具的默认字体非常小，代码编辑器和控制台的输出字体都需要进行调整。</p>
+<ul>
+<li>点击菜单栏上的<code>File-&gt;Settings-&gt;Editor-&gt;Font</code>修改字体。</li>
+</ul>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172320302.png" class="" alt="image-20200402172320302">
+
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172334670.png" class="" alt="image-20200402172334670">
+
+<h2 id="IDEA的项目目录"><a href="#IDEA的项目目录" class="headerlink" title="IDEA的项目目录"></a>IDEA的项目目录</h2><ul>
+<li>我们创建的项目，在<code>d:videawork</code>目录的<code>demo</code>下<ul>
+<li><code>.idea</code>目录和<code>demo.iml</code>和我们开发无关，是IDEA工具自己使用的</li>
+<li><code>out</code>目录是存储编译后的<code>.class</code>文件</li>
+<li><code>src</code>目录是存储我们编写的<code>.java</code>源文件</li>
+</ul>
+</li>
+</ul>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402172453930.png" class="" alt="image-20200402172453930">
+
+<h2 id="IDEA常用快捷键"><a href="#IDEA常用快捷键" class="headerlink" title="IDEA常用快捷键"></a>IDEA常用快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt+Enter</code></td>
+<td>导入包，自动修正代码</td>
+</tr>
+<tr>
+<td><code>Ctrl+Y</code></td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td><code>Ctrl+D</code></td>
+<td>复制光标所在行的内容，插入光标位置下面</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+L</code></td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td><code>Ctrl+/</code></td>
+<td>单行注释</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+/</code></td>
+<td>选中代码注释，多行注释，再按取消注释</td>
+</tr>
+<tr>
+<td><code>Alt+Ins</code></td>
+<td>自动生成代码，toString，get，set等方法</td>
+</tr>
+<tr>
+<td><code>Alt+Shift+上下箭头</code></td>
+<td>移动当前代码行</td>
+</tr>
+</tbody></table>
+<h2 id="IDEA修改快捷键"><a href="#IDEA修改快捷键" class="headerlink" title="IDEA修改快捷键"></a>IDEA修改快捷键</h2><p>在IDEA工具中，<code>ctrl+空格</code>的快捷键，可以帮助我们补全代码，但是这个快捷键和Windows中的输入法切换快捷键冲突，需要修改IDEA中的快捷键。</p>
+<p><code>File-&gt;Settings-&gt;keymap-&gt;Main menu-&gt;code-&gt;Completion-&gt;Basic</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173148296.png" class="" alt="image-20200402173148296">
+
+<p>双击<code>Basic-&gt;remove-&gt;Ctrl+空格</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173230646.png" class="" alt="image-20200402173230646">
+
+<p>再双击<code>Basic-&gt;Add Keyboard-&gt;输入 Alt+/-&gt;点击OK</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173336235.png" class="" alt="image-20200402173336235">
+
+<h2 id="IDEA导入和关闭项目"><a href="#IDEA导入和关闭项目" class="headerlink" title="IDEA导入和关闭项目"></a>IDEA导入和关闭项目</h2><p>关闭IDEA中已经存在的项目，<code>File-&gt;Close Project</code></p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173432324.png" class="" alt="image-20200402173432324">
+
+<p><code>File-&gt;Close Project</code>这时IDEA回到了刚启动界面，点击项目上的<code>x</code>，IDEA中就没有这个项目了</p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173507196.png" class="" alt="image-20200402173507196">
+
+<p>在IDEA启界面上，点击<code>OPEN</code>，选择项目目录即可</p>
+<img data-src="/2020/03/21/Intellij/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7Intellij-IDEA/image-20200402173526958.png" class="" alt="image-20200402173526958">
+
+<blockquote>
+<p>若想通过IDEA同时开多个项目，点击OPEN打开项目时，点击New Window按钮</p>
+</blockquote>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Intellij</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Intellij</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>代理Google站点</title>
     <url>/2024/06/24/cloudflare/%E4%BB%A3%E7%90%86Google%E7%AB%99%E7%82%B9/</url>
     <content><![CDATA[<h2 id="创建-Worker"><a href="#创建-Worker" class="headerlink" title="创建 Worker"></a>创建 Worker</h2><p>首先，登录 Cloudflare，切换至Workers &amp; Pages菜单，点击Create Application按钮：</p>
@@ -478,6 +687,229 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
+    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
+<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
+
+<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
+<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
+
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
+
+<p>右键点击该文件，选择“提取到此处”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
+
+<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
+
+<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
+
+<p>一路回车进行安装，出现以下的画面，安装完成。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
+
+<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu的系统源</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
+    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
+
+<p>点击软件和更新</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
+
+<p>点击中国的服务器</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
+
+<p>点击其他站点</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
+
+<p>测试或者选择你觉得可以快一点的镜像</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
+
+<p>点击确定输入用户密码就好</p>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Ubuntu</title>
+    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
+    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
+<ul>
+<li>需要VMware</li>
+</ul>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
+
+<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
+<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
+
+<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
+
+<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
+
+<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
+
+<p>所在在选择系统的时候选择64位的系统</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
+
+<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点(目录)</strong></th>
+<th><strong>建议大小</strong></th>
+<th><strong>格式</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>20G左右</td>
+<td>ext4</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>越大越好</td>
+<td>ext4</td>
+<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>300M左右</td>
+<td>ext4</td>
+<td>一般几百M，主要存放linux内核及一些引导文件</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>10G左右</td>
+<td>ext4</td>
+<td>系统的一些临时文件</td>
+</tr>
+<tr>
+<td>&#x2F;swap</td>
+<td>8G左右</td>
+<td>swap交换空间</td>
+<td>相当于虚拟内存</td>
+</tr>
+</tbody></table>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
+
+<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
+
+<p>然后下一步，就好了</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
+
+<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
+
+<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
+
+<p>然后点开启虚拟机就等待了</p>
+<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
+
+<p>点安装Ubuntu</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
+
+<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
+
+<p>点继续</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
+
+<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
+
+<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
+
+<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
+<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
+<p>关闭虚拟机后，修改镜像</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
+
+<p>到此就完成安装了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -1173,6 +1605,46 @@
 <blockquote>
 <p>新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JShell脚本工具</title>
+    <url>/2020/03/09/java/JShell%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="JShell脚本工具"><a href="#JShell脚本工具" class="headerlink" title="JShell脚本工具"></a>JShell脚本工具</h1><p>JShell脚本工具是JDK9的新特性</p>
+<p>从java9开始，java开始引入了类似于python的交互式 REPL（Read-Eval-Print Loop，读取-求值-输出 循环）工具。官方的表述如下：</p>
+<blockquote>
+<p>The Java Shell tool (JShell) is an interactive tool for learning the Java programming language and prototyping Java code. JShell is a Read-Evaluate-Print Loop (REPL), which evaluates declarations, statements, and expressions as they are entered and immediately shows the results. The tool is run from the command line.</p>
+</blockquote>
+<p>简而言之，使用 JShell，你可以输入代码片段并马上看到运行结果，然后就可以根据需要作出调整。官方的表述如下：</p>
+<blockquote>
+<p>JShell helps you try out code and easily explore options as you develop your program. You can test individual statements, try out different variations of a method, and experiment with unfamiliar APIs within the JShell session. JShell doesn’t replace an IDE. As you develop your program, paste code into JShell to try it out, and then paste working code from JShell into your program editor or IDE.</p>
+</blockquote>
+<p>什么时候会用到<code>JShell</code>工具呢，当我们编写的代码非常少的时候，而又不愿意编写类，main方法，也不愿意去编译和运行，这个时候可以使用Shell工具。</p>
+<p>启动Shell工具，在DOS命令行直接输入JShell命令。</p>
+<img data-src="/2020/03/09/java/JShell%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/image-20200401173052296.png" class="" alt="image-20200401173052296">
+
+<p>接下来可以编写Java代码，无需写类和方法，直接写方法中的代码即可，同时无需编译和运行，直接回车即可</p>
+<img data-src="/2020/03/09/java/JShell%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/image-20200401173119744.png" class="" alt="image-20200401173119744">
+
+<p>当然我门也可以在JShell里定义函数方法</p>
+<img data-src="/2020/03/09/java/JShell%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/2726392-c425eceb3af74ae9.webp" class="" alt="img">
+
+<p>这样我们就创建了一个方法。接下来使用我们的方法。</p>
+<img data-src="/2020/03/09/java/JShell%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/2726392-d0942ddba42c8889.webp" class="" alt="img">
+
+<p>那么从上面的这些例子我们可以看出，Jshell是可以执行我们的任何代码片段。但有个问题，就是加入我声明多个函数之后，我忘了那个是哪个，怎么办呢？所以我们需要学习Jshell提供给我们的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jshell&gt; /help</span><br><span class="line">|  键入 Java 语言表达式, 语句或声明。</span><br><span class="line">|  或者键入以下命令之一:</span><br><span class="line">|  /list [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出您键入的源</span><br><span class="line">|  /edit &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       编辑源条目</span><br><span class="line">|  /drop &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       删除源条目</span><br><span class="line">|  /save [-all|-<span class="built_in">history</span>|-start] &lt;文件&gt;</span><br><span class="line">|       将片段源保存到文件</span><br><span class="line">|  /open &lt;file&gt;</span><br><span class="line">|       打开文件作为源输入</span><br><span class="line">|  /vars [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明变量及其值</span><br><span class="line">|  /methods [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明方法及其签名</span><br><span class="line">|  /types [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出类型声明</span><br><span class="line">|  /imports</span><br><span class="line">|       列出导入的项</span><br><span class="line">|  /exit [&lt;integer-expression-snippet&gt;]</span><br><span class="line">|       退出 jshell 工具</span><br><span class="line">|  /env [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;] ...</span><br><span class="line">|       查看或更改评估上下文</span><br><span class="line">|  /reset [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;]...</span><br><span class="line">|       重置 jshell 工具</span><br><span class="line">|  /reload [-restore] [-quiet] [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;]...</span><br><span class="line">|       重置和重放相关历史记录 -- 当前历史记录或上一个历史记录 (-restore)</span><br><span class="line">|  /history</span><br><span class="line">|       您键入的内容的历史记录</span><br><span class="line">|  /help [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /set editor|start|feedback|mode|prompt|truncation|format ...</span><br><span class="line">|       设置配置信息</span><br><span class="line">|  /? [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /!</span><br><span class="line">|       重新运行上一个片段 -- 请参阅 /help rerun</span><br><span class="line">|  /&lt;<span class="built_in">id</span>&gt;</span><br><span class="line">|       按 ID 或 ID 范围重新运行片段 -- 参见 /help rerun</span><br><span class="line">|  /-&lt;n&gt;</span><br><span class="line">|       重新运行以前的第 n 个片段 -- 请参阅 /help rerun</span><br><span class="line">|</span><br><span class="line">|  有关详细信息, 请键入 <span class="string">&#x27;/help&#x27;</span>, 后跟</span><br><span class="line">|  命令或主题的名称。</span><br><span class="line">|  例如 <span class="string">&#x27;/help /list&#x27;</span> 或 <span class="string">&#x27;/help intro&#x27;</span>。主题:</span><br><span class="line">|</span><br><span class="line">|  intro</span><br><span class="line">|       jshell 工具的简介</span><br><span class="line">|  <span class="built_in">id</span></span><br><span class="line">|       片段 ID 以及如何使用它们的说明</span><br><span class="line">|  shortcuts</span><br><span class="line">|       片段和命令输入提示, 信息访问以及</span><br><span class="line">|       自动代码生成的按键说明</span><br><span class="line">|  context</span><br><span class="line">|       /env /reload 和 /reset 的评估上下文选项的说明</span><br><span class="line">|  rerun</span><br><span class="line">|       重新评估以前输入片段的方法的说明</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 ]]></content>
       <categories>
         <category>Java</category>
@@ -6663,226 +7135,195 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Maven</title>
+    <url>/2020/03/08/maven/Maven/</url>
+    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
+<p>与构建过程相关的：编译、测试、打包…</p>
+<ol>
+<li>mvn clean：清理</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装进入仓库</li>
+<li>mvn site：生成站点</li>
+</ol>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
+<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
+</li>
+<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
+</li>
+<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
+</li>
+<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
+</li>
+<li><p>如果此时无法联网，则构建失败。</p>
+</li>
+<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
+<ol>
+<li>找到Maven文件下的\conf\settings.xml</li>
+<li>找到标签<code>localRepository</code></li>
+<li>将标签<code>localRepository</code>从注释中取出</li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
+</ol>
+</li>
+<li><p>设置阿里Maven仓库</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
+<li><p>含义：Project Object Model 项目对象模型</p>
+<p>​			DOM Document Object Model 文档对象模型</p>
+</li>
+<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
+</li>
+</ol>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
+<ol>
+<li>groupid：公司或组织域名倒序+项目名称</li>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ol>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
+<li><p>仓库的分类</p>
+<ol>
+<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
+<li>远程仓库<ol>
+<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
+<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
+<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>仓库中保存的内容：Maven工程</p>
+<ol>
+<li>Maven自身所需要的插件</li>
+<li>第三方框架或工具的jar包</li>
+<li>我们自己开发的Maven工程</li>
+</ol>
+</li>
+</ol>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
+<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
+</li>
+<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
+</li>
+<li><p>依赖的范围</p>
+<ol>
+<li>compile<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+</ol>
+</li>
+<li>test<ol>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>典型例子：junit.jar</li>
+</ol>
+</li>
+<li>provided<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>依赖的传递性</p>
+<ol>
+<li>在父工程依赖一次既可重复使用</li>
+<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
+</ol>
+</li>
+<li><p>依赖的排除</p>
+<ol>
+<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
+</li>
+<li><p>排除设置</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖原则</p>
+<ol>
+<li>作用：解决模块工程之间的jar包冲突问题</li>
+<li>Maven默认解决方案：路径最短者优先</li>
+<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
+</ol>
+</li>
+<li><p>统一管理依赖的版本</p>
+<ol>
+<li>使用properties标签使用自定义标签统一声明版本号</li>
+<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
+<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
+</li>
+<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
+</li>
+<li><p>Maven有三条相互独立的生命周期：</p>
+<ol>
+<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
+<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
+<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
+</ol>
+</li>
+<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
+</li>
+<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
+</li>
+<li><p>操作步骤</p>
+<ol>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
+<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+</li>
+<li><p>在子工程中声明对父工程的引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父工程中统一管理test依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在子工程中删除test依赖的版本号部分</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
+<li><p>作用：一键安装各个模块工程</p>
+</li>
+<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
+</li>
+</ol>
+<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+<p><code>mvn deploy</code></p>
+<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>Maven</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
-    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
-<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
-
-<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
-<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
-
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
-
-<p>右键点击该文件，选择“提取到此处”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
-
-<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
-
-<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
-
-<p>一路回车进行安装，出现以下的画面，安装完成。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
-
-<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu的系统源</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
-    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
-
-<p>点击软件和更新</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
-
-<p>点击中国的服务器</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
-
-<p>点击其他站点</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
-
-<p>测试或者选择你觉得可以快一点的镜像</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
-
-<p>点击确定输入用户密码就好</p>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Ubuntu</title>
-    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
-    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
-<ul>
-<li>需要VMware</li>
-</ul>
-<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
-
-<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
-<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
-
-<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
-
-<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
-
-<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
-
-<p>所在在选择系统的时候选择64位的系统</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
-
-<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
-<table>
-<thead>
-<tr>
-<th><strong>挂载点(目录)</strong></th>
-<th><strong>建议大小</strong></th>
-<th><strong>格式</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;</td>
-<td>20G左右</td>
-<td>ext4</td>
-<td>根目录</td>
-</tr>
-<tr>
-<td>&#x2F;home</td>
-<td>越大越好</td>
-<td>ext4</td>
-<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
-</tr>
-<tr>
-<td>&#x2F;boot</td>
-<td>300M左右</td>
-<td>ext4</td>
-<td>一般几百M，主要存放linux内核及一些引导文件</td>
-</tr>
-<tr>
-<td>&#x2F;tmp</td>
-<td>10G左右</td>
-<td>ext4</td>
-<td>系统的一些临时文件</td>
-</tr>
-<tr>
-<td>&#x2F;swap</td>
-<td>8G左右</td>
-<td>swap交换空间</td>
-<td>相当于虚拟内存</td>
-</tr>
-</tbody></table>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
-
-<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
-
-<p>然后下一步，就好了</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
-
-<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
-
-<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
-
-<p>然后点开启虚拟机就等待了</p>
-<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
-
-<p>点安装Ubuntu</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
-
-<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
-
-<p>点继续</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
-
-<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
-
-<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
-
-<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
-<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
-<p>关闭虚拟机后，修改镜像</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
-
-<p>到此就完成安装了</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
