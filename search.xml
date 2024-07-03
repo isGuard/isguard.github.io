@@ -743,23 +743,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ArrayList类</title>
     <url>/2020/03/29/java/ArrayList%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="什么是ArrayList类"><a href="#什么是ArrayList类" class="headerlink" title="什么是ArrayList类"></a>什么是ArrayList类</h2><p><code>java.utiL.ArrayList</code>是大小可变的数组的实现，存储在内的数据称为元素。</p>
@@ -6982,195 +6965,20 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>Maven</title>
-    <url>/2020/03/08/maven/Maven/</url>
-    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
-<p>与构建过程相关的：编译、测试、打包…</p>
-<ol>
-<li>mvn clean：清理</li>
-<li>mvn compile：编译主程序</li>
-<li>mvn test-compile：编译测试程序</li>
-<li>mvn test：执行测试</li>
-<li>mvn package：打包</li>
-<li>mvn install：安装进入仓库</li>
-<li>mvn site：生成站点</li>
-</ol>
-<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
-<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
-</li>
-<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
-</li>
-<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
-</li>
-<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
-</li>
-<li><p>如果此时无法联网，则构建失败。</p>
-</li>
-<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
-<ol>
-<li>找到Maven文件下的\conf\settings.xml</li>
-<li>找到标签<code>localRepository</code></li>
-<li>将标签<code>localRepository</code>从注释中取出</li>
-<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
-</ol>
-</li>
-<li><p>设置阿里Maven仓库</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
-<li><p>含义：Project Object Model 项目对象模型</p>
-<p>​			DOM Document Object Model 文档对象模型</p>
-</li>
-<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
-</li>
-</ol>
-<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
-<ol>
-<li>groupid：公司或组织域名倒序+项目名称</li>
-<li>artifactid：模块名</li>
-<li>version：版本</li>
-</ol>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
-<li><p>仓库的分类</p>
-<ol>
-<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
-<li>远程仓库<ol>
-<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
-<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
-<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>仓库中保存的内容：Maven工程</p>
-<ol>
-<li>Maven自身所需要的插件</li>
-<li>第三方框架或工具的jar包</li>
-<li>我们自己开发的Maven工程</li>
-</ol>
-</li>
-</ol>
-<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
-<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
-</li>
-<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
-</li>
-<li><p>依赖的范围</p>
-<ol>
-<li>compile<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：参与</li>
-</ol>
-</li>
-<li>test<ol>
-<li>对主程序是否有效：无效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>典型例子：junit.jar</li>
-</ol>
-</li>
-<li>provided<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>是否参与部署：不参与</li>
-<li>典型例子：servlet-api.jar</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>依赖的传递性</p>
-<ol>
-<li>在父工程依赖一次既可重复使用</li>
-<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
-</ol>
-</li>
-<li><p>依赖的排除</p>
-<ol>
-<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
-</li>
-<li><p>排除设置</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>依赖原则</p>
-<ol>
-<li>作用：解决模块工程之间的jar包冲突问题</li>
-<li>Maven默认解决方案：路径最短者优先</li>
-<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
-</ol>
-</li>
-<li><p>统一管理依赖的版本</p>
-<ol>
-<li>使用properties标签使用自定义标签统一声明版本号</li>
-<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
-<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
-<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
-</li>
-<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
-</li>
-<li><p>Maven有三条相互独立的生命周期：</p>
-<ol>
-<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
-<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
-<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
-</ol>
-</li>
-<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
-</li>
-</ol>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
-<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
-</li>
-<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
-</li>
-<li><p>操作步骤</p>
-<ol>
-<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
-<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
-</li>
-<li><p>在子工程中声明对父工程的引用</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在父工程中统一管理test依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在子工程中删除test依赖的版本号部分</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
-<li><p>作用：一键安装各个模块工程</p>
-</li>
-<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
-</li>
-</ol>
-<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    <title>Ajax(原生,JQ)</title>
+    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><code>mvn deploy</code></p>
-<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Maven</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>Maven</tag>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
       </tags>
   </entry>
   <entry>
@@ -7424,6 +7232,198 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven</title>
+    <url>/2020/03/08/maven/Maven/</url>
+    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
+<p>与构建过程相关的：编译、测试、打包…</p>
+<ol>
+<li>mvn clean：清理</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装进入仓库</li>
+<li>mvn site：生成站点</li>
+</ol>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
+<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
+</li>
+<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
+</li>
+<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
+</li>
+<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
+</li>
+<li><p>如果此时无法联网，则构建失败。</p>
+</li>
+<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
+<ol>
+<li>找到Maven文件下的\conf\settings.xml</li>
+<li>找到标签<code>localRepository</code></li>
+<li>将标签<code>localRepository</code>从注释中取出</li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
+</ol>
+</li>
+<li><p>设置阿里Maven仓库</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
+<li><p>含义：Project Object Model 项目对象模型</p>
+<p>​			DOM Document Object Model 文档对象模型</p>
+</li>
+<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
+</li>
+</ol>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
+<ol>
+<li>groupid：公司或组织域名倒序+项目名称</li>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ol>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
+<li><p>仓库的分类</p>
+<ol>
+<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
+<li>远程仓库<ol>
+<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
+<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
+<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>仓库中保存的内容：Maven工程</p>
+<ol>
+<li>Maven自身所需要的插件</li>
+<li>第三方框架或工具的jar包</li>
+<li>我们自己开发的Maven工程</li>
+</ol>
+</li>
+</ol>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
+<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
+</li>
+<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
+</li>
+<li><p>依赖的范围</p>
+<ol>
+<li>compile<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+</ol>
+</li>
+<li>test<ol>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>典型例子：junit.jar</li>
+</ol>
+</li>
+<li>provided<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>依赖的传递性</p>
+<ol>
+<li>在父工程依赖一次既可重复使用</li>
+<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
+</ol>
+</li>
+<li><p>依赖的排除</p>
+<ol>
+<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
+</li>
+<li><p>排除设置</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖原则</p>
+<ol>
+<li>作用：解决模块工程之间的jar包冲突问题</li>
+<li>Maven默认解决方案：路径最短者优先</li>
+<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
+</ol>
+</li>
+<li><p>统一管理依赖的版本</p>
+<ol>
+<li>使用properties标签使用自定义标签统一声明版本号</li>
+<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
+<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
+</li>
+<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
+</li>
+<li><p>Maven有三条相互独立的生命周期：</p>
+<ol>
+<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
+<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
+<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
+</ol>
+</li>
+<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
+</li>
+<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
+</li>
+<li><p>操作步骤</p>
+<ol>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
+<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+</li>
+<li><p>在子工程中声明对父工程的引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父工程中统一管理test依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在子工程中删除test依赖的版本号部分</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
+<li><p>作用：一键安装各个模块工程</p>
+</li>
+<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
+</li>
+</ol>
+<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mvn deploy</code></p>
+<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -7993,10 +7993,35 @@ new Scanner(System.in).nextInt();
 ]]></content>
       <categories>
         <category>问题</category>
+        <category>Java</category>
       </categories>
       <tags>
         <tag>Java</tag>
         <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx无法开启ssl</title>
+    <url>/2019/01/19/%E9%97%AE%E9%A2%98/Nginx%E6%97%A0%E6%B3%95%E5%90%AF%E7%94%A8https/</url>
+    <content><![CDATA[<h2 id="Nginx无法开启ssl"><a href="#Nginx无法开启ssl" class="headerlink" title="Nginx无法开启ssl"></a>Nginx无法开启ssl</h2><p>异常描述</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx: [emerg] the “ssl“ parameter requires ngx_http_ssl_module <span class="keyword">in</span> /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="源码编译时添加SSL"><a href="#源码编译时添加SSL" class="headerlink" title="源码编译时添加SSL"></a>源码编译时添加SSL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入Nginx源码目录</span></span><br><span class="line"><span class="built_in">cd</span> /root/FastDFS/nginx-1.12.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 附加--with-http_ssl_module</span></span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module --http-client-body-temp-path=/var/temp/nginx/client --http-proxy-temp-path=/var/temp/nginx/proxy --http-fastcgi-temp-path=/var/temp/nginx/fastcgi --http-uwsgi-temp-path=/var/temp/nginx/uwsgi --http-scgi-temp-path=/var/temp/nginx/scgi --add-module=/root/FastDFS/fastdfs-nginx-module/src --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当添加 with-http_ssl_module 无法编译通过需要openssl的地址时 注意需要的是源码地址 而非应用地址</span></span><br><span class="line">./configure --with-openssl=/opt/openssl-3.0.7 --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行make命令</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份</span></span><br><span class="line"><span class="built_in">cp</span> /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保证nginx是关闭状态, 如果无法关闭，可以使用杀死进程方式关闭</span></span><br><span class="line">ps -ef | grep nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制退出：</span></span><br><span class="line">pkill -9 nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新编译的Nginx覆盖原来的Nginx</span></span><br><span class="line"><span class="built_in">cp</span> ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动Nginx</span></span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次查看已安装模块，确认是否成功</span></span><br><span class="line">nginx -V</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关命令</span></span><br><span class="line">./nginx -s reload</span><br><span class="line">./nginx -s stop</span><br><span class="line">./nginx </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="编译无法完成"><a href="#编译无法完成" class="headerlink" title="编译无法完成"></a>编译无法完成</h3><p>因为openssl的版本不对</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Nginx 1.11.5及以上版本与OpenSSL 1.0.2及以上版本兼容。</span><br><span class="line">Nginx 1.15.2及以上版本与OpenSSL 1.1.1及以上版本兼容。</span><br></pre></td></tr></table></figure>
+
+<p>需要下载新的openssl覆盖安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载openssl</span></span><br><span class="line">wget https://www.openssl.org/source/openssl-3.0.7.tar.gz</span><br><span class="line">tar -zxvf openssl-3.0.7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-3.0.7</span><br><span class="line"><span class="comment"># 编译安装</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="comment"># 备份原配置</span></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line"><span class="built_in">mv</span> /usr/include/openssl/ /usr/include/openssl.bak</span><br><span class="line"><span class="comment"># 新版配置</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line"><span class="comment"># 也有可能没有64的版本需要去/usr/local/openssl下面看具体的libssl</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/lib64/libssl.so.3 /usr/local/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="comment"># 写入openssl库文件的搜索路径 添加动态库不添加无法启动openssl</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib64&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line"><span class="comment"># 使修改后的/etc/ld.so.conf生效</span></span><br><span class="line">ldconfig -v | grep ssl</span><br><span class="line"><span class="comment"># 查看openssl版本</span></span><br><span class="line">openssl version</span><br><span class="line"><span class="comment"># 查看openssl的位置</span></span><br><span class="line"><span class="built_in">which</span> openssl</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>问题</category>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>问题</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
