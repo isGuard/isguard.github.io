@@ -210,6 +210,88 @@
       </tags>
   </entry>
   <entry>
+    <title>Vercel部署NextChat</title>
+    <url>/2024/01/19/NextChat/Vercel%E9%83%A8%E7%BD%B2NextChat/</url>
+    <content><![CDATA[<h2 id="Vercel部署"><a href="#Vercel部署" class="headerlink" title="Vercel部署"></a>Vercel部署</h2><p>注意：此方法在安装部署环节可能需要<strong>借助魔法</strong>，同时需准备<strong>一个域名</strong>。</p>
+<p><strong>什么是Vercel?</strong></p>
+<p>相信经常使用Github的人一定对Vercel不陌生，这里不做专业解释，你只需要知道Vercel充当了一台云服务器的作用就可以了，它可以让你在Github上的代码运行起来，从而变成一个可以访问的网站。</p>
+<p><strong>什么是域名？</strong></p>
+<p>如果域名还不太了解，建议去查一下，这里也不做专业解释。域名在这里的作用是让你部署完成后，<strong>无需魔法即可访问你的GPT程序</strong>。建议直接前往<a href="https://link.zhihu.com/?target=https://www.aliyun.com/minisite/goods?spm=5176.11533457.J_1089570.8.60d95333omf5Wb">阿里云&gt;&gt;</a>注册账号并购买域名，并按照步骤完成实名认证，等待下一步使用。</p>
+<h3 id="部署第一步：获取程序源码"><a href="#部署第一步：获取程序源码" class="headerlink" title="部署第一步：获取程序源码"></a><strong>部署第一步：获取程序源码</strong></h3><p>打开<a href="https://link.zhihu.com/?target=https://github.com/">Github网站&gt;&gt;</a>并登录（如果没有账号，自行完成注册即可），搜索ChatGPT-Next-Web或直接**<a href="https://link.zhihu.com/?target=https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web">打开此链接&gt;&gt;</a>**进入作者代码仓库。找到Fork按钮并根据提示完成Fork到自己仓库的全部操作。</p>
+
+
+
+
+<h3 id="部署第二步：打开Vercel并新建项目。"><a href="#部署第二步：打开Vercel并新建项目。" class="headerlink" title="部署第二步：打开Vercel并新建项目。"></a><strong>部署第二步：打开Vercel并新建项目。</strong></h3><p><a href="https://link.zhihu.com/?target=https://vercel.com/">Vecel官网&gt;&gt;</a>可以直接用Github账号登录，这样也能直接关联自己的仓库，方便拉取代码。登录后会进入我的面板，点击黑色按钮Add New并选择下拉框中的Project。</p>
+
+
+<p>搜索ChatGPT-Next-Web仓库并导入。</p>
+
+
+<p>添加环境变量。环境变量参数和示例可参考**<a href="https://link.zhihu.com/?target=https://github.com/sunsky89757/ChatGPT-3.5/blob/main/README_CN.md">作者文档&gt;&gt;，</a>**也可参考下方列表（注意：后续如果作者更新变量，下方列表可能会失效）：</p>
+<ul>
+<li>OPENAI_API_KEY：该变量填写值一般是sk-开头的；</li>
+<li>CODE：访问密码，可以使用逗号隔开多个密码；</li>
+<li>BASE_URL： <a href="https://link.zhihu.com/?target=https://api.gptacg.com">https://api.gptacg.com</a>；</li>
+<li>HIDE_USER_API_KEY：如果你不想让用户自行填入 API Key，此变量设置为 1 即可；</li>
+<li>DISABLE_GPT4：如果你不想让用户使用 GPT-4，此变量设置为 1 即可；</li>
+<li>ENABLE_BALANCE_QUERY：如果你想启用余额显示，此变量设置为 1 即可；</li>
+<li>CUSTOM_MODELS：用来控制模型列表，使用 + 增加一个模型，使用 – 来隐藏一个模型，使用 模型名&#x3D;展示名 来自定义模型的展示名，用英文逗号隔开。示例：<code>+qwen-7b-chat,+glm-6b,-gpt-3.5-turbo,gpt-4-1106-preview=gpt-4-turbo</code> 表示增加 <code>qwen-7b-chat</code> 和 <code>glm-6b</code> 到模型列表，而从列表中删除 <code>gpt-3.5-turbo</code>，并将 <code>gpt-4-1106-preview</code> 模型名字展示为 <code>gpt-4-turbo</code>。 如果你想先禁用所有模型，再启用指定模型，可以使用 <code>-all,+gpt-3.5-turbo</code>，则表示仅启用 <code>gpt-3.5-turbo；此处建议写法为：**-all,+gpt-3.5-turbo,+gpt-4-1106-preview,+gpt-4-all,+dalle-3,gpt-4,gpt-4-32k**</code></li>
+</ul>
+<p>注意，环境变量不是必须项，可跳过执行下一步。配置环境变量是为了更加方便，例如你填写了API-Key，日常使用中则无需在设置中维护API-Key了。</p>
+
+
+<h3 id="部署第三步：绑定域名。"><a href="#部署第三步：绑定域名。" class="headerlink" title="部署第三步：绑定域名。"></a><strong>部署第三步：绑定域名。</strong></h3><p>前往阿里云将域名（顶级域名或二级域名均可，如<a href="http://www.example.com）A解析至IP：**76.223.126.88**。然后在Vercel中添加该域名（Vercel或自动为域名添加SSL证书，打开地址是https开头）。">http://www.example.com）A解析至IP：**76.223.126.88**。然后在Vercel中添加该域名（Vercel或自动为域名添加SSL证书，打开地址是https开头）。</a></p>
+
+
+
+
+<p>打开域名检查，如果可正常访问即证明部署成功。</p>
+
+
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>1、我部署好之后，我的域名为什么需要魔法才可以访问？</strong></p>
+<p>这是因为解析地址被墙了，更换为上文中对应的解析IP即可解决。</p>
+<p><strong>2、我的程序为什么图标显示不出来？</strong></p>
+<p>这是因为emoji的cdn解析地址被污染导致，遇到这种情况只能等待作者更新cdn地址或等待一段时间后再观察图标显示情况，大部分情况会被自动修复。</p>
+<p><strong>3、作者后续更新了版本，我该如何更新部署好的程序？</strong></p>
+<p>如果是fork作者的项目，则在Sync fork出更新即可。</p>
+
+
+<p>如果是clone作者的项目，则需要借助githun desktop + git命令解决，具体请参考我之前写的文章</p>
+<p>[Github中clone仓库项目的版本更新方法（非fork） - 产品试金石 - 高效思维<a href="http://www.giftedpm.com/version-update-method-for-clone-repository-project-in-github-non-fork/3253">www.giftedpm.com/version-update-method-for-clone-repository-project-in-github-non-fork/3253</a></p>
+<p><strong>4、我想部署多个程序，该怎么操作？</strong></p>
+<p>建议clone项目到自己仓库并部署，至于如何保持更新，请参考常见问题第3条（上一条）。</p>
+<p><strong>5、如何修改模型自定义名称？</strong></p>
+<p>参考我之前文章</p>
+<p>[ChatGPT-Next-Web修改模型显示为自定义名称 - 产品试金石 - 高效思维<a href="http://www.giftedpm.com/chatgpt-next-web-modify-model-display-as-custom-name/3675">www.giftedpm.com/chatgpt-next-web-modify-model-display-as-custom-name/3675</a></p>
+<p><strong>6、如何修改界面文字信息？</strong></p>
+<p>常见修改内容在以下几个文件：</p>
+<ul>
+<li>修改下拉模型列表：app&#x2F;constant.ts</li>
+<li>修改主界面左侧信息：app&#x2F;components&#x2F;sidebar.tsx</li>
+<li>修改欢迎语等对话内容：app&#x2F;locales&#x2F;cn.ts</li>
+<li>修改TDK信息：app&#x2F;layout.tsx</li>
+<li>修改默认设置：app&#x2F;store&#x2F;config.ts</li>
+</ul>
+<p><strong>7、NextChat有哪几个延伸版本？</strong></p>
+<ul>
+<li>有个作者结合langchain开发了插件版，项目地址：<a href="https://link.zhihu.com/?target=https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain">ChatGPT-Next-Web-LangChain&gt;&gt;</a></li>
+<li>有人拿去做了会员付费版本，项目地址（不推荐购买）：<a href="https://link.zhihu.com/?target=https://github.com/Nanjiren01/AIChatWeb">AIChatWeb&gt;&gt;</a></li>
+<li>3.5的潘多拉版本：项目地址：<a href="https://link.zhihu.com/?target=https://github.com/xueandyue/ChatGPT-AccessToken-Web?tab=readme-ov-file">ChatGPT-AccessToken-Web&gt;&gt;</a></li>
+</ul>
+<p><strong>8、该程序如何上传文件？</strong></p>
+<p>目前该程序不支持直接上传文件，如需上传可以用我部署的<a href="https://link.zhihu.com/?target=https://up.gptacg.com/upload.php">上传网站&gt;&gt;</a>，上传文件成功后获得url地址并喂给GPT进行问答，目前支持识别url文档的模型为gpt-4-all，购买的API-Key中已内置此模型。</p>
+]]></content>
+      <categories>
+        <category>vercel</category>
+        <category>NextChat</category>
+      </categories>
+      <tags>
+        <tag>vercel</tag>
+        <tag>NextChat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>代理Google站点</title>
     <url>/2024/06/24/cloudflare/%E4%BB%A3%E7%90%86Google%E7%AB%99%E7%82%B9/</url>
     <content><![CDATA[<h2 id="创建-Worker"><a href="#创建-Worker" class="headerlink" title="创建 Worker"></a>创建 Worker</h2><p>首先，登录 Cloudflare，切换至Workers &amp; Pages菜单，点击Create Application按钮：</p>
@@ -8041,6 +8123,39 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql多次链接错误被阻止</title>
+    <url>/2023/01/19/%E9%97%AE%E9%A2%98/Mysql%E5%A4%9A%E6%AC%A1%E9%93%BE%E6%8E%A5%E9%94%99%E8%AF%AF%E8%A2%AB%E9%98%BB%E6%AD%A2/</url>
+    <content><![CDATA[<h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[HY000][1129] null, message from server: &quot;Host &#x27;172.17.0.1&#x27; is blocked because of many connection errors; unblock with &#x27;mysqladmin flush-hosts&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决描述"><a href="#解决描述" class="headerlink" title="解决描述"></a>解决描述</h2><p>错误信息 <code>[HY000][1129] null, message from server: &quot;Host &#39;172.17.0.1&#39; is blocked because of many connection errors; unblock with &#39;mysqladmin flush-hosts&#39;&quot;</code> 表示 MySQL 服务器已阻止主机 <code>172.17.0.1</code> 进行更多连接。这种情况通常发生在短时间内有太多连接尝试失败时，服务器将其视为潜在的安全风险或配置错误的客户端。</p>
+<p>要解决这个问题，可以按照错误信息中给出的建议执行 <code>mysqladmin flush-hosts</code> 命令。该命令会清除被阻止的主机列表，允许受影响的主机再次尝试连接。具体操作如下</p>
+<ol>
+<li><p>访问服务器终端：登录运行 MySQL 服务器的服务器。</p>
+</li>
+<li><p>运行 <code>mysqladmin flush-hosts</code> 命令：您需要在终端中执行该命令。如果你在特定用户下运行 MySQL 或需要特定权限，请确保在命令中包含这些权限。该命令的常见形式是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysqladmin -u root -p flush-hosts</span><br></pre></td></tr></table></figure>
+
+<p>运行后，系统可能会提示您输入 MySQL 根密码。</p>
+</li>
+</ol>
+<p> 请注意</p>
+<ul>
+<li>如果不使用 <code>root</code> 用户连接 MySQL，请将 <code>root</code> 替换为适当的用户名。</li>
+<li>如果 <code>mysqladmin</code> 不在系统的 <code>PATH</code> 中，您可能需要指定 <code>mysqladmin</code> 的路径。</li>
+<li>如果您的 MySQL 服务器设置了额外的安全措施或具有自定义配置，解决问题的步骤可能会有所不同。</li>
+</ul>
+<p>此外，还必须调查为什么会出现多次连接尝试失败的情况。这可能是由于使用了不正确的凭证、应用程序配置错误或网络问题。解决根本原因将有助于防止问题再次发生。</p>
+]]></content>
+      <categories>
+        <category>问题</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
         <tag>问题</tag>
       </tags>
   </entry>
