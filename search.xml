@@ -250,6 +250,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Bilihepler-personal安装</title>
+    <url>/2024/07/03/docker/Bilihepler-personal%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull lkeme/bilihelper-personal:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过环境变量进行传入"><a href="#通过环境变量进行传入" class="headerlink" title="通过环境变量进行传入"></a>通过环境变量进行传入</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -itd --<span class="built_in">rm</span> -e USER_NAME=你的B站登录账号 -e USER_PASSWORD=你的B站密码 lkeme/bilihelper-personal</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过配置文件进行传入-能保留登录状态，自定义配置"><a href="#通过配置文件进行传入-能保留登录状态，自定义配置" class="headerlink" title="通过配置文件进行传入(能保留登录状态，自定义配置)"></a>通过配置文件进行传入(能保留登录状态，自定义配置)</h3><p>新建文件 profile&#x2F;user&#x2F;config&#x2F;user.ini</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       程序设置       #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">[app]</span><br><span class="line">name = BiliHelper-personal</span><br><span class="line"><span class="built_in">env</span> = <span class="built_in">local</span></span><br><span class="line">branch = master</span><br><span class="line">version = 0.0.1</span><br><span class="line"></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       账户设置       #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">; 帐号/密码</span><br><span class="line">[login_account]</span><br><span class="line">username = <span class="string">&quot;&quot;</span></span><br><span class="line">password = <span class="string">&quot;3oU9UPvzHVkJXacb&quot;</span></span><br><span class="line"></span><br><span class="line">; 登录模式/[1.账密模式 2.短信验证码模式 3.扫码模式]</span><br><span class="line">[login_mode]</span><br><span class="line">mode = 1</span><br><span class="line"></span><br><span class="line">; 国家代码/mode=2触发/例：大陆86 澳大利亚61</span><br><span class="line">[login_country]</span><br><span class="line">code = 86</span><br><span class="line"></span><br><span class="line">; 校验/mode=2触发/校验国内手机号/国外手机号关闭校验</span><br><span class="line">[login_check]</span><br><span class="line">phone = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[login_captcha]</span><br><span class="line">; 验证码手动识别</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">; 验证码手动识别服务地址</span><br><span class="line">url = <span class="string">&quot;http://localhost:50001&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       插件功能设置     #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">; 检查主程序更新</span><br><span class="line">[check_update]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 主站每日任务(每日登录、观看、投币、分享)</span><br><span class="line">[main_site]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line">; 获取AIDS模式/random(随机热门)/fixed(关注列表)</span><br><span class="line">fetch_aids_mode = fixed</span><br><span class="line">; 每日观看</span><br><span class="line">watch = <span class="literal">true</span></span><br><span class="line">; 每日分享</span><br><span class="line">share = <span class="literal">true</span></span><br><span class="line">; 每日视频投币/投币稿件数(每日任务最大5)</span><br><span class="line">add_coin = <span class="literal">true</span></span><br><span class="line">add_coin_num = 5</span><br><span class="line">; 当等级达到6级时停止投币</span><br><span class="line">when_lv6_stop_coin = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 漫画助手(每日签到、分享)</span><br><span class="line">[manga]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 友爱社签到</span><br><span class="line">[love_club]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 直播签到</span><br><span class="line">[live_sign_in]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 游戏赛事竞猜预测(破产机)/每日竞猜次数/每次竞猜硬币(1-10)/下注(1.压大,2.压小,3.随机)</span><br><span class="line">[game_forecast]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">max_num = 20</span><br><span class="line">max_coin = 10</span><br><span class="line">bet = 1</span><br><span class="line"></span><br><span class="line">; 银瓜子兑换硬币</span><br><span class="line">[silver2coin]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 風機委員/自動連任/需要實名</span><br><span class="line">[judge]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">auto_apply = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 大会员权益/年度大会员专享</span><br><span class="line">[vip_privilege]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; B币券消费/年度大会员专享/每月默认充值数量5B币/消费方式优先级从上到下</span><br><span class="line">[bp_consumption]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line"><span class="comment"># 消费B币充电/充电的目标UID/可充值自己的UID</span></span><br><span class="line">bp2charge = <span class="literal">false</span></span><br><span class="line">bp2charge_uid = 6580464</span><br><span class="line"><span class="comment"># 消费B币充值金瓜子/5000金瓜子</span></span><br><span class="line">bp2gold = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 预约直播有奖/UP_UID/逗号分隔</span><br><span class="line">[live_reservation]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line">vmids = 9617619</span><br><span class="line"></span><br><span class="line">; 直播金色宝箱(实物抽奖)</span><br><span class="line">[live_gold_box]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 获取记录</span><br><span class="line">[award_records]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 大会员积分</span><br><span class="line">[vip_point]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 卍预约直播抽奖</span><br><span class="line">[lottery]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 每日电池 对应直播间ID和直播间UID</span><br><span class="line">[daily_gold]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">target_up_id = 11153765</span><br><span class="line">target_room_id = 23058</span><br><span class="line"></span><br><span class="line">; 擦亮徽章/ 每日擦亮 默认擦亮变灰徽章</span><br><span class="line">[polish_medal]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">everyday = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 批量取消关注/分组名称/默认为all(全部)</span><br><span class="line">[batch_unfollow]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">tag = all</span><br><span class="line"></span><br><span class="line">; 转盘活动</span><br><span class="line">[activity_lottery]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       通知设置       #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">; 消息推送/消息推送过滤词/逗号分割/优先级从上到下</span><br><span class="line">[notify]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line">filter_words = <span class="built_in">test</span>,测试</span><br><span class="line"></span><br><span class="line">; Dingtalk机器人/token/依赖USE_NOTIFY</span><br><span class="line">[notify_dingtalk]</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; Tele机器人/url(可选)/token/chatid/依赖USE_NOTIFY</span><br><span class="line">[notify_telegram]</span><br><span class="line">url =</span><br><span class="line">bottoken = <span class="string">&quot;&quot;</span></span><br><span class="line">chatid = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">; Pushplus酱/token/依赖USE_NOTIFY</span><br><span class="line">[notify_pushplus]</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; Sever酱(原版)/令牌Key/依赖USE_NOTIFY</span><br><span class="line">[notify_sc]</span><br><span class="line">sckey =</span><br><span class="line"></span><br><span class="line">; Server酱(Turbo版)/令牌Key/依赖USE_NOTIFY</span><br><span class="line">[notify_sct]</span><br><span class="line">sctkey =</span><br><span class="line"></span><br><span class="line">; GoCqhttp/url/token/目标qq/依赖USE_NOTIFY</span><br><span class="line">[notify_gocqhttp]</span><br><span class="line">url = <span class="string">&quot;&quot;</span></span><br><span class="line">token =</span><br><span class="line">target_qq =</span><br><span class="line"></span><br><span class="line">; 飞书机器人/依赖USE_NOTIFY</span><br><span class="line">[notify_feishu]</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; Debug/个人调试推送/url/token</span><br><span class="line">[notify_debug]</span><br><span class="line">url = <span class="string">&quot;&quot;</span></span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; 企业微信群机器人/token</span><br><span class="line">[notify_we_com]</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; 企业微信应用消息/corp_id/corp_secret/agent_id/to_user</span><br><span class="line">[notify_we_com_app]</span><br><span class="line">corp_id =</span><br><span class="line">corp_secret =</span><br><span class="line">agent_id =</span><br><span class="line">to_user =</span><br><span class="line"></span><br><span class="line">; Bark/Token</span><br><span class="line">[notify_bark]</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line">; PushDeer/服务器地址/token</span><br><span class="line">[notify_push_deer]</span><br><span class="line">url =</span><br><span class="line">token =</span><br><span class="line"></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       网络设置       #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">; 验证SSL证书/请求时验证SSL证书行为</span><br><span class="line">[network_ssl]</span><br><span class="line">verify = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">; 是否使用代理/(http\https)</span><br><span class="line">[network_proxy]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">proxy = <span class="string">&quot;http://127.0.0.1:8888&quot;</span></span><br><span class="line"></span><br><span class="line">; 是否使用自定义Github File Mirror/默认使用官方源</span><br><span class="line">[network_github]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">mirror = </span><br><span class="line"></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"><span class="comment">#       程序设置       #</span></span><br><span class="line"><span class="comment">#######################</span></span><br><span class="line"></span><br><span class="line">; 调试模式/采集完整日志</span><br><span class="line">[debug]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">; 记录日志/日志回调地址</span><br><span class="line">[<span class="built_in">log</span>]</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">false</span></span><br><span class="line">callback = <span class="string">&quot;http://www.example.com/api.send?text=&#123;account&#125;[&#123;level&#125;]: &#123;message&#125;&quot;</span></span><br><span class="line"><span class="comment"># 错误回调级别</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   DEBUG   100</span></span><br><span class="line"><span class="comment">#   INFO    200</span></span><br><span class="line"><span class="comment">#   NOTICE  250</span></span><br><span class="line"><span class="comment">#   WARNING 300</span></span><br><span class="line"><span class="comment">#   ERROR   400</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">callback_level = 400</span><br><span class="line"></span><br><span class="line">; app设置</span><br><span class="line">[<span class="built_in">print</span>]</span><br><span class="line">; 用户名，可自定义</span><br><span class="line"><span class="built_in">uname</span> =</span><br><span class="line">; 账号别名，如果为空则默认使用登录账号作为标示</span><br><span class="line">user_identity =</span><br><span class="line">; 多账号区别输出</span><br><span class="line">multiple = <span class="literal">false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>新建文件 profile&#x2F;user&#x2F;device&#x2F;device.yaml	</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">device_version: 0.0.1</span><br><span class="line"></span><br><span class="line">app:</span><br><span class="line">  bili_a: <span class="comment"># Android</span></span><br><span class="line">    package: <span class="string">&quot;tv.danmaku.bili&quot;</span></span><br><span class="line">    version: <span class="string">&quot;7.58.0&quot;</span></span><br><span class="line">    build: <span class="string">&quot;7580300&quot;</span></span><br><span class="line">    channel: <span class="string">&quot;bili&quot;</span></span><br><span class="line">    device: <span class="string">&quot;phone&quot;</span></span><br><span class="line">    mobi_app: <span class="string">&quot;android&quot;</span></span><br><span class="line">    platform: <span class="string">&quot;android&quot;</span></span><br><span class="line">    s_locale: <span class="string">&quot;zh-Hans_CN&quot;</span></span><br><span class="line">    c_locale: <span class="string">&quot;zh-Hans_CH&quot;</span></span><br><span class="line">    app_key: <span class="string">&quot;MWQ4YjZlN2Q0NTIzMzQzNg==&quot;</span></span><br><span class="line">    secret_key: <span class="string">&quot;NTYwYzUyY2NkMjg4ZmVkMDQ1ODU5ZWQxOGJmZmQ5NzM&quot;</span></span><br><span class="line">    app_key_n: <span class="string">&quot;NzgzYmJiNzI2NDQ1MWQ4Mg==&quot;</span></span><br><span class="line">    secret_key_n: <span class="string">&quot;MjY1MzU4M2M4ODczZGVhMjY4YWI5Mzg2OTE4YjFkNjU=&quot;</span></span><br><span class="line">    statistics: <span class="string">&#x27;&#123;&quot;appId&quot;:1,&quot;platform&quot;:3,&quot;version&quot;:&quot;7.58.0&quot;,&quot;abtest&quot;:&quot;&quot;&#125;&#x27;</span></span><br><span class="line">  bili_i: <span class="comment"># IOS</span></span><br><span class="line">    app_key: <span class="string">&quot;MjdlYjUzZmM5MDU4ZjhjMw==&quot;</span></span><br><span class="line">    secret_key: <span class="string">&quot;YzJlZDUzYTc0ZWVlZmUzY2Y5OWZiZDAxZDhjOWMzNzU=&quot;</span></span><br><span class="line">  bili_t: <span class="comment"># Tv</span></span><br><span class="line">    app_key: <span class="string">&quot;NDQwOWUyY2U4ZmZkMTJiOA==&quot;</span></span><br><span class="line">    secret_key: <span class="string">&quot;NTliNDNlMDRhZDY5NjVmMzQzMTkwNjJiNDc4ZjgzZGQ=&quot;</span></span><br><span class="line"></span><br><span class="line">platform:</span><br><span class="line">  system:</span><br><span class="line">    os: <span class="string">&quot;android&quot;</span></span><br><span class="line">    os_ver: <span class="string">&quot;7.1.2&quot;</span></span><br><span class="line">    model: <span class="string">&quot;MuMu&quot;</span></span><br><span class="line">    network: <span class="string">&quot;2&quot;</span> <span class="comment"># 1 流量 2 WIFI</span></span><br><span class="line">  headers:</span><br><span class="line">    other_ua: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36&quot;</span></span><br><span class="line">    pc_ua: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.53Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.53&quot;</span></span><br><span class="line">    app_ua: <span class="string">&quot;Mozilla/5.0 BiliDroid/<span class="variable">$&#123;app.bili_a.version&#125;</span> (bbcallen@gmail.com) os/<span class="variable">$&#123;platform.system.os&#125;</span> model/<span class="variable">$&#123;device.model&#125;</span> mobi_app/<span class="variable">$&#123;app.bili_a.mobi_app&#125;</span>build/<span class="variable">$&#123;app.bili_a.build&#125;</span> channel/<span class="variable">$&#123;app.bili_a.channel&#125;</span> innerVer/<span class="variable">$&#123;app.bili_a.build&#125;</span>osVer/<span class="variable">$&#123;platform.system.os_ver&#125;</span> network/<span class="variable">$&#123;platform.system.network&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -itd --<span class="built_in">rm</span> -v /path/to/your/confFilePath:/app/profile/user lkeme/bilihelper-personal</span><br></pre></td></tr></table></figure>
+
+<p>配置文件里设置好，发送完短信 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker attach 或者docker <span class="built_in">exec</span> 再进去容器里输入</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启手动验证验证码"><a href="#开启手动验证验证码" class="headerlink" title="开启手动验证验证码"></a>开启手动验证验证码</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[login_captcha]</span><br><span class="line">; 验证码手动识别</span><br><span class="line"><span class="built_in">enable</span> = <span class="literal">true</span></span><br><span class="line">; 验证码手动识别服务地址</span><br><span class="line">url = <span class="string">&quot;http://192.168.3.202:50001&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改部署</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -itd --<span class="built_in">rm</span> -e CAPTCHA=1 -e CAPTCHA_HOST=localhost -e CAPTCHA_PORT=50002 -p 50002:50002 -v /path/to/your/confFilePath:/app/profile/user lkeme/bilihelper-personal</span><br><span class="line"></span><br><span class="line">-e CAPTCHA=1 <span class="comment"># 开启验证码手动识别服务  默认 0</span></span><br><span class="line">-e CAPTCHA_HOST=0.0.0.0 <span class="comment"># 默认 0.0.0.0</span></span><br><span class="line">-e CAPTCHA_PORT=50002 <span class="comment"># 验证码手动识别服务地址  默认 50001 需要注意端口映射关系</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker安装</title>
     <url>/2024/04/08/docker/Docker%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="使用官方安装脚本自动安装"><a href="#使用官方安装脚本自动安装" class="headerlink" title="使用官方安装脚本自动安装"></a>使用官方安装脚本自动安装</h2><p>安装命令如下：</p>
@@ -333,23 +363,6 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA链接Docker</title>
-    <url>/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/</url>
-    <content><![CDATA[<h2 id="下载证书（非必要）"><a href="#下载证书（非必要）" class="headerlink" title="下载证书（非必要）"></a>下载证书（非必要）</h2><p>下载生成的证书</p>
-
-
-<h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-        <category>IDEA</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>IDEA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker镜像代理加速</title>
     <url>/2024/06/23/docker/Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<h2 id="打开大善人网站"><a href="#打开大善人网站" class="headerlink" title="打开大善人网站"></a>打开大善人网站</h2><p><a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a></p>
@@ -428,6 +441,23 @@
       <tags>
         <tag>cloudflare</tag>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IDEA链接Docker</title>
+    <url>/2024/04/08/docker/IDEA%E9%93%BE%E6%8E%A5docker/</url>
+    <content><![CDATA[<h2 id="下载证书（非必要）"><a href="#下载证书（非必要）" class="headerlink" title="下载证书（非必要）"></a>下载证书（非必要）</h2><p>下载生成的证书</p>
+
+
+<h2 id="IDEA设置证书访问"><a href="#IDEA设置证书访问" class="headerlink" title="IDEA设置证书访问"></a>IDEA设置证书访问</h2><p>目录: file -&gt; settings</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>IDEA</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -710,6 +740,229 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
+    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
+<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
+
+<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
+<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
+
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
+
+<p>右键点击该文件，选择“提取到此处”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
+
+<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
+
+<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
+
+<p>一路回车进行安装，出现以下的画面，安装完成。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
+
+<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu的系统源</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
+    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
+
+<p>点击软件和更新</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
+
+<p>点击中国的服务器</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
+
+<p>点击其他站点</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
+
+<p>测试或者选择你觉得可以快一点的镜像</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
+
+<p>点击确定输入用户密码就好</p>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Ubuntu</title>
+    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
+    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
+<ul>
+<li>需要VMware</li>
+</ul>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
+
+<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
+<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
+
+<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
+
+<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
+
+<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
+
+<p>所在在选择系统的时候选择64位的系统</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
+
+<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点(目录)</strong></th>
+<th><strong>建议大小</strong></th>
+<th><strong>格式</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>20G左右</td>
+<td>ext4</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>越大越好</td>
+<td>ext4</td>
+<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>300M左右</td>
+<td>ext4</td>
+<td>一般几百M，主要存放linux内核及一些引导文件</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>10G左右</td>
+<td>ext4</td>
+<td>系统的一些临时文件</td>
+</tr>
+<tr>
+<td>&#x2F;swap</td>
+<td>8G左右</td>
+<td>swap交换空间</td>
+<td>相当于虚拟内存</td>
+</tr>
+</tbody></table>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
+
+<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
+
+<p>然后下一步，就好了</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
+
+<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
+
+<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
+
+<p>然后点开启虚拟机就等待了</p>
+<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
+
+<p>点安装Ubuntu</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
+
+<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
+
+<p>点继续</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
+
+<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
+
+<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
+
+<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
+<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
+<p>关闭虚拟机后，修改镜像</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
+
+<p>到此就完成安装了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -6935,23 +7188,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Maven</title>
     <url>/2020/03/08/maven/Maven/</url>
     <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
@@ -7141,212 +7377,6 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
-    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
-<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
-
-<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
-<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
-
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
-
-<p>右键点击该文件，选择“提取到此处”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
-
-<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
-
-<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
-
-<p>一路回车进行安装，出现以下的画面，安装完成。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
-
-<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu的系统源</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
-    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
-
-<p>点击软件和更新</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
-
-<p>点击中国的服务器</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
-
-<p>点击其他站点</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
-
-<p>测试或者选择你觉得可以快一点的镜像</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
-
-<p>点击确定输入用户密码就好</p>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Ubuntu</title>
-    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
-    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
-<ul>
-<li>需要VMware</li>
-</ul>
-<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
-
-<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
-<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
-
-<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
-
-<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
-
-<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
-
-<p>所在在选择系统的时候选择64位的系统</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
-
-<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
-<table>
-<thead>
-<tr>
-<th><strong>挂载点(目录)</strong></th>
-<th><strong>建议大小</strong></th>
-<th><strong>格式</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;</td>
-<td>20G左右</td>
-<td>ext4</td>
-<td>根目录</td>
-</tr>
-<tr>
-<td>&#x2F;home</td>
-<td>越大越好</td>
-<td>ext4</td>
-<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
-</tr>
-<tr>
-<td>&#x2F;boot</td>
-<td>300M左右</td>
-<td>ext4</td>
-<td>一般几百M，主要存放linux内核及一些引导文件</td>
-</tr>
-<tr>
-<td>&#x2F;tmp</td>
-<td>10G左右</td>
-<td>ext4</td>
-<td>系统的一些临时文件</td>
-</tr>
-<tr>
-<td>&#x2F;swap</td>
-<td>8G左右</td>
-<td>swap交换空间</td>
-<td>相当于虚拟内存</td>
-</tr>
-</tbody></table>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
-
-<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
-
-<p>然后下一步，就好了</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
-
-<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
-
-<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
-
-<p>然后点开启虚拟机就等待了</p>
-<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
-
-<p>点安装Ubuntu</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
-
-<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
-
-<p>点继续</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
-
-<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
-
-<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
-
-<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
-<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
-<p>关闭虚拟机后，修改镜像</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
-
-<p>到此就完成安装了</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
