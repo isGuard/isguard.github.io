@@ -7427,6 +7427,50 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>docker安装mysql</title>
+    <url>/2024/07/02/mysql/docker%E5%AE%89%E8%A3%85mysql/</url>
+    <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录"><a href="#在home目录下创建映射目录" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql5/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件"><a href="#创建my-cnf配置文件" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql5/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf"><a href="#my-cnf" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>MySQL(5.7.19)的默认配置文件是 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 文件。</p>
+<p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql5 -v ~/mysql5/conf:/etc/mysql/conf.d -v ~/mysql5/logs:/logs -v ~/mysql5/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -dit -p 3306:3306 mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器5</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql5 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"><span class="comment"># 更新 root的 远程登录为所有</span></span><br><span class="line">update mysql.user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>; </span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"> <span class="comment"># 给用户授权</span></span><br><span class="line">grant all privileges on *.* to root@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql8"><a href="#mysql8" class="headerlink" title="mysql8"></a>mysql8</h2><h3 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录-1"><a href="#在home目录下创建映射目录-1" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql8/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件-1"><a href="#创建my-cnf配置文件-1" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql8/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf-1"><a href="#my-cnf-1" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql8 -v ~/mysql8/conf:/etc/mysql/conf.d -v ~/mysql8/logs:/logs -v ~/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Abcd1234! -dit -p 3306:3306 mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录-1"><a href="#远程登录-1" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器8</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql8 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> host,user from user;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#添加远程登录用户</span></span><br><span class="line">CREATE USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql主从设置</title>
     <url>/2024/07/01/mysql/mysql%E4%B8%BB%E4%BB%8E%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>什么是主从，详细百度去吧，我说说我自己的理解</p>
