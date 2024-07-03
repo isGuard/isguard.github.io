@@ -743,229 +743,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
-    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
-<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
-
-<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
-<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
-
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
-
-<p>右键点击该文件，选择“提取到此处”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
-
-<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
-
-<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
-
-<p>一路回车进行安装，出现以下的画面，安装完成。</p>
-<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
-
-<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu的系统源</title>
-    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
-    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
-
-<p>点击软件和更新</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
-
-<p>点击中国的服务器</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
-
-<p>点击其他站点</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
-
-<p>测试或者选择你觉得可以快一点的镜像</p>
-<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
-
-<p>点击确定输入用户密码就好</p>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Ubuntu</title>
-    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
-    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
-<ul>
-<li>需要VMware</li>
-</ul>
-<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
-
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
-
-<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
-<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
-
-<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
-
-<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
-
-<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
-
-<p>所在在选择系统的时候选择64位的系统</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
-
-<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
-<table>
-<thead>
-<tr>
-<th><strong>挂载点(目录)</strong></th>
-<th><strong>建议大小</strong></th>
-<th><strong>格式</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;</td>
-<td>20G左右</td>
-<td>ext4</td>
-<td>根目录</td>
-</tr>
-<tr>
-<td>&#x2F;home</td>
-<td>越大越好</td>
-<td>ext4</td>
-<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
-</tr>
-<tr>
-<td>&#x2F;boot</td>
-<td>300M左右</td>
-<td>ext4</td>
-<td>一般几百M，主要存放linux内核及一些引导文件</td>
-</tr>
-<tr>
-<td>&#x2F;tmp</td>
-<td>10G左右</td>
-<td>ext4</td>
-<td>系统的一些临时文件</td>
-</tr>
-<tr>
-<td>&#x2F;swap</td>
-<td>8G左右</td>
-<td>swap交换空间</td>
-<td>相当于虚拟内存</td>
-</tr>
-</tbody></table>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
-
-<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
-
-<p>然后下一步，就好了</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
-
-<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
-
-<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
-
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
-
-<p>然后点开启虚拟机就等待了</p>
-<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
-
-<p>点安装Ubuntu</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
-
-<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
-
-<p>点继续</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
-
-<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
-
-<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
-
-<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
-<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
-<p>关闭虚拟机后，修改镜像</p>
-<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
-
-<p>到此就完成安装了</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ArrayList类</title>
     <url>/2020/03/29/java/ArrayList%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="什么是ArrayList类"><a href="#什么是ArrayList类" class="headerlink" title="什么是ArrayList类"></a>什么是ArrayList类</h2><p><code>java.utiL.ArrayList</code>是大小可变的数组的实现，存储在内的数据称为元素。</p>
@@ -7188,6 +6965,229 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/2019/04/06/javaScript/Ajax(%E5%8E%9F%E7%94%9F,JQ)/</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
+    <url>/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
+<p>启动vmware workstation软件，运行ubuntu虚拟操作系统，登陆进入ubuntu桌面。选择“虚拟机”-&gt;“安装vmware tools”VMware tools</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172358617.png" class="" alt="image-20200403172358617">
+
+<p>双击桌面的“vmware tools”,打开vmware tools安装介质。右键选择vmwaretools的gz压缩包，</p>
+<p>将该文件复制到<code>下载文件夹</code>，<code>至于复制到什么文件夹。大家可以自行选择</code>。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403172438473.png" class="" alt="image-20200403172438473">
+
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173538440.png" class="" alt="image-20200403173538440">
+
+<p>右键点击该文件，选择“提取到此处”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173638585.png" class="" alt="image-20200403173638585">
+
+<p>打开解压后的vmwaretools文件夹，右键点击vmware-tools-distrib文件夹，选择“在终端打开”</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403173732626.png" class="" alt="image-20200403173732626">
+
+<p>在终端的命令窗口当中，输入<code>sudo ./vmware-tools-distrib/vmware-install.pl</code>命令。输入用户密码回车开始安装。出现第一个画面时，选择“<code>y</code>”回车。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174051861.png" class="" alt="image-20200403174051861">
+
+<p>一路回车进行安装，出现以下的画面，安装完成。</p>
+<img data-src="/2020/04/06/linux/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9FUbuntu%E5%AE%89%E8%A3%85VMware-tools%E5%B7%A5%E5%85%B7/image-20200403174218198.png" class="" alt="image-20200403174218198">
+
+<p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E5%88%86%E8%BE%A8%E7%8E%87/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu的系统源</title>
+    <url>/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/</url>
+    <content><![CDATA[<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171326693.png" class="" alt="image-20200403171326693">
+
+<p>点击软件和更新</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171359402.png" class="" alt="image-20200403171359402">
+
+<p>点击中国的服务器</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171423549.png" class="" alt="image-20200403171423549">
+
+<p>点击其他站点</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171516801.png" class="" alt="image-20200403171516801">
+
+<p>测试或者选择你觉得可以快一点的镜像</p>
+<img data-src="/2020/04/06/linux/%E4%BF%AE%E6%94%B9Ubuntu%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%BA%90/image-20200403171608393.png" class="" alt="image-20200403171608393">
+
+<p>点击确定输入用户密码就好</p>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Ubuntu</title>
+    <url>/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/</url>
+    <content><![CDATA[<h1 id="安装Ubuntu"><a href="#安装Ubuntu" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h1><p>准备工作</p>
+<ul>
+<li>需要VMware</li>
+</ul>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>Ubuntu下载地址:<a href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</a></p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154017477.png" class="" alt="image-20200403154017477">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155024305.png" class="" alt="image-20200403155024305">
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154049421.png" class="" alt="image-20200403154049421">
+
+<h2 id="准备虚拟机"><a href="#准备虚拟机" class="headerlink" title="准备虚拟机"></a>准备虚拟机</h2><p>在下载的时候，现在VMware里面准备好虚拟机</p>
+<h3 id="创建新的虚拟机"><a href="#创建新的虚拟机" class="headerlink" title="创建新的虚拟机"></a>创建新的虚拟机</h3><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154231003.png" class="" alt="image-20200403154231003">
+
+<h4 id="创建典型的即可"><a href="#创建典型的即可" class="headerlink" title="创建典型的即可"></a>创建典型的即可</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154423758.png" class="" alt="image-20200403154423758">
+
+<h4 id="创建一个空的虚拟机"><a href="#创建一个空的虚拟机" class="headerlink" title="创建一个空的虚拟机"></a>创建一个空的虚拟机</h4><img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154528596.png" class="" alt="image-20200403154528596">
+
+<h4 id="创建64位的虚拟机"><a href="#创建64位的虚拟机" class="headerlink" title="创建64位的虚拟机"></a>创建64位的虚拟机</h4><p>因为默认下载的为64位的</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154642694.png" class="" alt="image-20200403154642694">
+
+<p>所在在选择系统的时候选择64位的系统</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154754885.png" class="" alt="image-20200403154754885">
+
+<h4 id="安装的位置"><a href="#安装的位置" class="headerlink" title="安装的位置"></a>安装的位置</h4><p>找自己电脑比较空旷的磁盘安装（预估一下差不多40G~60G）</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点(目录)</strong></th>
+<th><strong>建议大小</strong></th>
+<th><strong>格式</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>20G左右</td>
+<td>ext4</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>越大越好</td>
+<td>ext4</td>
+<td>用户工作目录，用户存储的数据，文件，安装的软件都存放在这儿</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>300M左右</td>
+<td>ext4</td>
+<td>一般几百M，主要存放linux内核及一些引导文件</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>10G左右</td>
+<td>ext4</td>
+<td>系统的一些临时文件</td>
+</tr>
+<tr>
+<td>&#x2F;swap</td>
+<td>8G左右</td>
+<td>swap交换空间</td>
+<td>相当于虚拟内存</td>
+</tr>
+</tbody></table>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403154918626.png" class="" alt="image-20200403154918626">
+
+<h3 id="选择磁盘容量"><a href="#选择磁盘容量" class="headerlink" title="选择磁盘容量"></a>选择磁盘容量</h3><p>这个根据自己的电脑和需求来选择，越大越好，推荐使用多个文件</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155511139.png" class="" alt="image-20200403155511139">
+
+<p>然后下一步，就好了</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155616418.png" class="" alt="image-20200403155616418">
+
+<h2 id="虚拟机配置"><a href="#虚拟机配置" class="headerlink" title="虚拟机配置"></a>虚拟机配置</h2><p>编辑虚拟机的设置</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403155721067.png" class="" alt="image-20200403155721067">
+
+<p>修改内存、处理器和ISO镜像的位置（等文件下载完成就可以选择了）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160005254.png" class="" alt="image-20200403160005254">
+
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160112674.png" class="" alt="image-20200403160112674">
+
+<p>然后点开启虚拟机就等待了</p>
+<h2 id="安装Ubuntu-1"><a href="#安装Ubuntu-1" class="headerlink" title="安装Ubuntu"></a>安装Ubuntu</h2><p>开始的页面最下面有中文（还是比较友好的）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160327152.png" class="" alt="image-20200403160327152">
+
+<p>点安装Ubuntu</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160409883.png" class="" alt="image-20200403160409883">
+
+<p>点继续，这个就看自己的需求了（推荐，正常安装+取消安装Ubuntu时下载更新）</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160543542.png" class="" alt="image-20200403160543542">
+
+<p>点继续</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160734500.png" class="" alt="image-20200403160734500">
+
+<p>点现在安装，有对话框直接点继续，注意这里时点击中国的图片</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160847663.png" class="" alt="image-20200403160847663">
+
+<p>点继续，这个很明白，给你自己写一个用户名和密码</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403160922375.png" class="" alt="image-20200403160922375">
+
+<p>输入好后点，继续，然后等待安装，安装文成后最好重启</p>
+<p>友情提式：·<code>Ctrl+Alt</code>切换出鼠标</p>
+<p>关闭虚拟机后，修改镜像</p>
+<img data-src="/2020/04/06/linux/%E5%AE%89%E8%A3%85Ubuntu/image-20200403165402354.png" class="" alt="image-20200403165402354">
+
+<p>到此就完成安装了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven</title>
     <url>/2020/03/08/maven/Maven/</url>
     <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
@@ -7965,6 +7965,152 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通过fail2ban服务监控frps日志实现禁止非法IP</title>
+    <url>/2024/07/03/linux/fail2ban/%E9%80%9A%E8%BF%87fail2ban%E6%9C%8D%E5%8A%A1%E7%9B%91%E6%8E%A7frps%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0%E7%A6%81%E6%AD%A2%E9%9D%9E%E6%B3%95IP/</url>
+    <content><![CDATA[<h2 id="通过fail2ban服务监控frps日志实现禁止非法IP"><a href="#通过fail2ban服务监控frps日志实现禁止非法IP" class="headerlink" title="通过fail2ban服务监控frps日志实现禁止非法IP"></a>通过fail2ban服务监控frps日志实现禁止非法IP</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>服务器使用了frp作为了内网穿透软件，查看frps的日志，发现总有一些国外的ip在扫描这台服务器的端口信息，日志如下图，所以想通过fail2ban服务能够直接禁用这些ip扫描服务器。</p>
+
+
+<p>注意一定要挂载日志文件</p>
+<h3 id="1、安装fail2ban服务"><a href="#1、安装fail2ban服务" class="headerlink" title="1、安装fail2ban服务"></a>1、安装fail2ban服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y fail2ban</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、设置查找frps的规则"><a href="#2、设置查找frps的规则" class="headerlink" title="2、设置查找frps的规则"></a>2、设置查找frps的规则</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@lianhe ~]<span class="comment"># cat /etc/fail2ban/filter.d/frps.conf</span></span><br><span class="line">[Definition]</span><br><span class="line">failregex = ^.*get a user connection \[&lt;HOST&gt;:[0-9]*\]</span><br><span class="line">            ^.*get a new work connection: \[&lt;HOST&gt;:[0-9]*\]</span><br><span class="line">ignoreregex =</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用gpt4生成的规则</span></span><br><span class="line">[Definition]</span><br><span class="line">failregex = ^.*auth failed.*ip:&lt;HOST&gt;.*$</span><br><span class="line">            ^.*illegal connection.*ip:&lt;HOST&gt;.*$</span><br><span class="line">ignoreregex =</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、校验规则"><a href="#3、校验规则" class="headerlink" title="3、校验规则"></a>3、校验规则</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fail2ban-regex /opt/1panel/apps/frps/frps/log/frps.log /etc/fail2ban/filter.d/frps.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、设置发现frps的异常ip的操作"><a href="#4、设置发现frps的异常ip的操作" class="headerlink" title="4、设置发现frps的异常ip的操作"></a>4、设置发现frps的异常ip的操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入fail2ban目录，copy一份配置文件</span></span><br><span class="line">[root@lianhe fail2ban]<span class="comment">#  cp jail.conf  jail.local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 jail.local 下添加一下规则</span></span><br><span class="line">[frp]</span><br><span class="line">enabled = <span class="literal">true</span></span><br><span class="line">findtime = 600</span><br><span class="line">maxretry = 5</span><br><span class="line">bantime = -1</span><br><span class="line">filter = frps</span><br><span class="line">logpath = /opt/1panel/apps/frps/frps/frps.log</span><br><span class="line">protocol = all</span><br><span class="line">chain = all</span><br><span class="line">port = all</span><br><span class="line">action = iptables-allports[name=frp,protocol=tcp]</span><br></pre></td></tr></table></figure>
+
+<p>配置说明<br>frp：监控目标名称<br>port：封禁全部端口<br>filter：过滤规则，我们使用自定义的frps<br>action：捕捉到恶意IP后执行的操作，本文使用iptables对IP封禁所有端口<br>logpath：需要监控的日志文件<br>bantime：封禁时间，单位为秒<br>findtime：查找时间段，单位为秒<br>maxretry：允许的最大失败次数，这里我们配置10分钟内触发10次规则，那么就封禁掉</p>
+<h3 id="4、永久禁用ip地址"><a href="#4、永久禁用ip地址" class="headerlink" title="4、永久禁用ip地址"></a>4、永久禁用ip地址</h3><h4 id="4-1-编辑文件：-etc-fail2ban-jail-local"><a href="#4-1-编辑文件：-etc-fail2ban-jail-local" class="headerlink" title="4.1 编辑文件：&#x2F;etc&#x2F;fail2ban&#x2F;jail.local"></a>4.1 编辑文件：&#x2F;etc&#x2F;fail2ban&#x2F;jail.local</h4><p>在此件中查找banaction条目。以下屏幕截图显示禁止是iptables-multiport。</p>
+
+
+<h4 id="4-2-编辑-banaction文件：-etc-fail2ban-action-d-iptables-multiport-conf"><a href="#4-2-编辑-banaction文件：-etc-fail2ban-action-d-iptables-multiport-conf" class="headerlink" title="4.2 编辑 banaction文件： &#x2F;etc&#x2F;fail2ban&#x2F;action.d&#x2F;iptables-multiport.conf"></a>4.2 编辑 banaction文件： &#x2F;etc&#x2F;fail2ban&#x2F;action.d&#x2F;iptables-multiport.conf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在 actionstart 默认条目下，添加以下行：</span></span><br><span class="line"><span class="built_in">cat</span> /etc/fail2ban/ip.banned | <span class="keyword">while</span> <span class="built_in">read</span> IP; <span class="keyword">do</span> iptables -I fail2ban-&lt;name&gt; 1 -s <span class="variable">$IP</span> -j DROP; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 actionban 默认条目下，添加以下行：</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;&lt;ip&gt;&#x27;</span> &gt;&gt; /etc/fail2ban/ip.banned</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、fail2ban服务重新加载"><a href="#5、fail2ban服务重新加载" class="headerlink" title="5、fail2ban服务重新加载"></a>5、fail2ban服务重新加载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fail2ban-client reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、查看frp服务器禁用那些ip"><a href="#6、查看frp服务器禁用那些ip" class="headerlink" title="6、查看frp服务器禁用那些ip"></a>6、查看frp服务器禁用那些ip</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@lianhe ~]<span class="comment"># fail2ban-client status frp</span></span><br><span class="line">Status <span class="keyword">for</span> the jail: frp</span><br><span class="line">|- Filter</span><br><span class="line">|  |- Currently failed:	21</span><br><span class="line">|  |- Total failed:	224</span><br><span class="line">|  `- File list:	/var/lib/docker/containers/ca21dd5be6d88edad61619d3c14366dda78858ee588c751714a0facc5e2c4985/ca21dd5be6d88edad61619d3c14366dda78858ee588c751714a0facc5e2c4985-json.log</span><br><span class="line">`- Actions</span><br><span class="line">   |- Currently banned:	32</span><br><span class="line">   |- Total banned:	32</span><br><span class="line">   `- Banned IP list:	118.113.244.254 87.120.84.35 172.104.238.212 162.215.216.231 107.173.211.107 61.140.220.92 218.19.45.23 219.152.231.118 168.76.123.59 45.183.247.34 103.164.216.221 162.241.69.208 185.137.122.180 162.62.218.43 124.152.99.57 45.88.90.55 103.154.184.109 87.107.190.12 87.107.190.59 94.156.8.86 119.28.118.4 59.13.123.99 101.126.69.60 124.156.204.21 68.66.251.162 58.210.241.5 103.78.12.14 35.200.157.232 43.153.176.71 91.92.245.192 171.106.204.37 108.179.217.143</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、通过iptables查看禁用ip"><a href="#7、通过iptables查看禁用ip" class="headerlink" title="7、通过iptables查看禁用ip"></a>7、通过iptables查看禁用ip</h3>
+
+<h3 id="8、如果有误判的ip地址，解决方法"><a href="#8、如果有误判的ip地址，解决方法" class="headerlink" title="8、如果有误判的ip地址，解决方法"></a>8、如果有误判的ip地址，解决方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fail2ban-client <span class="built_in">set</span>  frps  unbanip [ip地址]</span><br></pre></td></tr></table></figure>
+
+<h3 id="9、重装"><a href="#9、重装" class="headerlink" title="9、重装"></a>9、重装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service fail2ban stop</span><br><span class="line"><span class="built_in">rm</span> -r /etc/fail2ban/</span><br><span class="line">apt-get purge fail2ban</span><br><span class="line">apt-get install fail2ban</span><br></pre></td></tr></table></figure>
+
+<h3 id="10、使用-Fail2ban-client-验证-Fail2ban-状态"><a href="#10、使用-Fail2ban-client-验证-Fail2ban-状态" class="headerlink" title="10、使用 Fail2ban-client 验证 Fail2ban 状态"></a>10、使用 Fail2ban-client 验证 Fail2ban 状态</h3><p>fail2ban 提供了一个命令行 fail2ban-client 用于与 Fail2ban 服务进行交互。这允许您从命令行管理和配置 Fail2ban，还允许您管理 Fail2ban 监狱。</p>
+<p>要验证 fail2ban 安装和配置，请运行以下命令的 <em>fail2ban-client</em>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client ping</span><br></pre></td></tr></table></figure>
+
+<p>如果您收到诸如“服务器回复：pong”之类的输出消息，这意味着 Fail2ban 正在正常运行。</p>
+<p>接下来，运行下面的 <em>fail2ban-client</em> 命令来检查 sshd jail 的状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+
+<p>下面你可以看到 sshd jail 的详细状态。这包括 SSH 服务的日志文件和 sshd jail 上被禁止的 IP 地址列表。</p>
+
+
+<p>现在如果你想获得 sshd 监狱的详细配置，你可以使用 fail2ban-client 命令如下。</p>
+<p>检查 sshd jail 的 bantime 配置。您将在几秒钟内获得 bantime 的输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client get sshd bantime</span><br></pre></td></tr></table></figure>
+
+<p>检查 sshd jail 的 maxrtey 配置。你会看到这里的 maxretry 是 3，因为它被全局配置覆盖了，也就是 maxrety 5 次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client get sshd maxretry</span><br></pre></td></tr></table></figure>
+
+<p>对于sshd jail中的banaction，可以使用以下命令。并且您应该将 ufw 的输出作为 sshd jail 的默认禁令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client get sshd actions</span><br></pre></td></tr></table></figure>
+
+<p>对于此处的查找时间，您还将看到 sshd 监狱的覆盖值。此处的输出也将采用秒格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client get sshd findtime</span><br></pre></td></tr></table></figure>
+
+<p>最后，您还可以使用以下命令检查 sshd jail 的默认 ignoreip。你会看到 ignoreip 与全局 Fail2ban 配置具有相同的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client get sshd ignoreip</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="11、使用-Fail2ban-client-禁止和取消禁止-IP"><a href="#11、使用-Fail2ban-client-禁止和取消禁止-IP" class="headerlink" title="11、使用 Fail2ban-client 禁止和取消禁止 IP"></a>11、使用 Fail2ban-client 禁止和取消禁止 IP</h3><p>关于 Fail2ban 的另一个重要事项是如何在 Fail2ban 上禁止和取消禁止 IP 地址。为此，您还可以使用 fail2ban-client 命令。</p>
+<p>要在 sshd jail 上手动禁止 IP 地址，您可以使用下面的 fail2ban-client 命令。将 IP 地址更改为您要禁止的 IP 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client set sshd banip IP-ADDRESS</span><br></pre></td></tr></table></figure>
+
+<p>要从 sshd jail 中解禁 IP 地址，您可以使用下面的 fail2ban-client 命令。请务必将 IP 地址更改为您要取消禁止的 IP 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client set sshd unbanip IP-ADDRESS</span><br></pre></td></tr></table></figure>
+
+<p>现在，在您手动禁止 IP 地址或取消禁止 IP 地址后，您可以使用下面的 fail2ban-client 命令进行验证。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+
+<p>如果您手动禁止某个 IP 地址，请确保该 IP 地址在禁止 IP 地址列表中可用。但是，如果您取消禁止某个 IP 地址，请确保该 IP 地址从禁止 IP 地址列表中消失。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>fail2ban</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>fail2ban</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Frp穿透及防护</title>
+    <url>/2024/07/03/linux/frp/Frp%E7%A9%BF%E9%80%8F%E5%8F%8A%E9%98%B2%E6%8A%A4/</url>
+    <content><![CDATA[<h2 id="1-安装1Panel（非必须只需要软件frps和fail2ban，可以考虑其他安装方式）"><a href="#1-安装1Panel（非必须只需要软件frps和fail2ban，可以考虑其他安装方式）" class="headerlink" title="1. 安装1Panel（非必须只需要软件frps和fail2ban，可以考虑其他安装方式）"></a>1. 安装1Panel（非必须只需要软件frps和fail2ban，可以考虑其他安装方式）</h2><p>官网地址：<a href="https://1panel.cn/docs/installation/online_installation/">https://1panel.cn/docs/installation/online_installation/</a></p>
+<p>根据服务器情况安装</p>
+
+
+<p>安装过程略</p>
+<h2 id="2-安装frps"><a href="#2-安装frps" class="headerlink" title="2. 安装frps"></a>2. 安装frps</h2><p>进入1Panel的页面</p>
+<p>选择应用商店搜索frps</p>
+<p>选择安装</p>
+<p>安装后进入安装目录修改配置文件 <code>/opt/1panel/apps/frps/frps/data/frps.toml</code></p>
+<p>根据官网（<a href="https://gofrp.org/zh-cn/docs/reference/server-configures/%EF%BC%89%E7%9A%84%E6%8F%90%E7%A4%BA%E9%85%8D%E7%BD%AE">https://gofrp.org/zh-cn/docs/reference/server-configures/）的提示配置</a></p>
+<p>这是我使用的配置，需要把汉字部分修改为自己需要的设置</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="attr">bindAddr</span> = <span class="string">&quot;服务端监听地址，用于接收 frpc 的连接，默认监听 0.0.0.0。&quot;</span></span><br><span class="line"><span class="attr">bindPort</span> = 服务端监听端口，默认值为 <span class="number">7000</span>。</span><br><span class="line"><span class="attr">enablePrometheus</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="section">[log]</span></span><br><span class="line"><span class="attr">to</span> = <span class="string">&quot;/path/to/frps.log&quot;</span></span><br><span class="line"><span class="attr">level</span> = <span class="string">&quot;info&quot;</span></span><br><span class="line"><span class="attr">maxDays</span> = <span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="section">[auth]</span></span><br><span class="line"><span class="attr">method</span> = <span class="string">&quot;token&quot;</span></span><br><span class="line"><span class="attr">token</span> = <span class="string">&quot;在 method 为 token 时生效，客户端需要设置一样的值才能鉴权通过。&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[webServer]</span></span><br><span class="line"><span class="attr">addr</span> = <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line"><span class="attr">port</span> = webServer 监听端口。</span><br><span class="line"><span class="attr">user</span> = <span class="string">&quot;HTTP BasicAuth 用户名。&quot;</span></span><br><span class="line"><span class="attr">password</span> = <span class="string">&quot;HTTP BasicAuth 密码。&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h3><h4 id="1-docker的时间和服务器时间不同"><a href="#1-docker的时间和服务器时间不同" class="headerlink" title="1. docker的时间和服务器时间不同"></a>1. docker的时间和服务器时间不同</h4><p>点击容器</p>
+<p>选择frps容器更多，选择编辑</p>
+<p>在挂载中增加时间配置</p>
+
+
+<p>在环境变量增加配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET_CONTAINER_TIMEZONE=<span class="literal">true</span></span><br><span class="line">CONTAINER_TIMEZONE=Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-安装fail2ban"><a href="#3-安装fail2ban" class="headerlink" title="3. 安装fail2ban"></a>3. 安装fail2ban</h2><p>官网提供了安装方式（<a href="https://1panel.cn/docs/user_manual/toolbox/fail2ban/%EF%BC%89">https://1panel.cn/docs/user_manual/toolbox/fail2ban/）</a></p>
+<h3 id="添加frps规则"><a href="#添加frps规则" class="headerlink" title="添加frps规则"></a>添加frps规则</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat /etc/fail2ban/filter.d/frps.conf</span></span><br><span class="line">[Definition]</span><br><span class="line">failregex = ^.*get a user connection \[&lt;HOST&gt;:[0-9]*\]</span><br><span class="line">            ^.*get a new work connection: \[&lt;HOST&gt;:[0-9]*\]</span><br><span class="line">ignoreregex =</span><br></pre></td></tr></table></figure>
+
+<h3 id="校验规则"><a href="#校验规则" class="headerlink" title="校验规则"></a>校验规则</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fail2ban-regex /opt/1panel/apps/frps/frps/log/frps.log /etc/fail2ban/filter.d/frps.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行规则"><a href="#运行规则" class="headerlink" title="运行规则"></a>运行规则</h3><p>在1Panel面板的工具箱中有Fail2ban的配置，点击全部配置修改，可以根据自由修改配置</p>
+<p>frp：监控目标名称<br>port：封禁全部端口<br>filter：过滤规则，我们使用自定义的frps<br>action：捕捉到恶意IP后执行的操作，本文使用iptables对IP封禁所有端口<br>logpath：需要监控的日志文件<br>bantime：封禁时间，单位为秒<br>findtime：查找时间段，单位为秒<br>maxretry：允许的最大失败次数，这里我们配置10分钟内触发10次规则，那么就封禁掉</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#DEFAULT-START</span></span><br><span class="line">[DEFAULT]</span><br><span class="line">ignoreip = 127.0.0.1/8</span><br><span class="line">bantime = 600</span><br><span class="line">findtime = 300</span><br><span class="line">maxretry = 5</span><br><span class="line">banaction = ufw</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line"><span class="comment">#DEFAULT-END</span></span><br><span class="line"></span><br><span class="line">[sshd]</span><br><span class="line">enabled = <span class="literal">true</span></span><br><span class="line">filter = sshd</span><br><span class="line">port = 22</span><br><span class="line">maxretry = 3</span><br><span class="line">findtime = 300</span><br><span class="line">bantime = 600000</span><br><span class="line">banaction = ufw</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">logpath = /var/log/auth.log</span><br><span class="line"></span><br><span class="line">[frp]</span><br><span class="line">enabled = <span class="literal">true</span></span><br><span class="line">findtime = 600</span><br><span class="line">maxretry = 5</span><br><span class="line">bantime = -1</span><br><span class="line">filter = frps</span><br><span class="line">logpath = /opt/1panel/apps/frps/frps/log/frps.log </span><br><span class="line">protocol = all</span><br><span class="line">chain = all</span><br><span class="line">port = all</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-安装frpc"><a href="#4-安装frpc" class="headerlink" title="4. 安装frpc"></a>4. 安装frpc</h2><p>在本地闲置电脑安装frpc，也用docker的方式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --restart always --network host --name frpc -v /data/frpc/frpc.toml:/etc/frp/frpc.toml snowdreamtech/frpc</span><br></pre></td></tr></table></figure>
+
+<p>根据官网（<a href="https://gofrp.org/zh-cn/docs/reference/client-configures/%EF%BC%89%E7%9A%84%E6%8F%90%E7%A4%BA%E9%85%8D%E7%BD%AE">https://gofrp.org/zh-cn/docs/reference/client-configures/）的提示配置</a></p>
+<p>这是我使用的配置，需要把汉字部分修改为自己需要的设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user = <span class="string">&quot;LinuxDo&quot;</span></span><br><span class="line">serverAddr = <span class="string">&quot;连接服务端的地址。&quot;</span></span><br><span class="line">serverPort = 连接服务端的端口，默认为 7000。</span><br><span class="line">auth.method = <span class="string">&quot;token&quot;</span></span><br><span class="line">auth.token = <span class="string">&quot;在 method 为 token 时生效，客户端需要设置一样的值才能鉴权通过。&quot;</span></span><br><span class="line">log.to = <span class="string">&quot;console&quot;</span></span><br><span class="line">transport.tcpMux = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;LinuxDo&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 8080</span><br><span class="line">remotePort = 80</span><br></pre></td></tr></table></figure>
+
+<p>现在应该就能正常访问本地的服务了</p>
+<h2 id="5-frps添加https（纯IP地址申请TLS证书，避免国内小鸡需要备份的问题）"><a href="#5-frps添加https（纯IP地址申请TLS证书，避免国内小鸡需要备份的问题）" class="headerlink" title="5. frps添加https（纯IP地址申请TLS证书，避免国内小鸡需要备份的问题）"></a>5. frps添加https（纯IP地址申请TLS证书，避免国内小鸡需要备份的问题）</h2><p>可以颁布的证书网站（<a href="https://zerossl.com/?fpr=ourlco%EF%BC%89">https://zerossl.com/?fpr=ourlco）</a></p>
+<p>缺点：只有90天，需要手动创建，手机app使用时需要手动导入证书</p>
+<p>下面只说明获得证书后，把ssl的三个文件放到<code>/data/frpc/data</code>文件夹下</p>
+<p>增加frpc配置文件</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;LinuxDo&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">81</span></span><br><span class="line"><span class="section">[proxies.plugin]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;https2http&quot;</span></span><br><span class="line"><span class="attr">localAddr</span> = <span class="string">&quot;127.0.0.1:8080&quot;</span></span><br><span class="line"><span class="attr">hostHeaderRewrite</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">requestHeaders.set.x-from-where</span> = <span class="string">&quot;frp&quot;</span></span><br><span class="line"><span class="attr">crtPath</span> = <span class="string">&quot;/etc/frp/ssl/certificate.crt&quot;</span></span><br><span class="line"><span class="attr">keyPath</span> = <span class="string">&quot;/etc/frp/ssl/private.key&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>重新创建frpc</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop frpc &amp;&amp; \</span><br><span class="line">docker <span class="built_in">rm</span> frpc &amp;&amp; \</span><br><span class="line">docker run -d --restart always --network host --name frpc -v /data/frpc/:/etc/frp/ snowdreamtech/frpc</span><br></pre></td></tr></table></figure>
+
+<p>尝试过直接用cf隧道指向国内小鸡，但是fail2ban拿到的ip是小鸡ip，所以就改用了这种方式</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="frps安装"><a href="#frps安装" class="headerlink" title="frps安装"></a>frps安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name frps snowdreamtech/frps</span><br><span class="line">docker <span class="built_in">cp</span> frps:/etc/frp /data/frpc/</span><br><span class="line">docker stop frps &amp;&amp; docker <span class="built_in">rm</span> frps</span><br><span class="line">docker run -d --restart always --network host --name frps -v /data/frpc/:/etc/frp/ snowdreamtech/frps</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Frp</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Frp</tag>
       </tags>
   </entry>
 </search>

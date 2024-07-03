@@ -109,4 +109,6 @@
 {"title":"mysql主从设置","url":"/2024/07/01/mysql/mysql主从设置/"},
 {"title":"对Hexo博客静态资源进行压缩","url":"/2024/07/02/hexo/对Hexo博客静态资源进行压缩/"},
 {"title":"Bilihepler-personal安装","url":"/2024/07/03/docker/Bilihepler-personal安装/"},
+{"title":"通过fail2ban服务监控frps日志实现禁止非法IP","url":"/2024/07/03/linux/fail2ban/通过fail2ban服务监控frps日志实现禁止非法IP/"},
+{"title":"Frp穿透及防护","url":"/2024/07/03/linux/frp/Frp穿透及防护/"},
 ]
