@@ -8255,6 +8255,29 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>打开双重el-dialog后出现遮罩</title>
+    <url>/4b5ecca296b4.html</url>
+    <content><![CDATA[<p>环境：vue2，element</p>
+<h2 id="打开双重el-dialog后出现遮罩"><a href="#打开双重el-dialog后出现遮罩" class="headerlink" title="打开双重el-dialog后出现遮罩"></a>打开双重el-dialog后出现遮罩</h2><img src="/4b5ecca296b4/image.png" class="" alt="alt text">
+
+<p>点击一下后</p>
+<img src="/4b5ecca296b4/image-1.png" class="" alt="alt text">
+
+<p>这能明显的看出差距</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在第二个dialog添加<code>append-to-body</code></p>
+<img src="/4b5ecca296b4/image-2.png" class="" alt="alt text">]]></content>
+      <categories>
+        <category>问题</category>
+        <category>Vue</category>
+        <category>element</category>
+      </categories>
+      <tags>
+        <tag>问题</tag>
+        <tag>Vue</tag>
+        <tag>element</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>问题：因为在此系统上禁止运行脚本。</title>
     <url>/97a7c37c065d.html</url>
     <content><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>在VSCode终端使用npm命令时，出现如下报错信息：</p>
