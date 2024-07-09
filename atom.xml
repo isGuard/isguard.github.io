@@ -6,7 +6,7 @@
   <link href="https://blog.48626.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.48626.xyz/"/>
-  <updated>2024-07-08T08:46:03.000Z</updated>
+  <updated>2024-07-09T14:55:26.000Z</updated>
   <id>https://blog.48626.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>达梦数据库备份还原</title>
+    <link href="https://blog.48626.xyz/f39d21b18adb.html"/>
+    <id>https://blog.48626.xyz/f39d21b18adb.html</id>
+    <published>2024-07-09T14:55:26.000Z</published>
+    <updated>2024-07-09T14:55:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>备份的文件夹：格式大致为<code>/opt/dmdbms/data/DAMENG/bak/DB_DAMENG_FULL_xxxxxxxxxxx</code><br>我当前环境为docker，所以已docker容器演示</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入docker容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it dm8 /bin/bash</span><br><span class="line"><span class="comment"># 进入指定目录</span></span><br><span class="line"><span class="built_in">cd</span> /opt/dmdbms/bin</span><br></pre></td></tr></table></figure><h2 id="关闭数据库"><a href="#关闭数据库" class="headerlink" title="关闭数据库"></a>关闭数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./disql</span><br><span class="line"><span class="comment"># 账号</span></span><br><span class="line"><span class="comment"># 密码</span></span><br><span class="line">shutdown immediate;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure><h2 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行还原工具</span></span><br><span class="line">./dmrman</span><br><span class="line"><span class="comment"># 执行还原命令 自行更改还原文件夹的路径和名称</span></span><br><span class="line">restore database <span class="string">&#x27;/opt/dmdbms/data/DAMENG/dm.ini&#x27;</span> from backupset <span class="string">&#x27;/opt/dmdbms/data/DAMENG/bak/DB_DAMENG_FULL_2024_05_30_00_00_00&#x27;</span>;</span><br><span class="line">recover database <span class="string">&#x27;/opt/dmdbms/data/DAMENG/dm.ini&#x27;</span> from backupset <span class="string">&#x27;/opt/dmdbms/data/DAMENG/bak/DB_DAMENG_FULL_2024_05_30_00_00_00&#x27;</span>;</span><br><span class="line">recover database <span class="string">&#x27;/opt/dmdbms/data/DAMENG/dm.ini&#x27;</span> update db_magic;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure><p>重启检查还原情况</p><h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="文件夹访问权限异常"><a href="#文件夹访问权限异常" class="headerlink" title="文件夹访问权限异常"></a>文件夹访问权限异常</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件夹权限</span></span><br><span class="line"><span class="built_in">chown</span> -R dmdba:dinstall DB_DAMENG_FULL_2024_05_30_00_00_00/</span><br><span class="line">su dmdba</span><br><span class="line"><span class="built_in">chown</span> -R root:root DB_DAMENG_FULL_2024_05_30_00_00_00/</span><br></pre></td></tr></table></figure><h2 id="开启归档模式"><a href="#开启归档模式" class="headerlink" title="开启归档模式"></a>开启归档模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE MOUNT;</span><br><span class="line">ALTER DATABASE ADD ARCHIVELOG <span class="string">&#x27;DEST = /home/dmdba/data/DAMENG/arch, TYPE = local, FILE_SIZE = 1024, SPACE_LIMIT = 2048&#x27;</span>;</span><br><span class="line">ALTER DATABASE ARCHIVELOG;</span><br><span class="line">ALTER DATABASE OPEN;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;备份的文件夹：格式大致为&lt;code&gt;/opt/dmdbms/data/DAMENG/bak/DB_DAMENG_FULL_xxxxxxxxxxx&lt;/code&gt;&lt;br&gt;我当前环境为docker，所以已docker容器演示&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 进入docker容器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker &lt;span class=&quot;built_in&quot;&gt;exec&lt;/span&gt; -it dm8 /bin/bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 进入指定目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /opt/dmdbms/bin&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="达梦" scheme="https://blog.48626.xyz/categories/%E8%BE%BE%E6%A2%A6/"/>
+    
+    
+    <category term="达梦" scheme="https://blog.48626.xyz/tags/%E8%BE%BE%E6%A2%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>打开双重el-dialog后出现遮罩</title>
@@ -479,31 +501,6 @@
     
     
     <category term="docker" scheme="https://blog.48626.xyz/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装GitLab</title>
-    <link href="https://blog.48626.xyz/691ac33530f0.html"/>
-    <id>https://blog.48626.xyz/691ac33530f0.html</id>
-    <published>2024-05-15T15:34:58.000Z</published>
-    <updated>2024-05-15T15:34:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">  --hostname gitlab.example.com \</span><br><span class="line">  --publish 443:443 --publish 80:80 --publish 22:22 \</span><br><span class="line">  --name gitlab \</span><br><span class="line">  --restart always \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/config:/etc/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/logs:/var/log/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/data:/var/opt/gitlab:Z \</span><br><span class="line">  --shm-size 256m \</span><br><span class="line">  gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure><h2 id="登录GitLab"><a href="#登录GitLab" class="headerlink" title="登录GitLab"></a>登录GitLab</h2><ol><li><p>获取GitLab的登录密码。</p><ul><li>Linux安装包方式：<code>sudo cat /etc/gitlab/initial_root_password</code></li><li>Docker Engine安装方式：<code>sudo docker exec -it gitlab grep &#39;Password:&#39; /etc/gitlab/initial_root_password</code></li></ul><p>回显信息类似如下所示，您可以在<code>Password</code>后获取GitLab的初始登录密码。</p><p><strong>重要</strong></p><p>出于安全原因，24小时后，该文件会被自动删除，建议您安装成功，首次登录之后，立即修改初始密码。</p></li><li><p>登录GitLab。</p><ul><li>Linux安装包方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP</em>即可进入GitLab的登录界面。</li><li>Docker Engine安装方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP:8080</em>即可进入GitLab的登录界面。</li></ul><p>首次登录使用用户名<code>root</code>，密码为步骤<a href="https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-gitlab#8c9d01b0880v4">1</a>获取的密码。</p></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;命令&quot;&gt;&lt;a href=&quot;#命令&quot; class=&quot;headerlink&quot; title=&quot;命令&quot;&gt;&lt;/a&gt;命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker run --detach &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --hostname gitlab.example.com &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --publish 443:443 --publish 80:80 --publish 22:22 &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --name gitlab &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --restart always &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --volume &lt;span class=&quot;variable&quot;&gt;$GITLAB_HOME&lt;/span&gt;/config:/etc/gitlab:Z &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --volume &lt;span class=&quot;variable&quot;&gt;$GITLAB_HOME&lt;/span&gt;/logs:/var/log/gitlab:Z &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --volume &lt;span class=&quot;variable&quot;&gt;$GITLAB_HOME&lt;/span&gt;/data:/var/opt/gitlab:Z &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --shm-size 256m &#92;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  gitlab/gitlab-ce:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;登录GitLab&quot;&gt;&lt;a href=&quot;#登录GitLab&quot; class=&quot;headerlink&quot; title=&quot;登录GitLab&quot;&gt;&lt;/a&gt;登录GitLab&lt;/h2&gt;</summary>
-    
-    
-    
-    <category term="gitLab" scheme="https://blog.48626.xyz/categories/gitLab/"/>
-    
-    
-    <category term="docker" scheme="https://blog.48626.xyz/tags/docker/"/>
-    
-    <category term="gitLab" scheme="https://blog.48626.xyz/tags/gitLab/"/>
     
   </entry>
   
