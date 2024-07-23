@@ -6,7 +6,7 @@
   <link href="https://blog.48626.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.48626.xyz/"/>
-  <updated>2024-07-09T14:55:26.000Z</updated>
+  <updated>2024-07-23T03:25:04.000Z</updated>
   <id>https://blog.48626.xyz/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker清理没有引用的镜像</title>
+    <link href="https://blog.48626.xyz/c77015022e9e.html"/>
+    <id>https://blog.48626.xyz/c77015022e9e.html</id>
+    <published>2024-07-23T03:25:04.000Z</published>
+    <updated>2024-07-23T03:25:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure><p>这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune -a</span><br></pre></td></tr></table></figure><p>如果你只想删除未被使用的镜像，但保留有标签的镜像（可能在将来会用到），可以先列出未被使用的镜像：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure><p>然后根据这个列表手动删除每个镜像：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> $(docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure><p>这些命令可以帮助你清理掉那些不再使用的 Docker 镜像，释放磁盘空间。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker image prune&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="docker" scheme="https://blog.48626.xyz/categories/docker/"/>
+    
+    
+    <category term="docker" scheme="https://blog.48626.xyz/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>达梦数据库备份还原</title>
@@ -471,29 +495,6 @@
 &lt;p&gt;因为版本更新原因推荐安装前去&lt;a href=&quot;https://github.com/docker/compose%E6%9F%A5%E8%AF%A2%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC&quot;&gt;https://github.com/docker/compose查询最新版本&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;运行下边的命令来安装 Compose：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="docker" scheme="https://blog.48626.xyz/categories/docker/"/>
-    
-    
-    <category term="docker" scheme="https://blog.48626.xyz/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker开发2375及生成证书</title>
-    <link href="https://blog.48626.xyz/cf04ccc48d79.html"/>
-    <id>https://blog.48626.xyz/cf04ccc48d79.html</id>
-    <published>2024-05-15T15:34:58.000Z</published>
-    <updated>2024-05-15T15:34:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="证书生成"><a href="#证书生成" class="headerlink" title="证书生成"></a>证书生成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim docker-tls.sh</span><br></pre></td></tr></table></figure><p>输入下面的脚本及修改脚本内容 </p><h3 id="证书生成脚本"><a href="#证书生成脚本" class="headerlink" title="证书生成脚本"></a>证书生成脚本</h3><p>需要修改 SERVER PASSWORD COUNTRY STATE CITY ORGANIZATION ORGANIZATIONAL_UNIT EMAIL</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#Docker tls script</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#settings</span></span><br><span class="line">SERVER=<span class="string">&quot;服务器ip记得写哇&quot;</span></span><br><span class="line">PASSWORD=<span class="string">&quot;1qaz2wsx3edc&quot;</span></span><br><span class="line">COUNTRY=<span class="string">&quot;CN&quot;</span></span><br><span class="line">STATE=<span class="string">&quot;sichuan&quot;</span></span><br><span class="line">CITY=<span class="string">&quot;chengdu&quot;</span></span><br><span class="line">ORGANIZATION=<span class="string">&quot;&quot;</span></span><br><span class="line">ORGANIZATIONAL_UNIT=<span class="string">&quot;Dev&quot;</span></span><br><span class="line">EMAIL=<span class="string">&quot;isguard@outlook.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">###start###</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;script start&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#gen ca.pem - aes256   </span></span><br><span class="line">openssl genrsa -aes256 -passout pass:<span class="variable">$PASSWORD</span> -out ca-key.pem 4096</span><br><span class="line"></span><br><span class="line">openssl req -new -x509 -passin <span class="string">&quot;pass:<span class="variable">$PASSWORD</span>&quot;</span> -days 365 -key ca-key.pem -sha256 -out ca.pem -subj <span class="string">&quot;/C=<span class="variable">$COUNTRY</span>/ST=<span class="variable">$STATE</span>/L=<span class="variable">$CITY</span>/O=<span class="variable">$ORGANIZATION</span>/OU=<span class="variable">$ORGANIZATIONAL_UNIT</span>/CN=<span class="variable">$SERVER</span>/emailAddress=<span class="variable">$EMAIL</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#gen server cert</span></span><br><span class="line">openssl genrsa -out server-key.pem 4096</span><br><span class="line"></span><br><span class="line">openssl req -subj <span class="string">&quot;/CN=<span class="variable">$SERVER</span>&quot;</span> -sha256 -new -key server-key.pem -out server.csr</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> subjectAltName = IP:<span class="variable">$SERVER</span>,IP:0.0.0.0 &gt;&gt; extfile.cnf</span><br><span class="line"><span class="built_in">echo</span> extendedKeyUsage = serverAuth &gt;&gt; extfile.cnf</span><br><span class="line"></span><br><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> server.csr -CA ca.pem -CAkey ca-key.pem -passin <span class="string">&quot;pass:<span class="variable">$PASSWORD</span>&quot;</span> \-CAcreateserial -out server-cert.pem -extfile extfile.cnf</span><br><span class="line"></span><br><span class="line"><span class="comment">#gen client cert</span></span><br><span class="line">openssl genrsa -out key.pem 4096</span><br><span class="line"></span><br><span class="line">openssl req -subj <span class="string">&#x27;/CN=client&#x27;</span> -new -key key.pem -out client.csr</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> extendedKeyUsage = clientAuth &gt;&gt; extfile.cnf</span><br><span class="line"></span><br><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> client.csr -CA ca.pem -CAkey ca-key.pem -passin <span class="string">&quot;pass:<span class="variable">$PASSWORD</span>&quot;</span> \-CAcreateserial -out cert.pem -extfile extfile.cnf</span><br><span class="line"></span><br><span class="line"><span class="comment">#cert authorized</span></span><br><span class="line"><span class="built_in">chmod</span> -v 0400 ca-key.pem key.pem server-key.pem</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> -v 0444 ca.pem server-cert.pem cert.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">#del useless file</span></span><br><span class="line"><span class="built_in">rm</span> client.csr server.csr</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;script done&quot;</span></span><br><span class="line"><span class="comment">###end###</span></span><br></pre></td></tr></table></figure><h2 id="docker服务设置使用证书远程访问"><a href="#docker服务设置使用证书远程访问" class="headerlink" title="docker服务设置使用证书远程访问"></a>docker服务设置使用证书远程访问</h2><p>以下操作在docker服务器中进行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x docker-tls.sh</span><br><span class="line">./docker-tls.sh</span><br></pre></td></tr></table></figure><h3 id="修改docker配置文件"><a href="#修改docker配置文件" class="headerlink" title="修改docker配置文件"></a>修改docker配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到ExecStart前缀内容</span></span><br><span class="line"><span class="comment"># 修改内容并添加tls</span></span><br><span class="line">ExecStart=/usr/bin/dockerd  --tlsverify --tlscacert=/data/docker/ca.pem  --tlscert=/data/docker/server-cert.pem --tlskey=/data/docker/server-key.pem -H tcp://0.0.0.0:2375 -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line"><span class="comment"># 也可以修改端口</span></span><br><span class="line">ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=/data/docker/ca.pem  --tlscert=/data/docker/server-cert.pem --tlskey=/data/docker/server-key.pem -H tcp://0.0.0.0:9999 -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line"></span><br><span class="line"><span class="comment"># --containerd=/run/containerd/containerd.sock可替换</span></span><br><span class="line">-H unix:///var/run/docker.sock</span><br></pre></td></tr></table></figure><h3 id="重启docker服务"><a href="#重启docker服务" class="headerlink" title="重启docker服务"></a>重启docker服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure><h3 id="连接验证"><a href="#连接验证" class="headerlink" title="连接验证"></a>连接验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 127.0.0.1:9999/info --cert /data/docker/cert.pem --key /data/docker/key.pem --cacert /data/docker/ca.pem</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;证书生成&quot;&gt;&lt;a href=&quot;#证书生成&quot; class=&quot;headerlink&quot; title=&quot;证书生成&quot;&gt;&lt;/a&gt;证书生成&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim docker-tls.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;输入下面的脚本及修改脚本内容 &lt;/p&gt;</summary>
     
     
     
