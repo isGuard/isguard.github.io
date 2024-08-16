@@ -616,30 +616,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker清理没有引用的镜像</title>
-    <url>/c77015022e9e.html</url>
-    <content><![CDATA[<p>在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune -a</span><br></pre></td></tr></table></figure>
-
-<p>如果你只想删除未被使用的镜像，但保留有标签的镜像（可能在将来会用到），可以先列出未被使用的镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>然后根据这个列表手动删除每个镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> $(docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这些命令可以帮助你清理掉那些不再使用的 Docker 镜像，释放磁盘空间。</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker内网安装</title>
     <url>/41320709499f.html</url>
     <content><![CDATA[<h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><p><a href="https://download.docker.com/">https://download.docker.com/</a></p>
@@ -663,6 +639,30 @@
 <h2 id="导出镜像或者容器"><a href="#导出镜像或者容器" class="headerlink" title="导出镜像或者容器"></a>导出镜像或者容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 容器 记得指定tag</span></span><br><span class="line">docker save -o rabbitmqmanagement.tar xxx </span><br><span class="line"><span class="comment"># 镜像</span></span><br><span class="line">docker <span class="built_in">export</span> -o SMSServer.tar CONTAINER ID</span><br><span class="line"></span><br><span class="line">docker load &lt; rabbitmqmanagement.tar </span><br><span class="line"></span><br><span class="line">docker import SMSServer.tar smsserver</span><br><span class="line"><span class="comment">#重命名</span></span><br><span class="line">docker tag [镜像<span class="built_in">id</span>] [新镜像名称]:[新镜像标签]</span><br></pre></td></tr></table></figure>
 
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="Error-response-from-daemon-No-command-specified"><a href="#Error-response-from-daemon-No-command-specified" class="headerlink" title="Error response from daemon: No command specified."></a>Error response from daemon: No command specified.</h3><p>run 后缀添加 <code>/bin/ash</code> <code>/bin/bash</code> <code>/bin/sh</code></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker清理没有引用的镜像</title>
+    <url>/c77015022e9e.html</url>
+    <content><![CDATA[<p>在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune -a</span><br></pre></td></tr></table></figure>
+
+<p>如果你只想删除未被使用的镜像，但保留有标签的镜像（可能在将来会用到），可以先列出未被使用的镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>然后根据这个列表手动删除每个镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> $(docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这些命令可以帮助你清理掉那些不再使用的 Docker 镜像，释放磁盘空间。</p>
 ]]></content>
       <categories>
         <category>docker</category>
@@ -3297,6 +3297,79 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>System类</title>
+    <url>/4a050d5d1911.html</url>
+    <content><![CDATA[<p><code>java.lang.System</code>类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：</p>
+<ul>
+<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+<h2 id="currentTimeMillis方法"><a href="#currentTimeMillis方法" class="headerlink" title="currentTimeMillis方法"></a>currentTimeMillis方法</h2><p>实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       	<span class="comment">//获取当前时间毫秒值</span></span><br><span class="line">        System.out.println(System.currentTimeMillis()); <span class="comment">// 1516090531144</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>验证for循环打印数字1-9999所需要使用的时间（毫秒）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时毫秒：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="arraycopy方法"><a href="#arraycopy方法" class="headerlink" title="arraycopy方法"></a>arraycopy方法</h2><ul>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
+<table>
+<thead>
+<tr>
+<th>参数序号</th>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>参数含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>src</td>
+<td>Object</td>
+<td>源数组</td>
+</tr>
+<tr>
+<td>2</td>
+<td>srcPos</td>
+<td>int</td>
+<td>源数组索引起始位置</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dest</td>
+<td>Object</td>
+<td>目标数组</td>
+</tr>
+<tr>
+<td>4</td>
+<td>destPos</td>
+<td>int</td>
+<td>目标数组索引起始位置</td>
+</tr>
+<tr>
+<td>5</td>
+<td>length</td>
+<td>int</td>
+<td>复制元素个数</td>
+</tr>
+</tbody></table>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><p>将src数组中前3个元素，复制到dest数组的前3个位置上复制元素前：src数组元素[1,2,3,4,5]，dest数组元素[6,7,8,9,10]复制元素后：src数组元素[1,2,3,4,5]，dest数组元素[1,2,3,9,10]</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo11SystemArrayCopy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] src = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] dest = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">        System.arraycopy( src, <span class="number">0</span>, dest, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="comment">/*代码运行后：两个数组中的元素发生了变化</span></span><br><span class="line"><span class="comment">         src数组元素[1,2,3,4,5]</span></span><br><span class="line"><span class="comment">         dest数组元素[1,2,3,9,10]</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>String类</title>
     <url>/23efbee0a1ff.html</url>
     <content><![CDATA[<h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>java.lang.String</code>类代表字符串。Java程序中所有的字符串文字（例如<code>&quot;abc&quot;</code>）都可以被看作是实现此类的实例。</p>
@@ -3399,79 +3472,6 @@ new Scanner(System.in).nextInt();
 <li>实现</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;a,b,c&quot;</span>;</span><br><span class="line">    String[] split = str.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; split.length; i++) &#123;</span><br><span class="line">        System.out.print(split[i] + <span class="string">&quot;\t&quot;</span>); <span class="comment">// a	b	c	</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>System类</title>
-    <url>/4a050d5d1911.html</url>
-    <content><![CDATA[<p><code>java.lang.System</code>类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：</p>
-<ul>
-<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
-<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
-</ul>
-<h2 id="currentTimeMillis方法"><a href="#currentTimeMillis方法" class="headerlink" title="currentTimeMillis方法"></a>currentTimeMillis方法</h2><p>实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       	<span class="comment">//获取当前时间毫秒值</span></span><br><span class="line">        System.out.println(System.currentTimeMillis()); <span class="comment">// 1516090531144</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>验证for循环打印数字1-9999所需要使用的时间（毫秒）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时毫秒：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="arraycopy方法"><a href="#arraycopy方法" class="headerlink" title="arraycopy方法"></a>arraycopy方法</h2><ul>
-<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
-</ul>
-<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
-<table>
-<thead>
-<tr>
-<th>参数序号</th>
-<th>参数名称</th>
-<th>参数类型</th>
-<th>参数含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>src</td>
-<td>Object</td>
-<td>源数组</td>
-</tr>
-<tr>
-<td>2</td>
-<td>srcPos</td>
-<td>int</td>
-<td>源数组索引起始位置</td>
-</tr>
-<tr>
-<td>3</td>
-<td>dest</td>
-<td>Object</td>
-<td>目标数组</td>
-</tr>
-<tr>
-<td>4</td>
-<td>destPos</td>
-<td>int</td>
-<td>目标数组索引起始位置</td>
-</tr>
-<tr>
-<td>5</td>
-<td>length</td>
-<td>int</td>
-<td>复制元素个数</td>
-</tr>
-</tbody></table>
-<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><p>将src数组中前3个元素，复制到dest数组的前3个位置上复制元素前：src数组元素[1,2,3,4,5]，dest数组元素[6,7,8,9,10]复制元素后：src数组元素[1,2,3,4,5]，dest数组元素[1,2,3,9,10]</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo11SystemArrayCopy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] src = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] dest = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">        System.arraycopy( src, <span class="number">0</span>, dest, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="comment">/*代码运行后：两个数组中的元素发生了变化</span></span><br><span class="line"><span class="comment">         src数组元素[1,2,3,4,5]</span></span><br><span class="line"><span class="comment">         dest数组元素[1,2,3,9,10]</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -5703,6 +5703,72 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>权限修饰符</title>
+    <url>/3386d11ae051.html</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限</p>
+<ul>
+<li>public：公共的。</li>
+<li>protected：受保护的</li>
+<li>default：默认的</li>
+<li>private：私有的</li>
+</ul>
+<h2 id="不同权限的访问能力"><a href="#不同权限的访问能力" class="headerlink" title="不同权限的访问能力"></a>不同权限的访问能力</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>default</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同一类中</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>同一包中（子类于无关类）</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>不同包的子类</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>不同包中的无关类</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>编写代码时，如果没有特殊的考虑，建议这样使用权限：</p>
+<ul>
+<li>成员变量使用private，隐藏细节。</li>
+<li>构造方法使用public，方便创建对象。</li>
+<li>成员方法使用public，方便调用方法。</li>
+</ul>
+<blockquote>
+<p>不加权限修饰符，其访问能力与default修饰符相同</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日期时间类</title>
     <url>/bc108bd5803f.html</url>
     <content><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><code> java.util.Date</code>类 表示特定的瞬间，精确到毫秒（1000毫秒&#x3D;1秒）。</p>
@@ -5866,72 +5932,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>权限修饰符</title>
-    <url>/3386d11ae051.html</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限</p>
-<ul>
-<li>public：公共的。</li>
-<li>protected：受保护的</li>
-<li>default：默认的</li>
-<li>private：私有的</li>
-</ul>
-<h2 id="不同权限的访问能力"><a href="#不同权限的访问能力" class="headerlink" title="不同权限的访问能力"></a>不同权限的访问能力</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>public</th>
-<th>protected</th>
-<th>default</th>
-<th>private</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>同一类中</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>同一包中（子类于无关类）</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-</tr>
-<tr>
-<td>不同包的子类</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>不同包中的无关类</td>
-<td>√</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>编写代码时，如果没有特殊的考虑，建议这样使用权限：</p>
-<ul>
-<li>成员变量使用private，隐藏细节。</li>
-<li>构造方法使用public，方便创建对象。</li>
-<li>成员方法使用public，方便调用方法。</li>
-</ul>
-<blockquote>
-<p>不加权限修饰符，其访问能力与default修饰符相同</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>泛型</title>
     <url>/1dac7439d105.html</url>
     <content><![CDATA[<h2 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h2><p>集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。</p>
@@ -6044,64 +6044,18 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>等待唤醒机制</title>
-    <url>/62920509bd6f.html</url>
-    <content><![CDATA[<h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
-<p>比如：线程A用来生成包子的，线程B用来吃包子的，包子可以理解为同一资源，线程A与线程B处理的动作，一个是生产，一个是消费，那么线程A与线程B之间就存在线程通信问题。</p>
-<img src="/62920509bd6f/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.bmp" class="">
+    <title>生成没有前导零的时间格式</title>
+    <url>/a50057efe8bd.html</url>
+    <content><![CDATA[<p>在Java编程中，处理时间格式是一个常见的任务，尤其是在需要特定时间格式输出时。对于一些应用场景，我们可能需要生成没有前导零的时间格式。例如，在一些报告或用户界面中，显示<code>9:5</code>而不是<code>09:05</code>可能看起来更自然或符合特定的设计要求。本文将详细介绍如何在Java中实现这一功能。</p>
+<h4 id="使用SimpleDateFormat类"><a href="#使用SimpleDateFormat类" class="headerlink" title="使用SimpleDateFormat类"></a>使用<code>SimpleDateFormat</code>类</h4><p>在Java中，<code>SimpleDateFormat</code>是处理日期和时间格式的一个非常强大的工具。但是，<code>SimpleDateFormat</code>并没有直接提供去除前导零的选项。不过，我们可以通过一些简单的技巧来实现这一需求。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Calendar</span> <span class="variable">cal</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 标准的时间格式，包含前导零</span></span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;HH:mm&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;标准时间（有前导零）: &quot;</span> + sdf.format(cal.getTime()));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 自定义格式去除前导零</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">customTime</span> <span class="operator">=</span> sdf.format(cal.getTime())</span><br><span class="line">            .replaceFirst(<span class="string">&quot;^0+(?!$)&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">            .replaceAll(<span class="string">&quot;:0+&quot;</span>, <span class="string">&quot;:&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;自定义时间（无前导零）: &quot;</span> + customTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>为什么要处理线程间通信：</strong></p>
-<p>多个线程并发执行时, 在默认情况下CPU是随机切换线程的，当我们需要多个线程来共同完成一件任务，并且我们希望他们有规律的执行, 那么多线程之间需要一些协调通信，以此来帮我们达到多线程共同操作一份数据。</p>
-<p><strong>如何保证线程间通信有效利用资源：</strong></p>
-<p>多个线程在处理同一个资源，并且任务不同时，需要线程通信来帮助解决线程之间对同一个变量的使用或操作。 就是多个线程在操作同一份数据时， 避免对同一共享变量的争夺。也就是我们需要通过一定的手段使各个线程能有效的利用资源。而这种手段即—— <strong>等待唤醒机制。</strong></p>
-<h2 id="等待唤醒机制"><a href="#等待唤醒机制" class="headerlink" title="等待唤醒机制"></a>等待唤醒机制</h2><p><strong>什么是等待唤醒机制</strong></p>
-<p>这是多个线程间的一种<strong>协作</strong>机制。谈到线程我们经常想到的是线程间的<strong>竞争（race）</strong>，比如去争夺锁，但这并不是故事的全部，线程间也会有协作机制。就好比在公司里你和你的同事们，你们可能存在在晋升时的竞争，但更多时候你们更多是一起合作以完成某些任务。</p>
-<p>就是在一个线程进行了规定操作后，就进入等待状态（**wait()<strong>）， 等待其他线程执行完他们的指定代码过后 再将其唤醒（</strong>notify()**）;在有多个线程进行等待时， 如果需要，可以使用 notifyAll()来唤醒所有的等待线程。</p>
-<p>wait&#x2F;notify 就是线程间的一种协作机制。</p>
-<p><strong>等待唤醒中的方法</strong></p>
-<p>等待唤醒机制就是用于解决线程间通信的问题的，使用到的3个方法的含义如下：</p>
-<ol>
-<li>wait：线程不再活动，不再参与调度，进入 wait set 中，因此不会浪费 CPU 资源，也不会去竞争锁了，这时的线程状态即是 WAITING。它还要等着别的线程执行一个<strong>特别的动作</strong>，也即是“<strong>通知（notify）</strong>”在这个对象上等待的线程从wait set 中释放出来，重新进入到调度队列（ready queue）中</li>
-<li>notify：则选取所通知对象的 wait set 中的一个线程释放；例如，餐馆有空位置后，等候就餐最久的顾客最先入座。</li>
-<li>notifyAll：则释放所通知对象的 wait set 上的全部线程。</li>
-</ol>
-<blockquote>
-<p>注意：</p>
-<p>哪怕只通知了一个等待的线程，被通知线程也不能立即恢复执行，因为它当初中断的地方是在同步块内，而此刻它已经不持有锁，所以她需要再次尝试去获取锁（很可能面临其它线程的竞争），成功后才能在当初调用 wait 方法之后的地方恢复执行。</p>
-<p>总结如下：</p>
-<ul>
-<li>如果能获取锁，线程就从 WAITING 状态变成 RUNNABLE 状态；</li>
-<li>否则，从 wait set 出来，又进入 entry set，线程就从 WAITING 状态又变成 BLOCKED 状态</li>
-</ul>
-</blockquote>
-<p><strong>调用wait和notify方法需要注意的细节</strong></p>
-<ol>
-<li>wait方法与notify方法必须要由同一个锁对象调用。因为：对应的锁对象可以通过notify唤醒使用同一个锁对象调用的wait方法后的线程。</li>
-<li>wait方法与notify方法是属于Object类的方法的。因为：锁对象可以是任意对象，而任意对象的所属类都是继承了Object类的。</li>
-<li>wait方法与notify方法必须要在同步代码块或者是同步函数中使用。因为：必须要通过锁对象调用这2个方法。</li>
-</ol>
-<h2 id="生产者与消费者问题"><a href="#生产者与消费者问题" class="headerlink" title="生产者与消费者问题"></a>生产者与消费者问题</h2><p>等待唤醒机制其实就是经典的“生产者与消费者”的问题。</p>
-<p>就拿生产包子消费包子来说等待唤醒机制如何有效利用资源：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">包子铺线程生产包子，吃货线程消费包子。</span><br><span class="line">  当包子没有时（包子状态为<span class="literal">false</span>），</span><br><span class="line">  吃货线程等待，</span><br><span class="line">  包子铺线程生产包子（即包子状态为<span class="literal">true</span>），</span><br><span class="line">  并通知吃货线程（解除吃货的等待状态）,</span><br><span class="line">因为已经有包子了，那么包子铺线程进入等待状态。</span><br><span class="line">  接下来，吃货线程能否进一步执行则取决于锁的获取情况。</span><br><span class="line">  如果吃货获取到锁，那么就执行吃包子动作，</span><br><span class="line">  包子吃完（包子状态为<span class="literal">false</span>），并通知包子铺线程（解除包子铺的等待状态）,吃货线程进入等待。</span><br><span class="line">  包子铺线程能否进一步执行则取决于锁的获取情况。</span><br></pre></td></tr></table></figure>
+<p>上面的代码示例中，我们首先创建了一个<code>SimpleDateFormat</code>对象来生成标准的时间格式。然后，通过正则表达式替换的方式去除了小时和分钟的前导零。这种方法虽然有效，但它依赖于字符串操作，可能不是最优雅的解决方案。</p>
+<h4 id="使用DateTimeFormatter类（Java-8-）"><a href="#使用DateTimeFormatter类（Java-8-）" class="headerlink" title="使用DateTimeFormatter类（Java 8+）"></a>使用<code>DateTimeFormatter</code>类（Java 8+）</h4><p>从Java 8开始，<code>DateTimeFormatter</code>类提供了更强大和灵活的日期时间格式化选项。我们可以使用这个类来直接构建没有前导零的时间格式。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"><span class="keyword">import</span> java.time.format.DateTimeFormatter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用DateTimeFormatter创建没有前导零的时间格式</span></span><br><span class="line">        <span class="type">DateTimeFormatter</span> <span class="variable">dtf</span> <span class="operator">=</span> DateTimeFormatter.ofPattern(<span class="string">&quot;H:m&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;时间（无前导零）: &quot;</span> + now.format(dtf));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>代码演示：</strong></p>
-<p>包子资源类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaoZi</span> &#123;</span><br><span class="line">     String  pier ;</span><br><span class="line">     String  xianer ;</span><br><span class="line">     <span class="type">boolean</span>  <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span> ;<span class="comment">//包子资源 是否存在  包子资源状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>吃货线程类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChiHuo</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ChiHuo</span><span class="params">(String name,BaoZi bz)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">        <span class="built_in">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="literal">false</span>)&#123;<span class="comment">//没包子</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        bz.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;吃货正在吃&quot;</span>+bz.pier+bz.xianer+<span class="string">&quot;包子&quot;</span>);</span><br><span class="line">                bz.flag = <span class="literal">false</span>;</span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>包子铺线程类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaoZiPu</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BaoZiPu</span><span class="params">(String name,BaoZi bz)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">        <span class="built_in">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//造包子</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="comment">//同步</span></span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="literal">true</span>)&#123;<span class="comment">//包子资源  存在</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">                        bz.wait();</span><br><span class="line"></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 没有包子  造包子</span></span><br><span class="line">                System.out.println(<span class="string">&quot;包子铺开始做包子&quot;</span>);</span><br><span class="line">                <span class="keyword">if</span>(count%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="comment">// 冰皮  五仁</span></span><br><span class="line">                    bz.pier = <span class="string">&quot;冰皮&quot;</span>;</span><br><span class="line">                    bz.xianer = <span class="string">&quot;五仁&quot;</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">// 薄皮  牛肉大葱</span></span><br><span class="line">                    bz.pier = <span class="string">&quot;薄皮&quot;</span>;</span><br><span class="line">                    bz.xianer = <span class="string">&quot;牛肉大葱&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">                bz.flag=<span class="literal">true</span>;</span><br><span class="line">                System.out.println(<span class="string">&quot;包子造好了：&quot;</span>+bz.pier+bz.xianer);</span><br><span class="line">                System.out.println(<span class="string">&quot;吃货来吃吧&quot;</span>);</span><br><span class="line">                <span class="comment">//唤醒等待线程 （吃货）</span></span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//等待唤醒案例</span></span><br><span class="line">        <span class="type">BaoZi</span> <span class="variable">bz</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaoZi</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">ChiHuo</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ChiHuo</span>(<span class="string">&quot;吃货&quot;</span>,bz);</span><br><span class="line">        <span class="type">BaoZiPu</span> <span class="variable">bzp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaoZiPu</span>(<span class="string">&quot;包子铺&quot;</span>,bz);</span><br><span class="line"></span><br><span class="line">        ch.start();</span><br><span class="line">        bzp.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行效果：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：薄皮牛肉大葱</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃薄皮牛肉大葱包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br></pre></td></tr></table></figure>
-
-
-
+<p>在这个例子中，<code>H:m</code>模式指定了小时和分钟不带前导零的格式。这种方式不仅简洁，而且是类型安全的，避免了任何可能的类型转换错误。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在Java中，根据你的Java版本和具体需求，你可以选择<code>SimpleDateFormat</code>或<code>DateTimeFormatter</code>来生成没有前导零的时间格式。对于Java 8及以上版本，推荐使用<code>DateTimeFormatter</code>因为它提供了更好的API支持和性能。通过这些工具，你可以灵活地处理时间格式，满足各种应用场景的需求。</p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -6173,6 +6127,131 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>等待唤醒机制</title>
+    <url>/62920509bd6f.html</url>
+    <content><![CDATA[<h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
+<p>比如：线程A用来生成包子的，线程B用来吃包子的，包子可以理解为同一资源，线程A与线程B处理的动作，一个是生产，一个是消费，那么线程A与线程B之间就存在线程通信问题。</p>
+<img src="/62920509bd6f/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.bmp" class="">
+
+<p><strong>为什么要处理线程间通信：</strong></p>
+<p>多个线程并发执行时, 在默认情况下CPU是随机切换线程的，当我们需要多个线程来共同完成一件任务，并且我们希望他们有规律的执行, 那么多线程之间需要一些协调通信，以此来帮我们达到多线程共同操作一份数据。</p>
+<p><strong>如何保证线程间通信有效利用资源：</strong></p>
+<p>多个线程在处理同一个资源，并且任务不同时，需要线程通信来帮助解决线程之间对同一个变量的使用或操作。 就是多个线程在操作同一份数据时， 避免对同一共享变量的争夺。也就是我们需要通过一定的手段使各个线程能有效的利用资源。而这种手段即—— <strong>等待唤醒机制。</strong></p>
+<h2 id="等待唤醒机制"><a href="#等待唤醒机制" class="headerlink" title="等待唤醒机制"></a>等待唤醒机制</h2><p><strong>什么是等待唤醒机制</strong></p>
+<p>这是多个线程间的一种<strong>协作</strong>机制。谈到线程我们经常想到的是线程间的<strong>竞争（race）</strong>，比如去争夺锁，但这并不是故事的全部，线程间也会有协作机制。就好比在公司里你和你的同事们，你们可能存在在晋升时的竞争，但更多时候你们更多是一起合作以完成某些任务。</p>
+<p>就是在一个线程进行了规定操作后，就进入等待状态（**wait()<strong>）， 等待其他线程执行完他们的指定代码过后 再将其唤醒（</strong>notify()**）;在有多个线程进行等待时， 如果需要，可以使用 notifyAll()来唤醒所有的等待线程。</p>
+<p>wait&#x2F;notify 就是线程间的一种协作机制。</p>
+<p><strong>等待唤醒中的方法</strong></p>
+<p>等待唤醒机制就是用于解决线程间通信的问题的，使用到的3个方法的含义如下：</p>
+<ol>
+<li>wait：线程不再活动，不再参与调度，进入 wait set 中，因此不会浪费 CPU 资源，也不会去竞争锁了，这时的线程状态即是 WAITING。它还要等着别的线程执行一个<strong>特别的动作</strong>，也即是“<strong>通知（notify）</strong>”在这个对象上等待的线程从wait set 中释放出来，重新进入到调度队列（ready queue）中</li>
+<li>notify：则选取所通知对象的 wait set 中的一个线程释放；例如，餐馆有空位置后，等候就餐最久的顾客最先入座。</li>
+<li>notifyAll：则释放所通知对象的 wait set 上的全部线程。</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<p>哪怕只通知了一个等待的线程，被通知线程也不能立即恢复执行，因为它当初中断的地方是在同步块内，而此刻它已经不持有锁，所以她需要再次尝试去获取锁（很可能面临其它线程的竞争），成功后才能在当初调用 wait 方法之后的地方恢复执行。</p>
+<p>总结如下：</p>
+<ul>
+<li>如果能获取锁，线程就从 WAITING 状态变成 RUNNABLE 状态；</li>
+<li>否则，从 wait set 出来，又进入 entry set，线程就从 WAITING 状态又变成 BLOCKED 状态</li>
+</ul>
+</blockquote>
+<p><strong>调用wait和notify方法需要注意的细节</strong></p>
+<ol>
+<li>wait方法与notify方法必须要由同一个锁对象调用。因为：对应的锁对象可以通过notify唤醒使用同一个锁对象调用的wait方法后的线程。</li>
+<li>wait方法与notify方法是属于Object类的方法的。因为：锁对象可以是任意对象，而任意对象的所属类都是继承了Object类的。</li>
+<li>wait方法与notify方法必须要在同步代码块或者是同步函数中使用。因为：必须要通过锁对象调用这2个方法。</li>
+</ol>
+<h2 id="生产者与消费者问题"><a href="#生产者与消费者问题" class="headerlink" title="生产者与消费者问题"></a>生产者与消费者问题</h2><p>等待唤醒机制其实就是经典的“生产者与消费者”的问题。</p>
+<p>就拿生产包子消费包子来说等待唤醒机制如何有效利用资源：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">包子铺线程生产包子，吃货线程消费包子。</span><br><span class="line">  当包子没有时（包子状态为<span class="literal">false</span>），</span><br><span class="line">  吃货线程等待，</span><br><span class="line">  包子铺线程生产包子（即包子状态为<span class="literal">true</span>），</span><br><span class="line">  并通知吃货线程（解除吃货的等待状态）,</span><br><span class="line">因为已经有包子了，那么包子铺线程进入等待状态。</span><br><span class="line">  接下来，吃货线程能否进一步执行则取决于锁的获取情况。</span><br><span class="line">  如果吃货获取到锁，那么就执行吃包子动作，</span><br><span class="line">  包子吃完（包子状态为<span class="literal">false</span>），并通知包子铺线程（解除包子铺的等待状态）,吃货线程进入等待。</span><br><span class="line">  包子铺线程能否进一步执行则取决于锁的获取情况。</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码演示：</strong></p>
+<p>包子资源类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaoZi</span> &#123;</span><br><span class="line">     String  pier ;</span><br><span class="line">     String  xianer ;</span><br><span class="line">     <span class="type">boolean</span>  <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span> ;<span class="comment">//包子资源 是否存在  包子资源状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>吃货线程类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChiHuo</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ChiHuo</span><span class="params">(String name,BaoZi bz)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">        <span class="built_in">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="literal">false</span>)&#123;<span class="comment">//没包子</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        bz.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;吃货正在吃&quot;</span>+bz.pier+bz.xianer+<span class="string">&quot;包子&quot;</span>);</span><br><span class="line">                bz.flag = <span class="literal">false</span>;</span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>包子铺线程类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaoZiPu</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BaoZiPu</span><span class="params">(String name,BaoZi bz)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name);</span><br><span class="line">        <span class="built_in">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//造包子</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="comment">//同步</span></span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="literal">true</span>)&#123;<span class="comment">//包子资源  存在</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">                        bz.wait();</span><br><span class="line"></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 没有包子  造包子</span></span><br><span class="line">                System.out.println(<span class="string">&quot;包子铺开始做包子&quot;</span>);</span><br><span class="line">                <span class="keyword">if</span>(count%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="comment">// 冰皮  五仁</span></span><br><span class="line">                    bz.pier = <span class="string">&quot;冰皮&quot;</span>;</span><br><span class="line">                    bz.xianer = <span class="string">&quot;五仁&quot;</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">// 薄皮  牛肉大葱</span></span><br><span class="line">                    bz.pier = <span class="string">&quot;薄皮&quot;</span>;</span><br><span class="line">                    bz.xianer = <span class="string">&quot;牛肉大葱&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">                bz.flag=<span class="literal">true</span>;</span><br><span class="line">                System.out.println(<span class="string">&quot;包子造好了：&quot;</span>+bz.pier+bz.xianer);</span><br><span class="line">                System.out.println(<span class="string">&quot;吃货来吃吧&quot;</span>);</span><br><span class="line">                <span class="comment">//唤醒等待线程 （吃货）</span></span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//等待唤醒案例</span></span><br><span class="line">        <span class="type">BaoZi</span> <span class="variable">bz</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaoZi</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">ChiHuo</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ChiHuo</span>(<span class="string">&quot;吃货&quot;</span>,bz);</span><br><span class="line">        <span class="type">BaoZiPu</span> <span class="variable">bzp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaoZiPu</span>(<span class="string">&quot;包子铺&quot;</span>,bz);</span><br><span class="line"></span><br><span class="line">        ch.start();</span><br><span class="line">        bzp.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行效果：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：薄皮牛肉大葱</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃薄皮牛肉大葱包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程池</title>
+    <url>/d35ec39a86fb.html</url>
+    <content><![CDATA[<h2 id="线程池思想概述"><a href="#线程池思想概述" class="headerlink" title="线程池思想概述"></a>线程池思想概述</h2><img src="/d35ec39a86fb/%E6%B8%B8%E6%B3%B3%E6%B1%A0.jpg" class="">
+
+<p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
+<p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
+<p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
+<p>在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
+<h2 id="线程池概念"><a href="#线程池概念" class="headerlink" title="线程池概念"></a>线程池概念</h2><ul>
+<li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
+</ul>
+<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
+<img src="/d35ec39a86fb/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86.bmp" class="">
+
+<p>合理利用线程池能够带来三个好处：</p>
+<ol>
+<li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
+<li>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
+<li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
+</ol>
+<h2 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
+<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。</p>
+<p>Executors类中有个创建线程池的方法如下：</p>
+<ul>
+<li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
+</ul>
+<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
+<ul>
+<li><p><code>public Future&lt;?&gt; submit(Runnable task)</code>:获取线程池中的某一个线程对象，并执行</p>
+<blockquote>
+<p>Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
+</blockquote>
+</li>
+</ul>
+<p>使用线程池中线程对象的步骤：</p>
+<ol>
+<li>创建线程池对象。</li>
+<li>创建Runnable接口子类对象。(task)</li>
+<li>提交Runnable接口子类对象。(take task)</li>
+<li>关闭线程池(一般不做)。</li>
+</ol>
+<p>Runnable实现类代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我要一个教练&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;教练来了： &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;教我游泳,交完后，教练回到了游泳池&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>线程池测试类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">service</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>);<span class="comment">//包含2个线程对象</span></span><br><span class="line">        <span class="comment">// 创建Runnable实例对象</span></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//自己创建线程对象的方式</span></span><br><span class="line">        <span class="comment">// Thread t = new Thread(r);</span></span><br><span class="line">        <span class="comment">// t.start(); ---&gt; 调用MyRunnable中的run()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从线程池中获取线程对象,然后调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 再获取个线程对象，调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。</span></span><br><span class="line">        <span class="comment">// 将使用完的线程又归还到了线程池中</span></span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        <span class="comment">//service.shutdown();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线程安全</title>
     <url>/eb2b98684098.html</url>
     <content><![CDATA[<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>如果有多个线程在同时运行，而这些线程可能会同时运行这段代码。程序每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。<br>以下将会以卖票作为示例：</p>
@@ -6233,64 +6312,6 @@ new Scanner(System.in).nextInt();
 </ul>
 <p>使用如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Thread_Safe_Demo</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">ticket</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">if</span>(ticket&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">&quot;正在卖,第&quot;</span>+ticket+<span class="string">&quot;张票&quot;</span>);</span><br><span class="line">                    ticket--;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程池</title>
-    <url>/d35ec39a86fb.html</url>
-    <content><![CDATA[<h2 id="线程池思想概述"><a href="#线程池思想概述" class="headerlink" title="线程池思想概述"></a>线程池思想概述</h2><img src="/d35ec39a86fb/%E6%B8%B8%E6%B3%B3%E6%B1%A0.jpg" class="">
-
-<p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
-<p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
-<p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
-<p>在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
-<h2 id="线程池概念"><a href="#线程池概念" class="headerlink" title="线程池概念"></a>线程池概念</h2><ul>
-<li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
-</ul>
-<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
-<img src="/d35ec39a86fb/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86.bmp" class="">
-
-<p>合理利用线程池能够带来三个好处：</p>
-<ol>
-<li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
-<li>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
-<li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
-</ol>
-<h2 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
-<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。</p>
-<p>Executors类中有个创建线程池的方法如下：</p>
-<ul>
-<li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
-</ul>
-<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
-<ul>
-<li><p><code>public Future&lt;?&gt; submit(Runnable task)</code>:获取线程池中的某一个线程对象，并执行</p>
-<blockquote>
-<p>Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
-</blockquote>
-</li>
-</ul>
-<p>使用线程池中线程对象的步骤：</p>
-<ol>
-<li>创建线程池对象。</li>
-<li>创建Runnable接口子类对象。(task)</li>
-<li>提交Runnable接口子类对象。(take task)</li>
-<li>关闭线程池(一般不做)。</li>
-</ol>
-<p>Runnable实现类代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我要一个教练&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;教练来了： &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;教我游泳,交完后，教练回到了游泳池&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>线程池测试类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">service</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>);<span class="comment">//包含2个线程对象</span></span><br><span class="line">        <span class="comment">// 创建Runnable实例对象</span></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//自己创建线程对象的方式</span></span><br><span class="line">        <span class="comment">// Thread t = new Thread(r);</span></span><br><span class="line">        <span class="comment">// t.start(); ---&gt; 调用MyRunnable中的run()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从线程池中获取线程对象,然后调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 再获取个线程对象，调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。</span></span><br><span class="line">        <span class="comment">// 将使用完的线程又归还到了线程池中</span></span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        <span class="comment">//service.shutdown();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -7196,6 +7217,28 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/393a7dbdc35f.html</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img src="/393a7dbdc35f/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img src="/393a7dbdc35f/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img src="/393a7dbdc35f/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
     <url>/6ac9645de8fb.html</url>
     <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
@@ -7221,28 +7264,6 @@ new Scanner(System.in).nextInt();
 <img src="/6ac9645de8fb/image-20200403174218198.png" class="" alt="image-20200403174218198">
 
 <p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/393a7dbdc35f.html</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img src="/393a7dbdc35f/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img src="/393a7dbdc35f/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img src="/393a7dbdc35f/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -7399,6 +7420,50 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装mysql</title>
+    <url>/2d010ac21d89.html</url>
+    <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录"><a href="#在home目录下创建映射目录" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql5/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件"><a href="#创建my-cnf配置文件" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql5/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf"><a href="#my-cnf" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>MySQL(5.7.19)的默认配置文件是 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 文件。</p>
+<p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql5 -v ~/mysql5/conf:/etc/mysql/conf.d -v ~/mysql5/logs:/logs -v ~/mysql5/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -dit -p 3306:3306 mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器5</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql5 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"><span class="comment"># 更新 root的 远程登录为所有</span></span><br><span class="line">update mysql.user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>; </span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"> <span class="comment"># 给用户授权</span></span><br><span class="line">grant all privileges on *.* to root@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql8"><a href="#mysql8" class="headerlink" title="mysql8"></a>mysql8</h2><h3 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录-1"><a href="#在home目录下创建映射目录-1" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql8/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件-1"><a href="#创建my-cnf配置文件-1" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql8/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf-1"><a href="#my-cnf-1" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql8 -v ~/mysql8/conf:/etc/mysql/conf.d -v ~/mysql8/logs:/logs -v ~/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Abcd1234! -dit -p 3306:3306 mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录-1"><a href="#远程登录-1" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器8</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql8 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> host,user from user;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#添加远程登录用户</span></span><br><span class="line">CREATE USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -7591,50 +7656,6 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker安装mysql</title>
-    <url>/2d010ac21d89.html</url>
-    <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
-
-<h3 id="在home目录下创建映射目录"><a href="#在home目录下创建映射目录" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql5/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建my-cnf配置文件"><a href="#创建my-cnf配置文件" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql5/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
-
-<h4 id="my-cnf"><a href="#my-cnf" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>MySQL(5.7.19)的默认配置文件是 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 文件。</p>
-<p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
-<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
-<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql5 -v ~/mysql5/conf:/etc/mysql/conf.d -v ~/mysql5/logs:/logs -v ~/mysql5/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -dit -p 3306:3306 mysql:5.7.37</span><br></pre></td></tr></table></figure>
-
-<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器5</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql5 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"><span class="comment"># 更新 root的 远程登录为所有</span></span><br><span class="line">update mysql.user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>; </span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"> <span class="comment"># 给用户授权</span></span><br><span class="line">grant all privileges on *.* to root@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<h2 id="mysql8"><a href="#mysql8" class="headerlink" title="mysql8"></a>mysql8</h2><h3 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:8</span><br></pre></td></tr></table></figure>
-
-<h3 id="在home目录下创建映射目录-1"><a href="#在home目录下创建映射目录-1" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql8/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建my-cnf配置文件-1"><a href="#创建my-cnf配置文件-1" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql8/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
-
-<h4 id="my-cnf-1"><a href="#my-cnf-1" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
-<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
-<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql8 -v ~/mysql8/conf:/etc/mysql/conf.d -v ~/mysql8/logs:/logs -v ~/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Abcd1234! -dit -p 3306:3306 mysql:8</span><br></pre></td></tr></table></figure>
-
-<h3 id="远程登录-1"><a href="#远程登录-1" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器8</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql8 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> host,user from user;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#添加远程登录用户</span></span><br><span class="line">CREATE USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>docker</category>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -7912,27 +7933,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>异地恋如何维持长久？</title>
-    <url>/42532be6c91f.html</url>
-    <content><![CDATA[<p>异地恋，真的不是一张机票就能解决的事，说的很真实，不是我们不在坚持，而是我们遇到了这些…</p>
-<h2 id="表达障碍"><a href="#表达障碍" class="headerlink" title="表达障碍"></a>表达障碍</h2><p>短信听不到语气，电话看不到表情。<br>其实我没生气，你当真了；我在笑呢，你看不到吧；我哭了呢？抱着手机哭倦了睡过又醒了，你在忙吗？</p>
-<h2 id="共同语言"><a href="#共同语言" class="headerlink" title="共同语言"></a>共同语言</h2><p>如果两个人在一起，两个人的交往圈会溶为共同的圈子，话题永远都在更新。<br>而不在一起的两个人，对彼此身边的环境都会因为陌生而失去兴趣，慢慢的，能说的话只有空洞的“我想你”<br>我在努力找话题呢，不要回信息说”喔，嗯，好”了好吗？</p>
-<h2 id="不安全感"><a href="#不安全感" class="headerlink" title="不安全感"></a>不安全感</h2><p>看了10次手机了，你还是没有回信。你在哪，和谁，在干什么？<br>刚刚拒绝了别人的好意，却禁不住想，你身边的莺莺燕燕，一如我身边的花花草草吗？</p>
-<h2 id="远水不救近火"><a href="#远水不救近火" class="headerlink" title="远水不救近火"></a>远水不救近火</h2><p>我这里下雨了，来伞的是同学的弟弟；我吃饭忘带钱了，来解围的是朋友的朋友。原来你不吭声是因为你生病了，可我再担忧，也不能在你身边端一杯水呢。</p>
-<h2 id="距离产生幻觉"><a href="#距离产生幻觉" class="headerlink" title="距离产生幻觉"></a>距离产生幻觉</h2><p>其实我有些小虚荣，照片有时候修掉了眼袋才给你看；其实你有些小自负，认定的事情就以为自己一定对。<br>为了大老远的爱你，我拒绝接受身边一切说你不好的言论，什么都往好的方向想。你也是吧。<br>其实我们都不是对方想象的那样好。</p>
-<h2 id="距离产生误会"><a href="#距离产生误会" class="headerlink" title="距离产生误会"></a>距离产生误会</h2><p>我兴冲冲地发短信给你讲刚刚的趣事，你隔了半天说“喔”，我不知道你在上课的嘛，所以我生闷气了。<br>你给我发了八条短信两个电话我也没回，愤怒得嗷嗷直叫，我在做头发呢，包包寄存了嘛，哪知道手机响着响着没电了。<br>其实我们都知道对方不是故意的，但情绪来了，总需要宣泄的。</p>
-<h2 id="善意的谎言"><a href="#善意的谎言" class="headerlink" title="善意的谎言"></a>善意的谎言</h2><p>我碰巧和相熟的男生去看电影了，想了想，对你说和女生去的。<br>你独自去了我们约好要一起去的地方，犹豫再三，对我说你哪也没去。<br>不愿让对方多想，却因为偶尔的疏忽，放对方想的更多。</p>
-<h2 id="寂寞"><a href="#寂寞" class="headerlink" title="寂寞"></a>寂寞</h2><p>一个人不寂寞，想念一个人才寂寞。<br>你说，来，抱抱。于是我把自己裹在被窝里，闭上眼，恩，抱抱。<br>从学校回家的路上，你还抬头看月亮吗？</p>
-<h2 id="信念坍塌"><a href="#信念坍塌" class="headerlink" title="信念坍塌"></a>信念坍塌</h2><p>我看到身边一对一对的，男生帮女生打开水送饭，在宿舍楼下唧唧我我，周末还能一起爬山，没忍住就对在地图对角线上的你发牢骚，其实是想听你的鼓励。<br>刚刚好你接到朋友异地恋分手倾诉的电话，那么容易就把自己带入了戏，无心的抱怨雪上加霜。<br>有时候折腾一下，只为证明自己的重要性。<br>哪知脆弱基础上的高楼只须多压一根头发的重量，也许就崩溃了…</p>
-<blockquote class="blockquote-center">没有人可以带走你的痛，所以也别让任何人带走你的幸福</blockquote>]]></content>
-      <categories>
-        <category>摘要</category>
-      </categories>
-      <tags>
-        <tag>摘要</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>这个年纪</title>
     <url>/78e70d2223dc.html</url>
     <content><![CDATA[<p>这个年纪<br>作曲 : 齐一<br>作词 : 齐一</p>
@@ -7972,6 +7972,27 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>摘要</tag>
         <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异地恋如何维持长久？</title>
+    <url>/42532be6c91f.html</url>
+    <content><![CDATA[<p>异地恋，真的不是一张机票就能解决的事，说的很真实，不是我们不在坚持，而是我们遇到了这些…</p>
+<h2 id="表达障碍"><a href="#表达障碍" class="headerlink" title="表达障碍"></a>表达障碍</h2><p>短信听不到语气，电话看不到表情。<br>其实我没生气，你当真了；我在笑呢，你看不到吧；我哭了呢？抱着手机哭倦了睡过又醒了，你在忙吗？</p>
+<h2 id="共同语言"><a href="#共同语言" class="headerlink" title="共同语言"></a>共同语言</h2><p>如果两个人在一起，两个人的交往圈会溶为共同的圈子，话题永远都在更新。<br>而不在一起的两个人，对彼此身边的环境都会因为陌生而失去兴趣，慢慢的，能说的话只有空洞的“我想你”<br>我在努力找话题呢，不要回信息说”喔，嗯，好”了好吗？</p>
+<h2 id="不安全感"><a href="#不安全感" class="headerlink" title="不安全感"></a>不安全感</h2><p>看了10次手机了，你还是没有回信。你在哪，和谁，在干什么？<br>刚刚拒绝了别人的好意，却禁不住想，你身边的莺莺燕燕，一如我身边的花花草草吗？</p>
+<h2 id="远水不救近火"><a href="#远水不救近火" class="headerlink" title="远水不救近火"></a>远水不救近火</h2><p>我这里下雨了，来伞的是同学的弟弟；我吃饭忘带钱了，来解围的是朋友的朋友。原来你不吭声是因为你生病了，可我再担忧，也不能在你身边端一杯水呢。</p>
+<h2 id="距离产生幻觉"><a href="#距离产生幻觉" class="headerlink" title="距离产生幻觉"></a>距离产生幻觉</h2><p>其实我有些小虚荣，照片有时候修掉了眼袋才给你看；其实你有些小自负，认定的事情就以为自己一定对。<br>为了大老远的爱你，我拒绝接受身边一切说你不好的言论，什么都往好的方向想。你也是吧。<br>其实我们都不是对方想象的那样好。</p>
+<h2 id="距离产生误会"><a href="#距离产生误会" class="headerlink" title="距离产生误会"></a>距离产生误会</h2><p>我兴冲冲地发短信给你讲刚刚的趣事，你隔了半天说“喔”，我不知道你在上课的嘛，所以我生闷气了。<br>你给我发了八条短信两个电话我也没回，愤怒得嗷嗷直叫，我在做头发呢，包包寄存了嘛，哪知道手机响着响着没电了。<br>其实我们都知道对方不是故意的，但情绪来了，总需要宣泄的。</p>
+<h2 id="善意的谎言"><a href="#善意的谎言" class="headerlink" title="善意的谎言"></a>善意的谎言</h2><p>我碰巧和相熟的男生去看电影了，想了想，对你说和女生去的。<br>你独自去了我们约好要一起去的地方，犹豫再三，对我说你哪也没去。<br>不愿让对方多想，却因为偶尔的疏忽，放对方想的更多。</p>
+<h2 id="寂寞"><a href="#寂寞" class="headerlink" title="寂寞"></a>寂寞</h2><p>一个人不寂寞，想念一个人才寂寞。<br>你说，来，抱抱。于是我把自己裹在被窝里，闭上眼，恩，抱抱。<br>从学校回家的路上，你还抬头看月亮吗？</p>
+<h2 id="信念坍塌"><a href="#信念坍塌" class="headerlink" title="信念坍塌"></a>信念坍塌</h2><p>我看到身边一对一对的，男生帮女生打开水送饭，在宿舍楼下唧唧我我，周末还能一起爬山，没忍住就对在地图对角线上的你发牢骚，其实是想听你的鼓励。<br>刚刚好你接到朋友异地恋分手倾诉的电话，那么容易就把自己带入了戏，无心的抱怨雪上加霜。<br>有时候折腾一下，只为证明自己的重要性。<br>哪知脆弱基础上的高楼只须多压一根头发的重量，也许就崩溃了…</p>
+<blockquote class="blockquote-center">没有人可以带走你的痛，所以也别让任何人带走你的幸福</blockquote>]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
       </tags>
   </entry>
   <entry>
