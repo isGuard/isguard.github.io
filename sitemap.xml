@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.48626.xyz/45112dc23ff5.html</loc>
+    
+    <lastmod>2024-08-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/7e7e26f45b5f.html</loc>
     
     <lastmod>2024-08-25</lastmod>
@@ -970,6 +977,13 @@
   </url>
   
   <url>
+    <loc>https://blog.48626.xyz/tags/Docker/</loc>
+    <lastmod>2024-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/tags/vercel/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1217,13 +1231,6 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/gitLab/</loc>
-    <lastmod>2024-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.48626.xyz/categories/docker/redis/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1231,7 +1238,7 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/Hexo/</loc>
+    <loc>https://blog.48626.xyz/categories/gitLab/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1245,7 +1252,7 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/docker/IDEA/</loc>
+    <loc>https://blog.48626.xyz/categories/Hexo/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1253,6 +1260,13 @@
   
   <url>
     <loc>https://blog.48626.xyz/categories/Java/</loc>
+    <lastmod>2024-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/categories/docker/IDEA/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1336,27 +1350,6 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/Linux/fail2ban/</loc>
-    <lastmod>2024-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/categories/Linux/Frp/</loc>
-    <lastmod>2024-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.48626.xyz/categories/Linux/SCP/</loc>
-    <lastmod>2024-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.48626.xyz/categories/%E9%97%AE%E9%A2%98/Java/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1385,7 +1378,28 @@
   </url>
   
   <url>
+    <loc>https://blog.48626.xyz/categories/Linux/fail2ban/</loc>
+    <lastmod>2024-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/categories/Linux/Frp/</loc>
+    <lastmod>2024-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/categories/%E9%97%AE%E9%A2%98/Vue/element/</loc>
+    <lastmod>2024-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/categories/Linux/SCP/</loc>
     <lastmod>2024-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
