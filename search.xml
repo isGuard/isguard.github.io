@@ -582,6 +582,67 @@
       </tags>
   </entry>
   <entry>
+    <title>Watchtower自动更新Docker容器</title>
+    <url>/7e7e26f45b5f.html</url>
+    <content><![CDATA[<p><code>containrrr/watchtower</code> 是一个用于自动更新 Docker 容器的工具。它通过监控运行中的容器，并自动拉取新版本的镜像来更新容器。它是一个非常有用的工具，特别是在你希望保持服务最新且最小化维护工作时。</p>
+<h3 id="安装-Watchtower"><a href="#安装-Watchtower" class="headerlink" title="安装 Watchtower"></a>安装 Watchtower</h3><p>要开始使用 <code>watchtower</code>，首先需要安装并运行它。你可以通过以下命令来运行 <code>watchtower</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name watchtower \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower</span><br></pre></td></tr></table></figure>
+
+<p>这个命令执行了以下操作：</p>
+<ul>
+<li><code>-d</code>：以分离模式运行 <code>watchtower</code>。</li>
+<li><code>--name watchtower</code>：将容器命名为 <code>watchtower</code>。</li>
+<li><code>-v /var/run/docker.sock:/var/run/docker.sock</code>：将 Docker 的 Unix 套接字文件挂载到容器内，使 <code>watchtower</code> 能够与 Docker 守护进程通信。</li>
+</ul>
+<h3 id="Watchtower-的基本功能"><a href="#Watchtower-的基本功能" class="headerlink" title="Watchtower 的基本功能"></a>Watchtower 的基本功能</h3><p><code>watchtower</code> 会自动检查运行中的 Docker 容器是否有更新的镜像版本。一旦发现新版本的镜像，它会执行以下操作：</p>
+<ol>
+<li>拉取新的镜像版本。</li>
+<li>停止并移除旧的容器。</li>
+<li>使用新的镜像启动容器，保持与原始容器相同的参数（包括端口映射、挂载的卷、环境变量等）。</li>
+</ol>
+<h3 id="Watchtower-的高级配置"><a href="#Watchtower-的高级配置" class="headerlink" title="Watchtower 的高级配置"></a>Watchtower 的高级配置</h3><p><code>watchtower</code> 支持多种配置选项，以适应不同的使用场景。以下是一些常用的选项：</p>
+<h4 id="1-更新间隔-interval"><a href="#1-更新间隔-interval" class="headerlink" title="1. 更新间隔 (--interval)"></a>1. 更新间隔 (<code>--interval</code>)</h4><p>默认情况下，<code>watchtower</code> 每 24 小时检查一次更新。你可以通过 <code>--interval</code> 参数自定义检查间隔时间，单位为秒。例如，每 6 小时检查一次：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name watchtower \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower \</span><br><span class="line">  --interval 21600</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-清理旧镜像-cleanup"><a href="#2-清理旧镜像-cleanup" class="headerlink" title="2. 清理旧镜像 (--cleanup)"></a>2. 清理旧镜像 (<code>--cleanup</code>)</h4><p>每次更新后，<code>watchtower</code> 默认保留旧的镜像。你可以使用 <code>--cleanup</code> 参数来删除旧的镜像，以节省存储空间：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name watchtower \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower \</span><br><span class="line">  --cleanup</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-运行一次-run-once"><a href="#3-运行一次-run-once" class="headerlink" title="3. 运行一次 (--run-once)"></a>3. 运行一次 (<code>--run-once</code>)</h4><p>如果你不希望 <code>watchtower</code> 持续运行并监控更新，可以使用 <code>--run-once</code> 参数，让它只检查更新一次并退出：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower \</span><br><span class="line">  --run-once</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-标签过滤-label-enable"><a href="#4-标签过滤-label-enable" class="headerlink" title="4. 标签过滤 (--label-enable)"></a>4. 标签过滤 (<code>--label-enable</code>)</h4><p><code>watchtower</code> 可以配置为只更新带有特定标签的容器。要启用此功能，可以使用 <code>--label-enable</code> 参数，并确保目标容器带有 <code>com.centurylinklabs.watchtower.enable=true</code> 标签。</p>
+<p><strong>为目标容器添加标签：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name my-container \</span><br><span class="line">  --label com.centurylinklabs.watchtower.enable=<span class="literal">true</span> \</span><br><span class="line">  my-image</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行带有标签过滤的 Watchtower：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name watchtower \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower \</span><br><span class="line">  --label-enable</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-特定容器更新"><a href="#5-特定容器更新" class="headerlink" title="5. 特定容器更新"></a>5. 特定容器更新</h4><p>你可以指定只更新特定容器，而不是监控所有容器。只需在运行 <code>watchtower</code> 时指定容器的名称或 ID：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name watchtower \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  containrrr/watchtower \</span><br><span class="line">  my-container-1 my-container-2</span><br></pre></td></tr></table></figure>
+
+<h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><p><code>watchtower</code> 也可以通过环境变量进行配置，这对于使用 <code>docker-compose</code> 管理多个服务时非常有用。以下是一些常用的环境变量：</p>
+<ul>
+<li><code>WATCHTOWER_CLEANUP=true</code>：启用清理旧镜像。</li>
+<li><code>WATCHTOWER_POLL_INTERVAL=21600</code>：设置更新检查间隔（秒）。</li>
+<li><code>WATCHTOWER_INCLUDE_STOPPED=true</code>：包括停止的容器。</li>
+<li><code>WATCHTOWER_MONITOR_ONLY=true</code>：只监控，不自动更新。</li>
+</ul>
+<h3 id="在-docker-compose-中使用-Watchtower"><a href="#在-docker-compose-中使用-Watchtower" class="headerlink" title="在 docker-compose 中使用 Watchtower"></a>在 <code>docker-compose</code> 中使用 Watchtower</h3><p>你可以在 <code>docker-compose.yml</code> 文件中添加 <code>watchtower</code> 服务，像下面这样：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">watchtower:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">containrrr/watchtower</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">WATCHTOWER_CLEANUP=true</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">WATCHTOWER_POLL_INTERVAL=21600</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="日志与监控"><a href="#日志与监控" class="headerlink" title="日志与监控"></a>日志与监控</h3><p><code>watchtower</code> 会在其日志中记录每次更新的操作，你可以通过查看 <code>watchtower</code> 容器的日志来监控其行为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker logs watchtower</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>watchtower</code> 是一个强大的工具，可以帮助你自动管理 Docker 容器的更新。通过标签、容器名称过滤、清理旧镜像等功能，它提供了很大的灵活性，适合各种场景下的 Docker 容器管理需求。</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker-compose安装</title>
     <url>/132413c62965.html</url>
     <content><![CDATA[<h2 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h2><blockquote>
@@ -607,6 +668,30 @@
 
 <h3 id="pip安装"><a href="#pip安装" class="headerlink" title="pip安装"></a>pip安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker清理没有引用的镜像</title>
+    <url>/c77015022e9e.html</url>
+    <content><![CDATA[<p>在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune -a</span><br></pre></td></tr></table></figure>
+
+<p>如果你只想删除未被使用的镜像，但保留有标签的镜像（可能在将来会用到），可以先列出未被使用的镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>然后根据这个列表手动删除每个镜像：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> $(docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这些命令可以帮助你清理掉那些不再使用的 Docker 镜像，释放磁盘空间。</p>
 ]]></content>
       <categories>
         <category>docker</category>
@@ -648,30 +733,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker清理没有引用的镜像</title>
-    <url>/c77015022e9e.html</url>
-    <content><![CDATA[<p>在 Docker 中清理没有引用的镜像（即无标签或未被任何容器使用的镜像），可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会删除所有没有被任何容器引用的镜像，释放磁盘空间。如果你希望确认删除哪些镜像，可以添加 -a 参数，这样会删除所有没有被使用的镜像，包括有标签但没有容器使用的镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image prune -a</span><br></pre></td></tr></table></figure>
-
-<p>如果你只想删除未被使用的镜像，但保留有标签的镜像（可能在将来会用到），可以先列出未被使用的镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>然后根据这个列表手动删除每个镜像：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> $(docker image <span class="built_in">ls</span> -q --filter dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这些命令可以帮助你清理掉那些不再使用的 Docker 镜像，释放磁盘空间。</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker开发2375及生成证书</title>
     <url>/cf04ccc48d79.html</url>
     <content><![CDATA[<h2 id="证书生成"><a href="#证书生成" class="headerlink" title="证书生成"></a>证书生成</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim docker-tls.sh</span><br></pre></td></tr></table></figure>
@@ -693,6 +754,47 @@
 
 <h3 id="连接验证"><a href="#连接验证" class="headerlink" title="连接验证"></a>连接验证</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl 127.0.0.1:9999/info --cert /data/docker/cert.pem --key /data/docker/key.pem --cacert /data/docker/ca.pem</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>进入一个无法启动的Docker容器中故障排查</title>
+    <url>/92de010fa9c7.html</url>
+    <content><![CDATA[<h3 id="1-使用-docker-ps-a-查看容器状态"><a href="#1-使用-docker-ps-a-查看容器状态" class="headerlink" title="1. 使用 docker ps -a 查看容器状态"></a>1. 使用 <code>docker ps -a</code> 查看容器状态</h3><p>首先，确认容器的状态和容器 ID 或名称：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p>找到你想进入的容器，并记下它的容器 ID 或名称。</p>
+<h3 id="2-启动容器并进入"><a href="#2-启动容器并进入" class="headerlink" title="2. 启动容器并进入"></a>2. 启动容器并进入</h3><p>如果容器因为配置文件问题无法启动，你可以使用 <code>docker run</code> 或 <code>docker start</code> 命令启动容器，然后使用 <code>docker exec</code> 命令进入容器中。</p>
+<h4 id="方法一：通过-docker-start-启动并进入容器"><a href="#方法一：通过-docker-start-启动并进入容器" class="headerlink" title="方法一：通过 docker start 启动并进入容器"></a>方法一：通过 <code>docker start</code> 启动并进入容器</h4><ol>
+<li>先启动容器：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker start &lt;container_id_or_name&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>然后使用 <code>docker exec</code> 进入容器：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it &lt;container_id_or_name&gt; /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二：如果容器启动后立即退出"><a href="#方法二：如果容器启动后立即退出" class="headerlink" title="方法二：如果容器启动后立即退出"></a>方法二：如果容器启动后立即退出</h4><p>在这种情况下，你可以直接使用以下命令启动一个新的临时容器，并挂载原有容器的数据卷进行调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> --entrypoint /bin/bash &lt;image_name&gt; -v /path/to/container/config:/path/in/container</span><br></pre></td></tr></table></figure>
+
+<p>这条命令会启动一个新的容器，进入 <code>bash</code>，并挂载原来容器的配置文件目录。</p>
+<h3 id="3-调整启动命令以进入容器"><a href="#3-调整启动命令以进入容器" class="headerlink" title="3. 调整启动命令以进入容器"></a>3. 调整启动命令以进入容器</h3><p>如果容器是由于配置错误而无法启动的，你可以临时修改容器的启动命令。使用以下命令来启动容器并进入一个交互式 shell：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --entrypoint /bin/bash &lt;image_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在进入容器后，你可以查看和修改配置文件。</p>
+<h3 id="4-检查并修改配置文件"><a href="#4-检查并修改配置文件" class="headerlink" title="4. 检查并修改配置文件"></a>4. 检查并修改配置文件</h3><p>进入容器后，使用 <code>cat</code>, <code>vi</code>, <code>nano</code> 等命令查看和编辑配置文件，查找可能导致问题的配置项。</p>
+<h3 id="5-保存修改并重启容器"><a href="#5-保存修改并重启容器" class="headerlink" title="5. 保存修改并重启容器"></a>5. 保存修改并重启容器</h3><p>修改完配置文件后，退出容器并重新启动容器，看问题是否解决。</p>
+<h3 id="6-查看容器日志"><a href="#6-查看容器日志" class="headerlink" title="6. 查看容器日志"></a>6. 查看容器日志</h3><p>如果容器无法启动，你也可以查看容器日志，帮助你诊断问题：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker logs &lt;container_id_or_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这将显示容器的标准输出和错误信息日志，可能会给你提供有关配置文件问题的线索。</p>
+<p>通过以上步骤，你应该能够进入容器并检查和修改配置文件，找出导致启动失败的问题。如果仍有问题，可以根据日志或错误信息进一步排查。</p>
 ]]></content>
       <categories>
         <category>docker</category>
@@ -3297,79 +3399,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>System类</title>
-    <url>/4a050d5d1911.html</url>
-    <content><![CDATA[<p><code>java.lang.System</code>类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：</p>
-<ul>
-<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
-<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
-</ul>
-<h2 id="currentTimeMillis方法"><a href="#currentTimeMillis方法" class="headerlink" title="currentTimeMillis方法"></a>currentTimeMillis方法</h2><p>实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       	<span class="comment">//获取当前时间毫秒值</span></span><br><span class="line">        System.out.println(System.currentTimeMillis()); <span class="comment">// 1516090531144</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>验证for循环打印数字1-9999所需要使用的时间（毫秒）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时毫秒：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="arraycopy方法"><a href="#arraycopy方法" class="headerlink" title="arraycopy方法"></a>arraycopy方法</h2><ul>
-<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
-</ul>
-<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
-<table>
-<thead>
-<tr>
-<th>参数序号</th>
-<th>参数名称</th>
-<th>参数类型</th>
-<th>参数含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>src</td>
-<td>Object</td>
-<td>源数组</td>
-</tr>
-<tr>
-<td>2</td>
-<td>srcPos</td>
-<td>int</td>
-<td>源数组索引起始位置</td>
-</tr>
-<tr>
-<td>3</td>
-<td>dest</td>
-<td>Object</td>
-<td>目标数组</td>
-</tr>
-<tr>
-<td>4</td>
-<td>destPos</td>
-<td>int</td>
-<td>目标数组索引起始位置</td>
-</tr>
-<tr>
-<td>5</td>
-<td>length</td>
-<td>int</td>
-<td>复制元素个数</td>
-</tr>
-</tbody></table>
-<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><p>将src数组中前3个元素，复制到dest数组的前3个位置上复制元素前：src数组元素[1,2,3,4,5]，dest数组元素[6,7,8,9,10]复制元素后：src数组元素[1,2,3,4,5]，dest数组元素[1,2,3,9,10]</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo11SystemArrayCopy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] src = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] dest = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">        System.arraycopy( src, <span class="number">0</span>, dest, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="comment">/*代码运行后：两个数组中的元素发生了变化</span></span><br><span class="line"><span class="comment">         src数组元素[1,2,3,4,5]</span></span><br><span class="line"><span class="comment">         dest数组元素[1,2,3,9,10]</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>String类</title>
     <url>/23efbee0a1ff.html</url>
     <content><![CDATA[<h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>java.lang.String</code>类代表字符串。Java程序中所有的字符串文字（例如<code>&quot;abc&quot;</code>）都可以被看作是实现此类的实例。</p>
@@ -3472,6 +3501,79 @@ new Scanner(System.in).nextInt();
 <li>实现</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;a,b,c&quot;</span>;</span><br><span class="line">    String[] split = str.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; split.length; i++) &#123;</span><br><span class="line">        System.out.print(split[i] + <span class="string">&quot;\t&quot;</span>); <span class="comment">// a	b	c	</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>System类</title>
+    <url>/4a050d5d1911.html</url>
+    <content><![CDATA[<p><code>java.lang.System</code>类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：</p>
+<ul>
+<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+<h2 id="currentTimeMillis方法"><a href="#currentTimeMillis方法" class="headerlink" title="currentTimeMillis方法"></a>currentTimeMillis方法</h2><p>实际上，currentTimeMillis方法就是 获取当前系统时间与1970年01月01日00:00点之间的毫秒差值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       	<span class="comment">//获取当前时间毫秒值</span></span><br><span class="line">        System.out.println(System.currentTimeMillis()); <span class="comment">// 1516090531144</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>验证for循环打印数字1-9999所需要使用的时间（毫秒）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SystemTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;共耗时毫秒：&quot;</span> + (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="arraycopy方法"><a href="#arraycopy方法" class="headerlink" title="arraycopy方法"></a>arraycopy方法</h2><ul>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
+<table>
+<thead>
+<tr>
+<th>参数序号</th>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>参数含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>src</td>
+<td>Object</td>
+<td>源数组</td>
+</tr>
+<tr>
+<td>2</td>
+<td>srcPos</td>
+<td>int</td>
+<td>源数组索引起始位置</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dest</td>
+<td>Object</td>
+<td>目标数组</td>
+</tr>
+<tr>
+<td>4</td>
+<td>destPos</td>
+<td>int</td>
+<td>目标数组索引起始位置</td>
+</tr>
+<tr>
+<td>5</td>
+<td>length</td>
+<td>int</td>
+<td>复制元素个数</td>
+</tr>
+</tbody></table>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><p>将src数组中前3个元素，复制到dest数组的前3个位置上复制元素前：src数组元素[1,2,3,4,5]，dest数组元素[6,7,8,9,10]复制元素后：src数组元素[1,2,3,4,5]，dest数组元素[1,2,3,9,10]</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo11SystemArrayCopy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] src = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        <span class="type">int</span>[] dest = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">        System.arraycopy( src, <span class="number">0</span>, dest, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="comment">/*代码运行后：两个数组中的元素发生了变化</span></span><br><span class="line"><span class="comment">         src数组元素[1,2,3,4,5]</span></span><br><span class="line"><span class="comment">         dest数组元素[1,2,3,9,10]</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -5703,72 +5805,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>权限修饰符</title>
-    <url>/3386d11ae051.html</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限</p>
-<ul>
-<li>public：公共的。</li>
-<li>protected：受保护的</li>
-<li>default：默认的</li>
-<li>private：私有的</li>
-</ul>
-<h2 id="不同权限的访问能力"><a href="#不同权限的访问能力" class="headerlink" title="不同权限的访问能力"></a>不同权限的访问能力</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>public</th>
-<th>protected</th>
-<th>default</th>
-<th>private</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>同一类中</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>同一包中（子类于无关类）</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-</tr>
-<tr>
-<td>不同包的子类</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>不同包中的无关类</td>
-<td>√</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>编写代码时，如果没有特殊的考虑，建议这样使用权限：</p>
-<ul>
-<li>成员变量使用private，隐藏细节。</li>
-<li>构造方法使用public，方便创建对象。</li>
-<li>成员方法使用public，方便调用方法。</li>
-</ul>
-<blockquote>
-<p>不加权限修饰符，其访问能力与default修饰符相同</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日期时间类</title>
     <url>/bc108bd5803f.html</url>
     <content><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><code> java.util.Date</code>类 表示特定的瞬间，精确到毫秒（1000毫秒&#x3D;1秒）。</p>
@@ -5932,6 +5968,72 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>权限修饰符</title>
+    <url>/3386d11ae051.html</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在Java中提供了四种访问权限，使用不同的访问权限修饰符修饰时，被修饰的内容会有不同的访问权限</p>
+<ul>
+<li>public：公共的。</li>
+<li>protected：受保护的</li>
+<li>default：默认的</li>
+<li>private：私有的</li>
+</ul>
+<h2 id="不同权限的访问能力"><a href="#不同权限的访问能力" class="headerlink" title="不同权限的访问能力"></a>不同权限的访问能力</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>default</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同一类中</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>同一包中（子类于无关类）</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>不同包的子类</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>不同包中的无关类</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>编写代码时，如果没有特殊的考虑，建议这样使用权限：</p>
+<ul>
+<li>成员变量使用private，隐藏细节。</li>
+<li>构造方法使用public，方便创建对象。</li>
+<li>成员方法使用public，方便调用方法。</li>
+</ul>
+<blockquote>
+<p>不加权限修饰符，其访问能力与default修饰符相同</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>泛型</title>
     <url>/1dac7439d105.html</url>
     <content><![CDATA[<h2 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h2><p>集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。</p>
@@ -6065,68 +6167,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>线程</title>
-    <url>/8a6de8e883e7.html</url>
-    <content><![CDATA[<h2 id="多线程的原理"><a href="#多线程的原理" class="headerlink" title="多线程的原理"></a>多线程的原理</h2><img src="/8a6de8e883e7/%E7%BA%BF%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.png" class="" alt="线程流程图">
-
-<p>程序启动运行main时候，java虚拟机启动一个进程，主线程main在main（）调用时候被创建。</p>
-<p>随着调用mt的对象的start方法，另外一个新的线程也启动了，这样，整个应用就在多线程下运行。</p>
-<p>通过这张图我们可以很清晰的看到多线程的执行流程，那么为什么可以完成并发执行呢？</p>
-<p>我们再来讲一讲原理。</p>
-<p>多线程执行时，到底在内存中是如何运行的呢？以上个程序为例，进行图解说明：</p>
-<p>多线程执行时，在栈内存中，其实每一个执行线程都有一片自己所属的栈内存空间。</p>
-<p>进行方法的压栈和弹栈。</p>
-<img src="/8a6de8e883e7/image-20200415155230943.png" class="" alt="image-20200415155230943">
-
-<p>当执行线程的任务结束了，线程自动在栈内存中释放了。</p>
-<p>但是当所有的执行线程都结束了，那么进程就结束了。</p>
-<h2 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h2><p>构造方法：</p>
-<ul>
-<li><p><code>public Thread()</code>：分配一个新的线程对象。</p>
-</li>
-<li><p><code>public Thread(string name)</code>：分配一个指定名字的新的线程对象。</p>
-</li>
-<li><p><code>public Thread(Runnable target)</code>：分配一个带有指定目标新的线程对象。</p>
-</li>
-<li><p><code>public Thread(Runnable target,string name)</code>：分配一个带有指定目标新的线程对象并指定名字。</p>
-</li>
-</ul>
-<p>常用方法：</p>
-<ul>
-<li><code>public String getName()</code>：获取当前线程名称</li>
-<li><code>public void start()</code>：导致此线程开始执行；Java虚拟机调用此线程的run方法。</li>
-<li><code>public void run()</code>：此线程要执行的任务在此处定义代码。</li>
-<li><code>public static void sleep(long millis)</code>：使当前正在执行的线程以指定的毫秒数暂停（暂时停止执行）</li>
-<li><code>public static Thread currentThread()</code>：返回对当前正在执行的线程对象的引用。</li>
-</ul>
-<h2 id="Runnable接口"><a href="#Runnable接口" class="headerlink" title="Runnable接口"></a>Runnable接口</h2><p>步骤：</p>
-<ul>
-<li>定义Runnable接口的实现类,并重写该接口的run()方法,该run()方法的方法体同样是该线程的线程执行体</li>
-<li>创建Runnable实现类的实例,并以此实例作为Thread的target来创建Thread对象,该Thread对象才是真正的线程对象</li>
-<li>调用线程对象的start()方法来启动线程</li>
-</ul>
-<p>通过实现Runnable接口，使得该类有了多线程类的特征run()方法是多线程程序的一个执行目标。</p>
-<p>所有的多线程代码都在run方法里面。</p>
-<p>Thread类实际上也是实现了Runnable接口的类。</p>
-<p>在启动的多线程的时候，需要先通过Thread类的构造方法Thread(Runnable target)构造出对象，然后调用Thread对象的start()方法来运行多线程代码。</p>
-<p>实际上所有的多线程代码都是通过运行Thread的start()方法来运行的。</p>
-<p>因此，不管是继承Thread类还是实现Runnable接口来实现多线程，最终还是通过Thread的对象的API来控制线程的，熟悉Thread类的API是进行多线程编程的基础。</p>
-<h2 id="Thread和Runnable的区别"><a href="#Thread和Runnable的区别" class="headerlink" title="Thread和Runnable的区别"></a>Thread和Runnable的区别</h2><p>如果一个类继承Thread，则不适合资源共享。但是如果实现了Runnable接口的话，则很容易的实现资源共享。<br>总结：<br>实现Runnable接口比继承Thread类所具有的优势：</p>
-<ul>
-<li>适合多个相同的程序代码的线程去共享同一个资源。</li>
-<li>可以避免Java中的单继承的局限性。</li>
-<li>增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。</li>
-<li>线程池只能放入实现Runnable或Callable类线程，不能直接放入继承Thread的类。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>等待唤醒机制</title>
     <url>/62920509bd6f.html</url>
     <content><![CDATA[<h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
@@ -6194,55 +6234,59 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>线程池</title>
-    <url>/d35ec39a86fb.html</url>
-    <content><![CDATA[<h2 id="线程池思想概述"><a href="#线程池思想概述" class="headerlink" title="线程池思想概述"></a>线程池思想概述</h2><img src="/d35ec39a86fb/%E6%B8%B8%E6%B3%B3%E6%B1%A0.jpg" class="">
+    <title>线程</title>
+    <url>/8a6de8e883e7.html</url>
+    <content><![CDATA[<h2 id="多线程的原理"><a href="#多线程的原理" class="headerlink" title="多线程的原理"></a>多线程的原理</h2><img src="/8a6de8e883e7/%E7%BA%BF%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.png" class="" alt="线程流程图">
 
-<p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
-<p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
-<p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
-<p>在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
-<h2 id="线程池概念"><a href="#线程池概念" class="headerlink" title="线程池概念"></a>线程池概念</h2><ul>
-<li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
-</ul>
-<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
-<img src="/d35ec39a86fb/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86.bmp" class="">
+<p>程序启动运行main时候，java虚拟机启动一个进程，主线程main在main（）调用时候被创建。</p>
+<p>随着调用mt的对象的start方法，另外一个新的线程也启动了，这样，整个应用就在多线程下运行。</p>
+<p>通过这张图我们可以很清晰的看到多线程的执行流程，那么为什么可以完成并发执行呢？</p>
+<p>我们再来讲一讲原理。</p>
+<p>多线程执行时，到底在内存中是如何运行的呢？以上个程序为例，进行图解说明：</p>
+<p>多线程执行时，在栈内存中，其实每一个执行线程都有一片自己所属的栈内存空间。</p>
+<p>进行方法的压栈和弹栈。</p>
+<img src="/8a6de8e883e7/image-20200415155230943.png" class="" alt="image-20200415155230943">
 
-<p>合理利用线程池能够带来三个好处：</p>
-<ol>
-<li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
-<li>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
-<li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
-</ol>
-<h2 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
-<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。</p>
-<p>Executors类中有个创建线程池的方法如下：</p>
+<p>当执行线程的任务结束了，线程自动在栈内存中释放了。</p>
+<p>但是当所有的执行线程都结束了，那么进程就结束了。</p>
+<h2 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h2><p>构造方法：</p>
 <ul>
-<li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
-</ul>
-<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
-<ul>
-<li><p><code>public Future&lt;?&gt; submit(Runnable task)</code>:获取线程池中的某一个线程对象，并执行</p>
-<blockquote>
-<p>Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
-</blockquote>
+<li><p><code>public Thread()</code>：分配一个新的线程对象。</p>
+</li>
+<li><p><code>public Thread(string name)</code>：分配一个指定名字的新的线程对象。</p>
+</li>
+<li><p><code>public Thread(Runnable target)</code>：分配一个带有指定目标新的线程对象。</p>
+</li>
+<li><p><code>public Thread(Runnable target,string name)</code>：分配一个带有指定目标新的线程对象并指定名字。</p>
 </li>
 </ul>
-<p>使用线程池中线程对象的步骤：</p>
-<ol>
-<li>创建线程池对象。</li>
-<li>创建Runnable接口子类对象。(task)</li>
-<li>提交Runnable接口子类对象。(take task)</li>
-<li>关闭线程池(一般不做)。</li>
-</ol>
-<p>Runnable实现类代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我要一个教练&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;教练来了： &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;教我游泳,交完后，教练回到了游泳池&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>线程池测试类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">service</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>);<span class="comment">//包含2个线程对象</span></span><br><span class="line">        <span class="comment">// 创建Runnable实例对象</span></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//自己创建线程对象的方式</span></span><br><span class="line">        <span class="comment">// Thread t = new Thread(r);</span></span><br><span class="line">        <span class="comment">// t.start(); ---&gt; 调用MyRunnable中的run()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从线程池中获取线程对象,然后调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 再获取个线程对象，调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。</span></span><br><span class="line">        <span class="comment">// 将使用完的线程又归还到了线程池中</span></span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        <span class="comment">//service.shutdown();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<p>常用方法：</p>
+<ul>
+<li><code>public String getName()</code>：获取当前线程名称</li>
+<li><code>public void start()</code>：导致此线程开始执行；Java虚拟机调用此线程的run方法。</li>
+<li><code>public void run()</code>：此线程要执行的任务在此处定义代码。</li>
+<li><code>public static void sleep(long millis)</code>：使当前正在执行的线程以指定的毫秒数暂停（暂时停止执行）</li>
+<li><code>public static Thread currentThread()</code>：返回对当前正在执行的线程对象的引用。</li>
+</ul>
+<h2 id="Runnable接口"><a href="#Runnable接口" class="headerlink" title="Runnable接口"></a>Runnable接口</h2><p>步骤：</p>
+<ul>
+<li>定义Runnable接口的实现类,并重写该接口的run()方法,该run()方法的方法体同样是该线程的线程执行体</li>
+<li>创建Runnable实现类的实例,并以此实例作为Thread的target来创建Thread对象,该Thread对象才是真正的线程对象</li>
+<li>调用线程对象的start()方法来启动线程</li>
+</ul>
+<p>通过实现Runnable接口，使得该类有了多线程类的特征run()方法是多线程程序的一个执行目标。</p>
+<p>所有的多线程代码都在run方法里面。</p>
+<p>Thread类实际上也是实现了Runnable接口的类。</p>
+<p>在启动的多线程的时候，需要先通过Thread类的构造方法Thread(Runnable target)构造出对象，然后调用Thread对象的start()方法来运行多线程代码。</p>
+<p>实际上所有的多线程代码都是通过运行Thread的start()方法来运行的。</p>
+<p>因此，不管是继承Thread类还是实现Runnable接口来实现多线程，最终还是通过Thread的对象的API来控制线程的，熟悉Thread类的API是进行多线程编程的基础。</p>
+<h2 id="Thread和Runnable的区别"><a href="#Thread和Runnable的区别" class="headerlink" title="Thread和Runnable的区别"></a>Thread和Runnable的区别</h2><p>如果一个类继承Thread，则不适合资源共享。但是如果实现了Runnable接口的话，则很容易的实现资源共享。<br>总结：<br>实现Runnable接口比继承Thread类所具有的优势：</p>
+<ul>
+<li>适合多个相同的程序代码的线程去共享同一个资源。</li>
+<li>可以避免Java中的单继承的局限性。</li>
+<li>增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。</li>
+<li>线程池只能放入实现Runnable或Callable类线程，不能直接放入继承Thread的类。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -6312,6 +6356,64 @@ new Scanner(System.in).nextInt();
 </ul>
 <p>使用如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Thread_Safe_Demo</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">ticket</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">if</span>(ticket&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">&quot;正在卖,第&quot;</span>+ticket+<span class="string">&quot;张票&quot;</span>);</span><br><span class="line">                    ticket--;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                    lock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程池</title>
+    <url>/d35ec39a86fb.html</url>
+    <content><![CDATA[<h2 id="线程池思想概述"><a href="#线程池思想概述" class="headerlink" title="线程池思想概述"></a>线程池思想概述</h2><img src="/d35ec39a86fb/%E6%B8%B8%E6%B3%B3%E6%B1%A0.jpg" class="">
+
+<p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
+<p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
+<p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
+<p>在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
+<h2 id="线程池概念"><a href="#线程池概念" class="headerlink" title="线程池概念"></a>线程池概念</h2><ul>
+<li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
+</ul>
+<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
+<img src="/d35ec39a86fb/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86.bmp" class="">
+
+<p>合理利用线程池能够带来三个好处：</p>
+<ol>
+<li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
+<li>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
+<li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
+</ol>
+<h2 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
+<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。</p>
+<p>Executors类中有个创建线程池的方法如下：</p>
+<ul>
+<li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
+</ul>
+<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
+<ul>
+<li><p><code>public Future&lt;?&gt; submit(Runnable task)</code>:获取线程池中的某一个线程对象，并执行</p>
+<blockquote>
+<p>Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
+</blockquote>
+</li>
+</ul>
+<p>使用线程池中线程对象的步骤：</p>
+<ol>
+<li>创建线程池对象。</li>
+<li>创建Runnable接口子类对象。(task)</li>
+<li>提交Runnable接口子类对象。(take task)</li>
+<li>关闭线程池(一般不做)。</li>
+</ol>
+<p>Runnable实现类代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我要一个教练&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;教练来了： &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println(<span class="string">&quot;教我游泳,交完后，教练回到了游泳池&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>线程池测试类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPoolDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">service</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>);<span class="comment">//包含2个线程对象</span></span><br><span class="line">        <span class="comment">// 创建Runnable实例对象</span></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//自己创建线程对象的方式</span></span><br><span class="line">        <span class="comment">// Thread t = new Thread(r);</span></span><br><span class="line">        <span class="comment">// t.start(); ---&gt; 调用MyRunnable中的run()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从线程池中获取线程对象,然后调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 再获取个线程对象，调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。</span></span><br><span class="line">        <span class="comment">// 将使用完的线程又归还到了线程池中</span></span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        <span class="comment">//service.shutdown();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -7217,28 +7319,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>修改Ubuntu分辨率</title>
-    <url>/393a7dbdc35f.html</url>
-    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img src="/393a7dbdc35f/image-20200403165720339.png" class="" alt="image-20200403165720339">
-
-<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img src="/393a7dbdc35f/image-20200403165813924.png" class="" alt="image-20200403165813924">
-
-<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img src="/393a7dbdc35f/image-20200403165857456.png" class="" alt="image-20200403165857456">
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VMware虚拟机系统Ubuntu安装VMware tools工具</title>
     <url>/6ac9645de8fb.html</url>
     <content><![CDATA[<h1 id="VMware虚拟机系统Ubuntu安装VMware-tools工具"><a href="#VMware虚拟机系统Ubuntu安装VMware-tools工具" class="headerlink" title="VMware虚拟机系统Ubuntu安装VMware tools工具"></a>VMware虚拟机系统Ubuntu安装VMware tools工具</h1><p>在VMware Workstation虚拟机中，如果虚拟Ubuntu系统未安装vmware tools工具，鼠标操作起来将不是很方便，需要使用热键Ctrl+Alt热键切换出来。下面，介绍一下如何在ubuntu虚拟机中安装vmware tools工具。</p>
@@ -7264,6 +7344,28 @@ new Scanner(System.in).nextInt();
 <img src="/6ac9645de8fb/image-20200403174218198.png" class="" alt="image-20200403174218198">
 
 <p><code>重启电脑，重新进入，安装vmware tools即生效。鼠标和复制粘贴就生效了。</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改Ubuntu分辨率</title>
+    <url>/393a7dbdc35f.html</url>
+    <content><![CDATA[<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><img src="/393a7dbdc35f/image-20200403165720339.png" class="" alt="image-20200403165720339">
+
+<h2 id="点设备"><a href="#点设备" class="headerlink" title="点设备"></a>点设备</h2><img src="/393a7dbdc35f/image-20200403165813924.png" class="" alt="image-20200403165813924">
+
+<h2 id="修改分辨率"><a href="#修改分辨率" class="headerlink" title="修改分辨率"></a>修改分辨率</h2><img src="/393a7dbdc35f/image-20200403165857456.png" class="" alt="image-20200403165857456">
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2>
+
+
+
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -7420,50 +7522,6 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Linux</tag>
         <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker安装mysql</title>
-    <url>/2d010ac21d89.html</url>
-    <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
-
-<h3 id="在home目录下创建映射目录"><a href="#在home目录下创建映射目录" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql5/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建my-cnf配置文件"><a href="#创建my-cnf配置文件" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql5/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
-
-<h4 id="my-cnf"><a href="#my-cnf" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>MySQL(5.7.19)的默认配置文件是 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 文件。</p>
-<p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
-<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
-<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql5 -v ~/mysql5/conf:/etc/mysql/conf.d -v ~/mysql5/logs:/logs -v ~/mysql5/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -dit -p 3306:3306 mysql:5.7.37</span><br></pre></td></tr></table></figure>
-
-<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器5</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql5 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"><span class="comment"># 更新 root的 远程登录为所有</span></span><br><span class="line">update mysql.user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>; </span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"> <span class="comment"># 给用户授权</span></span><br><span class="line">grant all privileges on *.* to root@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<h2 id="mysql8"><a href="#mysql8" class="headerlink" title="mysql8"></a>mysql8</h2><h3 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:8</span><br></pre></td></tr></table></figure>
-
-<h3 id="在home目录下创建映射目录-1"><a href="#在home目录下创建映射目录-1" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql8/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建my-cnf配置文件-1"><a href="#创建my-cnf配置文件-1" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql8/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
-
-<h4 id="my-cnf-1"><a href="#my-cnf-1" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
-<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
-<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql8 -v ~/mysql8/conf:/etc/mysql/conf.d -v ~/mysql8/logs:/logs -v ~/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Abcd1234! -dit -p 3306:3306 mysql:8</span><br></pre></td></tr></table></figure>
-
-<h3 id="远程登录-1"><a href="#远程登录-1" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器8</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql8 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> host,user from user;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#添加远程登录用户</span></span><br><span class="line">CREATE USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>docker</category>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -7656,6 +7714,50 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装mysql</title>
+    <url>/2d010ac21d89.html</url>
+    <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录"><a href="#在home目录下创建映射目录" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql5/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件"><a href="#创建my-cnf配置文件" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql5/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf"><a href="#my-cnf" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>MySQL(5.7.19)的默认配置文件是 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 文件。</p>
+<p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql5 -v ~/mysql5/conf:/etc/mysql/conf.d -v ~/mysql5/logs:/logs -v ~/mysql5/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -dit -p 3306:3306 mysql:5.7.37</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器5</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql5 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"><span class="comment"># 更新 root的 远程登录为所有</span></span><br><span class="line">update mysql.user <span class="built_in">set</span> host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>; </span><br><span class="line"><span class="keyword">select</span> host, user,plugin,authentication_string from mysql.user;</span><br><span class="line"> <span class="comment"># 给用户授权</span></span><br><span class="line">grant all privileges on *.* to root@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>; </span><br><span class="line"><span class="comment"># 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql8"><a href="#mysql8" class="headerlink" title="mysql8"></a>mysql8</h2><h3 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="在home目录下创建映射目录-1"><a href="#在home目录下创建映射目录-1" class="headerlink" title="在home目录下创建映射目录"></a>在home目录下创建映射目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/mysql8/&#123;conf.d,logs,data&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建my-cnf配置文件-1"><a href="#创建my-cnf配置文件-1" class="headerlink" title="创建my.cnf配置文件"></a>创建my.cnf配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/mysql8/conf.d/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h4 id="my-cnf-1"><a href="#my-cnf-1" class="headerlink" title="my.cnf"></a>my.cnf</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">init_connect=<span class="string">&#x27;SET collation_connection = utf8mb4_unicode_ci&#x27;</span></span><br><span class="line">init_connect=<span class="string">&#x27;SET NAMES utf8mb4&#x27;</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">secure_file_priv=/var/lib/mysql</span><br><span class="line">expire_logs_days=7</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br><span class="line">max_connections=1000</span><br><span class="line">default-time_zone=<span class="string">&#x27;+8:00&#x27;</span></span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>如果想要自定义配置，建议向 &#x2F;etc&#x2F;mysql&#x2F;conf.d 目录中创建 .cnf 文件。</p>
+<p>新建的文件可以任意起名，只要保证后缀名是 cnf 即可。</p>
+<p>新建的文件中的配置项可以覆盖 &#x2F;etc&#x2F;mysql&#x2F;my.cnf 中的配置项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name mysql8 -v ~/mysql8/conf:/etc/mysql/conf.d -v ~/mysql8/logs:/logs -v ~/mysql8/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Abcd1234! -dit -p 3306:3306 mysql:8</span><br></pre></td></tr></table></figure>
+
+<h3 id="远程登录-1"><a href="#远程登录-1" class="headerlink" title="远程登录"></a>远程登录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入容器8</span></span><br><span class="line">docker <span class="built_in">exec</span> -it mysql8 /bin/bash</span><br><span class="line"><span class="comment">#登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">use mysql;</span><br><span class="line"><span class="keyword">select</span> host,user from user;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#添加远程登录用户</span></span><br><span class="line">CREATE USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;Abcd1234!&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -7933,6 +8035,27 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>异地恋如何维持长久？</title>
+    <url>/42532be6c91f.html</url>
+    <content><![CDATA[<p>异地恋，真的不是一张机票就能解决的事，说的很真实，不是我们不在坚持，而是我们遇到了这些…</p>
+<h2 id="表达障碍"><a href="#表达障碍" class="headerlink" title="表达障碍"></a>表达障碍</h2><p>短信听不到语气，电话看不到表情。<br>其实我没生气，你当真了；我在笑呢，你看不到吧；我哭了呢？抱着手机哭倦了睡过又醒了，你在忙吗？</p>
+<h2 id="共同语言"><a href="#共同语言" class="headerlink" title="共同语言"></a>共同语言</h2><p>如果两个人在一起，两个人的交往圈会溶为共同的圈子，话题永远都在更新。<br>而不在一起的两个人，对彼此身边的环境都会因为陌生而失去兴趣，慢慢的，能说的话只有空洞的“我想你”<br>我在努力找话题呢，不要回信息说”喔，嗯，好”了好吗？</p>
+<h2 id="不安全感"><a href="#不安全感" class="headerlink" title="不安全感"></a>不安全感</h2><p>看了10次手机了，你还是没有回信。你在哪，和谁，在干什么？<br>刚刚拒绝了别人的好意，却禁不住想，你身边的莺莺燕燕，一如我身边的花花草草吗？</p>
+<h2 id="远水不救近火"><a href="#远水不救近火" class="headerlink" title="远水不救近火"></a>远水不救近火</h2><p>我这里下雨了，来伞的是同学的弟弟；我吃饭忘带钱了，来解围的是朋友的朋友。原来你不吭声是因为你生病了，可我再担忧，也不能在你身边端一杯水呢。</p>
+<h2 id="距离产生幻觉"><a href="#距离产生幻觉" class="headerlink" title="距离产生幻觉"></a>距离产生幻觉</h2><p>其实我有些小虚荣，照片有时候修掉了眼袋才给你看；其实你有些小自负，认定的事情就以为自己一定对。<br>为了大老远的爱你，我拒绝接受身边一切说你不好的言论，什么都往好的方向想。你也是吧。<br>其实我们都不是对方想象的那样好。</p>
+<h2 id="距离产生误会"><a href="#距离产生误会" class="headerlink" title="距离产生误会"></a>距离产生误会</h2><p>我兴冲冲地发短信给你讲刚刚的趣事，你隔了半天说“喔”，我不知道你在上课的嘛，所以我生闷气了。<br>你给我发了八条短信两个电话我也没回，愤怒得嗷嗷直叫，我在做头发呢，包包寄存了嘛，哪知道手机响着响着没电了。<br>其实我们都知道对方不是故意的，但情绪来了，总需要宣泄的。</p>
+<h2 id="善意的谎言"><a href="#善意的谎言" class="headerlink" title="善意的谎言"></a>善意的谎言</h2><p>我碰巧和相熟的男生去看电影了，想了想，对你说和女生去的。<br>你独自去了我们约好要一起去的地方，犹豫再三，对我说你哪也没去。<br>不愿让对方多想，却因为偶尔的疏忽，放对方想的更多。</p>
+<h2 id="寂寞"><a href="#寂寞" class="headerlink" title="寂寞"></a>寂寞</h2><p>一个人不寂寞，想念一个人才寂寞。<br>你说，来，抱抱。于是我把自己裹在被窝里，闭上眼，恩，抱抱。<br>从学校回家的路上，你还抬头看月亮吗？</p>
+<h2 id="信念坍塌"><a href="#信念坍塌" class="headerlink" title="信念坍塌"></a>信念坍塌</h2><p>我看到身边一对一对的，男生帮女生打开水送饭，在宿舍楼下唧唧我我，周末还能一起爬山，没忍住就对在地图对角线上的你发牢骚，其实是想听你的鼓励。<br>刚刚好你接到朋友异地恋分手倾诉的电话，那么容易就把自己带入了戏，无心的抱怨雪上加霜。<br>有时候折腾一下，只为证明自己的重要性。<br>哪知脆弱基础上的高楼只须多压一根头发的重量，也许就崩溃了…</p>
+<blockquote class="blockquote-center">没有人可以带走你的痛，所以也别让任何人带走你的幸福</blockquote>]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>这个年纪</title>
     <url>/78e70d2223dc.html</url>
     <content><![CDATA[<p>这个年纪<br>作曲 : 齐一<br>作词 : 齐一</p>
@@ -7972,27 +8095,6 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>摘要</tag>
         <tag>音乐</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>异地恋如何维持长久？</title>
-    <url>/42532be6c91f.html</url>
-    <content><![CDATA[<p>异地恋，真的不是一张机票就能解决的事，说的很真实，不是我们不在坚持，而是我们遇到了这些…</p>
-<h2 id="表达障碍"><a href="#表达障碍" class="headerlink" title="表达障碍"></a>表达障碍</h2><p>短信听不到语气，电话看不到表情。<br>其实我没生气，你当真了；我在笑呢，你看不到吧；我哭了呢？抱着手机哭倦了睡过又醒了，你在忙吗？</p>
-<h2 id="共同语言"><a href="#共同语言" class="headerlink" title="共同语言"></a>共同语言</h2><p>如果两个人在一起，两个人的交往圈会溶为共同的圈子，话题永远都在更新。<br>而不在一起的两个人，对彼此身边的环境都会因为陌生而失去兴趣，慢慢的，能说的话只有空洞的“我想你”<br>我在努力找话题呢，不要回信息说”喔，嗯，好”了好吗？</p>
-<h2 id="不安全感"><a href="#不安全感" class="headerlink" title="不安全感"></a>不安全感</h2><p>看了10次手机了，你还是没有回信。你在哪，和谁，在干什么？<br>刚刚拒绝了别人的好意，却禁不住想，你身边的莺莺燕燕，一如我身边的花花草草吗？</p>
-<h2 id="远水不救近火"><a href="#远水不救近火" class="headerlink" title="远水不救近火"></a>远水不救近火</h2><p>我这里下雨了，来伞的是同学的弟弟；我吃饭忘带钱了，来解围的是朋友的朋友。原来你不吭声是因为你生病了，可我再担忧，也不能在你身边端一杯水呢。</p>
-<h2 id="距离产生幻觉"><a href="#距离产生幻觉" class="headerlink" title="距离产生幻觉"></a>距离产生幻觉</h2><p>其实我有些小虚荣，照片有时候修掉了眼袋才给你看；其实你有些小自负，认定的事情就以为自己一定对。<br>为了大老远的爱你，我拒绝接受身边一切说你不好的言论，什么都往好的方向想。你也是吧。<br>其实我们都不是对方想象的那样好。</p>
-<h2 id="距离产生误会"><a href="#距离产生误会" class="headerlink" title="距离产生误会"></a>距离产生误会</h2><p>我兴冲冲地发短信给你讲刚刚的趣事，你隔了半天说“喔”，我不知道你在上课的嘛，所以我生闷气了。<br>你给我发了八条短信两个电话我也没回，愤怒得嗷嗷直叫，我在做头发呢，包包寄存了嘛，哪知道手机响着响着没电了。<br>其实我们都知道对方不是故意的，但情绪来了，总需要宣泄的。</p>
-<h2 id="善意的谎言"><a href="#善意的谎言" class="headerlink" title="善意的谎言"></a>善意的谎言</h2><p>我碰巧和相熟的男生去看电影了，想了想，对你说和女生去的。<br>你独自去了我们约好要一起去的地方，犹豫再三，对我说你哪也没去。<br>不愿让对方多想，却因为偶尔的疏忽，放对方想的更多。</p>
-<h2 id="寂寞"><a href="#寂寞" class="headerlink" title="寂寞"></a>寂寞</h2><p>一个人不寂寞，想念一个人才寂寞。<br>你说，来，抱抱。于是我把自己裹在被窝里，闭上眼，恩，抱抱。<br>从学校回家的路上，你还抬头看月亮吗？</p>
-<h2 id="信念坍塌"><a href="#信念坍塌" class="headerlink" title="信念坍塌"></a>信念坍塌</h2><p>我看到身边一对一对的，男生帮女生打开水送饭，在宿舍楼下唧唧我我，周末还能一起爬山，没忍住就对在地图对角线上的你发牢骚，其实是想听你的鼓励。<br>刚刚好你接到朋友异地恋分手倾诉的电话，那么容易就把自己带入了戏，无心的抱怨雪上加霜。<br>有时候折腾一下，只为证明自己的重要性。<br>哪知脆弱基础上的高楼只须多压一根头发的重量，也许就崩溃了…</p>
-<blockquote class="blockquote-center">没有人可以带走你的痛，所以也别让任何人带走你的幸福</blockquote>]]></content>
-      <categories>
-        <category>摘要</category>
-      </categories>
-      <tags>
-        <tag>摘要</tag>
       </tags>
   </entry>
   <entry>
