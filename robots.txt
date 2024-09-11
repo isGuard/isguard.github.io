@@ -9,4 +9,4 @@ Disallow: /js/
 Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
-Sitemap: https://blog.48626.xyz/sitemap.xml
+Sitemap: https://blog.zea.icu/sitemap.xml
