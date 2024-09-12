@@ -87,6 +87,18 @@
       </tags>
   </entry>
   <entry>
+    <title>IntelliJ IDEA Jvm配置</title>
+    <url>/0621063cca74.html</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 基础配置</span><br><span class="line"># 服务器模式运行</span><br><span class="line">-server</span><br><span class="line"># 时区编码</span><br><span class="line">-Dfile.encoding=UTF-8</span><br><span class="line">-Duser.timezone=GMT+8</span><br><span class="line"># 设置堆的初始大小和最大大小</span><br><span class="line">-Xms8g</span><br><span class="line">-Xmx32g</span><br><span class="line"># 设置元空间的初始大小和最大大小</span><br><span class="line">-XX:MetaspaceSize=1G</span><br><span class="line">-XX:MaxMetaspaceSize=2G</span><br><span class="line">-XX:MaxDirectMemorySize=2G</span><br><span class="line"></span><br><span class="line">## 垃圾回收 ZGC or ShenandoahGC</span><br><span class="line"># 启用Z Garbage Collector（ZGC）</span><br><span class="line">#-XX:+UseZGC</span><br><span class="line"># ZGC回收间隔</span><br><span class="line">#-XX:ZCollectionInterval=100</span><br><span class="line"># 使用并发标记清除（ConcMarkSweep）垃圾回收器</span><br><span class="line">#-XX:+UseConcMarkSweepGC</span><br><span class="line"># 设置并行垃圾回收线程数</span><br><span class="line">#-XX:ParallelGCThreads=20</span><br><span class="line"># 设置软引用对象在每MB堆内存中存活的最短时间</span><br><span class="line">#-XX:SoftRefLRUPolicyMSPerMB=1000</span><br><span class="line"># 虚拟机在启动时预先分配堆空间</span><br><span class="line">#-XX:+AlwaysPreTouch</span><br><span class="line"></span><br><span class="line"># 启用Shenandoah Garbage Collector（Shenandoah GC）</span><br><span class="line">-XX:+UseShenandoahGC</span><br><span class="line">-XX:+UnlockExperimentalVMOptions</span><br><span class="line"># 设置并行垃圾回收线程数（根据需要调整）</span><br><span class="line">-XX:ParallelGCThreads=20</span><br><span class="line"># 设置软引用对象在每MB堆内存中存活的最短时间</span><br><span class="line">-XX:SoftRefLRUPolicyMSPerMB=1000</span><br><span class="line"># 虚拟机在启动时预先分配堆空间</span><br><span class="line">-XX:+AlwaysPreTouch</span><br><span class="line"># 启用压缩指针（Compressed Oops）</span><br><span class="line">-XX:+UseCompressedOops</span><br><span class="line"># GC触发策略</span><br><span class="line">-XX:ShenandoahHeuristic=passive</span><br><span class="line">## 垃圾回收</span><br><span class="line"></span><br><span class="line">## JIT（即时编译）参数</span><br><span class="line"># 设置编译器线程数</span><br><span class="line">-XX:CICompilerCount=20</span><br><span class="line"># 启用分层编译</span><br><span class="line">-XX:+TieredCompilation</span><br><span class="line"># 设置停止级别，只进行第一级别的编译</span><br><span class="line">-XX:TieredStopAtLevel=1</span><br><span class="line"># 设置最大内联级别</span><br><span class="line">-XX:MaxInlineLevel=9</span><br><span class="line"># 设置第四层（Tier 4）最小调用阈值</span><br><span class="line">-XX:Tier4MinInvocationThreshold=50000</span><br><span class="line"># 设置第四层（Tier 4）调用阈值</span><br><span class="line">-XX:Tier4InvocationThreshold=100000</span><br><span class="line"># 设置第四层（Tier 4）编译阈值</span><br><span class="line"></span><br><span class="line">## 代码设置</span><br><span class="line"># 设置初始代码缓存大小和保留代码缓存大小</span><br><span class="line">-XX:InitialCodeCacheSize=1G</span><br><span class="line">-XX:ReservedCodeCacheSize=2G</span><br><span class="line"></span><br><span class="line">## 错误日志和堆转储设置</span><br><span class="line"># 在发生内存溢出错误时生成堆转储文件</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line"># 禁用快速抛出异常时的堆栈跟踪省略</span><br><span class="line">-XX:-OmitStackTraceInFastThrow</span><br><span class="line"># 允许自我附加</span><br><span class="line">-Djdk.attach.allowAttachSelf</span><br><span class="line"># 禁用对象晋升时的处理</span><br><span class="line">-XX:-HandlePromotionFailure</span><br><span class="line"></span><br><span class="line">## 其他设置</span><br><span class="line"># JVM激进优化</span><br><span class="line">-XX:+AggressiveOpts</span><br><span class="line"># 高随机数生成器</span><br><span class="line">-Djava.security.egd=file:/dev/./urandom</span><br><span class="line"># 启用字符串去重</span><br><span class="line">-XX:+UseStringDeduplication</span><br><span class="line"># 优化字符串连接</span><br><span class="line">-XX:+OptimizeStringConcat</span><br><span class="line"># 内存分配器</span><br><span class="line">-XX:+UseTLAB</span><br><span class="line"># 使用大页内存</span><br><span class="line">-XX:+UseLargePages</span><br><span class="line"># 文件系统缓存</span><br><span class="line">-Dsun.io.useCanonPrefixCache=false</span><br><span class="line"># 设置首选使用IPv4协议栈</span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line"># 禁用HTTP隧道身份验证</span><br><span class="line">-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;</span><br><span class="line"># 解锁JVM中的实验性选项</span><br><span class="line">-XX:+UnlockExperimentalVMOptions</span><br><span class="line"># 忽略不认识的JVM选项</span><br><span class="line">-XX:+IgnoreUnrecognizedVMOptions</span><br><span class="line"># 打开指定包的包访问权限</span><br><span class="line">--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED</span><br><span class="line">--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED</span><br><span class="line"># JDK VisualGC 插件</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor.event=ALL-UNNAMED</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.perfdata.monitor=ALL-UNNAMED</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Intellij</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Intellij</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开发工具Intellij-IDEA</title>
     <url>/da863a95314a.html</url>
     <content><![CDATA[<h2 id="开发工具概述"><a href="#开发工具概述" class="headerlink" title="开发工具概述"></a>开发工具概述</h2><p>IDEA是一个专门针对Java的集成开发工具（IDE），由Java语言编写。所以，需要有JRE运行环境并配置好环境变量它可以极大地提升我们的开发效率。可以自动编译，检查错误。在公司中，使用的就是IDEA进行开发。</p>
@@ -229,18 +241,6 @@
 
 
 ]]></content>
-      <categories>
-        <category>Intellij</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Intellij</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IntelliJ IDEA Jvm配置</title>
-    <url>/0621063cca74.html</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 基础配置</span><br><span class="line"># 服务器模式运行</span><br><span class="line">-server</span><br><span class="line"># 时区编码</span><br><span class="line">-Dfile.encoding=UTF-8</span><br><span class="line">-Duser.timezone=GMT+8</span><br><span class="line"># 设置堆的初始大小和最大大小</span><br><span class="line">-Xms8g</span><br><span class="line">-Xmx32g</span><br><span class="line"># 设置元空间的初始大小和最大大小</span><br><span class="line">-XX:MetaspaceSize=1G</span><br><span class="line">-XX:MaxMetaspaceSize=2G</span><br><span class="line">-XX:MaxDirectMemorySize=2G</span><br><span class="line"></span><br><span class="line">## 垃圾回收 ZGC or ShenandoahGC</span><br><span class="line"># 启用Z Garbage Collector（ZGC）</span><br><span class="line">#-XX:+UseZGC</span><br><span class="line"># ZGC回收间隔</span><br><span class="line">#-XX:ZCollectionInterval=100</span><br><span class="line"># 使用并发标记清除（ConcMarkSweep）垃圾回收器</span><br><span class="line">#-XX:+UseConcMarkSweepGC</span><br><span class="line"># 设置并行垃圾回收线程数</span><br><span class="line">#-XX:ParallelGCThreads=20</span><br><span class="line"># 设置软引用对象在每MB堆内存中存活的最短时间</span><br><span class="line">#-XX:SoftRefLRUPolicyMSPerMB=1000</span><br><span class="line"># 虚拟机在启动时预先分配堆空间</span><br><span class="line">#-XX:+AlwaysPreTouch</span><br><span class="line"></span><br><span class="line"># 启用Shenandoah Garbage Collector（Shenandoah GC）</span><br><span class="line">-XX:+UseShenandoahGC</span><br><span class="line">-XX:+UnlockExperimentalVMOptions</span><br><span class="line"># 设置并行垃圾回收线程数（根据需要调整）</span><br><span class="line">-XX:ParallelGCThreads=20</span><br><span class="line"># 设置软引用对象在每MB堆内存中存活的最短时间</span><br><span class="line">-XX:SoftRefLRUPolicyMSPerMB=1000</span><br><span class="line"># 虚拟机在启动时预先分配堆空间</span><br><span class="line">-XX:+AlwaysPreTouch</span><br><span class="line"># 启用压缩指针（Compressed Oops）</span><br><span class="line">-XX:+UseCompressedOops</span><br><span class="line"># GC触发策略</span><br><span class="line">-XX:ShenandoahHeuristic=passive</span><br><span class="line">## 垃圾回收</span><br><span class="line"></span><br><span class="line">## JIT（即时编译）参数</span><br><span class="line"># 设置编译器线程数</span><br><span class="line">-XX:CICompilerCount=20</span><br><span class="line"># 启用分层编译</span><br><span class="line">-XX:+TieredCompilation</span><br><span class="line"># 设置停止级别，只进行第一级别的编译</span><br><span class="line">-XX:TieredStopAtLevel=1</span><br><span class="line"># 设置最大内联级别</span><br><span class="line">-XX:MaxInlineLevel=9</span><br><span class="line"># 设置第四层（Tier 4）最小调用阈值</span><br><span class="line">-XX:Tier4MinInvocationThreshold=50000</span><br><span class="line"># 设置第四层（Tier 4）调用阈值</span><br><span class="line">-XX:Tier4InvocationThreshold=100000</span><br><span class="line"># 设置第四层（Tier 4）编译阈值</span><br><span class="line"></span><br><span class="line">## 代码设置</span><br><span class="line"># 设置初始代码缓存大小和保留代码缓存大小</span><br><span class="line">-XX:InitialCodeCacheSize=1G</span><br><span class="line">-XX:ReservedCodeCacheSize=2G</span><br><span class="line"></span><br><span class="line">## 错误日志和堆转储设置</span><br><span class="line"># 在发生内存溢出错误时生成堆转储文件</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line"># 禁用快速抛出异常时的堆栈跟踪省略</span><br><span class="line">-XX:-OmitStackTraceInFastThrow</span><br><span class="line"># 允许自我附加</span><br><span class="line">-Djdk.attach.allowAttachSelf</span><br><span class="line"># 禁用对象晋升时的处理</span><br><span class="line">-XX:-HandlePromotionFailure</span><br><span class="line"></span><br><span class="line">## 其他设置</span><br><span class="line"># JVM激进优化</span><br><span class="line">-XX:+AggressiveOpts</span><br><span class="line"># 高随机数生成器</span><br><span class="line">-Djava.security.egd=file:/dev/./urandom</span><br><span class="line"># 启用字符串去重</span><br><span class="line">-XX:+UseStringDeduplication</span><br><span class="line"># 优化字符串连接</span><br><span class="line">-XX:+OptimizeStringConcat</span><br><span class="line"># 内存分配器</span><br><span class="line">-XX:+UseTLAB</span><br><span class="line"># 使用大页内存</span><br><span class="line">-XX:+UseLargePages</span><br><span class="line"># 文件系统缓存</span><br><span class="line">-Dsun.io.useCanonPrefixCache=false</span><br><span class="line"># 设置首选使用IPv4协议栈</span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line"># 禁用HTTP隧道身份验证</span><br><span class="line">-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;</span><br><span class="line"># 解锁JVM中的实验性选项</span><br><span class="line">-XX:+UnlockExperimentalVMOptions</span><br><span class="line"># 忽略不认识的JVM选项</span><br><span class="line">-XX:+IgnoreUnrecognizedVMOptions</span><br><span class="line"># 打开指定包的包访问权限</span><br><span class="line">--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED</span><br><span class="line">--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED</span><br><span class="line"># JDK VisualGC 插件</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor.event=ALL-UNNAMED</span><br><span class="line">--add-exports=jdk.internal.jvmstat/sun.jvmstat.perfdata.monitor=ALL-UNNAMED</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Intellij</category>
       </categories>
@@ -894,6 +894,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker安装GitLab</title>
+    <url>/691ac33530f0.html</url>
+    <content><![CDATA[<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">  --hostname gitlab.example.com \</span><br><span class="line">  --publish 443:443 --publish 80:80 --publish 22:22 \</span><br><span class="line">  --name gitlab \</span><br><span class="line">  --restart always \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/config:/etc/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/logs:/var/log/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/data:/var/opt/gitlab:Z \</span><br><span class="line">  --shm-size 256m \</span><br><span class="line">  gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+
+<h2 id="登录GitLab"><a href="#登录GitLab" class="headerlink" title="登录GitLab"></a>登录GitLab</h2><ol>
+<li><p>获取GitLab的登录密码。</p>
+<ul>
+<li>Linux安装包方式：<code>sudo cat /etc/gitlab/initial_root_password</code></li>
+<li>Docker Engine安装方式：<code>sudo docker exec -it gitlab grep &#39;Password:&#39; /etc/gitlab/initial_root_password</code></li>
+</ul>
+<p>回显信息类似如下所示，您可以在<code>Password</code>后获取GitLab的初始登录密码。</p>
+<p><strong>重要</strong></p>
+<p>出于安全原因，24小时后，该文件会被自动删除，建议您安装成功，首次登录之后，立即修改初始密码。</p>
+
+</li>
+<li><p>登录GitLab。</p>
+<ul>
+<li>Linux安装包方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP</em>即可进入GitLab的登录界面。</li>
+<li>Docker Engine安装方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP:8080</em>即可进入GitLab的登录界面。</li>
+</ul>
+<p>首次登录使用用户名<code>root</code>，密码为步骤<a href="https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-gitlab#8c9d01b0880v4">1</a>获取的密码。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>gitLab</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>gitLab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitLab 授权 2099年</title>
     <url>/8a791021e883.html</url>
     <content><![CDATA[<h2 id="GitLab-授权-2099年"><a href="#GitLab-授权-2099年" class="headerlink" title="GitLab 授权 2099年"></a>GitLab 授权 2099年</h2><h3 id="创建文件license-rb"><a href="#创建文件license-rb" class="headerlink" title="创建文件license.rb"></a>创建文件license.rb</h3><p>license.rb文件 用来激活使用的</p>
@@ -943,39 +976,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker exec -it (容器id 或者容器名称) /bin/bash</span><br><span class="line">docker exec -it 877c606c5e53 /bin/bash </span><br><span class="line">cat /usr/src/lemon/lemon.gitlab-license</span><br></pre></td></tr></table></figure>
 
 <p>将当前的密钥添加到许可证密钥中即可</p>
-]]></content>
-      <categories>
-        <category>gitLab</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>gitLab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker安装GitLab</title>
-    <url>/691ac33530f0.html</url>
-    <content><![CDATA[<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">  --hostname gitlab.example.com \</span><br><span class="line">  --publish 443:443 --publish 80:80 --publish 22:22 \</span><br><span class="line">  --name gitlab \</span><br><span class="line">  --restart always \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/config:/etc/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/logs:/var/log/gitlab:Z \</span><br><span class="line">  --volume <span class="variable">$GITLAB_HOME</span>/data:/var/opt/gitlab:Z \</span><br><span class="line">  --shm-size 256m \</span><br><span class="line">  gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
-
-<h2 id="登录GitLab"><a href="#登录GitLab" class="headerlink" title="登录GitLab"></a>登录GitLab</h2><ol>
-<li><p>获取GitLab的登录密码。</p>
-<ul>
-<li>Linux安装包方式：<code>sudo cat /etc/gitlab/initial_root_password</code></li>
-<li>Docker Engine安装方式：<code>sudo docker exec -it gitlab grep &#39;Password:&#39; /etc/gitlab/initial_root_password</code></li>
-</ul>
-<p>回显信息类似如下所示，您可以在<code>Password</code>后获取GitLab的初始登录密码。</p>
-<p><strong>重要</strong></p>
-<p>出于安全原因，24小时后，该文件会被自动删除，建议您安装成功，首次登录之后，立即修改初始密码。</p>
-
-</li>
-<li><p>登录GitLab。</p>
-<ul>
-<li>Linux安装包方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP</em>即可进入GitLab的登录界面。</li>
-<li>Docker Engine安装方式：在浏览器的地址栏中，输入http:&#x2F;&#x2F;<em>ECS实例的公网IP:8080</em>即可进入GitLab的登录界面。</li>
-</ul>
-<p>首次登录使用用户名<code>root</code>，密码为步骤<a href="https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-gitlab#8c9d01b0880v4">1</a>获取的密码。</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>gitLab</category>
@@ -2305,81 +2305,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java开发环境搭建</title>
-    <url>/91d0acdc7552.html</url>
-    <content><![CDATA[<h2 id="Java虚拟机–JVM"><a href="#Java虚拟机–JVM" class="headerlink" title="Java虚拟机–JVM"></a>Java虚拟机–JVM</h2><ul>
-<li><strong>JVM</strong> （Java Virtual Machine）：Java虚拟机，简称JVM，是运行所有Java程序的假想计算机，是Java程序的运行环境，是Java最具吸引力的特性之一。我们编写的Java代码，都运行在JVM之上。</li>
-<li><strong>跨平台</strong>：任何软件的运行，都必须要运行在操作系统之上，而我们用Java编写的软件可以运行在任何的操作系统上，这个特性称为<strong>Java语言的跨平台特性</strong>。该特性是由JVM实的，我们编写程序运行在JVM上，而JVM运行在操作系统上。</li>
-</ul>
-<img src="/91d0acdc7552/image-20200330135909560.png" class="" alt="image-20200330135909560">
-
-<p>如图所示，Java的虚拟机本身不具备跨平台功能的，每个操作系统下都有不同版本的虚拟机。</p>
-<h2 id="JRE和JDK"><a href="#JRE和JDK" class="headerlink" title="JRE和JDK"></a>JRE和JDK</h2><ul>
-<li>JRE （Java Runtime Environment）：是Java程序的运行时环境，包含<strong>JVM</strong>和运行时所需要的<strong>核心类库</strong>。</li>
-<li>JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具。</li>
-</ul>
-<p>我们想要运行一个已有的Java程序，那么只需安装<strong>JRE</strong>即可。</p>
-<p>我们想要开发一个全新的Java程序，那么必须安装<strong>JDK</strong></p>
-<img src="/91d0acdc7552/image-20200330140526466.png" class="" alt="image-20200330140526466">
-
-<img src="/91d0acdc7552/006tNbRwly1gbmnj3i2fyj315m0rc0z8.jpg" class="" alt="img">
-
-<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>JDK下载地址： <a href="https://www.oracle.com/cn/java/technologies/javase-downloads.html">https://www.oracle.com/cn/java/technologies/javase-downloads.html</a></p>
-<img src="/91d0acdc7552/image-20200330140937480.png" class="" alt="image-20200330140937480">
-
-<p>根据自己的需要安装对应的版本注意：</p>
-<img src="/91d0acdc7552/image-20200330141046227.png" class="" alt="image-20200330141046227">
-
-<p>安装自己操作系统适配的安装包</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>注意事项：</p>
-<ul>
-<li>目录最好不要为中文，也不要有空格</li>
-</ul>
-<p>下载下来后双击进入安装页面：</p>
-<img src="/91d0acdc7552/20170618230136472.png" class="" alt="这里写图片描述">
-
-<p>最好自己指定一个安装路径（注意这是JDK的路径）</p>
-<p><strong>注：可以不勾选公共JRE这样也不用再安装JRE了</strong></p>
-<img src="/91d0acdc7552/20170618230149347.png" class="" alt="这里写图片描述">
-
-<p>接下来是JRE（最好把JDK和JER安装到一个目录下）</p>
-<img src="/91d0acdc7552/20170618230200082.png" class="" alt="这里写图片描述">
-
-<p>之后就是下一步下一步</p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
-<li><p>打开环境变量配置。计算机→属性→高级系统设置→高级→环境变量，在系统变量中配置。</p>
-</li>
-<li><p>配置<strong>JAVA_HOME</strong></p>
-<p>新建，变量名<code>JAVA_HOME</code>，变量值，jdk路径，我的路径是<code>E:\Java\jdk1.8.0_181</code>，保存</p>
-</li>
-</ul>
-<img src="/91d0acdc7552/image-20200330142153915.png" class="" alt="image-20200330142153915">
-
-<ul>
-<li><p>配置<strong>Path</strong></p>
-<p>打开Path变量，在变量值最前加入<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code></p>
-<p>Win10可能是图形界面<code>;分号为分隔符道理一样</code></p>
-</li>
-</ul>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
-<li>运行cmd</li>
-<li>测试代码<ul>
-<li><code>java</code></li>
-<li><code>javac</code></li>
-<li><code>java -version</code></li>
-</ul>
-</li>
-<li>都正常显示就成功了</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java基础3</title>
     <url>/456a671d2d62.html</url>
     <content><![CDATA[<h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><p>流是有起点和终点的有序字节序列</p>
@@ -2626,6 +2551,81 @@
 <p>保证锁的顺序都一直</p>
 <img src="/456a671d2d62/2.png" class="">
 
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java开发环境搭建</title>
+    <url>/91d0acdc7552.html</url>
+    <content><![CDATA[<h2 id="Java虚拟机–JVM"><a href="#Java虚拟机–JVM" class="headerlink" title="Java虚拟机–JVM"></a>Java虚拟机–JVM</h2><ul>
+<li><strong>JVM</strong> （Java Virtual Machine）：Java虚拟机，简称JVM，是运行所有Java程序的假想计算机，是Java程序的运行环境，是Java最具吸引力的特性之一。我们编写的Java代码，都运行在JVM之上。</li>
+<li><strong>跨平台</strong>：任何软件的运行，都必须要运行在操作系统之上，而我们用Java编写的软件可以运行在任何的操作系统上，这个特性称为<strong>Java语言的跨平台特性</strong>。该特性是由JVM实的，我们编写程序运行在JVM上，而JVM运行在操作系统上。</li>
+</ul>
+<img src="/91d0acdc7552/image-20200330135909560.png" class="" alt="image-20200330135909560">
+
+<p>如图所示，Java的虚拟机本身不具备跨平台功能的，每个操作系统下都有不同版本的虚拟机。</p>
+<h2 id="JRE和JDK"><a href="#JRE和JDK" class="headerlink" title="JRE和JDK"></a>JRE和JDK</h2><ul>
+<li>JRE （Java Runtime Environment）：是Java程序的运行时环境，包含<strong>JVM</strong>和运行时所需要的<strong>核心类库</strong>。</li>
+<li>JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具。</li>
+</ul>
+<p>我们想要运行一个已有的Java程序，那么只需安装<strong>JRE</strong>即可。</p>
+<p>我们想要开发一个全新的Java程序，那么必须安装<strong>JDK</strong></p>
+<img src="/91d0acdc7552/image-20200330140526466.png" class="" alt="image-20200330140526466">
+
+<img src="/91d0acdc7552/006tNbRwly1gbmnj3i2fyj315m0rc0z8.jpg" class="" alt="img">
+
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>JDK下载地址： <a href="https://www.oracle.com/cn/java/technologies/javase-downloads.html">https://www.oracle.com/cn/java/technologies/javase-downloads.html</a></p>
+<img src="/91d0acdc7552/image-20200330140937480.png" class="" alt="image-20200330140937480">
+
+<p>根据自己的需要安装对应的版本注意：</p>
+<img src="/91d0acdc7552/image-20200330141046227.png" class="" alt="image-20200330141046227">
+
+<p>安装自己操作系统适配的安装包</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>注意事项：</p>
+<ul>
+<li>目录最好不要为中文，也不要有空格</li>
+</ul>
+<p>下载下来后双击进入安装页面：</p>
+<img src="/91d0acdc7552/20170618230136472.png" class="" alt="这里写图片描述">
+
+<p>最好自己指定一个安装路径（注意这是JDK的路径）</p>
+<p><strong>注：可以不勾选公共JRE这样也不用再安装JRE了</strong></p>
+<img src="/91d0acdc7552/20170618230149347.png" class="" alt="这里写图片描述">
+
+<p>接下来是JRE（最好把JDK和JER安装到一个目录下）</p>
+<img src="/91d0acdc7552/20170618230200082.png" class="" alt="这里写图片描述">
+
+<p>之后就是下一步下一步</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li><p>打开环境变量配置。计算机→属性→高级系统设置→高级→环境变量，在系统变量中配置。</p>
+</li>
+<li><p>配置<strong>JAVA_HOME</strong></p>
+<p>新建，变量名<code>JAVA_HOME</code>，变量值，jdk路径，我的路径是<code>E:\Java\jdk1.8.0_181</code>，保存</p>
+</li>
+</ul>
+<img src="/91d0acdc7552/image-20200330142153915.png" class="" alt="image-20200330142153915">
+
+<ul>
+<li><p>配置<strong>Path</strong></p>
+<p>打开Path变量，在变量值最前加入<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code></p>
+<p>Win10可能是图形界面<code>;分号为分隔符道理一样</code></p>
+</li>
+</ul>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
+<li>运行cmd</li>
+<li>测试代码<ul>
+<li><code>java</code></li>
+<li><code>javac</code></li>
+<li><code>java -version</code></li>
+</ul>
+</li>
+<li>都正常显示就成功了</li>
+</ul>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -5739,48 +5739,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>方法入门</title>
-    <url>/a8293530aa0d.html</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们在学习运算符的时候，都为每个运算符单独的创建一个新的类和main方法，我们会发现这样编写代码非常的繁琐，而且重复的代码过多，能否避免这些重复的代码呢，就需要使用方法来实现。</p>
-<ul>
-<li><strong>方法</strong>：就是将一个<strong>功能</strong>抽取出来，把代码单独定义在一个大括号内，形成一个单独的功能。</li>
-</ul>
-<p>当我们需要这个功能的时候，就可以去调用。这样即实现了代码的复用性，也解决了代码冗余的现象。</p>
-<h2 id="方法的定义"><a href="#方法的定义" class="headerlink" title="方法的定义"></a>方法的定义</h2><ul>
-<li><p>格式：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符 返回值类型 方法名 (参数列表) &#123;</span><br><span class="line">  代码...</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>格式结束：</p>
-<ul>
-<li>修饰符：目前固定格式<code>public static</code></li>
-<li>返回值类型：目前固定写发<code>void</code></li>
-<li>方法名：给定义的方法起一个名称，满足标识符规范，<strong>强烈推荐小驼峰</strong></li>
-<li>参数列表：目前无参数</li>
-<li><strong>return</strong>：方法结束。返回值类型为<strong>void</strong>时，方法体中的<strong>return</strong>可以不写</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NewMethod</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> viod <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> staitc <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>方法在定义完毕后，方法不会自己运行，必须被调用才能执行，我们可以在主方法main中来调用我们自己定义好的方法。在主方法中，直接写要调用的方法名字就可以调用了。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NewMethod</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> viod <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">//调用test方法</span></span><br><span class="line">    test();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> staitc <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ul>
-<li>方法定义注意事项：<ul>
-<li>方法必须定义在一类中方法外</li>
-<li>方法不能定义在另一个方法的里面</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>方法</title>
     <url>/ec2efae6e605.html</url>
     <content><![CDATA[<h2 id="方法的定义和调用-回顾"><a href="#方法的定义和调用-回顾" class="headerlink" title="方法的定义和调用(回顾)"></a>方法的定义和调用(回顾)</h2><p>定义格式</p>
@@ -5872,6 +5830,48 @@ new Scanner(System.in).nextInt();
 
 
 
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>方法入门</title>
+    <url>/a8293530aa0d.html</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们在学习运算符的时候，都为每个运算符单独的创建一个新的类和main方法，我们会发现这样编写代码非常的繁琐，而且重复的代码过多，能否避免这些重复的代码呢，就需要使用方法来实现。</p>
+<ul>
+<li><strong>方法</strong>：就是将一个<strong>功能</strong>抽取出来，把代码单独定义在一个大括号内，形成一个单独的功能。</li>
+</ul>
+<p>当我们需要这个功能的时候，就可以去调用。这样即实现了代码的复用性，也解决了代码冗余的现象。</p>
+<h2 id="方法的定义"><a href="#方法的定义" class="headerlink" title="方法的定义"></a>方法的定义</h2><ul>
+<li><p>格式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符 返回值类型 方法名 (参数列表) &#123;</span><br><span class="line">  代码...</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式结束：</p>
+<ul>
+<li>修饰符：目前固定格式<code>public static</code></li>
+<li>返回值类型：目前固定写发<code>void</code></li>
+<li>方法名：给定义的方法起一个名称，满足标识符规范，<strong>强烈推荐小驼峰</strong></li>
+<li>参数列表：目前无参数</li>
+<li><strong>return</strong>：方法结束。返回值类型为<strong>void</strong>时，方法体中的<strong>return</strong>可以不写</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NewMethod</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> viod <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> staitc <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>方法在定义完毕后，方法不会自己运行，必须被调用才能执行，我们可以在主方法main中来调用我们自己定义好的方法。在主方法中，直接写要调用的方法名字就可以调用了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NewMethod</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> viod <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">//调用test方法</span></span><br><span class="line">    test();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> staitc <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ul>
+<li>方法定义注意事项：<ul>
+<li>方法必须定义在一类中方法外</li>
+<li>方法不能定义在另一个方法的里面</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -7313,6 +7313,198 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Maven</title>
+    <url>/7bde66eb4b3a.html</url>
+    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
+<p>与构建过程相关的：编译、测试、打包…</p>
+<ol>
+<li>mvn clean：清理</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装进入仓库</li>
+<li>mvn site：生成站点</li>
+</ol>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
+<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
+</li>
+<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
+</li>
+<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
+</li>
+<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
+</li>
+<li><p>如果此时无法联网，则构建失败。</p>
+</li>
+<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
+<ol>
+<li>找到Maven文件下的\conf\settings.xml</li>
+<li>找到标签<code>localRepository</code></li>
+<li>将标签<code>localRepository</code>从注释中取出</li>
+<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
+</ol>
+</li>
+<li><p>设置阿里Maven仓库</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
+<li><p>含义：Project Object Model 项目对象模型</p>
+<p>​			DOM Document Object Model 文档对象模型</p>
+</li>
+<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
+</li>
+</ol>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
+<ol>
+<li>groupid：公司或组织域名倒序+项目名称</li>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ol>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
+<li><p>仓库的分类</p>
+<ol>
+<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
+<li>远程仓库<ol>
+<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
+<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
+<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>仓库中保存的内容：Maven工程</p>
+<ol>
+<li>Maven自身所需要的插件</li>
+<li>第三方框架或工具的jar包</li>
+<li>我们自己开发的Maven工程</li>
+</ol>
+</li>
+</ol>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
+<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
+</li>
+<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
+</li>
+<li><p>依赖的范围</p>
+<ol>
+<li>compile<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+</ol>
+</li>
+<li>test<ol>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>典型例子：junit.jar</li>
+</ol>
+</li>
+<li>provided<ol>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>依赖的传递性</p>
+<ol>
+<li>在父工程依赖一次既可重复使用</li>
+<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
+</ol>
+</li>
+<li><p>依赖的排除</p>
+<ol>
+<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
+</li>
+<li><p>排除设置</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖原则</p>
+<ol>
+<li>作用：解决模块工程之间的jar包冲突问题</li>
+<li>Maven默认解决方案：路径最短者优先</li>
+<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
+</ol>
+</li>
+<li><p>统一管理依赖的版本</p>
+<ol>
+<li>使用properties标签使用自定义标签统一声明版本号</li>
+<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
+<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
+</li>
+<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
+</li>
+<li><p>Maven有三条相互独立的生命周期：</p>
+<ol>
+<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
+<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
+<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
+</ol>
+</li>
+<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
+</li>
+<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
+</li>
+<li><p>操作步骤</p>
+<ol>
+<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
+<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
+</li>
+<li><p>在子工程中声明对父工程的引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父工程中统一管理test依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在子工程中删除test依赖的版本号部分</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
+<li><p>作用：一键安装各个模块工程</p>
+</li>
+<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
+</li>
+</ol>
+<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mvn deploy</code></p>
+<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux设置定时任务</title>
     <url>/949c2f6ddc37.html</url>
     <content><![CDATA[<p>在 Linux 中，你可以使用 cron 来设置定时任务。Cron 是一个用于在预定时间执行任务的工具。以下是设置定时任务的步骤：</p>
@@ -7601,198 +7793,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>Maven</title>
-    <url>/7bde66eb4b3a.html</url>
-    <content><![CDATA[<h3 id="常用Maven命令"><a href="#常用Maven命令" class="headerlink" title="常用Maven命令"></a>常用Maven命令</h3><p>执行与构建过程相关的命令，必须进入pom.xml所在的目录。</p>
-<p>与构建过程相关的：编译、测试、打包…</p>
-<ol>
-<li>mvn clean：清理</li>
-<li>mvn compile：编译主程序</li>
-<li>mvn test-compile：编译测试程序</li>
-<li>mvn test：执行测试</li>
-<li>mvn package：打包</li>
-<li>mvn install：安装进入仓库</li>
-<li>mvn site：生成站点</li>
-</ol>
-<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><ol>
-<li><p>Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含再Maven的核心程序中。</p>
-</li>
-<li><p>当我们执行的Maven命令需要用到某些插件时，Maven核心程序首先到本地仓库中查找。</p>
-</li>
-<li><p>本地仓库的默认位置：[系统中当前用户的目录]\.m2\repository</p>
-</li>
-<li><p>Maven核心程序如果再本地仓库找不到需要的插件，那么它会自动链接外网，到中央仓库下载。</p>
-</li>
-<li><p>如果此时无法联网，则构建失败。</p>
-</li>
-<li><p>修改默认本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
-<ol>
-<li>找到Maven文件下的\conf\settings.xml</li>
-<li>找到标签<code>localRepository</code></li>
-<li>将标签<code>localRepository</code>从注释中取出</li>
-<li>定义当自定义的目录如：<code>&lt;localRepository&gt;E:\maven\maven-repository&lt;/localRepository&gt;</code></li>
-</ol>
-</li>
-<li><p>设置阿里Maven仓库</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">      http://maven.aliyun.com/nexus/content/groups/public/</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="POM"><a href="#POM" class="headerlink" title="POM"></a>POM</h3><ol>
-<li><p>含义：Project Object Model 项目对象模型</p>
-<p>​			DOM Document Object Model 文档对象模型</p>
-</li>
-<li><p>pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于web.xml对于动态Web工程</p>
-</li>
-</ol>
-<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>Maven的坐标</p>
-<ol>
-<li>groupid：公司或组织域名倒序+项目名称</li>
-<li>artifactid：模块名</li>
-<li>version：版本</li>
-</ol>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><ol>
-<li><p>仓库的分类</p>
-<ol>
-<li>本地仓库：当前电脑上部署的仓库目录，当前电脑上所有Maven工程服务</li>
-<li>远程仓库<ol>
-<li>私服：搭建再局域网环境中，为局域网范围内的所有Maven工程服务（Nexus）</li>
-<li>中央仓库：架设再Internet上，为全世界所有Maven工程</li>
-<li>中央仓库的镜像：为了分担中央仓库的流量，提升用户访问速度</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>仓库中保存的内容：Maven工程</p>
-<ol>
-<li>Maven自身所需要的插件</li>
-<li>第三方框架或工具的jar包</li>
-<li>我们自己开发的Maven工程</li>
-</ol>
-</li>
-</ol>
-<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ol>
-<li><p>Maven解析依赖信息时会到本地仓库中查找被依赖的jar包</p>
-</li>
-<li><p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库</p>
-</li>
-<li><p>依赖的范围</p>
-<ol>
-<li>compile<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：参与</li>
-</ol>
-</li>
-<li>test<ol>
-<li>对主程序是否有效：无效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>典型例子：junit.jar</li>
-</ol>
-</li>
-<li>provided<ol>
-<li>对主程序是否有效：有效</li>
-<li>对测试程序是否有效：有效</li>
-<li>是否参与打包：不参与</li>
-<li>是否参与部署：不参与</li>
-<li>典型例子：servlet-api.jar</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>依赖的传递性</p>
-<ol>
-<li>在父工程依赖一次既可重复使用</li>
-<li>注意：非complie范围的不能传递。所以在各个工程模块中，重复声明</li>
-</ol>
-</li>
-<li><p>依赖的排除</p>
-<ol>
-<li><p>在不需要j一些ar包或jar包重复时，则要排除一部分jar包</p>
-</li>
-<li><p>排除设置</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">gourpId</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="name">gourpId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxxxxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>依赖原则</p>
-<ol>
-<li>作用：解决模块工程之间的jar包冲突问题</li>
-<li>Maven默认解决方案：路径最短者优先</li>
-<li>Maven默认解决方案：先声明者有限(dependency先后)</li>
-</ol>
-</li>
-<li><p>统一管理依赖的版本</p>
-<ol>
-<li>使用properties标签使用自定义标签统一声明版本号</li>
-<li>在需要的地方使用${自定义标签}引用声明的版本号</li>
-<li>其实properties标签配合自定义标签声明数据的配置并不只能用于声明依赖的版本号，凡是需要统一声明后再引用的声明都能使用。如：字符集、声明…</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
-<li><p>各个构建环境执行的顺序：不能打乱顺序，必须按照指定的正确顺序来执行。</p>
-</li>
-<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务时由插件来完成的。</p>
-</li>
-<li><p>Maven有三条相互独立的生命周期：</p>
-<ol>
-<li>Clean Lifecycle在进行真正的构建之前进行一些清理工作。</li>
-<li>Default Lifecycle在构建核心部分，编译，测试，打包，安装，部署等等。</li>
-<li>Site Lifecycle生成项目报告，站点，发布站点。</li>
-</ol>
-</li>
-<li><p>Maven核心程序为了更好的实现自动化构建，按照这一特点执行生命周期中的各个阶段：不论现在执行生命周期的哪一个阶段，都是从这个生命周期最初的位置开始执行。</p>
-</li>
-</ol>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
-<li><p>统一管理各个模块工程中的test范围的依赖的版本</p>
-</li>
-<li><p>将test的依赖统一提取到父工程中，在子工程中声明的依赖时不指定版本，以工程中统一设定的为准，同时也便于修改</p>
-</li>
-<li><p>操作步骤</p>
-<ol>
-<li><p>创建一个Maven工程为父工程。注意：打包方式为pom</p>
-<p><code>&lt;packaging&gt;pom&lt;/packaging&gt;</code></p>
-</li>
-<li><p>在子工程中声明对父工程的引用</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将子工程的坐标中与父工程坐标中重复的内容删除</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ren.guard.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="comment">&lt;!-- 删除 --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在父工程中统一管理test依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在子工程中删除test依赖的版本号部分</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在配置继承后，执行安装命令时要先安装父工程</p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><ol>
-<li><p>作用：一键安装各个模块工程</p>
-</li>
-<li><p>配置方式：在一个“总的聚合工程”中配置各个参与聚合的模块</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>jpa_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>log4j_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>logger_settings<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用方式：在聚合工程的pom.xml上点击maven install</p>
-</li>
-</ol>
-<h3 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置当工程构建过程中的特殊设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 项目最后的名称 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">finalName</span>&gt;</span>mavenWeb<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置构建过程中需要使用的插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- cargo是一家专门从事“启动Servlet容器”的组织 --&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.cargo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cargo-maven2-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 针对插件进行的配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 配置当前系统中容器的位置 --&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">containerId</span>&gt;</span>tomcat8x<span class="tag">&lt;/<span class="name">containerId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">type</span>&gt;</span>existing<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">home</span>&gt;</span>D:\xxxx\xxxxx<span class="tag">&lt;/<span class="name">home</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 如果Tomcat端口为默认值8080则不必设置该属性 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">cargo.servlet.port</span>&gt;</span>8989<span class="tag">&lt;/<span class="name">cargo.servlet.port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">&lt;!-- 配置插件在什么情况下执行 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                	<span class="tag">&lt;<span class="name">id</span>&gt;</span>cargo-run<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 生命周期的阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>install<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- 插件的目标 --&gt;</span></span><br><span class="line">                    	<span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>mvn deploy</code></p>
-<h3 id="依赖信息网址"><a href="#依赖信息网址" class="headerlink" title="依赖信息网址"></a>依赖信息网址</h3><p><a href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
-]]></content>
-      <categories>
-        <category>Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker安装mysql</title>
     <url>/2d010ac21d89.html</url>
     <content><![CDATA[<h2 id="mysql5"><a href="#mysql5" class="headerlink" title="mysql5"></a>mysql5</h2><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql:5.7.37</span><br></pre></td></tr></table></figure>
@@ -7907,6 +7907,26 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Typora启用代理</title>
+    <url>/463cd35b6d1e.html</url>
+    <content><![CDATA[<p>进入偏好设置, 在通用中下拉找到打开高级设置.<img src="/463cd35b6d1e/image-20240912152435894.png" class="" alt="image-20240912152435894"></p>
+<p>在弹出的文件夹中用编辑器打开conf.user.json文件</p>
+<img src="/463cd35b6d1e/image-20240912152512793.png" class="" alt="image-20240912152512793">
+
+<p>修改flags中的内容</p>
+<img src="/463cd35b6d1e/image-20240912152603123.png" class="" alt="image-20240912152603123">
+
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;flags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="punctuation">[</span><span class="string">&quot;proxy-server&quot;</span><span class="punctuation">,</span> <span class="string">&quot;socks5://127.0.0.1:10808&quot;</span><span class="punctuation">]</span></span><br><span class="line"> <span class="punctuation">]</span> <span class="comment">// default [], append Chrome launch flags, e.g: [[&quot;disable-gpu&quot;], [&quot;host-rules&quot;, &quot;MAP * 127.0.0.1&quot;]]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>typora</category>
+      </categories>
+      <tags>
+        <tag>typora</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>windows执行多条命令</title>
     <url>/5a83ffea21e3.html</url>
     <content><![CDATA[<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>在 Linux 中，<code>&amp;&amp;</code> 被称为逻辑 AND 运算符。它用于将两个命令连接起来，并且只有在前一个命令成功（返回状态码为0）时，才会执行后一个命令。</p>
@@ -7940,66 +7960,6 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Typora启用代理</title>
-    <url>/463cd35b6d1e.html</url>
-    <content><![CDATA[<p>进入偏好设置, 在通用中下拉找到打开高级设置.<img src="/463cd35b6d1e/image-20240912152435894.png" class="" alt="image-20240912152435894"></p>
-<p>在弹出的文件夹中用编辑器打开conf.user.json文件</p>
-<img src="/463cd35b6d1e/image-20240912152512793.png" class="" alt="image-20240912152512793">
-
-<p>修改flags中的内容</p>
-<img src="/463cd35b6d1e/image-20240912152603123.png" class="" alt="image-20240912152603123">
-
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;flags&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="punctuation">[</span><span class="string">&quot;proxy-server&quot;</span><span class="punctuation">,</span> <span class="string">&quot;socks5://127.0.0.1:10808&quot;</span><span class="punctuation">]</span></span><br><span class="line"> <span class="punctuation">]</span> <span class="comment">// default [], append Chrome launch flags, e.g: [[&quot;disable-gpu&quot;], [&quot;host-rules&quot;, &quot;MAP * 127.0.0.1&quot;]]</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>typora</category>
-      </categories>
-      <tags>
-        <tag>typora</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修身(一)</title>
-    <url>/ed2fa5fac7e8.html</url>
-    <content><![CDATA[<p>一个人在成长的过程里，总会遇到很多，比如心里的矛盾，现实里的阻碍。<br>美好的想法那是自己惬意的美妙的梦想。<br>一个人如何得到自己想要的，如何实现自己的理想，又如何能够改变自己现在的状态？<br>我相信这是太多的人都面临的一个问题。</p>
-<p>只是才疏学浅，希望读者能够提出最为宝贵的意见。</p>
-<p>所以我只谈一点，那就是修身。</p>
-<p>修身齐家治国平天下，这句话都不是陌生的，但是如何做到？<br>且不说治国平天下，那如何齐起家？<br>所以得先修其身啊。</p>
-<p>怎么修身？</p>
-<p>一个很笼统的话题，那有没有标准？<br>有没有规律，有没有可以快速见到效果的？<br>这就是我们在不断总结出来的一些，现在分享给大家。</p>
-<h2 id="1-修口"><a href="#1-修口" class="headerlink" title="1.修口"></a>1.修口</h2><ol>
-<li>你能让别人舒服，能够让这个此时此刻的环境和谐，能够达到基本目标，能够简单易行，这一点能够得到已经很不错了。</li>
-<li>你能通过自己能为，表达清楚和规划执行，能够明确方向的长远，那种高度，深度，并且可以按照别人接受的顺序讲出来，这还只是你做到了一半，最重要就是执行过程里那种利弊得失，时间空间布局，容易出错的，容易变化的也能补充到位，这就很不容易了。这便是个人的基本趋于综合能力了。</li>
-<li>要成为大才，那你还需要按照自然规律，道德，符合规律还不够，还需要创造，得到进步，推动力，你的创造力，奇特的开发在没有条件的时候创造出来的那才是别人震撼和让你口才有魂的基本。这是我粗浅的理解。那么话说回来最基本的修口具体是什么呢？</li>
-</ol>
-<p>我认为要做到四不。</p>
-<h3 id="第一不"><a href="#第一不" class="headerlink" title="第一不"></a>第一不</h3><p>第一不，就是不插嘴。<br>其实很多人有个很不好的习惯，就是喜欢插嘴。<br>试问下，你如果在说话的时候，别人也插嘴你是怎样的感受？<br>既然你不喜欢你很讨厌，那别人说话的时候你插嘴呢？<br>为何不要插嘴！</p>
-<p>我认真的思考了一下有这样的原因。</p>
-<ol>
-<li>你真的把对方的意思理解了吗？还是用你那个人的感觉判断去理解了？</li>
-<li>别人信息情报具体了吗？说清楚了没有？还是根本就没有开始？</li>
-<li>你都不知道别人目的，不仅仅是事的目的，最重要的是还有人，你要知道他如此说是不是因为可以想到兵法里的话，如何激怒对方？还是在隐藏什么？</li>
-</ol>
-<p>所以你​需要安静冷静。<br>这不仅仅是智慧，还会是你能够获得面子与尊重。<br>因为你这个细节决定了说话的气氛。<br>所以千万别乱插嘴！<br>但是还有一点，不是一概而论的，就是当你该插嘴的时候必须要插嘴了，所以这个平衡需要自己能够把握一个度。</p>
-<h3 id="第二不"><a href="#第二不" class="headerlink" title="第二不"></a>第二不</h3><p>第二不，不争论。<br>你争赢了输了关系，你争输了会输得很惨。<br>大家都知道，争锋对麦芒的！<br>可现实里，又有多少人如此愚蠢？<br>我们大家确实都在争都在论，但是我认为我们得有合适的方法需要正确解决眼前的所有。<br>其实这里就如战场一样。<br>其实你的社会也如是战场，那么你知道了战场，就是生死存亡就是你争我夺的地方。<br>所以难免的就是争论也就会出现输赢出现心里的状态中的悲喜与酸痛。<br>而每个人都一样希望自己是一个智者是一个强者是一个得到支持的人，尤其是在自己说话的时候，所以这里我认为，如何做到与得到你的目标，你应该做到的三点:</p>
-<ol>
-<li>快速恢复对得失中利益的判断，调整自己情绪，去认同对方。</li>
-<li>还需要很认真的去思考别人的意思和言外之意。</li>
-<li>明确做的方向，做的方法。</li>
-</ol>
-<p>其实大家最终要得到的只是一个，那就是大伙达成共识。<br>在这里关于争论与不争论就写到这里，其实还有更加具体的希望可以在以后的过程里分享。</p>
-<h3 id="第三不"><a href="#第三不" class="headerlink" title="第三不"></a>第三不</h3><p>第三不，不否定与不反驳。<br>很多时候，我们总是喜欢反驳习惯了否定。<br>你不认同别人别人一辈子都不会认同你，你反驳了别人那是对别人的不尊重最重要的是还会带来了很大的程度伤害。<br>试问下，你懂别人吗？<br>你又了解清楚别人说的事吗？<br>你又明白别人那个时候发生什么？<br>你又明白别人的难处吗？<br>你又知道那个时候别人最应该做的和不得不做的是什么吗？<br>所以人与人之间的相处，就是因为自己往往按照自己的思考去思考，还有很多的时候都是好为人师指手画脚的，试问下你真的是神吗？<br>不，你不是，既然不是的，也无非就是一个凡人，那有必要如此吗？<br>在这里我们得深深思考！<br>为何那些大成家他们能够让身边的人从内心里舒服，明白吗？<br>所以笔者个人认为，一切好商量，就会成为绝大多数的未来的法宝！​<br>所以当我们理解了，明确了我们自己的日子也定然好过起来，尤其是夫妻之间，尤其是最好的关系之间，人往往犯的错就是很难控制住这一切。<br>所以还有更多的法宝，希望读者可以随时与我们交流。</p>
-<h3 id="第四不"><a href="#第四不" class="headerlink" title="第四不"></a>第四不</h3><p>第四不，不嘴巴变形。<br>其实这是最讨厌也是最没用最没有礼貌的。<br>只要你用心观察身边的人，说话嘴巴变形的人，他的性格与命运，就当做实践的作业吧。<br>为何人喜欢菩萨？<br>喜欢拜佛？<br>不喜欢雷公脸？<br>知道吗？<br>这里牵系了我下面要说的眼。<br>还有更多的知识内容，也需要后面发表…<br>所以修口，很重要，有了四不，就不断的检查自己不断的告诉自己修炼好。</p>
-]]></content>
-      <categories>
-        <category>摘要</category>
-      </categories>
-      <tags>
-        <tag>摘要</tag>
       </tags>
   </entry>
   <entry>
@@ -8061,6 +8021,46 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>摘要</tag>
         <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修身(一)</title>
+    <url>/ed2fa5fac7e8.html</url>
+    <content><![CDATA[<p>一个人在成长的过程里，总会遇到很多，比如心里的矛盾，现实里的阻碍。<br>美好的想法那是自己惬意的美妙的梦想。<br>一个人如何得到自己想要的，如何实现自己的理想，又如何能够改变自己现在的状态？<br>我相信这是太多的人都面临的一个问题。</p>
+<p>只是才疏学浅，希望读者能够提出最为宝贵的意见。</p>
+<p>所以我只谈一点，那就是修身。</p>
+<p>修身齐家治国平天下，这句话都不是陌生的，但是如何做到？<br>且不说治国平天下，那如何齐起家？<br>所以得先修其身啊。</p>
+<p>怎么修身？</p>
+<p>一个很笼统的话题，那有没有标准？<br>有没有规律，有没有可以快速见到效果的？<br>这就是我们在不断总结出来的一些，现在分享给大家。</p>
+<h2 id="1-修口"><a href="#1-修口" class="headerlink" title="1.修口"></a>1.修口</h2><ol>
+<li>你能让别人舒服，能够让这个此时此刻的环境和谐，能够达到基本目标，能够简单易行，这一点能够得到已经很不错了。</li>
+<li>你能通过自己能为，表达清楚和规划执行，能够明确方向的长远，那种高度，深度，并且可以按照别人接受的顺序讲出来，这还只是你做到了一半，最重要就是执行过程里那种利弊得失，时间空间布局，容易出错的，容易变化的也能补充到位，这就很不容易了。这便是个人的基本趋于综合能力了。</li>
+<li>要成为大才，那你还需要按照自然规律，道德，符合规律还不够，还需要创造，得到进步，推动力，你的创造力，奇特的开发在没有条件的时候创造出来的那才是别人震撼和让你口才有魂的基本。这是我粗浅的理解。那么话说回来最基本的修口具体是什么呢？</li>
+</ol>
+<p>我认为要做到四不。</p>
+<h3 id="第一不"><a href="#第一不" class="headerlink" title="第一不"></a>第一不</h3><p>第一不，就是不插嘴。<br>其实很多人有个很不好的习惯，就是喜欢插嘴。<br>试问下，你如果在说话的时候，别人也插嘴你是怎样的感受？<br>既然你不喜欢你很讨厌，那别人说话的时候你插嘴呢？<br>为何不要插嘴！</p>
+<p>我认真的思考了一下有这样的原因。</p>
+<ol>
+<li>你真的把对方的意思理解了吗？还是用你那个人的感觉判断去理解了？</li>
+<li>别人信息情报具体了吗？说清楚了没有？还是根本就没有开始？</li>
+<li>你都不知道别人目的，不仅仅是事的目的，最重要的是还有人，你要知道他如此说是不是因为可以想到兵法里的话，如何激怒对方？还是在隐藏什么？</li>
+</ol>
+<p>所以你​需要安静冷静。<br>这不仅仅是智慧，还会是你能够获得面子与尊重。<br>因为你这个细节决定了说话的气氛。<br>所以千万别乱插嘴！<br>但是还有一点，不是一概而论的，就是当你该插嘴的时候必须要插嘴了，所以这个平衡需要自己能够把握一个度。</p>
+<h3 id="第二不"><a href="#第二不" class="headerlink" title="第二不"></a>第二不</h3><p>第二不，不争论。<br>你争赢了输了关系，你争输了会输得很惨。<br>大家都知道，争锋对麦芒的！<br>可现实里，又有多少人如此愚蠢？<br>我们大家确实都在争都在论，但是我认为我们得有合适的方法需要正确解决眼前的所有。<br>其实这里就如战场一样。<br>其实你的社会也如是战场，那么你知道了战场，就是生死存亡就是你争我夺的地方。<br>所以难免的就是争论也就会出现输赢出现心里的状态中的悲喜与酸痛。<br>而每个人都一样希望自己是一个智者是一个强者是一个得到支持的人，尤其是在自己说话的时候，所以这里我认为，如何做到与得到你的目标，你应该做到的三点:</p>
+<ol>
+<li>快速恢复对得失中利益的判断，调整自己情绪，去认同对方。</li>
+<li>还需要很认真的去思考别人的意思和言外之意。</li>
+<li>明确做的方向，做的方法。</li>
+</ol>
+<p>其实大家最终要得到的只是一个，那就是大伙达成共识。<br>在这里关于争论与不争论就写到这里，其实还有更加具体的希望可以在以后的过程里分享。</p>
+<h3 id="第三不"><a href="#第三不" class="headerlink" title="第三不"></a>第三不</h3><p>第三不，不否定与不反驳。<br>很多时候，我们总是喜欢反驳习惯了否定。<br>你不认同别人别人一辈子都不会认同你，你反驳了别人那是对别人的不尊重最重要的是还会带来了很大的程度伤害。<br>试问下，你懂别人吗？<br>你又了解清楚别人说的事吗？<br>你又明白别人那个时候发生什么？<br>你又明白别人的难处吗？<br>你又知道那个时候别人最应该做的和不得不做的是什么吗？<br>所以人与人之间的相处，就是因为自己往往按照自己的思考去思考，还有很多的时候都是好为人师指手画脚的，试问下你真的是神吗？<br>不，你不是，既然不是的，也无非就是一个凡人，那有必要如此吗？<br>在这里我们得深深思考！<br>为何那些大成家他们能够让身边的人从内心里舒服，明白吗？<br>所以笔者个人认为，一切好商量，就会成为绝大多数的未来的法宝！​<br>所以当我们理解了，明确了我们自己的日子也定然好过起来，尤其是夫妻之间，尤其是最好的关系之间，人往往犯的错就是很难控制住这一切。<br>所以还有更多的法宝，希望读者可以随时与我们交流。</p>
+<h3 id="第四不"><a href="#第四不" class="headerlink" title="第四不"></a>第四不</h3><p>第四不，不嘴巴变形。<br>其实这是最讨厌也是最没用最没有礼貌的。<br>只要你用心观察身边的人，说话嘴巴变形的人，他的性格与命运，就当做实践的作业吧。<br>为何人喜欢菩萨？<br>喜欢拜佛？<br>不喜欢雷公脸？<br>知道吗？<br>这里牵系了我下面要说的眼。<br>还有更多的知识内容，也需要后面发表…<br>所以修口，很重要，有了四不，就不断的检查自己不断的告诉自己修炼好。</p>
+]]></content>
+      <categories>
+        <category>摘要</category>
+      </categories>
+      <tags>
+        <tag>摘要</tag>
       </tags>
   </entry>
   <entry>
@@ -8338,13 +8338,13 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>空心菱形</title>
-    <url>/ee0d4590f239.html</url>
-    <content><![CDATA[<p>小明刚刚开发了一个小程序，可以打印出任意规模的空心菱形，规模为6时，如下图：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">****** ******</span><br><span class="line">***** 	*****</span><br><span class="line">**** 	 ****</span><br><span class="line">*** 	  ***</span><br><span class="line">** 		   **</span><br><span class="line">*           *</span><br><span class="line">**         **</span><br><span class="line">*** 	  ***</span><br><span class="line">**** 	 ****</span><br><span class="line">***** 	*****</span><br><span class="line">****** ******</span><br><span class="line">（如果有对齐问题，参看【图1.png】）</span><br></pre></td></tr></table></figure>
-
-<p>他一高兴，踢掉了电源，最后一次修改没有保存…..<br>毛病出在划线的部分。<br>请你帮助小明分析程序，填写划线部分缺失的代码。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static String pr(int m, int n) &#123;</span><br><span class="line">		String s = &quot;&quot;;</span><br><span class="line">		for (int i = 0; i &lt; n; i++)</span><br><span class="line">			s += &quot; &quot;;</span><br><span class="line">		for (int i = 0; i &lt; m; i++)</span><br><span class="line">			s = &quot;*&quot; + s + &quot;*&quot;;</span><br><span class="line">		return s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static void f(int n) &#123;</span><br><span class="line">		String s = pr(1, n * 2 - 1) + &quot;\n&quot;;</span><br><span class="line">		String s2 = s;</span><br><span class="line"></span><br><span class="line">		for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">			s = pr(1 + i, n * 2 - i * 2 - 1) + &quot;\n&quot;; // 填空位置</span><br><span class="line">			s2 = s + s2 + s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.print(s2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		f(10);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>生成回文数</title>
+    <url>/de8220af4fbd.html</url>
+    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
+<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
+<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
+<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -8356,13 +8356,13 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>生成回文数</title>
-    <url>/de8220af4fbd.html</url>
-    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
-<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
-<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
-<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>空心菱形</title>
+    <url>/ee0d4590f239.html</url>
+    <content><![CDATA[<p>小明刚刚开发了一个小程序，可以打印出任意规模的空心菱形，规模为6时，如下图：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">****** ******</span><br><span class="line">***** 	*****</span><br><span class="line">**** 	 ****</span><br><span class="line">*** 	  ***</span><br><span class="line">** 		   **</span><br><span class="line">*           *</span><br><span class="line">**         **</span><br><span class="line">*** 	  ***</span><br><span class="line">**** 	 ****</span><br><span class="line">***** 	*****</span><br><span class="line">****** ******</span><br><span class="line">（如果有对齐问题，参看【图1.png】）</span><br></pre></td></tr></table></figure>
+
+<p>他一高兴，踢掉了电源，最后一次修改没有保存…..<br>毛病出在划线的部分。<br>请你帮助小明分析程序，填写划线部分缺失的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static String pr(int m, int n) &#123;</span><br><span class="line">		String s = &quot;&quot;;</span><br><span class="line">		for (int i = 0; i &lt; n; i++)</span><br><span class="line">			s += &quot; &quot;;</span><br><span class="line">		for (int i = 0; i &lt; m; i++)</span><br><span class="line">			s = &quot;*&quot; + s + &quot;*&quot;;</span><br><span class="line">		return s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static void f(int n) &#123;</span><br><span class="line">		String s = pr(1, n * 2 - 1) + &quot;\n&quot;;</span><br><span class="line">		String s2 = s;</span><br><span class="line"></span><br><span class="line">		for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">			s = pr(1 + i, n * 2 - i * 2 - 1) + &quot;\n&quot;; // 填空位置</span><br><span class="line">			s2 = s + s2 + s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.print(s2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		f(10);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -8467,6 +8467,258 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Java</tag>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工厂方法模式</title>
+    <url>/66f289959be0.html</url>
+    <content><![CDATA[<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>工厂方法模式</strong>是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。</p>
+<img src="/66f289959be0/image-20240912152854979.png" class="" alt="image-20240912152854979">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>假设你正在开发一款物流管理应用。 最初版本只能处理卡车运输， 因此大部分代码都在位于名为 <code>卡车</code>的类中。</p>
+<p>一段时间后， 这款应用变得极受欢迎。 你每天都能收到十几次来自海运公司的请求， 希望应用能够支持海上物流功能。</p>
+<img src="/66f289959be0/image-20240912152922428.png" class="" alt="在程序中新增一个运输类会遇到问题">
+
+<p>这可是个好消息。 但是代码问题该如何处理呢？ 目前， 大部分代码都与 <code>卡车</code>类相关。 在程序中添加 <code>轮船</code>类需要修改全部代码。 更糟糕的是， 如果你以后需要在程序中支持另外一种运输方式， 很可能需要再次对这些代码进行大幅修改。</p>
+<p>最后， 你将不得不编写繁复的代码， 根据不同的运输对象类， 在应用中进行不同的处理。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>工厂方法模式建议使用特殊的<em>工厂</em>方法代替对于对象构造函数的直接调用 （即使用 <code>new</code>运算符）。 不用担心， 对象仍将通过 <code>new</code>运算符创建， 只是该运算符改在工厂方法中调用罢了。 工厂方法返回的对象通常被称作 “产品”。</p>
+<img src="/66f289959be0/image-20240912152957005.png" class="" alt="子类可以修改工厂方法返回的对象类型。">
+
+<p>乍看之下， 这种更改可能毫无意义： 我们只是改变了程序中调用构造函数的位置而已。 但是， 仔细想一下， 现在你可以在子类中重写工厂方法， 从而改变其创建产品的类型。</p>
+<p>但有一点需要注意:仅当这些产品具有共同的基类或者接口时， 子类才能返回不同类型的产品， 同时基类中的工厂方法还应将其返回类型声明为这一共有接口。</p>
+<img src="/66f289959be0/image-20240912153018184.png" class="" alt="所有产品都必须使用同一接口。">
+
+<p>举例来说，  <code>卡车</code>Truck和 <code>轮船</code>Ship类都必须实现 <code>运输</code>Transport接口， 该接口声明了一个名为 <code>deliver</code>交付的方法。 每个类都将以不同的方式实现该方法： 卡车走陆路交付货物， 轮船走海路交付货物。  <code>陆路运输</code>Road­Logistics类中的工厂方法返回卡车对象， 而 <code>海路运输</code>Sea­Logistics类则返回轮船对象。</p>
+<img src="/66f289959be0/image-20240912153044258.png" class="" alt="只要产品类实现一个共同的接口， 你就可以将其对象传递给客户代码， 而无需提供额外数据。">
+
+<p>调用工厂方法的代码 （通常被称为<em>客户端</em>代码） 无需了解不同子类返回实际对象之间的差别。 客户端将所有产品视为抽象的 <code>运输</code> 。 客户端知道所有运输对象都提供 <code>交付</code>方法， 但是并不关心其具体实现方式。</p>
+<h2 id="工厂方法模式结构"><a href="#工厂方法模式结构" class="headerlink" title="工厂方法模式结构"></a>工厂方法模式结构</h2><img src="/66f289959be0/image-20240912153118656.png" class="" alt="image-20240912153118656">
+
+<ol>
+<li><p><strong>产品</strong> （Product） 将会对接口进行声明。 对于所有由创建者及其子类构建的对象， 这些接口都是通用的。</p>
+</li>
+<li><p><strong>具体产品</strong> （Concrete Products） 是产品接口的不同实现。</p>
+</li>
+<li><p><strong>创建者</strong> （Creator） 类声明返回产品对象的工厂方法。 该方法的返回对象类型必须与产品接口相匹配。</p>
+<p>你可以将工厂方法声明为抽象方法， 强制要求每个子类以不同方式实现该方法。 或者， 你也可以在基础工厂方法中返回默认产品类型。</p>
+<p>注意， 尽管它的名字是创建者， 但它最主要的职责并<strong>不是</strong>创建产品。 一般来说， 创建者类包含一些与产品相关的核心业务逻辑。 工厂方法将这些逻辑处理从具体产品类中分离出来。 打个比方， 大型软件开发公司拥有程序员培训部门。 但是， 这些公司的主要工作还是编写代码， 而非生产程序员。</p>
+</li>
+<li><p><strong>具体创建者</strong> （Concrete Creators） 将会重写基础工厂方法， 使其返回不同类型的产品。</p>
+<p>注意， 并不一定每次调用工厂方法都会<strong>创建</strong>新的实例。 工厂方法也可以返回缓存、 对象池或其他来源的已有对象。</p>
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>以下示例演示了如何使用<strong>工厂方法</strong>开发跨平台 UI （用户界面） 组件， 并同时避免客户代码与具体 UI 类之间的耦合。</p>
+<img src="/66f289959be0/image-20240912153417032.png" class="" alt="跨平台对话框示例。">
+
+<p>基础对话框类使用不同的 UI 组件渲染窗口。 在不同的操作系统下， 这些组件外观或许略有不同， 但其功能保持一致。 Windows 系统中的按钮在 Linux 系统中仍然是按钮。</p>
+<p>如果使用工厂方法， 就不需要为每种操作系统重写对话框逻辑。 如果我们声明了一个在基本对话框类中生成按钮的工厂方法， 那么我们就可以创建一个对话框子类， 并使其通过工厂方法返回 Windows 样式按钮。 子类将继承对话框基础类的大部分代码， 同时在屏幕上根据 Windows 样式渲染按钮。</p>
+<p>如需该模式正常工作， 基础对话框类必须使用抽象按钮 （例如基类或接口）， 以便将其扩展为具体按钮。 这样一来， 无论对话框中使用何种类型的按钮， 其代码都可以正常工作。</p>
+<p>你可以使用此方法开发其他 UI 组件。 不过， 每向对话框中添加一个新的工厂方法， 你就离<a href="https://refactoringguru.cn/design-patterns/abstract-factory">抽象工厂</a>模式更近一步。 我们将在稍后谈到这个模式。</p>
+<h3 id="buttons"><a href="#buttons" class="headerlink" title="buttons"></a><strong>buttons</strong></h3><h4 id="buttons-Button-java-通用产品接口"><a href="#buttons-Button-java-通用产品接口" class="headerlink" title="buttons&#x2F;Button.java: 通用产品接口"></a><strong>buttons&#x2F;Button.java:</strong> 通用产品接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 所有按钮的通用界面。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Button</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">render</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="buttons-HtmlButton-java-具体产品"><a href="#buttons-HtmlButton-java-具体产品" class="headerlink" title="buttons&#x2F;HtmlButton.java: 具体产品"></a><strong>buttons&#x2F;HtmlButton.java:</strong> 具体产品</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * HTML button实施。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午3:38</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HtmlButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">render</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;&lt;button&gt;HTML Button&lt;/button&gt;&quot;</span>);</span><br><span class="line">        onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;点击!按钮说 - &#x27;HTML Button!&#x27;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="buttons-WindowsButton-java-另一个具体产品"><a href="#buttons-WindowsButton-java-另一个具体产品" class="headerlink" title="buttons&#x2F;WindowsButton.java: 另一个具体产品"></a><strong>buttons&#x2F;WindowsButton.java:</strong> 另一个具体产品</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Windows按钮实现。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午3:52</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WindowsButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">render</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;&lt;button&gt;Windows Button&lt;/button&gt;&quot;</span>);</span><br><span class="line">        onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;点击!按钮说 - &#x27;Windows Button!&#x27;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="factory"><a href="#factory" class="headerlink" title="factory"></a><strong>factory</strong></h3><h4 id="factory-Dialog-java-基础创建者"><a href="#factory-Dialog-java-基础创建者" class="headerlink" title="factory&#x2F;Dialog.java: 基础创建者"></a><strong>factory&#x2F;Dialog.java:</strong> 基础创建者</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基本工厂类。请注意，&quot;工厂 &quot;只是该类的一个角色。</span></span><br><span class="line"><span class="comment"> * 它应该有一些核心业务逻辑，需要创建不同的产品。</span></span><br><span class="line"><span class="comment"> * 创建。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午3:55</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Dialog</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 子类将重写此方法以创建特定的按钮</span></span><br><span class="line"><span class="comment">     * 对象。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> Button <span class="title function_">createButton</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="factory-HtmlDialog-java-具体创建者"><a href="#factory-HtmlDialog-java-具体创建者" class="headerlink" title="factory&#x2F;HtmlDialog.java: 具体创建者"></a><strong>factory&#x2F;HtmlDialog.java:</strong> 具体创建者</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.buttons.HtmlButton;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * HTML对话框将产生HTML按钮。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午3:57</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HtmlDialog</span> <span class="keyword">extends</span> <span class="title class_">Dialog</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HtmlButton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="factory-WindowsDialog-java-另一个具体创建者"><a href="#factory-WindowsDialog-java-另一个具体创建者" class="headerlink" title="factory&#x2F;WindowsDialog.java: 另一个具体创建者"></a><strong>factory&#x2F;WindowsDialog.java:</strong> 另一个具体创建者</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.buttons.WindowsButton;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Windows对话框将生成Windows按钮。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午3:57</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WindowsDialog</span> <span class="keyword">extends</span> <span class="title class_">Dialog</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WindowsButton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Main-java-客户端代码"><a href="#Main-java-客户端代码" class="headerlink" title="Main.java: 客户端代码"></a><strong>Main.java:</strong> 客户端代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.factory.Dialog;</span><br><span class="line"><span class="keyword">import</span> org.example.factory.HtmlDialog;</span><br><span class="line"><span class="keyword">import</span> org.example.factory.WindowsDialog;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Main类。一切都聚集在这里。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Dialog dialog;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        configure();</span><br><span class="line">        runBusinessLogic();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 混凝土工厂通常根据配置或</span></span><br><span class="line"><span class="comment">     * 环境选项。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;Windows 10&quot;</span>.equals(System.getProperty(<span class="string">&quot;os.name&quot;</span>))) &#123;</span><br><span class="line">            dialog = <span class="keyword">new</span> <span class="title class_">WindowsDialog</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dialog = <span class="keyword">new</span> <span class="title class_">HtmlDialog</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 所有客户端代码都应通过以下方式与工厂和产品一起使用</span></span><br><span class="line"><span class="comment">     * 抽象接口。这种方式，它并不关心它的工作工厂</span></span><br><span class="line"><span class="comment">     * 以及它返回什么样的产品。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">runBusinessLogic</span><span class="params">()</span> &#123;</span><br><span class="line">        dialog.renderWindow();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂方法模式适合应用场景"><a href="#工厂方法模式适合应用场景" class="headerlink" title="工厂方法模式适合应用场景"></a>工厂方法模式适合应用场景</h2><p> <strong>当你在编写代码的过程中， 如果无法预知对象确切类别及其依赖关系时， 可使用工厂方法。</strong></p>
+<p> 工厂方法将创建产品的代码与实际使用产品的代码分离， 从而能在不影响其他代码的情况下扩展产品创建部分代码。</p>
+<p>例如， 如果需要向应用中添加一种新产品， 你只需要开发新的创建者子类， 然后重写其工厂方法即可。</p>
+<p><strong>如果你希望用户能扩展你软件库或框架的内部组件， 可使用工厂方法。</strong></p>
+<p>继承可能是扩展软件库或框架默认行为的最简单方法。 但是当你使用子类替代标准组件时， 框架如何辨识出该子类？</p>
+<p>解决方案是将各框架中构造组件的代码集中到单个工厂方法中， 并在继承该组件之外允许任何人对该方法进行重写。</p>
+<p>让我们看看具体是如何实现的。 假设你使用开源 UI 框架编写自己的应用。 你希望在应用中使用圆形按钮， 但是原框架仅支持矩形按钮。 你可以使用 <code>圆形按钮</code>Round­Button子类来继承标准的 <code>按钮</code>Button类。 但是， 你需要告诉 <code>UI框架</code>UIFramework类使用新的子类按钮代替默认按钮。</p>
+<p>为了实现这个功能， 你可以根据基础框架类开发子类 <code>圆形按钮 UI</code>UIWith­Round­Buttons ， 并且重写其 <code>create­Button</code>创建按钮方法。 基类中的该方法返回 <code>按钮</code>对象， 而你开发的子类返回 <code>圆形按钮</code>对象。 现在， 你就可以使用 <code>圆形按钮 UI</code>类代替 <code>UI框架</code>类。 就是这么简单！</p>
+<p><strong>如果你希望复用现有对象来节省系统资源，而不是每次都重新创建对象，可使用工厂方法。</strong></p>
+<p>在处理大型资源密集型对象 （比如数据库连接、 文件系统和网络资源） 时， 你会经常碰到这种资源需求。</p>
+<p>让我们思考复用现有对象的方法：</p>
+<ol>
+<li>首先， 你需要创建存储空间来存放所有已经创建的对象。</li>
+<li>当他人请求一个对象时， 程序将在对象池中搜索可用对象。</li>
+<li>… 然后将其返回给客户端代码。</li>
+<li>如果没有可用对象， 程序则创建一个新对象 （并将其添加到对象池中）。</li>
+</ol>
+<p>这些代码可不少！ 而且它们必须位于同一处， 这样才能确保重复代码不会污染程序。</p>
+<p>可能最显而易见， 也是最方便的方式， 就是将这些代码放置在我们试图重用的对象类的构造函数中。 但是从定义上来讲， 构造函数始终返回的是<strong>新对象</strong>， 其无法返回现有实例。</p>
+<p>因此， 你需要有一个既能够创建新对象， 又可以重用现有对象的普通方法。 这听上去和工厂方法非常相像。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li><p>让所有产品都遵循同一接口。 该接口必须声明对所有产品都有意义的方法。</p>
+</li>
+<li><p>在创建类中添加一个空的工厂方法。 该方法的返回类型必须遵循通用的产品接口。</p>
+</li>
+<li><p>在创建者代码中找到对于产品构造函数的所有引用。 将它们依次替换为对于工厂方法的调用， 同时将创建产品的代码移入工厂方法。</p>
+<p>你可能需要在工厂方法中添加临时参数来控制返回的产品类型。</p>
+<p>工厂方法的代码看上去可能非常糟糕。 其中可能会有复杂的 <code>switch</code>分支运算符， 用于选择各种需要实例化的产品类。 但是不要担心， 我们很快就会修复这个问题。</p>
+</li>
+<li><p>现在， 为工厂方法中的每种产品编写一个创建者子类， 然后在子类中重写工厂方法， 并将基本方法中的相关创建代码移动到工厂方法中。</p>
+</li>
+<li><p>如果应用中的产品类型太多， 那么为每个产品创建子类并无太大必要， 这时你也可以在子类中复用基类中的控制参数。</p>
+<p>例如， 设想你有以下一些层次结构的类。 基类 <code>邮件</code>及其子类 <code>航空邮件</code>和 <code>陆路邮件</code> ；  <code>运输</code>及其子类 <code>飞机</code>, <code>卡车</code>和 <code>火车</code> 。  <code>航空邮件</code>仅使用 <code>飞机</code>对象， 而 <code>陆路邮件</code>则会同时使用 <code>卡车</code>和 <code>火车</code>对象。 你可以编写一个新的子类 （例如 <code>火车邮件</code> ） 来处理这两种情况， 但是还有其他可选的方案。 客户端代码可以给 <code>陆路邮件</code>类传递一个参数， 用于控制其希望获得的产品。</p>
+</li>
+<li><p>如果代码经过上述移动后， 基础工厂方法中已经没有任何代码， 你可以将其转变为抽象类。 如果基础工厂方法中还有其他语句， 你可以将其设置为该方法的默认行为。</p>
+</li>
+</ol>
+<h2 id="工厂方法模式优缺点"><a href="#工厂方法模式优缺点" class="headerlink" title="工厂方法模式优缺点"></a>工厂方法模式优缺点</h2><p>优点：</p>
+<ul>
+<li>你可以避免创建者和具体产品之间的紧密耦合。</li>
+<li><em>单一职责原则</em>。 你可以将产品创建代码放在程序的单一位置， 从而使得代码更容易维护。</li>
+<li><em>开闭原则</em>。 无需更改现有客户端代码， 你就可以在程序中引入新的产品类型。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>应用工厂方法模式需要引入许多新的子类， 代码可能会因此变得更复杂。 最好的情况是将该模式引入创建者类的现有层次结构中。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li>在许多设计工作的初期都会使用工厂方法模式（较为简单， 而且可以更方便地通过子类进行定制）， 随后演化为使用抽象工厂模式、 原型模式或生成器模式（更灵活但更加复杂）。</li>
+<li>抽象工厂模式]通常基于一组工厂方法， 但你也可以使用原型模式来生成这些类的方法。</li>
+<li>你可以同时使用工厂方法和迭代器模式来让子类集合返回不同类型的迭代器， 并使得迭代器与集合相匹配。</li>
+<li>原型并不基于继承， 因此没有继承的缺点。 另一方面， <em>原型</em>需要对被复制对象进行复杂的初始化。工厂方法基于继承， 但是它不需要初始化步骤。</li>
+<li>工厂方法是模板方法模式的一种特殊形式。 同时， <em>工厂方法</em>可以作为一个大型<em>模板方法</em>中的一个步骤。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>工厂方法模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>工厂方法模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抽象工厂模式</title>
+    <url>/e385baf06d73.html</url>
+    <content><![CDATA[<h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>抽象工厂模式</strong>是一种创建型设计模式， 它能创建一系列相关的对象， 而无需指定其具体类。</p>
+<img src="/e385baf06d73/image-20240912164552024.png" class="" alt="image-20240912164552024">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>假设你正在开发一款家具商店模拟器。 你的代码中包括一些类， 用于表示：</p>
+<ol>
+<li>一系列相关产品， 例如 <code>椅子</code>Chair 、  <code>沙发</code>Sofa和 <code>咖啡桌</code>Coffee­Table 。</li>
+<li>系列产品的不同变体。 例如， 你可以使用 <code>现代</code>Modern 、  <code>维多利亚</code>Victorian 、  <code>装饰风艺术</code>Art­Deco等风格生成 <code>椅子</code> 、  <code>沙发</code>和 <code>咖啡桌</code> 。</li>
+</ol>
+<img src="/e385baf06d73/image-20240912165123084.png" class="" alt="系列产品及其不同变体。">
+
+<p>你需要设法单独生成每件家具对象， 这样才能确保其风格一致。 如果顾客收到的家具风格不一样， 他们可不会开心。</p>
+<img src="/e385baf06d73/image-20240912165204693.png" class="" alt="现代风格的沙发和维多利亚风格的椅子不搭。">
+
+<p>此外， 你也不希望在添加新产品或新风格时修改已有代码。 家具供应商对于产品目录的更新非常频繁， 你不会想在每次更新时都去修改核心代码的。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>首先， 抽象工厂模式建议为系列中的每件产品明确声明接口 （例如椅子、 沙发或咖啡桌）。 然后， 确保所有产品变体都继承这些接口。 例如， 所有风格的椅子都实现 <code>椅子</code>接口； 所有风格的咖啡桌都实现 <code>咖啡桌</code>接口， 以此类推。</p>
+<img src="/e385baf06d73/image-20240912170138049.png" class="" alt="同一对象的所有变体都必须放置在同一个类层次结构之中。">
+
+<p>接下来， 我们需要声明<em>抽象工厂</em>——包含系列中所有产品构造方法的接口。 例如 <code>create­Chair</code>创建椅子 、  <code>create­Sofa</code>创建沙发和 <code>create­Coffee­Table</code>创建咖啡桌 。 这些方法必须返回<strong>抽象</strong>产品类型， 即我们之前抽取的那些接口：  <code>椅子</code> ，  <code>沙发</code>和 <code>咖啡桌</code>等等。</p>
+<img src="/e385baf06d73/image-20240912170208152.png" class="" alt="每个具体工厂类都对应一个特定的产品变体。">
+
+<p>那么该如何处理产品变体呢？ 对于系列产品的每个变体， 我们都将基于 <code>抽象工厂</code>接口创建不同的工厂类。 每个工厂类都只能返回特定类别的产品， 例如，  <code>现代家具工厂</code>Modern­Furniture­Factory只能创建 <code>现代椅子</code>Modern­Chair 、  <code>现代沙发</code>Modern­Sofa和 <code>现代咖啡桌</code>Modern­Coffee­Table对象。</p>
+<p>客户端代码可以通过相应的抽象接口调用工厂和产品类。 你无需修改实际客户端代码， 就能更改传递给客户端的工厂类， 也能更改客户端代码接收的产品变体。</p>
+<img src="/e385baf06d73/image-20240912173230543.png" class="" alt="客户端无需了解其所调用工厂的具体类信息。">
+
+<p>假设客户端想要工厂创建一把椅子。 客户端无需了解工厂类， 也不用管工厂类创建出的椅子类型。 无论是现代风格， 还是维多利亚风格的椅子， 对于客户端来说没有分别， 它只需调用抽象 <code>椅子</code>接口就可以了。 这样一来， 客户端只需知道椅子以某种方式实现了 <code>sit­On</code>坐下方法就足够了。 此外， 无论工厂返回的是何种椅子变体， 它都会和由同一工厂对象创建的沙发或咖啡桌风格一致。</p>
+<p>最后一点说明： 如果客户端仅接触抽象接口， 那么谁来创建实际的工厂对象呢？ 一般情况下， 应用程序会在初始化阶段创建具体工厂对象。 而在此之前， 应用程序必须根据配置文件或环境设定选择工厂类别。</p>
+<h2 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h2><img src="/e385baf06d73/image-20240912173436578.png" class="" alt="image-20240912173436578">
+
+<ol>
+<li><strong>抽象产品</strong> （Abstract Product） 为构成系列产品的一组不同但相关的产品声明接口。</li>
+<li><strong>具体产品</strong> （Concrete Product） 是抽象产品的多种不同类型实现。 所有变体 （维多利亚&#x2F;现代） 都必须实现相应的抽象产品 （椅子&#x2F;沙发）。</li>
+<li><strong>抽象工厂</strong> （Abstract Factory） 接口声明了一组创建各种抽象产品的方法。</li>
+<li><strong>具体工厂</strong> （Concrete Factory） 实现抽象工厂的构建方法。 每个具体工厂都对应特定产品变体， 且仅创建此种产品变体。</li>
+<li>尽管具体工厂会对具体产品进行初始化， 其构建方法签名必须返回相应的<em>抽象</em>产品。 这样， 使用工厂类的客户端代码就不会与工厂创建的特定产品变体耦合。 <strong>客户端</strong> （Client） 只需通过抽象接口调用工厂和产品对象， 就能与任何具体工厂&#x2F;产品变体交互。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>下面例子通过应用<strong>抽象工厂</strong>模式， 使得客户端代码无需与具体 UI 类耦合， 就能创建跨平台的 UI 元素， 同时确保所创建的元素与指定的操作系统匹配。</p>
+<img src="/e385baf06d73/image-20240912173914736.png" class="" alt="跨平台 UI 类示例。">
+
+<p>跨平台应用中的相同 UI 元素功能类似， 但是在不同操作系统下的外观有一定差异。 此外， 你需要确保 UI 元素与当前操作系统风格一致。 你一定不希望在 Windows 系统下运行的应用程序中显示 macOS 的控件。</p>
+<p>抽象工厂接口声明一系列构建方法， 客户端代码可调用它们生成不同风格的 UI 元素。 每个具体工厂对应特定操作系统， 并负责生成符合该操作系统风格的 UI 元素。</p>
+<p>其运作方式如下： 应用程序启动后检测当前操作系统。 根据该信息， 应用程序通过与该操作系统对应的类创建工厂对象。 其余代码使用该工厂对象创建 UI 元素。 这样可以避免生成错误类型的元素。</p>
+<p>使用这种方法， 客户端代码只需调用抽象接口， 而无需了解具体工厂类和 UI 元素。 此外， 客户端代码还支持未来添加新的工厂或 UI 元素。</p>
+<p>这样一来， 每次在应用程序中添加新的 UI 元素变体时， 你都无需修改客户端代码。 你只需创建一个能够生成这些 UI 元素的工厂类， 然后稍微修改应用程序的初始代码， 使其能够选择合适的工厂类即可。</p>
+<h3 id="buttons-第一个产品层次结构"><a href="#buttons-第一个产品层次结构" class="headerlink" title="buttons: 第一个产品层次结构"></a><strong>buttons:</strong> 第一个产品层次结构</h3><h4 id="buttons-Button-java"><a href="#buttons-Button-java" class="headerlink" title="buttons&#x2F;Button.java"></a><strong>buttons&#x2F;Button.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象工厂假设你有几个系列的产品，</span></span><br><span class="line"><span class="comment"> * 结构成单独的类层次结构 (按钮/复选框)。的所有产品</span></span><br><span class="line"><span class="comment"> * 同一个家庭有共同的接口。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这是按钮家族的通用接口。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Button</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="buttons-MacOSButton-java"><a href="#buttons-MacOSButton-java" class="headerlink" title="buttons&#x2F;MacOSButton.java"></a><strong>buttons&#x2F;MacOSButton.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 所有产品系列都有相同的品种 (MacOS/Windows)。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这是一个按钮的MacOS变体。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MacOSButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;您已创建MacOSButton.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="buttons-WindowsButton-java"><a href="#buttons-WindowsButton-java" class="headerlink" title="buttons&#x2F;WindowsButton.java"></a><strong>buttons&#x2F;WindowsButton.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.buttons;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 所有产品系列都有相同的品种 (MacOS/Windows)。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这是按钮的另一种变体。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:42</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WindowsButton</span> <span class="keyword">implements</span> <span class="title class_">Button</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;您已创建WindowsButton.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="checkboxes-第二个产品层次结构"><a href="#checkboxes-第二个产品层次结构" class="headerlink" title="checkboxes: 第二个产品层次结构"></a><strong>checkboxes:</strong> 第二个产品层次结构</h3><h4 id="checkboxes-Checkbox-java"><a href="#checkboxes-Checkbox-java" class="headerlink" title="checkboxes&#x2F;Checkbox.java"></a><strong>checkboxes&#x2F;Checkbox.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.checkboxes;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Checkboxes是第二个产品系列。它具有与按钮相同的变体。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Checkbox</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="checkboxes-MacOSCheckbox-java"><a href="#checkboxes-MacOSCheckbox-java" class="headerlink" title="checkboxes&#x2F;MacOSCheckbox.java"></a><strong>checkboxes&#x2F;MacOSCheckbox.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.checkboxes;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 所有产品系列都有相同的品种 (MacOS/Windows)。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这是一个复选框的变体。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MacOSCheckbox</span> <span class="keyword">implements</span> <span class="title class_">Checkbox</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;您已创建MacOSCheckbox.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="checkboxes-WindowsCheckbox-java"><a href="#checkboxes-WindowsCheckbox-java" class="headerlink" title="checkboxes&#x2F;WindowsCheckbox.java"></a><strong>checkboxes&#x2F;WindowsCheckbox.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.checkboxes;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 所有产品系列都有相同的品种 (MacOS/Windows)。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这是复选框的另一种变体。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:44</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WindowsCheckbox</span> <span class="keyword">implements</span> <span class="title class_">Checkbox</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;您已创建WindowsCheckbox.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="factories"><a href="#factories" class="headerlink" title="factories"></a><strong>factories</strong></h3><h4 id="factories-GUIFactory-java-抽象工厂"><a href="#factories-GUIFactory-java-抽象工厂" class="headerlink" title="factories&#x2F;GUIFactory.java: 抽象工厂"></a><strong>factories&#x2F;GUIFactory.java:</strong> 抽象工厂</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factories;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.Checkbox;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象工厂知道所有 (抽象) 产品类型。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:44</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">GUIFactory</span> &#123;</span><br><span class="line">    Button <span class="title function_">createButton</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    Checkbox <span class="title function_">createCheckbox</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="factories-MacOSFactory-java-具体工厂-（-mac­OS）"><a href="#factories-MacOSFactory-java-具体工厂-（-mac­OS）" class="headerlink" title="factories&#x2F;MacOSFactory.java: 具体工厂 （ mac­OS）"></a><strong>factories&#x2F;MacOSFactory.java:</strong> 具体工厂 （ mac­OS）</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factories;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.buttons.MacOSButton;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.Checkbox;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.MacOSCheckbox;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 每个混凝土工厂扩展基本工厂并负责创建</span></span><br><span class="line"><span class="comment"> * 单一品种的产品。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MacOSFactory</span> <span class="keyword">implements</span> <span class="title class_">GUIFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MacOSButton</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Checkbox <span class="title function_">createCheckbox</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MacOSCheckbox</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="factories-WindowsFactory-java-具体工厂-（Windows）"><a href="#factories-WindowsFactory-java-具体工厂-（Windows）" class="headerlink" title="factories&#x2F;WindowsFactory.java: 具体工厂 （Windows）"></a><strong>factories&#x2F;WindowsFactory.java:</strong> 具体工厂 （Windows）</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.factories;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.buttons.WindowsButton;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.Checkbox;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.WindowsCheckbox;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 每个混凝土工厂扩展基本工厂并负责创建</span></span><br><span class="line"><span class="comment"> * 单一品种的产品。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:46</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WindowsFactory</span> <span class="keyword">implements</span> <span class="title class_">GUIFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Button <span class="title function_">createButton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WindowsButton</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Checkbox <span class="title function_">createCheckbox</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WindowsCheckbox</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="app"><a href="#app" class="headerlink" title="app"></a><strong>app</strong></h3><h4 id="app-Application-java-客户端代码"><a href="#app-Application-java-客户端代码" class="headerlink" title="app&#x2F;Application.java: 客户端代码"></a><strong>app&#x2F;Application.java:</strong> 客户端代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.app;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.buttons.Button;</span><br><span class="line"><span class="keyword">import</span> org.example.checkboxes.Checkbox;</span><br><span class="line"><span class="keyword">import</span> org.example.factories.GUIFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 工厂用户不关心他们使用的混凝土工厂，因为他们的工作</span></span><br><span class="line"><span class="comment"> * 通过抽象接口的工厂和产品。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Button button;</span><br><span class="line">    <span class="keyword">private</span> Checkbox checkbox;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Application</span><span class="params">(GUIFactory factory)</span> &#123;</span><br><span class="line">        button = factory.createButton();</span><br><span class="line">        checkbox = factory.createCheckbox();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">()</span> &#123;</span><br><span class="line">        button.paint();</span><br><span class="line">        checkbox.paint();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Main-java-程序配置"><a href="#Main-java-程序配置" class="headerlink" title="Main.java: 程序配置"></a><strong>Main.java:</strong> 程序配置</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.app.Application;</span><br><span class="line"><span class="keyword">import</span> org.example.factories.GUIFactory;</span><br><span class="line"><span class="keyword">import</span> org.example.factories.MacOSFactory;</span><br><span class="line"><span class="keyword">import</span> org.example.factories.WindowsFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Main类。一切都聚集在这里。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/12 下午5:50</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 应用程序选择工厂类型并在运行时创建它 (通常在</span></span><br><span class="line"><span class="comment">     * 初始化阶段)，具体取决于配置或环境</span></span><br><span class="line"><span class="comment">     * 变量。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Application <span class="title function_">configureApplication</span><span class="params">()</span> &#123;</span><br><span class="line">        Application app;</span><br><span class="line">        GUIFactory factory;</span><br><span class="line">        <span class="type">String</span> <span class="variable">osName</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;os.name&quot;</span>).toLowerCase();</span><br><span class="line">        <span class="keyword">if</span> (osName.contains(<span class="string">&quot;mac&quot;</span>)) &#123;</span><br><span class="line">            factory = <span class="keyword">new</span> <span class="title class_">MacOSFactory</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            factory = <span class="keyword">new</span> <span class="title class_">WindowsFactory</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        app = <span class="keyword">new</span> <span class="title class_">Application</span>(factory);</span><br><span class="line">        <span class="keyword">return</span> app;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        <span class="type">Application</span> <span class="variable">app</span> <span class="operator">=</span> configureApplication();</span><br><span class="line">        app.paint();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="抽象工厂模式适合应用场景"><a href="#抽象工厂模式适合应用场景" class="headerlink" title="抽象工厂模式适合应用场景"></a>抽象工厂模式适合应用场景</h2><p> <strong>如果代码需要与多个不同系列的相关产品交互， 但是由于无法提前获取相关信息， 或者出于对未来扩展性的考虑， 你不希望代码基于产品的具体类进行构建， 在这种情况下， 你可以使用抽象工厂。</strong></p>
+<p> 抽象工厂为你提供了一个接口， 可用于创建每个系列产品的对象。 只要代码通过该接口创建对象， 那么你就不会生成与应用程序已生成的产品类型不一致的产品。</p>
+<p><strong>如果你有一个基于一组抽象方法的类， 且其主要功能因此变得不明确， 那么在这种情况下可以考虑使用抽象工厂模式。</strong></p>
+<p> 在设计良好的程序中， <em>每个类仅负责一件事</em>。 如果一个类与多种类型产品交互， 就可以考虑将工厂方法抽取到独立的工厂类或具备完整功能的抽象工厂类中。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>以不同的产品类型与产品变体为维度绘制矩阵。</li>
+<li>为所有产品声明抽象产品接口。 然后让所有具体产品类实现这些接口。</li>
+<li>声明抽象工厂接口， 并且在接口中为所有抽象产品提供一组构建方法。</li>
+<li>为每种产品变体实现一个具体工厂类。</li>
+<li>在应用程序中开发初始化代码。 该代码根据应用程序配置或当前环境， 对特定具体工厂类进行初始化。 然后将该工厂对象传递给所有需要创建产品的类。</li>
+<li>找出代码中所有对产品构造函数的直接调用， 将其替换为对工厂对象中相应构建方法的调用。</li>
+</ol>
+<h2 id="抽象工厂模式优缺点"><a href="#抽象工厂模式优缺点" class="headerlink" title="抽象工厂模式优缺点"></a>抽象工厂模式优缺点</h2><p>优点：</p>
+<ul>
+<li>你可以确保同一工厂生成的产品相互匹配。</li>
+<li>你可以避免客户端和具体产品代码的耦合。</li>
+<li><em>单一职责原则</em>。 你可以将产品生成代码抽取到同一位置， 使得代码易于维护。</li>
+<li><em>开闭原则</em>。 向应用程序中引入新产品变体时， 你无需修改客户端代码。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>由于采用该模式需要向应用中引入众多接口和类， 代码可能会比之前更加复杂。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li>在许多设计工作的初期都会使用工厂方法模式（较为简单， 而且可以更方便地通过子类进行定制）， 随后演化为使用抽象工厂模式、原型模式或生成器模式 （更灵活但更加复杂）。</li>
+<li>生成器重点关注如何分步生成复杂对象。 抽象工厂专门用于生产一系列相关对象。 <em>抽象工厂</em>会马上返回产品， <em>生成器</em>则允许你在获取产品前执行一些额外构造步骤。</li>
+<li>抽象工厂模式通常基于一组工厂方法， 但你也可以使用原型模式来生成这些类的方法。</li>
+<li>当只需对客户端代码隐藏子系统创建对象的方式时， 你可以使用抽象工厂来代替外观模式。</li>
+<li>你可以将抽象工厂和桥接模式搭配使用。 如果由<em>桥接</em>定义的抽象只能与特定实现合作， 这一模式搭配就非常有用。 在这种情况下， <em>抽象工厂</em>可以对这些关系进行封装， 并且对客户端代码隐藏其复杂性。</li>
+<li>抽象工厂、生成器和原型都可以用单例模式来实现。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>抽象工厂模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>抽象工厂模式</tag>
       </tags>
   </entry>
   <entry>
