@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.48626.xyz/63baed154157.html</loc>
+    
+    <lastmod>2024-09-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.48626.xyz/e385baf06d73.html</loc>
     
     <lastmod>2024-09-12</lastmod>
@@ -1124,13 +1131,6 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/tags/Maven/</loc>
-    <lastmod>2024-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.48626.xyz/tags/Linux/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1139,6 +1139,13 @@
   
   <url>
     <loc>https://blog.48626.xyz/tags/Ubuntu/</loc>
+    <lastmod>2024-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.48626.xyz/tags/Maven/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1357,14 +1364,14 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/Java/</loc>
+    <loc>https://blog.48626.xyz/categories/docker/WSL/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/docker/WSL/</loc>
+    <loc>https://blog.48626.xyz/categories/Java/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1392,14 +1399,14 @@
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/Maven/</loc>
+    <loc>https://blog.48626.xyz/categories/Linux/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.48626.xyz/categories/Linux/</loc>
+    <loc>https://blog.48626.xyz/categories/Maven/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
