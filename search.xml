@@ -987,7 +987,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>/91523a550ca8.html</url>
+    <url>/7424a150c4d5.html</url>
     <content><![CDATA[<h1 id="Go学习笔记"><a href="#Go学习笔记" class="headerlink" title="Go学习笔记"></a>Go学习笔记</h1><h2 id="编译go-build"><a href="#编译go-build" class="headerlink" title="编译go build"></a>编译go build</h2><ol>
 <li>编译当前目录</li>
 </ol>
@@ -1446,23 +1446,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/e1f9a21b8822.html</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ArrayList类</title>
     <url>/bba5e49d36b3.html</url>
     <content><![CDATA[<h2 id="什么是ArrayList类"><a href="#什么是ArrayList类" class="headerlink" title="什么是ArrayList类"></a>什么是ArrayList类</h2><p><code>java.utiL.ArrayList</code>是大小可变的数组的实现，存储在内的数据称为元素。</p>
@@ -1690,60 +1673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Collection集合</title>
-    <url>/4564a6eacd3e.html</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>集合到底是什么呢?</p>
-<ul>
-<li><strong>集合</strong>：集合是Java中提供的一种容器，可以用来存储多个数据。</li>
-</ul>
-<p>集合和数组既然都是容器，它们有啥区别呢？</p>
-<ul>
-<li>数组的长度是固定的。集合的长度是可变的。</li>
-<li>数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象。而且对象的类型可以不一致。在开发中一般当对象多的时候，使用集合进行存储。</li>
-</ul>
-<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>JavaSE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。</p>
-<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>，今天我们主要学习<code>Collection</code>集合，<code>Map</code>集合。</p>
-<ul>
-<li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。<ul>
-<li>其中，<code>List</code>的特点是元素有序、元素可重复。</li>
-<li><code>Set</code>的特点是元素无序，而且不可重复。</li>
-<li><code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，</li>
-<li><code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
-</ul>
-</li>
-</ul>
-<p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
-<img src="/4564a6eacd3e/01_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D.bmp" class="" alt="01_集合框架介绍">
-
-<img src="/4564a6eacd3e/image-20200412180201258.png" class="" alt="image-20200412180201258">
-
-<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。这几天将针对图中所列举的集合类进行逐一地讲解。</p>
-<p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最最共性的内容。</p>
-<h2 id="Collection-常用功能"><a href="#Collection-常用功能" class="headerlink" title="Collection 常用功能"></a>Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
-<ul>
-<li><code>public boolean add(E e)</code>：  把给定的对象添加到当前集合中 。</li>
-<li><code>public void clear()</code> :清空集合中所有的元素。</li>
-<li><code>public boolean remove(E e)</code>: 把给定的对象在当前集合中删除。</li>
-<li><code>public boolean contains(E e)</code>: 判断当前集合中是否包含给定的对象。</li>
-<li><code>public boolean isEmpty()</code>: 判断当前集合是否为空。</li>
-<li><code>public int size()</code>: 返回集合中元素的个数。</li>
-<li><code>public Object[] toArray()</code>: 把集合中的元素，存储到数组中。</li>
-</ul>
-<p>方法演示：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1Collection</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="comment">// 创建集合对象 </span></span><br><span class="line">    	<span class="comment">// 使用多态形式</span></span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	<span class="comment">// 使用方法</span></span><br><span class="line">    	<span class="comment">// 添加功能  boolean  add(String s)</span></span><br><span class="line">    	coll.add(<span class="string">&quot;小李广&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;扫地僧&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;石破天&quot;</span>);</span><br><span class="line">    	System.out.println(coll);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// boolean contains(E e) 判断o是否在集合中存在</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;判断  扫地僧 是否在集合中&quot;</span>+coll.contains(<span class="string">&quot;扫地僧&quot;</span>));</span><br><span class="line"></span><br><span class="line">    	<span class="comment">//boolean remove(E e) 删除在集合中的o元素</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;删除石破天：&quot;</span>+coll.remove(<span class="string">&quot;石破天&quot;</span>));</span><br><span class="line">    	System.out.println(<span class="string">&quot;操作之后集合中元素:&quot;</span>+coll);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// size() 集合中有几个元素</span></span><br><span class="line">		System.out.println(<span class="string">&quot;集合中有&quot;</span>+coll.size()+<span class="string">&quot;个元素&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Object[] toArray()转换成一个Object数组</span></span><br><span class="line">    	Object[] objects = coll.toArray();</span><br><span class="line">    	<span class="comment">// 遍历数组</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">			System.out.println(objects[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// void  clear() 清空集合</span></span><br><span class="line">		coll.clear();</span><br><span class="line">		System.out.println(<span class="string">&quot;集合中内容为：&quot;</span>+coll);</span><br><span class="line">		<span class="comment">// boolean  isEmpty()  判断是否为空</span></span><br><span class="line">		System.out.println(coll.isEmpty());  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>有关Collection中的方法可不止上面这些，其他方法可以自行查看API学习。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>File类</title>
     <url>/8049de8bf6f4.html</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>java.io.File</code> 类是文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。</p>
@@ -1825,44 +1754,50 @@
       </tags>
   </entry>
   <entry>
-    <title>Iterator迭代器</title>
-    <url>/f01617b61d5f.html</url>
-    <content><![CDATA[<h2 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h2><p>在程序开发中，经常需要遍历集合中的所有元素。针对这种需求，JDK专门提供了一个接口<code>java.util.Iterator</code>。<code>Iterator</code>接口也是Java集合中的一员，但它与<code>Collection</code>、<code>Map</code>接口有所不同，<code>Collection</code>接口与<code>Map</code>接口主要用于存储元素，而<code>Iterator</code>主要用于迭代访问（即遍历）<code>Collection</code>中的元素，因此<code>Iterator</code>对象也被称为迭代器。</p>
-<p>想要遍历Collection集合，那么就要获取该集合迭代器完成迭代操作，下面介绍一下获取迭代器的方法：</p>
+    <title>Collection集合</title>
+    <url>/4564a6eacd3e.html</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>集合到底是什么呢?</p>
 <ul>
-<li><code>public Iterator iterator()</code>: 获取集合对应的迭代器，用来遍历集合中的元素的。</li>
+<li><strong>集合</strong>：集合是Java中提供的一种容器，可以用来存储多个数据。</li>
 </ul>
-<p>下面介绍一下迭代的概念：</p>
+<p>集合和数组既然都是容器，它们有啥区别呢？</p>
 <ul>
-<li><strong>迭代</strong>：即Collection集合元素的通用获取方式。在取元素之前先要判断集合中有没有元素，如果有，就把这个元素取出来，继续在判断，如果还有就再取出出来。一直把集合中的所有元素全部取出。这种取出方式专业术语称为迭代。</li>
+<li>数组的长度是固定的。集合的长度是可变的。</li>
+<li>数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象。而且对象的类型可以不一致。在开发中一般当对象多的时候，使用集合进行存储。</li>
 </ul>
-<p>Iterator接口的常用方法如下：</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>JavaSE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。</p>
+<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>，今天我们主要学习<code>Collection</code>集合，<code>Map</code>集合。</p>
 <ul>
-<li><code>public E next()</code>:返回迭代的下一个元素。</li>
-<li><code>public boolean hasNext()</code>:如果仍有元素可以迭代，则返回 true。</li>
+<li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。<ul>
+<li>其中，<code>List</code>的特点是元素有序、元素可重复。</li>
+<li><code>Set</code>的特点是元素无序，而且不可重复。</li>
+<li><code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，</li>
+<li><code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
 </ul>
-<p>接下来我们通过案例学习如何使用Iterator迭代集合中元素：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IteratorDemo</span> &#123;</span><br><span class="line">  	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用多态方式 创建对象</span></span><br><span class="line">        Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素到集合</span></span><br><span class="line">        coll.add(<span class="string">&quot;串串星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;吐槽星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;汪星人&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="comment">//使用迭代器 遍历   每个集合对象都有自己的迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = coll.iterator();</span><br><span class="line">        <span class="comment">//  泛型指的是 迭代出 元素的数据类型</span></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123; <span class="comment">//判断是否有迭代元素</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();<span class="comment">//获取迭代出的元素</span></span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
+<img src="/4564a6eacd3e/01_%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D.bmp" class="" alt="01_集合框架介绍">
+
+<img src="/4564a6eacd3e/image-20200412180201258.png" class="" alt="image-20200412180201258">
+
+<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。这几天将针对图中所列举的集合类进行逐一地讲解。</p>
+<p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最最共性的内容。</p>
+<h2 id="Collection-常用功能"><a href="#Collection-常用功能" class="headerlink" title="Collection 常用功能"></a>Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
+<ul>
+<li><code>public boolean add(E e)</code>：  把给定的对象添加到当前集合中 。</li>
+<li><code>public void clear()</code> :清空集合中所有的元素。</li>
+<li><code>public boolean remove(E e)</code>: 把给定的对象在当前集合中删除。</li>
+<li><code>public boolean contains(E e)</code>: 判断当前集合中是否包含给定的对象。</li>
+<li><code>public boolean isEmpty()</code>: 判断当前集合是否为空。</li>
+<li><code>public int size()</code>: 返回集合中元素的个数。</li>
+<li><code>public Object[] toArray()</code>: 把集合中的元素，存储到数组中。</li>
+</ul>
+<p>方法演示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo1Collection</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="comment">// 创建集合对象 </span></span><br><span class="line">    	<span class="comment">// 使用多态形式</span></span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	<span class="comment">// 使用方法</span></span><br><span class="line">    	<span class="comment">// 添加功能  boolean  add(String s)</span></span><br><span class="line">    	coll.add(<span class="string">&quot;小李广&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;扫地僧&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;石破天&quot;</span>);</span><br><span class="line">    	System.out.println(coll);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// boolean contains(E e) 判断o是否在集合中存在</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;判断  扫地僧 是否在集合中&quot;</span>+coll.contains(<span class="string">&quot;扫地僧&quot;</span>));</span><br><span class="line"></span><br><span class="line">    	<span class="comment">//boolean remove(E e) 删除在集合中的o元素</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;删除石破天：&quot;</span>+coll.remove(<span class="string">&quot;石破天&quot;</span>));</span><br><span class="line">    	System.out.println(<span class="string">&quot;操作之后集合中元素:&quot;</span>+coll);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// size() 集合中有几个元素</span></span><br><span class="line">		System.out.println(<span class="string">&quot;集合中有&quot;</span>+coll.size()+<span class="string">&quot;个元素&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Object[] toArray()转换成一个Object数组</span></span><br><span class="line">    	Object[] objects = coll.toArray();</span><br><span class="line">    	<span class="comment">// 遍历数组</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">			System.out.println(objects[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// void  clear() 清空集合</span></span><br><span class="line">		coll.clear();</span><br><span class="line">		System.out.println(<span class="string">&quot;集合中内容为：&quot;</span>+coll);</span><br><span class="line">		<span class="comment">// boolean  isEmpty()  判断是否为空</span></span><br><span class="line">		System.out.println(coll.isEmpty());  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>在进行集合元素取出时，如果集合中已经没有元素了，还继续使用迭代器的next方法，将会发生java.util.NoSuchElementException没有集合元素的错误。</p>
-</blockquote>
-<h2 id="迭代器的实现原理"><a href="#迭代器的实现原理" class="headerlink" title="迭代器的实现原理"></a>迭代器的实现原理</h2><p>我们在之前案例已经完成了Iterator遍历集合的整个过程。当遍历集合时，首先通过调用t集合的iterator()方法获得迭代器对象，然后使用hashNext()方法判断集合中是否存在下一个元素，如果存在，则调用next()方法将元素取出，否则说明已到达了集合末尾，停止遍历元素。</p>
-<p>Iterator迭代器对象在遍历集合时，内部采用指针的方式来跟踪集合中的元素，为了让初学者能更好地理解迭代器的工作原理，接下来通过一个图例来演示Iterator对象迭代元素的过程：</p>
-<img src="/f01617b61d5f/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86(1).bmp" class="">
-
-<p>在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。</p>
-<h2 id="2-3-增强for"><a href="#2-3-增强for" class="headerlink" title="2.3 增强for"></a>2.3 增强for</h2><p>增强for循环(也称for each循环)是<strong>JDK1.5</strong>以后出来的一个高级for循环，专门用来遍历数组和集合的。它的内部原理其实是个Iterator迭代器，所以在遍历的过程中，不能对集合中的元素进行增删操作。</p>
-<p>格式：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(元素的数据类型  变量 : Collection集合or数组)&#123; </span><br><span class="line">  	<span class="comment">//写操作代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>它用于遍历Collection和数组。通常只进行遍历元素，不要在遍历的过程中对集合元素进行增删操作。</p>
-<h4 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBForDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">87</span>&#125;;</span><br><span class="line">       	<span class="comment">//使用增强for遍历数组</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> a : arr)&#123;<span class="comment">//a代表数组中的每个元素</span></span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a>遍历集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBFor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;        </span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	coll.add(<span class="string">&quot;小河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;老河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;神婆&quot;</span>);</span><br><span class="line">    	<span class="comment">//使用增强for遍历</span></span><br><span class="line">    	<span class="keyword">for</span>(String s :coll)&#123;<span class="comment">//接收变量s代表 代表被遍历到的集合元素</span></span><br><span class="line">    		System.out.println(s);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
+<p>有关Collection中的方法可不止上面这些，其他方法可以自行查看API学习。</p>
 </blockquote>
 ]]></content>
       <categories>
@@ -2164,6 +2099,54 @@
       </tags>
   </entry>
   <entry>
+    <title>Iterator迭代器</title>
+    <url>/f01617b61d5f.html</url>
+    <content><![CDATA[<h2 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h2><p>在程序开发中，经常需要遍历集合中的所有元素。针对这种需求，JDK专门提供了一个接口<code>java.util.Iterator</code>。<code>Iterator</code>接口也是Java集合中的一员，但它与<code>Collection</code>、<code>Map</code>接口有所不同，<code>Collection</code>接口与<code>Map</code>接口主要用于存储元素，而<code>Iterator</code>主要用于迭代访问（即遍历）<code>Collection</code>中的元素，因此<code>Iterator</code>对象也被称为迭代器。</p>
+<p>想要遍历Collection集合，那么就要获取该集合迭代器完成迭代操作，下面介绍一下获取迭代器的方法：</p>
+<ul>
+<li><code>public Iterator iterator()</code>: 获取集合对应的迭代器，用来遍历集合中的元素的。</li>
+</ul>
+<p>下面介绍一下迭代的概念：</p>
+<ul>
+<li><strong>迭代</strong>：即Collection集合元素的通用获取方式。在取元素之前先要判断集合中有没有元素，如果有，就把这个元素取出来，继续在判断，如果还有就再取出出来。一直把集合中的所有元素全部取出。这种取出方式专业术语称为迭代。</li>
+</ul>
+<p>Iterator接口的常用方法如下：</p>
+<ul>
+<li><code>public E next()</code>:返回迭代的下一个元素。</li>
+<li><code>public boolean hasNext()</code>:如果仍有元素可以迭代，则返回 true。</li>
+</ul>
+<p>接下来我们通过案例学习如何使用Iterator迭代集合中元素：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IteratorDemo</span> &#123;</span><br><span class="line">  	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用多态方式 创建对象</span></span><br><span class="line">        Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素到集合</span></span><br><span class="line">        coll.add(<span class="string">&quot;串串星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;吐槽星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;汪星人&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="comment">//使用迭代器 遍历   每个集合对象都有自己的迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = coll.iterator();</span><br><span class="line">        <span class="comment">//  泛型指的是 迭代出 元素的数据类型</span></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123; <span class="comment">//判断是否有迭代元素</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();<span class="comment">//获取迭代出的元素</span></span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在进行集合元素取出时，如果集合中已经没有元素了，还继续使用迭代器的next方法，将会发生java.util.NoSuchElementException没有集合元素的错误。</p>
+</blockquote>
+<h2 id="迭代器的实现原理"><a href="#迭代器的实现原理" class="headerlink" title="迭代器的实现原理"></a>迭代器的实现原理</h2><p>我们在之前案例已经完成了Iterator遍历集合的整个过程。当遍历集合时，首先通过调用t集合的iterator()方法获得迭代器对象，然后使用hashNext()方法判断集合中是否存在下一个元素，如果存在，则调用next()方法将元素取出，否则说明已到达了集合末尾，停止遍历元素。</p>
+<p>Iterator迭代器对象在遍历集合时，内部采用指针的方式来跟踪集合中的元素，为了让初学者能更好地理解迭代器的工作原理，接下来通过一个图例来演示Iterator对象迭代元素的过程：</p>
+<img src="/f01617b61d5f/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86(1).bmp" class="">
+
+<p>在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。</p>
+<h2 id="2-3-增强for"><a href="#2-3-增强for" class="headerlink" title="2.3 增强for"></a>2.3 增强for</h2><p>增强for循环(也称for each循环)是<strong>JDK1.5</strong>以后出来的一个高级for循环，专门用来遍历数组和集合的。它的内部原理其实是个Iterator迭代器，所以在遍历的过程中，不能对集合中的元素进行增删操作。</p>
+<p>格式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(元素的数据类型  变量 : Collection集合or数组)&#123; </span><br><span class="line">  	<span class="comment">//写操作代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它用于遍历Collection和数组。通常只进行遍历元素，不要在遍历的过程中对集合元素进行增删操作。</p>
+<h4 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBForDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">87</span>&#125;;</span><br><span class="line">       	<span class="comment">//使用增强for遍历数组</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> a : arr)&#123;<span class="comment">//a代表数组中的每个元素</span></span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a>遍历集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBFor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;        </span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	coll.add(<span class="string">&quot;小河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;老河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;神婆&quot;</span>);</span><br><span class="line">    	<span class="comment">//使用增强for遍历</span></span><br><span class="line">    	<span class="keyword">for</span>(String s :coll)&#123;<span class="comment">//接收变量s代表 代表被遍历到的集合元素</span></span><br><span class="line">    		System.out.println(s);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JShell脚本工具</title>
     <url>/f60d935ac32e.html</url>
     <content><![CDATA[<h1 id="JShell脚本工具"><a href="#JShell脚本工具" class="headerlink" title="JShell脚本工具"></a>JShell脚本工具</h1><p>JShell脚本工具是JDK9的新特性</p>
@@ -2190,90 +2173,6 @@
 
 <p>那么从上面的这些例子我们可以看出，Jshell是可以执行我们的任何代码片段。但有个问题，就是加入我声明多个函数之后，我忘了那个是哪个，怎么办呢？所以我们需要学习Jshell提供给我们的命令。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jshell&gt; /help</span><br><span class="line">|  键入 Java 语言表达式, 语句或声明。</span><br><span class="line">|  或者键入以下命令之一:</span><br><span class="line">|  /list [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出您键入的源</span><br><span class="line">|  /edit &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       编辑源条目</span><br><span class="line">|  /drop &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       删除源条目</span><br><span class="line">|  /save [-all|-<span class="built_in">history</span>|-start] &lt;文件&gt;</span><br><span class="line">|       将片段源保存到文件</span><br><span class="line">|  /open &lt;file&gt;</span><br><span class="line">|       打开文件作为源输入</span><br><span class="line">|  /vars [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明变量及其值</span><br><span class="line">|  /methods [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明方法及其签名</span><br><span class="line">|  /types [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出类型声明</span><br><span class="line">|  /imports</span><br><span class="line">|       列出导入的项</span><br><span class="line">|  /exit [&lt;integer-expression-snippet&gt;]</span><br><span class="line">|       退出 jshell 工具</span><br><span class="line">|  /env [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;] ...</span><br><span class="line">|       查看或更改评估上下文</span><br><span class="line">|  /reset [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;]...</span><br><span class="line">|       重置 jshell 工具</span><br><span class="line">|  /reload [-restore] [-quiet] [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;]...</span><br><span class="line">|       重置和重放相关历史记录 -- 当前历史记录或上一个历史记录 (-restore)</span><br><span class="line">|  /history</span><br><span class="line">|       您键入的内容的历史记录</span><br><span class="line">|  /help [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /set editor|start|feedback|mode|prompt|truncation|format ...</span><br><span class="line">|       设置配置信息</span><br><span class="line">|  /? [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /!</span><br><span class="line">|       重新运行上一个片段 -- 请参阅 /help rerun</span><br><span class="line">|  /&lt;<span class="built_in">id</span>&gt;</span><br><span class="line">|       按 ID 或 ID 范围重新运行片段 -- 参见 /help rerun</span><br><span class="line">|  /-&lt;n&gt;</span><br><span class="line">|       重新运行以前的第 n 个片段 -- 请参阅 /help rerun</span><br><span class="line">|</span><br><span class="line">|  有关详细信息, 请键入 <span class="string">&#x27;/help&#x27;</span>, 后跟</span><br><span class="line">|  命令或主题的名称。</span><br><span class="line">|  例如 <span class="string">&#x27;/help /list&#x27;</span> 或 <span class="string">&#x27;/help intro&#x27;</span>。主题:</span><br><span class="line">|</span><br><span class="line">|  intro</span><br><span class="line">|       jshell 工具的简介</span><br><span class="line">|  <span class="built_in">id</span></span><br><span class="line">|       片段 ID 以及如何使用它们的说明</span><br><span class="line">|  shortcuts</span><br><span class="line">|       片段和命令输入提示, 信息访问以及</span><br><span class="line">|       自动代码生成的按键说明</span><br><span class="line">|  context</span><br><span class="line">|       /env /reload 和 /reset 的评估上下文选项的说明</span><br><span class="line">|  rerun</span><br><span class="line">|       重新评估以前输入片段的方法的说明</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java-8函数式编程2</title>
-    <url>/00e85f51e0a8.html</url>
-    <content><![CDATA[<blockquote>
-<p>前言</p>
-<p>Java 8 Lambdas，Richard Warburton 著（O’Reilly，2014）。版权所有， 978-1-449-37077-0</p>
-<ul>
-<li>如何编写出简单、干净、易读的代码 —— 尤其是对于集合的操作？</li>
-<li>如何简单地使用并行计算提高性能？</li>
-<li>如何准确地为问题建模，并且开发出更好的领域特定语言？</li>
-<li>如何写出不易出错，并且更简单的并发代码？</li>
-<li>如何测试和调试 Lambda 表达式？</li>
-</ul>
-<p>将<strong>Lambda 表达式</strong>加入 Java，并不只是为了提高开发人员的生产效率，业界也对这一特性有根本性的需求。</p>
-</blockquote>
-<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><p>Java 8 中新增的特性旨在帮助程序员写出更好的代码，其中对核心类库的改进是很关键的一部分。</p>
-<p>对核心类库的改进主要包括集合类的 API 和新引入的流（Stream）。</p>
-<p>流使程序员得以站在更高的抽象层次上对集合进行操作。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li>Artist : 创作音乐的个人或团队<ul>
-<li>name ：艺术家的名字</li>
-<li>members ：乐队成员</li>
-<li>origin ：乐队来自哪里</li>
-<li>Track : 专辑中的一支曲目<ul>
-<li>name : 曲目名称</li>
-</ul>
-</li>
-<li>Album ： 专辑，若干曲目组成<ul>
-<li>name ：专辑名</li>
-<li>tracks ： 专辑上所有曲目的列表</li>
-<li>musicians ：参与创作本专辑的艺术家列表</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="从外部迭代到内部迭代"><a href="#从外部迭代到内部迭代" class="headerlink" title="从外部迭代到内部迭代"></a>从外部迭代到内部迭代</h2><p>Java 程序员在使用集合类时，一个通用的模式是在集合上进行迭代，然后处理返回的每一个元素。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用 for 循环计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">for (Artist artist : allArtists) &#123; </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">尽管这样的操作可行，但存在几个问题</span><br><span class="line">1.每次迭代集合类时，都需要写很多样板代码。</span><br><span class="line">2.将for 循环改造成并行方式运行也很麻烦，需要修改每个 for 循环才能实现。</span><br><span class="line">3.上述代码无法流畅传达程序员的意图。</span><br><span class="line">	for 循环的样板代码模糊了代码的本意，程序员必须阅读整个循环体才能理解。</span><br><span class="line">	若是单一的 for 循环，倒也问题不大，但面对一个满是循环（尤其是嵌套循环）的庞大代码库时，负担就重了。</span><br></pre></td></tr></table></figure>
-
-<p>for 循环其实是一个封装了迭代的语法糖，看看它的工作原理。</p>
-<p>首先调用 iterator 方法，产生一个新的 Iterator 对象，进而控制整个迭代过程，这就是<strong>外部迭代</strong>。</p>
-<p>迭代过程通过显式调用 Iterator 对象的 hasNext 和 next 方法完成迭代。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用迭代器计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">Iterator&lt;Artist&gt; iterator = allArtists.iterator(); </span><br><span class="line">while(iterator.hasNext()) &#123; </span><br><span class="line">    Artist artist = iterator.next(); </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>内部迭代</strong></p>
-<p>首先要注意 stream() 方法的调用，它和调用 iterator() 的作用一样。</p>
-<p>该方法不是返回一个控制迭代的 Iterator 对象，而是返回内部迭代中的相应接口：Stream。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用内部迭代计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">long count = allArtists.stream()</span><br><span class="line">			.filter(artist -&gt; artist.isFrom(&quot;London&quot;))</span><br><span class="line">			.count();</span><br><span class="line"></span><br><span class="line">被分解为两步更简单的操作：</span><br><span class="line">	找出所有来自伦敦的艺术家</span><br><span class="line">	计算他们的人数</span><br></pre></td></tr></table></figure>
-
-<p>每种操作都对应 Stream 接口的一个方法。<br>为了找出来自伦敦的艺术家，需要对 Stream 对象进行过滤：filter。过滤在这里是指“只保留通过某项测试的对象”。<br>测试由一个函数完成，根据艺术家是否来自伦敦，该函数返回 true 或者 false。<br>由于 Stream API 的函数式编程风格，我们并没有改变集合的内容，而是描述出 Stream 里的内容。<br>count() 方法计算给定 Stream 里包含多少个对象。</p>
-<blockquote>
-<p>Stream 是用函数式编程方式在集合类上进行复杂操作的工具。</p>
-</blockquote>
-<h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>整个过程被分解为两种更简单的操作：过滤和计数，看似有化简为繁之嫌<br>但 迭代只有一个for循环 ，两种操作是否以为着需要两次循环？ 答案并不是，只需要对列表迭代一次。</p>
-<p>通常，在Java中调用一个方法，计算机会随机执行操作：比如，System.out.println(“Hello World”);会在终端上输出一条信息。<br>Streatm里的一些方法却略有不同，他们虽是普通Java方法，但返回的Stream对象却不是一个新集合，而是<strong>创建新集合的配方</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">只过滤，不计数</span><br><span class="line"></span><br><span class="line">allArtists.stream().filter(artist -&gt; artist.isFrom(&quot;London&quot;));</span><br></pre></td></tr></table></figure>
-
-<p>这行代码并未做什么实际性的工作，filter 只刻画出了 Stream，但没有产生新的集合。<br>像filter 这样只描述 Stream，最终不产生新集合的方法叫<strong>作惰性求值方法</strong>；<br>而像 count 这样最终会从 Stream 产生值的方法叫作<strong>及早求值方法</strong>。</p>
-<p>在过滤器中加入一条 println 语句，来输出艺术家的名字，就能轻而易举地看出其中的不同。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">由于使用了惰性求值，没有输出艺术家的名字</span><br><span class="line"></span><br><span class="line">allArtists.stream() </span><br><span class="line">          .filter(artist -&gt; &#123; </span><br><span class="line">              System.out.println(artist.getName()); </span><br><span class="line">              return artist.isFrom(&quot;London&quot;); </span><br><span class="line">           &#125;);</span><br><span class="line"></span><br><span class="line">运行这段代码，程序不会输出任何信息！</span><br></pre></td></tr></table></figure>
-
-<p>如果将同样的输出语句加入一个拥有终止操作的流,艺术家的名字就会被输出。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long count = allArtists.stream() </span><br><span class="line">                       .filter(artist -&gt; &#123; </span><br><span class="line">                           System.out.println(artist.getName()); </span><br><span class="line">                           return artist.isFrom(&quot;London&quot;); </span><br><span class="line">                       &#125;) </span><br><span class="line">                       .count();</span><br></pre></td></tr></table></figure>
-
-<p>判断一个操作是惰性求值还是及早求值很简单：只需看它的返回值。<br>如果返回值是 Stream，那么是惰性求值；如果返回值是另一个值或为空，那么就是及早求值。<br>使用这些操作的理想方式就是形成一个惰性求值的链，最后用一个及早求值的操作返回想要的结果，这正是它的合理之处。</p>
-<h2 id="常用的流操作"><a href="#常用的流操作" class="headerlink" title="常用的流操作"></a>常用的流操作</h2><p>为了更好地理解 Stream API，掌握一些常用的 Stream 操作十分必要。除此处讲述的几种重要操作之外，该 API 的 Javadoc 中还有更多信息。</p>
-<h3 id="collect-toList"><a href="#collect-toList" class="headerlink" title="collect(toList())"></a>collect(toList())</h3><blockquote>
-<p>collect(toList()) 方法由 Stream 里的值生成一个列表，是一个及早求值操作。</p>
-</blockquote>
-<p>Stream 的 of 方法使用一组初始值生成新的 Stream。<br>事实上，collect 的用法不仅限于此，它是一个非常通用的强大结构。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; collected = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span><br><span class="line">                               .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这段程序展示了如何使用 collect(toList()) 方法从 Stream 中生成一个列表。</span><br><span class="line">由于很多 Stream 操作都是惰性求值，因此调用 Stream 上一系列方法之后，还需要最后再调用一个类似 collect 的及早求值方法。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -2423,6 +2322,90 @@
 <li>Lambda 表达式的常见结构：BinaryOperator<Integer> add &#x3D; (x, y) → x + y。</li>
 <li>函数接口指仅具有单个抽象方法的接口，用来表示 Lambda 表达式的类型。</li>
 </ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java-8函数式编程2</title>
+    <url>/00e85f51e0a8.html</url>
+    <content><![CDATA[<blockquote>
+<p>前言</p>
+<p>Java 8 Lambdas，Richard Warburton 著（O’Reilly，2014）。版权所有， 978-1-449-37077-0</p>
+<ul>
+<li>如何编写出简单、干净、易读的代码 —— 尤其是对于集合的操作？</li>
+<li>如何简单地使用并行计算提高性能？</li>
+<li>如何准确地为问题建模，并且开发出更好的领域特定语言？</li>
+<li>如何写出不易出错，并且更简单的并发代码？</li>
+<li>如何测试和调试 Lambda 表达式？</li>
+</ul>
+<p>将<strong>Lambda 表达式</strong>加入 Java，并不只是为了提高开发人员的生产效率，业界也对这一特性有根本性的需求。</p>
+</blockquote>
+<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><p>Java 8 中新增的特性旨在帮助程序员写出更好的代码，其中对核心类库的改进是很关键的一部分。</p>
+<p>对核心类库的改进主要包括集合类的 API 和新引入的流（Stream）。</p>
+<p>流使程序员得以站在更高的抽象层次上对集合进行操作。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>Artist : 创作音乐的个人或团队<ul>
+<li>name ：艺术家的名字</li>
+<li>members ：乐队成员</li>
+<li>origin ：乐队来自哪里</li>
+<li>Track : 专辑中的一支曲目<ul>
+<li>name : 曲目名称</li>
+</ul>
+</li>
+<li>Album ： 专辑，若干曲目组成<ul>
+<li>name ：专辑名</li>
+<li>tracks ： 专辑上所有曲目的列表</li>
+<li>musicians ：参与创作本专辑的艺术家列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="从外部迭代到内部迭代"><a href="#从外部迭代到内部迭代" class="headerlink" title="从外部迭代到内部迭代"></a>从外部迭代到内部迭代</h2><p>Java 程序员在使用集合类时，一个通用的模式是在集合上进行迭代，然后处理返回的每一个元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用 for 循环计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">for (Artist artist : allArtists) &#123; </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">尽管这样的操作可行，但存在几个问题</span><br><span class="line">1.每次迭代集合类时，都需要写很多样板代码。</span><br><span class="line">2.将for 循环改造成并行方式运行也很麻烦，需要修改每个 for 循环才能实现。</span><br><span class="line">3.上述代码无法流畅传达程序员的意图。</span><br><span class="line">	for 循环的样板代码模糊了代码的本意，程序员必须阅读整个循环体才能理解。</span><br><span class="line">	若是单一的 for 循环，倒也问题不大，但面对一个满是循环（尤其是嵌套循环）的庞大代码库时，负担就重了。</span><br></pre></td></tr></table></figure>
+
+<p>for 循环其实是一个封装了迭代的语法糖，看看它的工作原理。</p>
+<p>首先调用 iterator 方法，产生一个新的 Iterator 对象，进而控制整个迭代过程，这就是<strong>外部迭代</strong>。</p>
+<p>迭代过程通过显式调用 Iterator 对象的 hasNext 和 next 方法完成迭代。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用迭代器计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">Iterator&lt;Artist&gt; iterator = allArtists.iterator(); </span><br><span class="line">while(iterator.hasNext()) &#123; </span><br><span class="line">    Artist artist = iterator.next(); </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>内部迭代</strong></p>
+<p>首先要注意 stream() 方法的调用，它和调用 iterator() 的作用一样。</p>
+<p>该方法不是返回一个控制迭代的 Iterator 对象，而是返回内部迭代中的相应接口：Stream。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用内部迭代计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">long count = allArtists.stream()</span><br><span class="line">			.filter(artist -&gt; artist.isFrom(&quot;London&quot;))</span><br><span class="line">			.count();</span><br><span class="line"></span><br><span class="line">被分解为两步更简单的操作：</span><br><span class="line">	找出所有来自伦敦的艺术家</span><br><span class="line">	计算他们的人数</span><br></pre></td></tr></table></figure>
+
+<p>每种操作都对应 Stream 接口的一个方法。<br>为了找出来自伦敦的艺术家，需要对 Stream 对象进行过滤：filter。过滤在这里是指“只保留通过某项测试的对象”。<br>测试由一个函数完成，根据艺术家是否来自伦敦，该函数返回 true 或者 false。<br>由于 Stream API 的函数式编程风格，我们并没有改变集合的内容，而是描述出 Stream 里的内容。<br>count() 方法计算给定 Stream 里包含多少个对象。</p>
+<blockquote>
+<p>Stream 是用函数式编程方式在集合类上进行复杂操作的工具。</p>
+</blockquote>
+<h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>整个过程被分解为两种更简单的操作：过滤和计数，看似有化简为繁之嫌<br>但 迭代只有一个for循环 ，两种操作是否以为着需要两次循环？ 答案并不是，只需要对列表迭代一次。</p>
+<p>通常，在Java中调用一个方法，计算机会随机执行操作：比如，System.out.println(“Hello World”);会在终端上输出一条信息。<br>Streatm里的一些方法却略有不同，他们虽是普通Java方法，但返回的Stream对象却不是一个新集合，而是<strong>创建新集合的配方</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">只过滤，不计数</span><br><span class="line"></span><br><span class="line">allArtists.stream().filter(artist -&gt; artist.isFrom(&quot;London&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>这行代码并未做什么实际性的工作，filter 只刻画出了 Stream，但没有产生新的集合。<br>像filter 这样只描述 Stream，最终不产生新集合的方法叫<strong>作惰性求值方法</strong>；<br>而像 count 这样最终会从 Stream 产生值的方法叫作<strong>及早求值方法</strong>。</p>
+<p>在过滤器中加入一条 println 语句，来输出艺术家的名字，就能轻而易举地看出其中的不同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">由于使用了惰性求值，没有输出艺术家的名字</span><br><span class="line"></span><br><span class="line">allArtists.stream() </span><br><span class="line">          .filter(artist -&gt; &#123; </span><br><span class="line">              System.out.println(artist.getName()); </span><br><span class="line">              return artist.isFrom(&quot;London&quot;); </span><br><span class="line">           &#125;);</span><br><span class="line"></span><br><span class="line">运行这段代码，程序不会输出任何信息！</span><br></pre></td></tr></table></figure>
+
+<p>如果将同样的输出语句加入一个拥有终止操作的流,艺术家的名字就会被输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long count = allArtists.stream() </span><br><span class="line">                       .filter(artist -&gt; &#123; </span><br><span class="line">                           System.out.println(artist.getName()); </span><br><span class="line">                           return artist.isFrom(&quot;London&quot;); </span><br><span class="line">                       &#125;) </span><br><span class="line">                       .count();</span><br></pre></td></tr></table></figure>
+
+<p>判断一个操作是惰性求值还是及早求值很简单：只需看它的返回值。<br>如果返回值是 Stream，那么是惰性求值；如果返回值是另一个值或为空，那么就是及早求值。<br>使用这些操作的理想方式就是形成一个惰性求值的链，最后用一个及早求值的操作返回想要的结果，这正是它的合理之处。</p>
+<h2 id="常用的流操作"><a href="#常用的流操作" class="headerlink" title="常用的流操作"></a>常用的流操作</h2><p>为了更好地理解 Stream API，掌握一些常用的 Stream 操作十分必要。除此处讲述的几种重要操作之外，该 API 的 Javadoc 中还有更多信息。</p>
+<h3 id="collect-toList"><a href="#collect-toList" class="headerlink" title="collect(toList())"></a>collect(toList())</h3><blockquote>
+<p>collect(toList()) 方法由 Stream 里的值生成一个列表，是一个及早求值操作。</p>
+</blockquote>
+<p>Stream 的 of 方法使用一组初始值生成新的 Stream。<br>事实上，collect 的用法不仅限于此，它是一个非常通用的强大结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; collected = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span><br><span class="line">                               .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这段程序展示了如何使用 collect(toList()) 方法从 Stream 中生成一个列表。</span><br><span class="line">由于很多 Stream 操作都是惰性求值，因此调用 Stream 上一系列方法之后，还需要最后再调用一个类似 collect 的及早求值方法。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 ]]></content>
       <categories>
         <category>Java</category>
@@ -3403,6 +3386,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Math类</title>
+    <url>/97e77f6e2050.html</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>java.lang.Math</code>类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。类似这样的工具类，其所有方法均为静态方法，并且不会创建对象，调用起来非常简单。</p>
+<h2 id="基本运算的方法"><a href="#基本运算的方法" class="headerlink" title="基本运算的方法"></a>基本运算的方法</h2><ul>
+<li><code>public static double abs(double a)</code>：返回 double 值的绝对值。<ul>
+<li>如果参数为非负数，则返回该参数。如果参数为负数，则返回该参数的相反数。</li>
+<li>如果参数为 NaN，那么结果为 NaN。</li>
+</ul>
+</li>
+<li><code>public static double ceil(double a)</code>：向上取整<ul>
+<li>返回最小的（最接近负无穷大）<code>double</code> 值，该值大于等于参数，并等于某个整数。</li>
+</ul>
+</li>
+<li><code>public static double floor(double a)</code>：向下取整<ul>
+<li>返回最大的（最接近正无穷大）double 值，该值小于等于参数，并等于某个整数。</li>
+</ul>
+</li>
+<li><code>public static long round(double a)</code>：四舍五入    <ul>
+<li>返回最接近参数的 long</li>
+</ul>
+</li>
+<li>结果将舍入为整数：加上 1&#x2F;2，对结果调用 floor 并将所得结果强制转换为 long 类型</li>
+<li>实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> <span class="number">10.1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d2</span> <span class="operator">=</span> -<span class="number">10.1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d3</span> <span class="operator">=</span> <span class="number">10.5</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d4</span> <span class="operator">=</span> -<span class="number">10.5</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.abs=======&quot;</span>);</span><br><span class="line">        System.out.println(Math.abs(d1)); <span class="comment">//10.1</span></span><br><span class="line">        System.out.println(Math.abs(d2)); <span class="comment">//10.1</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.ceil======&quot;</span>);</span><br><span class="line">        System.out.println(Math.ceil(d1)); <span class="comment">//11.0</span></span><br><span class="line">        System.out.println(Math.ceil(d2)); <span class="comment">//-10.0</span></span><br><span class="line">        System.out.println(Math.ceil(d3)); <span class="comment">//11.0</span></span><br><span class="line">        System.out.println(Math.ceil(d4)); <span class="comment">//-10.0</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.floor=====&quot;</span>);</span><br><span class="line">        System.out.println(Math.floor(d1)); <span class="comment">//10.0</span></span><br><span class="line">        System.out.println(Math.floor(d2)); <span class="comment">//-11.0</span></span><br><span class="line">        System.out.println(Math.floor(d3)); <span class="comment">//10.0</span></span><br><span class="line">        System.out.println(Math.floor(d4)); <span class="comment">//-11.0</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.round=====&quot;</span>);</span><br><span class="line">        System.out.println(Math.round(d1));  <span class="comment">//10</span></span><br><span class="line">        System.out.println(Math.round(d2));  <span class="comment">//-10</span></span><br><span class="line">        System.out.println(Math.round(d3));  <span class="comment">//11</span></span><br><span class="line">        System.out.println(Math.round(d4));  <span class="comment">//-10</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Map集合</title>
     <url>/05b79e366414.html</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>现实生活中，我们常会看到这样的一种集合：IP地址与主机名，身份证号与个人，系统用户名与系统用户对象等，这种一一对应的关系，就叫做映射。Java提供了专门的集合类用来存放这种对象关系的对象，即<code>java.util.Map</code>接口。</p>
@@ -3529,45 +3551,6 @@
 </ol>
 <p><strong>代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MapTest</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//友情提示</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请录入一个字符串:&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in).nextLine();</span><br><span class="line">        <span class="comment">// 定义 每个字符出现次数的方法</span></span><br><span class="line">        findChar(line);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">findChar</span><span class="params">(String line)</span> &#123;</span><br><span class="line">        <span class="comment">//1:创建一个集合 存储  字符 以及其出现的次数</span></span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="comment">//2:遍历字符串</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; line.length(); i++) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> line.charAt(i);</span><br><span class="line">            <span class="comment">//判断 该字符 是否在键集中</span></span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(c)) &#123;<span class="comment">//说明这个字符没有出现过</span></span><br><span class="line">                <span class="comment">//那就是第一次</span></span><br><span class="line">                map.put(c, <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//先获取之前的次数</span></span><br><span class="line">                <span class="type">Integer</span> <span class="variable">count</span> <span class="operator">=</span> map.get(c);</span><br><span class="line">                <span class="comment">//count++;</span></span><br><span class="line">                <span class="comment">//再次存入  更新</span></span><br><span class="line">                map.put(c, ++count);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Math类</title>
-    <url>/97e77f6e2050.html</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><code>java.lang.Math</code>类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。类似这样的工具类，其所有方法均为静态方法，并且不会创建对象，调用起来非常简单。</p>
-<h2 id="基本运算的方法"><a href="#基本运算的方法" class="headerlink" title="基本运算的方法"></a>基本运算的方法</h2><ul>
-<li><code>public static double abs(double a)</code>：返回 double 值的绝对值。<ul>
-<li>如果参数为非负数，则返回该参数。如果参数为负数，则返回该参数的相反数。</li>
-<li>如果参数为 NaN，那么结果为 NaN。</li>
-</ul>
-</li>
-<li><code>public static double ceil(double a)</code>：向上取整<ul>
-<li>返回最小的（最接近负无穷大）<code>double</code> 值，该值大于等于参数，并等于某个整数。</li>
-</ul>
-</li>
-<li><code>public static double floor(double a)</code>：向下取整<ul>
-<li>返回最大的（最接近正无穷大）double 值，该值小于等于参数，并等于某个整数。</li>
-</ul>
-</li>
-<li><code>public static long round(double a)</code>：四舍五入    <ul>
-<li>返回最接近参数的 long</li>
-</ul>
-</li>
-<li>结果将舍入为整数：加上 1&#x2F;2，对结果调用 floor 并将所得结果强制转换为 long 类型</li>
-<li>实现</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> <span class="number">10.1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d2</span> <span class="operator">=</span> -<span class="number">10.1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d3</span> <span class="operator">=</span> <span class="number">10.5</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d4</span> <span class="operator">=</span> -<span class="number">10.5</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.abs=======&quot;</span>);</span><br><span class="line">        System.out.println(Math.abs(d1)); <span class="comment">//10.1</span></span><br><span class="line">        System.out.println(Math.abs(d2)); <span class="comment">//10.1</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.ceil======&quot;</span>);</span><br><span class="line">        System.out.println(Math.ceil(d1)); <span class="comment">//11.0</span></span><br><span class="line">        System.out.println(Math.ceil(d2)); <span class="comment">//-10.0</span></span><br><span class="line">        System.out.println(Math.ceil(d3)); <span class="comment">//11.0</span></span><br><span class="line">        System.out.println(Math.ceil(d4)); <span class="comment">//-10.0</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.floor=====&quot;</span>);</span><br><span class="line">        System.out.println(Math.floor(d1)); <span class="comment">//10.0</span></span><br><span class="line">        System.out.println(Math.floor(d2)); <span class="comment">//-11.0</span></span><br><span class="line">        System.out.println(Math.floor(d3)); <span class="comment">//10.0</span></span><br><span class="line">        System.out.println(Math.floor(d4)); <span class="comment">//-11.0</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=======Math.round=====&quot;</span>);</span><br><span class="line">        System.out.println(Math.round(d1));  <span class="comment">//10</span></span><br><span class="line">        System.out.println(Math.round(d2));  <span class="comment">//-10</span></span><br><span class="line">        System.out.println(Math.round(d3));  <span class="comment">//11</span></span><br><span class="line">        System.out.println(Math.round(d4));  <span class="comment">//-10</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -7706,6 +7689,23 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/e1f9a21b8822.html</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux设置定时任务</title>
     <url>/949c2f6ddc37.html</url>
     <content><![CDATA[<p>在 Linux 中，你可以使用 cron 来设置定时任务。Cron 是一个用于在预定时间执行任务的工具。以下是设置定时任务的步骤：</p>
@@ -8230,28 +8230,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>临时禁用 MySQL 数据库的外键约束</title>
-    <url>/26bca217efa2.html</url>
-    <content><![CDATA[<p>当你需要删除数据时，可以临时禁用 MySQL 数据库的外键约束。这样，你就可以在删除操作完成后再重新启用外键约束。以下是具体的步骤：</p>
-<p>在进行删除操作前，使用以下语句暂时禁用外键约束：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br></pre></td></tr></table></figure>
-
-<p>然后执行删除操作，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM table1 WHERE <span class="built_in">id</span>=1;</span><br></pre></td></tr></table></figure>
-
-<p>删除完成后，再启用外键约束：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=1;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，使用这种方法禁用外键约束后，对数据进行的修改操作将不再受到外键约束的限制和检查，因此需要谨慎操作，以免影响数据的完整性和一致性。如果你只是想清空一个受外键约束的表，也可以先删除外键约束后再清空表。</p>
-]]></content>
-      <categories>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql主从设置</title>
     <url>/967f626b21b0.html</url>
     <content><![CDATA[<p>什么是主从，详细百度去吧，我说说我自己的理解</p>
@@ -8291,6 +8269,28 @@ new Scanner(System.in).nextInt();
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CHANGE MASTER TO </span><br><span class="line">MASTER_HOST=’localhost’, #主机的IP</span><br><span class="line">MASTER_PORT=3306,</span><br><span class="line">MASTER_USER=’usermysql’, #之前创建的那个使用名</span><br><span class="line">MASTER_PASSWORD=’123456′, #密码</span><br><span class="line">MASTER_LOG_FILE=’mysql-bin.000001′, #这是主库中show master status;File下的那个值</span><br><span class="line">MASTER_LOG_POS=446;#这是主库Position下的那个值</span><br><span class="line"></span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">看到这两个都是Yes就成了</span><br></pre></td></tr></table></figure>
 <p>— 关闭</p>
 <p><code>stop slave;</code></p>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>临时禁用 MySQL 数据库的外键约束</title>
+    <url>/26bca217efa2.html</url>
+    <content><![CDATA[<p>当你需要删除数据时，可以临时禁用 MySQL 数据库的外键约束。这样，你就可以在删除操作完成后再重新启用外键约束。以下是具体的步骤：</p>
+<p>在进行删除操作前，使用以下语句暂时禁用外键约束：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br></pre></td></tr></table></figure>
+
+<p>然后执行删除操作，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM table1 WHERE <span class="built_in">id</span>=1;</span><br></pre></td></tr></table></figure>
+
+<p>删除完成后，再启用外键约束：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=1;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，使用这种方法禁用外键约束后，对数据进行的修改操作将不再受到外键约束的限制和检查，因此需要谨慎操作，以免影响数据的完整性和一致性。如果你只是想清空一个受外键约束的表，也可以先删除外键约束后再清空表。</p>
 ]]></content>
       <categories>
         <category>mysql</category>
@@ -8651,6 +8651,21 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>四阶幻方</title>
+    <url>/df6f4a8dbde9.html</url>
+    <content><![CDATA[<p>把1~16的数字填入4×4的方格中，使得行、列以及两个对角线的和都相等，满足这样的特征时称为：四阶幻方。<br>四阶幻方可能有很多方案。如果固定左上角为1，请计算一共有多少种方案。<br>比如：<br>1 2 15 16<br>12 14 3 5<br>13 7 10 4<br>8 11 6 9<br>以及：<br>1 12 13 8<br>2 14 7 11<br>15 3 10 6<br>16 5 4 9<br>就可以算为两种不同的方案。<br>请提交左上角固定为1时的所有方案数字，不要填写任何多余内容或说明文字。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static int[] num = new int[] &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 &#125;;</span><br><span class="line">	static int su = 0;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		sun(1);</span><br><span class="line">&#125;</span><br><span class="line">private static void sun(int i) &#123;</span><br><span class="line">		if (sum() &amp;&amp; i == num.length) &#123;</span><br><span class="line">			su++;</span><br><span class="line">			System.out.println(su);</span><br><span class="line">		&#125;</span><br><span class="line">		int tmp = 0;</span><br><span class="line">		for (int j = i; j &lt; num.length; j++) &#123;</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">			sun(i + 1);</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">private static boolean sum() &#123;</span><br><span class="line">		int tmp = num[0] + num[1] + num[2] + num[3];</span><br><span class="line">		for (int i = 0; i &lt; num.length; i += 4) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 1] + num[i + 2] + num[i + 3])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 4] + num[i + 8] + num[i + 12])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		if (tmp != num[0] + num[5] + num[10] + num[15])</span><br><span class="line">			return false;</span><br><span class="line">		if (tmp != num[3] + num[6] + num[9] + num[12])</span><br><span class="line">			return false;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>理论有解</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>奇怪的数列</title>
     <url>/48ddc852e08a.html</url>
     <content><![CDATA[<p>从X星截获一份电码，是一些数字，如下：<br>13<br>1113<br>3113<br>132113<br>1113122113<br>….</p>
@@ -8666,21 +8681,6 @@ new Scanner(System.in).nextInt();
 <p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner scanner = new Scanner(System.in);</span><br><span class="line">		String input = scanner.next();</span><br><span class="line">		int num = scanner.nextInt();</span><br><span class="line">		String number = list(input);</span><br><span class="line">		for (int i = 1; i &lt; num; i++) &#123;</span><br><span class="line">			number = list(number);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(number);</span><br><span class="line">		scanner.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static String list(String input) &#123;</span><br><span class="line">		int i = 0;</span><br><span class="line">		int tmp;</span><br><span class="line">		String index = &quot;&quot;;</span><br><span class="line">		while (i &lt; input.length()) &#123;</span><br><span class="line">			tmp = 1;</span><br><span class="line">			while (flag(i, input)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				tmp++;</span><br><span class="line">			&#125;</span><br><span class="line">			index = index + tmp + String.valueOf(input.charAt(i));</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		return index;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean flag(int i, String input) &#123;</span><br><span class="line">		String valueOf = String.valueOf(input.charAt(i));</span><br><span class="line">		if (i + 1 &lt; input.length()) &#123;</span><br><span class="line">			String valueOf2 = String.valueOf(input.charAt(i + 1));</span><br><span class="line">			if (valueOf.equals(valueOf2)) &#123;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>四阶幻方</title>
-    <url>/df6f4a8dbde9.html</url>
-    <content><![CDATA[<p>把1~16的数字填入4×4的方格中，使得行、列以及两个对角线的和都相等，满足这样的特征时称为：四阶幻方。<br>四阶幻方可能有很多方案。如果固定左上角为1，请计算一共有多少种方案。<br>比如：<br>1 2 15 16<br>12 14 3 5<br>13 7 10 4<br>8 11 6 9<br>以及：<br>1 12 13 8<br>2 14 7 11<br>15 3 10 6<br>16 5 4 9<br>就可以算为两种不同的方案。<br>请提交左上角固定为1时的所有方案数字，不要填写任何多余内容或说明文字。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static int[] num = new int[] &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 &#125;;</span><br><span class="line">	static int su = 0;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		sun(1);</span><br><span class="line">&#125;</span><br><span class="line">private static void sun(int i) &#123;</span><br><span class="line">		if (sum() &amp;&amp; i == num.length) &#123;</span><br><span class="line">			su++;</span><br><span class="line">			System.out.println(su);</span><br><span class="line">		&#125;</span><br><span class="line">		int tmp = 0;</span><br><span class="line">		for (int j = i; j &lt; num.length; j++) &#123;</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">			sun(i + 1);</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">private static boolean sum() &#123;</span><br><span class="line">		int tmp = num[0] + num[1] + num[2] + num[3];</span><br><span class="line">		for (int i = 0; i &lt; num.length; i += 4) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 1] + num[i + 2] + num[i + 3])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 4] + num[i + 8] + num[i + 12])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		if (tmp != num[0] + num[5] + num[10] + num[15])</span><br><span class="line">			return false;</span><br><span class="line">		if (tmp != num[3] + num[6] + num[9] + num[12])</span><br><span class="line">			return false;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>理论有解</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -8715,24 +8715,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>生成回文数</title>
-    <url>/de8220af4fbd.html</url>
-    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
-<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
-<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
-<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>显示二叉树</title>
     <url>/d1609d979851.html</url>
     <content><![CDATA[<p>排序二叉树的特征是：<br>某个节点的左子树的所有节点值都不大于本节点值。<br>某个节点的右子树的所有节点值都不小于本节点值。</p>
@@ -8749,13 +8731,13 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>空心菱形</title>
-    <url>/ee0d4590f239.html</url>
-    <content><![CDATA[<p>小明刚刚开发了一个小程序，可以打印出任意规模的空心菱形，规模为6时，如下图：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">****** ******</span><br><span class="line">***** 	*****</span><br><span class="line">**** 	 ****</span><br><span class="line">*** 	  ***</span><br><span class="line">** 		   **</span><br><span class="line">*           *</span><br><span class="line">**         **</span><br><span class="line">*** 	  ***</span><br><span class="line">**** 	 ****</span><br><span class="line">***** 	*****</span><br><span class="line">****** ******</span><br><span class="line">（如果有对齐问题，参看【图1.png】）</span><br></pre></td></tr></table></figure>
-
-<p>他一高兴，踢掉了电源，最后一次修改没有保存…..<br>毛病出在划线的部分。<br>请你帮助小明分析程序，填写划线部分缺失的代码。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static String pr(int m, int n) &#123;</span><br><span class="line">		String s = &quot;&quot;;</span><br><span class="line">		for (int i = 0; i &lt; n; i++)</span><br><span class="line">			s += &quot; &quot;;</span><br><span class="line">		for (int i = 0; i &lt; m; i++)</span><br><span class="line">			s = &quot;*&quot; + s + &quot;*&quot;;</span><br><span class="line">		return s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static void f(int n) &#123;</span><br><span class="line">		String s = pr(1, n * 2 - 1) + &quot;\n&quot;;</span><br><span class="line">		String s2 = s;</span><br><span class="line"></span><br><span class="line">		for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">			s = pr(1 + i, n * 2 - i * 2 - 1) + &quot;\n&quot;; // 填空位置</span><br><span class="line">			s2 = s + s2 + s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.print(s2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		f(10);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>生成回文数</title>
+    <url>/de8220af4fbd.html</url>
+    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
+<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
+<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
+<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -8787,6 +8769,24 @@ new Scanner(System.in).nextInt();
 <p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
 <p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	static String[][] figure;</span><br><span class="line">	static int[] start = new int[2];</span><br><span class="line">	static int min = Integer.MAX_VALUE;</span><br><span class="line">	static int count = 0;</span><br><span class="line">	static int[] direction = new int[] &#123; 0, 1, 1, 0, 0, -1, -1, 0 &#125;;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String[][] image = input();</span><br><span class="line">		initial(image, start[0], start[1]);</span><br><span class="line">		System.out.println(min);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 开始</span><br><span class="line">	private static void initial(String[][] image, int x, int y) &#123;</span><br><span class="line">		// 判断四个方向</span><br><span class="line">		for (int i = 0; i &lt; 8; i += 2) &#123; //下一步的坐标 int x2 = x + direction[i]; int y2 = y + direction[i + 1]; if (x2 &gt;= 0 &amp;&amp; x2 &lt; image.length &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; image.length) &#123; //结束 if (figure[x][y].equals(&quot;B&quot;) || count &gt; min) &#123;</span><br><span class="line">					if (min &gt; count) &#123;</span><br><span class="line">						min = count;</span><br><span class="line">					&#125;</span><br><span class="line">					// 找到退一步</span><br><span class="line">					count--;</span><br><span class="line">					return;</span><br><span class="line">				&#125;</span><br><span class="line">				//相反，没走过</span><br><span class="line">				if (!(figure[x][y].equals(figure[x2][y2])) &amp;&amp; !(image[x2][y2].equals(&quot;0&quot;))) &#123;</span><br><span class="line">					image[x][y] = &quot;0&quot;;</span><br><span class="line">					//out(image);</span><br><span class="line">					count++;</span><br><span class="line">					initial(image, x2, y2);</span><br><span class="line">					image[x][y] = figure[x][y];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		// 找不到退一步</span><br><span class="line">		count--;</span><br><span class="line">	&#125;</span><br><span class="line">	//测试显示</span><br><span class="line">	private static void out(String[][] image) &#123;</span><br><span class="line">		for (int i = 0; i &lt; image.length; i++) &#123;</span><br><span class="line">			System.out.println(Arrays.toString(image[i]));</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 输入</span><br><span class="line">	private static String[][] input() &#123;</span><br><span class="line">		Scanner scanner = new Scanner(System.in);</span><br><span class="line">		int number = scanner.nextInt();</span><br><span class="line">		figure = new String[number][number];</span><br><span class="line">		String[][] image = new String[number][number];</span><br><span class="line">		for (int i = 0; i &lt; number; i++) &#123;</span><br><span class="line">			for (int j = 0; j &lt; number; j++) &#123;</span><br><span class="line">				image[i][j] = figure[i][j] = scanner.next();</span><br><span class="line"></span><br><span class="line">				if (figure[i][j].equals(&quot;A&quot;)) &#123;</span><br><span class="line">					start[0] = i;</span><br><span class="line">					start[1] = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		scanner.close();</span><br><span class="line">		return image;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>空心菱形</title>
+    <url>/ee0d4590f239.html</url>
+    <content><![CDATA[<p>小明刚刚开发了一个小程序，可以打印出任意规模的空心菱形，规模为6时，如下图：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">****** ******</span><br><span class="line">***** 	*****</span><br><span class="line">**** 	 ****</span><br><span class="line">*** 	  ***</span><br><span class="line">** 		   **</span><br><span class="line">*           *</span><br><span class="line">**         **</span><br><span class="line">*** 	  ***</span><br><span class="line">**** 	 ****</span><br><span class="line">***** 	*****</span><br><span class="line">****** ******</span><br><span class="line">（如果有对齐问题，参看【图1.png】）</span><br></pre></td></tr></table></figure>
+
+<p>他一高兴，踢掉了电源，最后一次修改没有保存…..<br>毛病出在划线的部分。<br>请你帮助小明分析程序，填写划线部分缺失的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static String pr(int m, int n) &#123;</span><br><span class="line">		String s = &quot;&quot;;</span><br><span class="line">		for (int i = 0; i &lt; n; i++)</span><br><span class="line">			s += &quot; &quot;;</span><br><span class="line">		for (int i = 0; i &lt; m; i++)</span><br><span class="line">			s = &quot;*&quot; + s + &quot;*&quot;;</span><br><span class="line">		return s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static void f(int n) &#123;</span><br><span class="line">		String s = pr(1, n * 2 - 1) + &quot;\n&quot;;</span><br><span class="line">		String s2 = s;</span><br><span class="line"></span><br><span class="line">		for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">			s = pr(1 + i, n * 2 - i * 2 - 1) + &quot;\n&quot;; // 填空位置</span><br><span class="line">			s2 = s + s2 + s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.print(s2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		f(10);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -8860,6 +8860,106 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>Java</tag>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>享元模式</title>
+    <url>/ebe318129a30.html</url>
+    <content><![CDATA[<h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>享元模式</strong>是一种结构型设计模式， 它摒弃了在每个对象中保存所有数据的方式， 通过共享多个对象所共有的相同状态， 让你能在有限的内存容量中载入更多对象。</p>
+<img src="/ebe318129a30/image-20240919145558650.png" class="" alt="image-20240919145558650">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>假如你希望在长时间工作后放松一下， 所以开发了一款简单的游戏： 玩家们在地图上移动并相互射击。 你决定实现一个真实的粒子系统， 并将其作为游戏的特色。 大量的子弹、 导弹和爆炸弹片会在整个地图上穿行， 为玩家提供紧张刺激的游戏体验。</p>
+<p>开发完成后， 你推送提交了最新版本的程序， 并在编译游戏后将其发送给了一个朋友进行测试。 尽管该游戏在你的电脑上完美运行， 但是你的朋友却无法长时间进行游戏： 游戏总是会在他的电脑上运行几分钟后崩溃。 在研究了几个小时的调试消息记录后， 你发现导致游戏崩溃的原因是内存容量不足。 朋友的设备性能远比不上你的电脑， 因此游戏运行在他的电脑上时很快就会出现问题。</p>
+<p>真正的问题与粒子系统有关。 每个粒子 （一颗子弹、 一枚导弹或一块弹片） 都由包含完整数据的独立对象来表示。 当玩家在游戏中鏖战进入高潮后的某一时刻， 游戏将无法在剩余内存中载入新建粒子， 于是程序就崩溃了。</p>
+<img src="/ebe318129a30/image-20240919150031919.png" class="" alt="image-20240919150031919">
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>仔细观察 <code>粒子</code>Particle类， 你可能会注意到颜色 （color） 和精灵图 （sprite）这两个成员变量所消耗的内存要比其他变量多得多。 更糟糕的是， 对于所有的粒子来说， 这两个成员变量所存储的数据几乎完全一样 （比如所有子弹的颜色和精灵图都一样）。</p>
+<img src="/ebe318129a30/image-20240919150051622.png" class="" alt="image-20240919150051622">
+
+<p>每个粒子的另一些状态 （坐标、 移动矢量和速度） 则是不同的。 因为这些成员变量的数值会不断变化。 这些数据代表粒子在存续期间不断变化的情景， 但每个粒子的颜色和精灵图则会保持不变。</p>
+<p>对象的常量数据通常被称为<em>内在状态</em>， 其位于对象中， 其他对象只能读取但不能修改其数值。 而对象的其他状态常常能被其他对象 “从外部” 改变， 因此被称为<em>外在状态</em>。</p>
+<p>享元模式建议不在对象中存储外在状态， 而是将其传递给依赖于它的一个特殊方法。 程序只在对象中保存内在状态， 以方便在不同情景下重用。 这些对象的区别仅在于其内在状态 （与外在状态相比， 内在状态的变体要少很多）， 因此你所需的对象数量会大大削减。</p>
+<img src="/ebe318129a30/image-20240919150109955.png" class="" alt="image-20240919150109955">
+
+<p>让我们回到游戏中。 假如能从粒子类中抽出外在状态， 那么我们只需三个不同的对象 （子弹、 导弹和弹片） 就能表示游戏中的所有粒子。 你现在很可能已经猜到了， 我们将这样一个仅存储内在状态的对象称为享元。</p>
+<h3 id="外在状态存储"><a href="#外在状态存储" class="headerlink" title="外在状态存储"></a>外在状态存储</h3><p>那么外在状态会被移动到什么地方呢？ 总得有类来存储它们， 对不对？ 在大部分情况中， 它们会被移动到容器对象中， 也就是我们应用享元模式前的聚合对象中。</p>
+<p>在我们的例子中， 容器对象就是主要的 <code>游戏</code>Game对象， 其会将所有粒子存储在名为 <code>粒子</code>particles的成员变量中。 为了能将外在状态移动到这个类中， 你需要创建多个数组成员变量来存储每个粒子的坐标、 方向矢量和速度。 除此之外， 你还需要另一个数组来存储指向代表粒子的特定享元的引用。 这些数组必须保持同步， 这样你才能够使用同一索引来获取关于某个粒子的所有数据。</p>
+<img src="/ebe318129a30/image-20240919150138887.png" class="" alt="image-20240919150138887">
+
+<p>更优雅的解决方案是创建独立的情景类来存储外在状态和对享元对象的引用。 在该方法中， 容器类只需包含一个数组。</p>
+<p>稍等！ 这样的话情景对象数量不是会和不采用该模式时的对象数量一样多吗？ 的确如此， 但这些对象要比之前小很多。 消耗内存最多的成员变量已经被移动到很少的几个享元对象中了。 现在， 一个享元大对象会被上千个情境小对象复用， 因此无需再重复存储数千个大对象的数据。</p>
+<h3 id="享元与不可变性"><a href="#享元与不可变性" class="headerlink" title="享元与不可变性"></a>享元与不可变性</h3><p>由于享元对象可在不同的情景中使用， 你必须确保其状态不能被修改。 享元类的状态只能由构造函数的参数进行一次性初始化， 它不能对其他对象公开其设置器或公有成员变量。</p>
+<h3 id="享元工厂"><a href="#享元工厂" class="headerlink" title="享元工厂"></a>享元工厂</h3><p>为了能更方便地访问各种享元， 你可以创建一个工厂方法来管理已有享元对象的缓存池。 工厂方法从客户端处接收目标享元对象的内在状态作为参数， 如果它能在缓存池中找到所需享元， 则将其返回给客户端； 如果没有找到， 它就会新建一个享元， 并将其添加到缓存池中。</p>
+<p>你可以选择在程序的不同地方放入该函数。 最简单的选择就是将其放置在享元容器中。 除此之外， 你还可以新建一个工厂类， 或者创建一个静态的工厂方法并将其放入实际的享元类中。</p>
+<h2 id="享元模式结构"><a href="#享元模式结构" class="headerlink" title="享元模式结构"></a>享元模式结构</h2><img src="/ebe318129a30/image-20240919150250673.png" class="" alt="image-20240919150250673">
+
+<ol>
+<li>享元模式只是一种优化。 在应用该模式之前， 你要确定程序中存在与大量类似对象同时占用内存相关的内存消耗问题， 并且确保该问题无法使用其他更好的方式来解决。</li>
+<li><strong>享元</strong> （Flyweight） 类包含原始对象中部分能在多个对象中共享的状态。 同一享元对象可在许多不同情景中使用。 享元中存储的状态被称为 “内在状态”。 传递给享元方法的状态被称为 “外在状态”。</li>
+<li><strong>情景</strong> （Context） 类包含原始对象中各不相同的外在状态。 情景与享元对象组合在一起就能表示原始对象的全部状态。</li>
+<li>通常情况下， 原始对象的行为会保留在享元类中。 因此调用享元方法必须提供部分外在状态作为参数。 但你也可将行为移动到情景类中， 然后将连入的享元作为单纯的数据对象。</li>
+<li><strong>客户端</strong> （Client） 负责计算或存储享元的外在状态。 在客户端看来， 享元是一种可在运行时进行配置的模板对象， 具体的配置方式为向其方法中传入一些情景数据参数。</li>
+<li><strong>享元工厂</strong> （Flyweight Factory） 会对已有享元的缓存池进行管理。 有了工厂后， 客户端就无需直接创建享元， 它们只需调用工厂并向其传递目标享元的一些内在状态即可。 工厂会根据参数在之前已创建的享元中进行查找， 如果找到满足条件的享元就将其返回； 如果没有找到就根据参数新建享元。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>在本例中， <strong>享元</strong>模式能有效减少在画布上渲染数百万个树状对象时所需的内存。</p>
+<img src="/ebe318129a30/image-20240919151022603.png" class="" alt="image-20240919151022603">
+
+<p>该模式从主要的 <code>树</code>Tree类中抽取内在状态， 并将其移动到享元类 <code>树种类</code>Tree­Type之中。</p>
+<p>最初程序需要在多个对象中存储相同数据， 而现在仅需在几个享元对象中保存数据， 然后在作为情景的 <code>树</code>对象中连入享元即可。 客户端代码使用享元工厂创建树对象并封装搜索指定对象的复杂行为， 并能在需要时复用对象。</p>
+<h3 id="trees"><a href="#trees" class="headerlink" title="trees"></a><strong>trees</strong></h3><h4 id="trees-Tree-java-包含每棵树的独特状态"><a href="#trees-Tree-java-包含每棵树的独特状态" class="headerlink" title="trees&#x2F;Tree.java: 包含每棵树的独特状态"></a><strong>trees&#x2F;Tree.java:</strong> 包含每棵树的独特状态</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.trees;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 包含每棵树的独特状态</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 下午3:25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Tree</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> x;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> y;</span><br><span class="line">    <span class="keyword">private</span> TreeType type;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Tree</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, TreeType type)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">(Graphics g)</span> &#123;</span><br><span class="line">        type.draw(g, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="trees-TreeType-java-包含多棵树共享的状态"><a href="#trees-TreeType-java-包含多棵树共享的状态" class="headerlink" title="trees&#x2F;TreeType.java: 包含多棵树共享的状态"></a><strong>trees&#x2F;TreeType.java:</strong> 包含多棵树共享的状态</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.trees;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 包含多棵树共享的状态</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 下午3:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeType</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Color color;</span><br><span class="line">    <span class="keyword">private</span> String otherTreeData;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TreeType</span><span class="params">(String name, Color color, String otherTreeData)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.otherTreeData = otherTreeData;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">(Graphics g, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        g.setColor(Color.BLACK);</span><br><span class="line">        g.fillRect(x - <span class="number">1</span>, y, <span class="number">3</span>, <span class="number">5</span>);</span><br><span class="line">        g.setColor(color);</span><br><span class="line">        g.fillOval(x - <span class="number">5</span>, y - <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="trees-TreeFactory-java-封装创建享元的复杂机制"><a href="#trees-TreeFactory-java-封装创建享元的复杂机制" class="headerlink" title="trees&#x2F;TreeFactory.java: 封装创建享元的复杂机制"></a><strong>trees&#x2F;TreeFactory.java:</strong> 封装创建享元的复杂机制</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.trees;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 封装创建享元的复杂机制</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 下午3:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeFactory</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> Map&lt;String, TreeType&gt; treeTypes = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TreeType <span class="title function_">getTreeType</span><span class="params">(String name, Color color, String otherTreeData)</span> &#123;</span><br><span class="line">        <span class="type">TreeType</span> <span class="variable">result</span> <span class="operator">=</span> treeTypes.get(name);</span><br><span class="line">        <span class="keyword">if</span> (result == <span class="literal">null</span>) &#123;</span><br><span class="line">            result = <span class="keyword">new</span> <span class="title class_">TreeType</span>(name, color, otherTreeData);</span><br><span class="line">            treeTypes.put(name, result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="forest"><a href="#forest" class="headerlink" title="forest"></a><strong>forest</strong></h3><h4 id="forest-Forest-java-我们绘制的森林"><a href="#forest-Forest-java-我们绘制的森林" class="headerlink" title="forest&#x2F;Forest.java: 我们绘制的森林"></a><strong>forest&#x2F;Forest.java:</strong> 我们绘制的森林</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.forest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.trees.Tree;</span><br><span class="line"><span class="keyword">import</span> org.example.trees.TreeFactory;</span><br><span class="line"><span class="keyword">import</span> org.example.trees.TreeType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 我们绘制的森林</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 下午3:27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Forest</span> <span class="keyword">extends</span> <span class="title class_">JFrame</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Tree&gt; trees = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plantTree</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, String name, Color color, String otherTreeData)</span> &#123;</span><br><span class="line">        <span class="type">TreeType</span> <span class="variable">type</span> <span class="operator">=</span> TreeFactory.getTreeType(name, color, otherTreeData);</span><br><span class="line">        <span class="type">Tree</span> <span class="variable">tree</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Tree</span>(x, y, type);</span><br><span class="line">        trees.add(tree);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">paint</span><span class="params">(Graphics graphics)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Tree tree : trees) &#123;</span><br><span class="line">            tree.draw(graphics);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Main-java-客户端代码"><a href="#Main-java-客户端代码" class="headerlink" title="Main.java: 客户端代码"></a><strong>Main.java:</strong> 客户端代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.forest.Forest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端代码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 下午2:31</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">CANVAS_SIZE</span> <span class="operator">=</span> <span class="number">500</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">TREES_TO_DRAW</span> <span class="operator">=</span> <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">TREE_TYPES</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        <span class="type">Forest</span> <span class="variable">forest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Forest</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; Math.floor(TREES_TO_DRAW / TREE_TYPES); i++) &#123;</span><br><span class="line">            forest.plantTree(random(<span class="number">0</span>, CANVAS_SIZE), random(<span class="number">0</span>, CANVAS_SIZE),</span><br><span class="line">                    <span class="string">&quot;Summer Oak&quot;</span>, Color.GREEN, <span class="string">&quot;Oak texture stub&quot;</span>);</span><br><span class="line">            forest.plantTree(random(<span class="number">0</span>, CANVAS_SIZE), random(<span class="number">0</span>, CANVAS_SIZE),</span><br><span class="line">                    <span class="string">&quot;Autumn Oak&quot;</span>, Color.ORANGE, <span class="string">&quot;Autumn Oak texture stub&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        forest.setSize(CANVAS_SIZE, CANVAS_SIZE);</span><br><span class="line">        forest.setVisible(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(TREES_TO_DRAW + <span class="string">&quot; trees drawn&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Memory usage:&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Tree size (8 bytes) * &quot;</span> + TREES_TO_DRAW);</span><br><span class="line">        System.out.println(<span class="string">&quot;+ TreeTypes size (~30 bytes) * &quot;</span> + TREE_TYPES + <span class="string">&quot;&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Total: &quot;</span> + ((TREES_TO_DRAW * <span class="number">8</span> + TREE_TYPES * <span class="number">30</span>) / <span class="number">1024</span> / <span class="number">1024</span>) +</span><br><span class="line">                <span class="string">&quot;MB (instead of &quot;</span> + ((TREES_TO_DRAW * <span class="number">38</span>) / <span class="number">1024</span> / <span class="number">1024</span>) + <span class="string">&quot;MB)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">random</span><span class="params">(<span class="type">int</span> min, <span class="type">int</span> max)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> min + (<span class="type">int</span>) (Math.random() * ((max - min) + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="享元模式适合应用场景"><a href="#享元模式适合应用场景" class="headerlink" title="享元模式适合应用场景"></a>享元模式适合应用场景</h2><p> <strong>仅在程序必须支持大量对象且没有足够的内存容量时使用享元模式。</strong></p>
+<p> 应用该模式所获的收益大小取决于使用它的方式和情景。 它在下列情况中最有效：</p>
+<ul>
+<li>程序需要生成数量巨大的相似对象</li>
+<li>这将耗尽目标设备的所有内存</li>
+<li>对象中包含可抽取且能在多个对象间共享的重复状态。</li>
+</ul>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>将需要改写为享元的类成员变量拆分为两个部分：<ul>
+<li>内在状态： 包含不变的、 可在许多对象中重复使用的数据的成员变量。</li>
+<li>外在状态： 包含每个对象各自不同的情景数据的成员变量</li>
+</ul>
+</li>
+<li>保留类中表示内在状态的成员变量， 并将其属性设置为不可修改。 这些变量仅可在构造函数中获得初始数值。</li>
+<li>找到所有使用外在状态成员变量的方法， 为在方法中所用的每个成员变量新建一个参数， 并使用该参数代替成员变量。</li>
+<li>你可以有选择地创建工厂类来管理享元缓存池， 它负责在新建享元时检查已有的享元。 如果选择使用工厂， 客户端就只能通过工厂来请求享元， 它们需要将享元的内在状态作为参数传递给工厂。</li>
+<li>客户端必须存储和计算外在状态 （情景） 的数值， 因为只有这样才能调用享元对象的方法。 为了使用方便， 外在状态和引用享元的成员变量可以移动到单独的情景类中。</li>
+</ol>
+<h2 id="享元模式优缺点"><a href="#享元模式优缺点" class="headerlink" title="享元模式优缺点"></a>享元模式优缺点</h2><p>优点：</p>
+<ul>
+<li>如果程序中有很多相似对象， 那么你将可以节省大量内存。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>你可能需要牺牲执行速度来换取内存， 因为他人每次调用享元方法时都需要重新计算部分情景数据。</li>
+<li>代码会变得更加复杂。 团队中的新成员总是会问：  “为什么要像这样拆分一个实体的状态？”。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li>你可以使用享元模式实现组合模式树的共享叶节点以节省内存。</li>
+<li>享元展示了如何生成大量的小型对象，外观模式则展示了如何用一个对象来代表整个子系统。</li>
+<li>如果你能将对象的所有共享状态简化为一个享元对象，那么享元就和单例模式类似了。但这两个模式有两个根本性的不同。<ol>
+<li>只会有一个单例实体， 但是<em>享元</em>类可以有多个实体， 各实体的内在状态也可以不同。</li>
+<li><em>单例</em>对象可以是可变的。 享元对象是不可变的。</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>享元模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>享元模式</tag>
       </tags>
   </entry>
   <entry>
