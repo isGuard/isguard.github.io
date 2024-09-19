@@ -987,7 +987,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>/a3368e0269ab.html</url>
+    <url>/91523a550ca8.html</url>
     <content><![CDATA[<h1 id="Go学习笔记"><a href="#Go学习笔记" class="headerlink" title="Go学习笔记"></a>Go学习笔记</h1><h2 id="编译go-build"><a href="#编译go-build" class="headerlink" title="编译go build"></a>编译go build</h2><ol>
 <li>编译当前目录</li>
 </ol>
@@ -1446,6 +1446,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Ajax(原生,JQ)</title>
+    <url>/e1f9a21b8822.html</url>
+    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ArrayList类</title>
     <url>/bba5e49d36b3.html</url>
     <content><![CDATA[<h2 id="什么是ArrayList类"><a href="#什么是ArrayList类" class="headerlink" title="什么是ArrayList类"></a>什么是ArrayList类</h2><p><code>java.utiL.ArrayList</code>是大小可变的数组的实现，存储在内的数据称为元素。</p>
@@ -1808,6 +1825,54 @@
       </tags>
   </entry>
   <entry>
+    <title>Iterator迭代器</title>
+    <url>/f01617b61d5f.html</url>
+    <content><![CDATA[<h2 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h2><p>在程序开发中，经常需要遍历集合中的所有元素。针对这种需求，JDK专门提供了一个接口<code>java.util.Iterator</code>。<code>Iterator</code>接口也是Java集合中的一员，但它与<code>Collection</code>、<code>Map</code>接口有所不同，<code>Collection</code>接口与<code>Map</code>接口主要用于存储元素，而<code>Iterator</code>主要用于迭代访问（即遍历）<code>Collection</code>中的元素，因此<code>Iterator</code>对象也被称为迭代器。</p>
+<p>想要遍历Collection集合，那么就要获取该集合迭代器完成迭代操作，下面介绍一下获取迭代器的方法：</p>
+<ul>
+<li><code>public Iterator iterator()</code>: 获取集合对应的迭代器，用来遍历集合中的元素的。</li>
+</ul>
+<p>下面介绍一下迭代的概念：</p>
+<ul>
+<li><strong>迭代</strong>：即Collection集合元素的通用获取方式。在取元素之前先要判断集合中有没有元素，如果有，就把这个元素取出来，继续在判断，如果还有就再取出出来。一直把集合中的所有元素全部取出。这种取出方式专业术语称为迭代。</li>
+</ul>
+<p>Iterator接口的常用方法如下：</p>
+<ul>
+<li><code>public E next()</code>:返回迭代的下一个元素。</li>
+<li><code>public boolean hasNext()</code>:如果仍有元素可以迭代，则返回 true。</li>
+</ul>
+<p>接下来我们通过案例学习如何使用Iterator迭代集合中元素：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IteratorDemo</span> &#123;</span><br><span class="line">  	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用多态方式 创建对象</span></span><br><span class="line">        Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素到集合</span></span><br><span class="line">        coll.add(<span class="string">&quot;串串星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;吐槽星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;汪星人&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="comment">//使用迭代器 遍历   每个集合对象都有自己的迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = coll.iterator();</span><br><span class="line">        <span class="comment">//  泛型指的是 迭代出 元素的数据类型</span></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123; <span class="comment">//判断是否有迭代元素</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();<span class="comment">//获取迭代出的元素</span></span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在进行集合元素取出时，如果集合中已经没有元素了，还继续使用迭代器的next方法，将会发生java.util.NoSuchElementException没有集合元素的错误。</p>
+</blockquote>
+<h2 id="迭代器的实现原理"><a href="#迭代器的实现原理" class="headerlink" title="迭代器的实现原理"></a>迭代器的实现原理</h2><p>我们在之前案例已经完成了Iterator遍历集合的整个过程。当遍历集合时，首先通过调用t集合的iterator()方法获得迭代器对象，然后使用hashNext()方法判断集合中是否存在下一个元素，如果存在，则调用next()方法将元素取出，否则说明已到达了集合末尾，停止遍历元素。</p>
+<p>Iterator迭代器对象在遍历集合时，内部采用指针的方式来跟踪集合中的元素，为了让初学者能更好地理解迭代器的工作原理，接下来通过一个图例来演示Iterator对象迭代元素的过程：</p>
+<img src="/f01617b61d5f/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86(1).bmp" class="">
+
+<p>在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。</p>
+<h2 id="2-3-增强for"><a href="#2-3-增强for" class="headerlink" title="2.3 增强for"></a>2.3 增强for</h2><p>增强for循环(也称for each循环)是<strong>JDK1.5</strong>以后出来的一个高级for循环，专门用来遍历数组和集合的。它的内部原理其实是个Iterator迭代器，所以在遍历的过程中，不能对集合中的元素进行增删操作。</p>
+<p>格式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(元素的数据类型  变量 : Collection集合or数组)&#123; </span><br><span class="line">  	<span class="comment">//写操作代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它用于遍历Collection和数组。通常只进行遍历元素，不要在遍历的过程中对集合元素进行增删操作。</p>
+<h4 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBForDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">87</span>&#125;;</span><br><span class="line">       	<span class="comment">//使用增强for遍历数组</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> a : arr)&#123;<span class="comment">//a代表数组中的每个元素</span></span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a>遍历集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBFor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;        </span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	coll.add(<span class="string">&quot;小河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;老河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;神婆&quot;</span>);</span><br><span class="line">    	<span class="comment">//使用增强for遍历</span></span><br><span class="line">    	<span class="keyword">for</span>(String s :coll)&#123;<span class="comment">//接收变量s代表 代表被遍历到的集合元素</span></span><br><span class="line">    		System.out.println(s);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HelloWorld入门程序</title>
     <url>/47a2ee66ee1e.html</url>
     <content><![CDATA[<h2 id="程序开发步骤说明"><a href="#程序开发步骤说明" class="headerlink" title="程序开发步骤说明"></a>程序开发步骤说明</h2><p>开发环境已经搭建完毕，可以开发我们第一个Java程序了。</p>
@@ -2099,54 +2164,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Iterator迭代器</title>
-    <url>/f01617b61d5f.html</url>
-    <content><![CDATA[<h2 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h2><p>在程序开发中，经常需要遍历集合中的所有元素。针对这种需求，JDK专门提供了一个接口<code>java.util.Iterator</code>。<code>Iterator</code>接口也是Java集合中的一员，但它与<code>Collection</code>、<code>Map</code>接口有所不同，<code>Collection</code>接口与<code>Map</code>接口主要用于存储元素，而<code>Iterator</code>主要用于迭代访问（即遍历）<code>Collection</code>中的元素，因此<code>Iterator</code>对象也被称为迭代器。</p>
-<p>想要遍历Collection集合，那么就要获取该集合迭代器完成迭代操作，下面介绍一下获取迭代器的方法：</p>
-<ul>
-<li><code>public Iterator iterator()</code>: 获取集合对应的迭代器，用来遍历集合中的元素的。</li>
-</ul>
-<p>下面介绍一下迭代的概念：</p>
-<ul>
-<li><strong>迭代</strong>：即Collection集合元素的通用获取方式。在取元素之前先要判断集合中有没有元素，如果有，就把这个元素取出来，继续在判断，如果还有就再取出出来。一直把集合中的所有元素全部取出。这种取出方式专业术语称为迭代。</li>
-</ul>
-<p>Iterator接口的常用方法如下：</p>
-<ul>
-<li><code>public E next()</code>:返回迭代的下一个元素。</li>
-<li><code>public boolean hasNext()</code>:如果仍有元素可以迭代，则返回 true。</li>
-</ul>
-<p>接下来我们通过案例学习如何使用Iterator迭代集合中元素：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IteratorDemo</span> &#123;</span><br><span class="line">  	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用多态方式 创建对象</span></span><br><span class="line">        Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素到集合</span></span><br><span class="line">        coll.add(<span class="string">&quot;串串星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;吐槽星人&quot;</span>);</span><br><span class="line">        coll.add(<span class="string">&quot;汪星人&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="comment">//使用迭代器 遍历   每个集合对象都有自己的迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = coll.iterator();</span><br><span class="line">        <span class="comment">//  泛型指的是 迭代出 元素的数据类型</span></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123; <span class="comment">//判断是否有迭代元素</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();<span class="comment">//获取迭代出的元素</span></span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在进行集合元素取出时，如果集合中已经没有元素了，还继续使用迭代器的next方法，将会发生java.util.NoSuchElementException没有集合元素的错误。</p>
-</blockquote>
-<h2 id="迭代器的实现原理"><a href="#迭代器的实现原理" class="headerlink" title="迭代器的实现原理"></a>迭代器的实现原理</h2><p>我们在之前案例已经完成了Iterator遍历集合的整个过程。当遍历集合时，首先通过调用t集合的iterator()方法获得迭代器对象，然后使用hashNext()方法判断集合中是否存在下一个元素，如果存在，则调用next()方法将元素取出，否则说明已到达了集合末尾，停止遍历元素。</p>
-<p>Iterator迭代器对象在遍历集合时，内部采用指针的方式来跟踪集合中的元素，为了让初学者能更好地理解迭代器的工作原理，接下来通过一个图例来演示Iterator对象迭代元素的过程：</p>
-<img src="/f01617b61d5f/02_%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86(1).bmp" class="">
-
-<p>在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。</p>
-<h2 id="2-3-增强for"><a href="#2-3-增强for" class="headerlink" title="2.3 增强for"></a>2.3 增强for</h2><p>增强for循环(也称for each循环)是<strong>JDK1.5</strong>以后出来的一个高级for循环，专门用来遍历数组和集合的。它的内部原理其实是个Iterator迭代器，所以在遍历的过程中，不能对集合中的元素进行增删操作。</p>
-<p>格式：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(元素的数据类型  变量 : Collection集合or数组)&#123; </span><br><span class="line">  	<span class="comment">//写操作代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>它用于遍历Collection和数组。通常只进行遍历元素，不要在遍历的过程中对集合元素进行增删操作。</p>
-<h4 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBForDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">int</span>[] arr = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">87</span>&#125;;</span><br><span class="line">       	<span class="comment">//使用增强for遍历数组</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> a : arr)&#123;<span class="comment">//a代表数组中的每个元素</span></span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="遍历集合"><a href="#遍历集合" class="headerlink" title="遍历集合"></a>遍历集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NBFor</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;        </span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">    	coll.add(<span class="string">&quot;小河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;老河神&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;神婆&quot;</span>);</span><br><span class="line">    	<span class="comment">//使用增强for遍历</span></span><br><span class="line">    	<span class="keyword">for</span>(String s :coll)&#123;<span class="comment">//接收变量s代表 代表被遍历到的集合元素</span></span><br><span class="line">    		System.out.println(s);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JShell脚本工具</title>
     <url>/f60d935ac32e.html</url>
     <content><![CDATA[<h1 id="JShell脚本工具"><a href="#JShell脚本工具" class="headerlink" title="JShell脚本工具"></a>JShell脚本工具</h1><p>JShell脚本工具是JDK9的新特性</p>
@@ -2173,6 +2190,90 @@
 
 <p>那么从上面的这些例子我们可以看出，Jshell是可以执行我们的任何代码片段。但有个问题，就是加入我声明多个函数之后，我忘了那个是哪个，怎么办呢？所以我们需要学习Jshell提供给我们的命令。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jshell&gt; /help</span><br><span class="line">|  键入 Java 语言表达式, 语句或声明。</span><br><span class="line">|  或者键入以下命令之一:</span><br><span class="line">|  /list [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出您键入的源</span><br><span class="line">|  /edit &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       编辑源条目</span><br><span class="line">|  /drop &lt;名称或 <span class="built_in">id</span>&gt;</span><br><span class="line">|       删除源条目</span><br><span class="line">|  /save [-all|-<span class="built_in">history</span>|-start] &lt;文件&gt;</span><br><span class="line">|       将片段源保存到文件</span><br><span class="line">|  /open &lt;file&gt;</span><br><span class="line">|       打开文件作为源输入</span><br><span class="line">|  /vars [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明变量及其值</span><br><span class="line">|  /methods [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出已声明方法及其签名</span><br><span class="line">|  /types [&lt;名称或 <span class="built_in">id</span>&gt;|-all|-start]</span><br><span class="line">|       列出类型声明</span><br><span class="line">|  /imports</span><br><span class="line">|       列出导入的项</span><br><span class="line">|  /exit [&lt;integer-expression-snippet&gt;]</span><br><span class="line">|       退出 jshell 工具</span><br><span class="line">|  /env [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;] ...</span><br><span class="line">|       查看或更改评估上下文</span><br><span class="line">|  /reset [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;] [-add-modules &lt;模块&gt;]...</span><br><span class="line">|       重置 jshell 工具</span><br><span class="line">|  /reload [-restore] [-quiet] [-class-path &lt;路径&gt;] [-module-path &lt;路径&gt;]...</span><br><span class="line">|       重置和重放相关历史记录 -- 当前历史记录或上一个历史记录 (-restore)</span><br><span class="line">|  /history</span><br><span class="line">|       您键入的内容的历史记录</span><br><span class="line">|  /help [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /set editor|start|feedback|mode|prompt|truncation|format ...</span><br><span class="line">|       设置配置信息</span><br><span class="line">|  /? [&lt;<span class="built_in">command</span>&gt;|&lt;subject&gt;]</span><br><span class="line">|       获取有关使用 jshell 工具的信息</span><br><span class="line">|  /!</span><br><span class="line">|       重新运行上一个片段 -- 请参阅 /help rerun</span><br><span class="line">|  /&lt;<span class="built_in">id</span>&gt;</span><br><span class="line">|       按 ID 或 ID 范围重新运行片段 -- 参见 /help rerun</span><br><span class="line">|  /-&lt;n&gt;</span><br><span class="line">|       重新运行以前的第 n 个片段 -- 请参阅 /help rerun</span><br><span class="line">|</span><br><span class="line">|  有关详细信息, 请键入 <span class="string">&#x27;/help&#x27;</span>, 后跟</span><br><span class="line">|  命令或主题的名称。</span><br><span class="line">|  例如 <span class="string">&#x27;/help /list&#x27;</span> 或 <span class="string">&#x27;/help intro&#x27;</span>。主题:</span><br><span class="line">|</span><br><span class="line">|  intro</span><br><span class="line">|       jshell 工具的简介</span><br><span class="line">|  <span class="built_in">id</span></span><br><span class="line">|       片段 ID 以及如何使用它们的说明</span><br><span class="line">|  shortcuts</span><br><span class="line">|       片段和命令输入提示, 信息访问以及</span><br><span class="line">|       自动代码生成的按键说明</span><br><span class="line">|  context</span><br><span class="line">|       /env /reload 和 /reset 的评估上下文选项的说明</span><br><span class="line">|  rerun</span><br><span class="line">|       重新评估以前输入片段的方法的说明</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java-8函数式编程2</title>
+    <url>/00e85f51e0a8.html</url>
+    <content><![CDATA[<blockquote>
+<p>前言</p>
+<p>Java 8 Lambdas，Richard Warburton 著（O’Reilly，2014）。版权所有， 978-1-449-37077-0</p>
+<ul>
+<li>如何编写出简单、干净、易读的代码 —— 尤其是对于集合的操作？</li>
+<li>如何简单地使用并行计算提高性能？</li>
+<li>如何准确地为问题建模，并且开发出更好的领域特定语言？</li>
+<li>如何写出不易出错，并且更简单的并发代码？</li>
+<li>如何测试和调试 Lambda 表达式？</li>
+</ul>
+<p>将<strong>Lambda 表达式</strong>加入 Java，并不只是为了提高开发人员的生产效率，业界也对这一特性有根本性的需求。</p>
+</blockquote>
+<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><p>Java 8 中新增的特性旨在帮助程序员写出更好的代码，其中对核心类库的改进是很关键的一部分。</p>
+<p>对核心类库的改进主要包括集合类的 API 和新引入的流（Stream）。</p>
+<p>流使程序员得以站在更高的抽象层次上对集合进行操作。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>Artist : 创作音乐的个人或团队<ul>
+<li>name ：艺术家的名字</li>
+<li>members ：乐队成员</li>
+<li>origin ：乐队来自哪里</li>
+<li>Track : 专辑中的一支曲目<ul>
+<li>name : 曲目名称</li>
+</ul>
+</li>
+<li>Album ： 专辑，若干曲目组成<ul>
+<li>name ：专辑名</li>
+<li>tracks ： 专辑上所有曲目的列表</li>
+<li>musicians ：参与创作本专辑的艺术家列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="从外部迭代到内部迭代"><a href="#从外部迭代到内部迭代" class="headerlink" title="从外部迭代到内部迭代"></a>从外部迭代到内部迭代</h2><p>Java 程序员在使用集合类时，一个通用的模式是在集合上进行迭代，然后处理返回的每一个元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用 for 循环计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">for (Artist artist : allArtists) &#123; </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">尽管这样的操作可行，但存在几个问题</span><br><span class="line">1.每次迭代集合类时，都需要写很多样板代码。</span><br><span class="line">2.将for 循环改造成并行方式运行也很麻烦，需要修改每个 for 循环才能实现。</span><br><span class="line">3.上述代码无法流畅传达程序员的意图。</span><br><span class="line">	for 循环的样板代码模糊了代码的本意，程序员必须阅读整个循环体才能理解。</span><br><span class="line">	若是单一的 for 循环，倒也问题不大，但面对一个满是循环（尤其是嵌套循环）的庞大代码库时，负担就重了。</span><br></pre></td></tr></table></figure>
+
+<p>for 循环其实是一个封装了迭代的语法糖，看看它的工作原理。</p>
+<p>首先调用 iterator 方法，产生一个新的 Iterator 对象，进而控制整个迭代过程，这就是<strong>外部迭代</strong>。</p>
+<p>迭代过程通过显式调用 Iterator 对象的 hasNext 和 next 方法完成迭代。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用迭代器计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">Iterator&lt;Artist&gt; iterator = allArtists.iterator(); </span><br><span class="line">while(iterator.hasNext()) &#123; </span><br><span class="line">    Artist artist = iterator.next(); </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>内部迭代</strong></p>
+<p>首先要注意 stream() 方法的调用，它和调用 iterator() 的作用一样。</p>
+<p>该方法不是返回一个控制迭代的 Iterator 对象，而是返回内部迭代中的相应接口：Stream。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用内部迭代计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">long count = allArtists.stream()</span><br><span class="line">			.filter(artist -&gt; artist.isFrom(&quot;London&quot;))</span><br><span class="line">			.count();</span><br><span class="line"></span><br><span class="line">被分解为两步更简单的操作：</span><br><span class="line">	找出所有来自伦敦的艺术家</span><br><span class="line">	计算他们的人数</span><br></pre></td></tr></table></figure>
+
+<p>每种操作都对应 Stream 接口的一个方法。<br>为了找出来自伦敦的艺术家，需要对 Stream 对象进行过滤：filter。过滤在这里是指“只保留通过某项测试的对象”。<br>测试由一个函数完成，根据艺术家是否来自伦敦，该函数返回 true 或者 false。<br>由于 Stream API 的函数式编程风格，我们并没有改变集合的内容，而是描述出 Stream 里的内容。<br>count() 方法计算给定 Stream 里包含多少个对象。</p>
+<blockquote>
+<p>Stream 是用函数式编程方式在集合类上进行复杂操作的工具。</p>
+</blockquote>
+<h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>整个过程被分解为两种更简单的操作：过滤和计数，看似有化简为繁之嫌<br>但 迭代只有一个for循环 ，两种操作是否以为着需要两次循环？ 答案并不是，只需要对列表迭代一次。</p>
+<p>通常，在Java中调用一个方法，计算机会随机执行操作：比如，System.out.println(“Hello World”);会在终端上输出一条信息。<br>Streatm里的一些方法却略有不同，他们虽是普通Java方法，但返回的Stream对象却不是一个新集合，而是<strong>创建新集合的配方</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">只过滤，不计数</span><br><span class="line"></span><br><span class="line">allArtists.stream().filter(artist -&gt; artist.isFrom(&quot;London&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>这行代码并未做什么实际性的工作，filter 只刻画出了 Stream，但没有产生新的集合。<br>像filter 这样只描述 Stream，最终不产生新集合的方法叫<strong>作惰性求值方法</strong>；<br>而像 count 这样最终会从 Stream 产生值的方法叫作<strong>及早求值方法</strong>。</p>
+<p>在过滤器中加入一条 println 语句，来输出艺术家的名字，就能轻而易举地看出其中的不同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">由于使用了惰性求值，没有输出艺术家的名字</span><br><span class="line"></span><br><span class="line">allArtists.stream() </span><br><span class="line">          .filter(artist -&gt; &#123; </span><br><span class="line">              System.out.println(artist.getName()); </span><br><span class="line">              return artist.isFrom(&quot;London&quot;); </span><br><span class="line">           &#125;);</span><br><span class="line"></span><br><span class="line">运行这段代码，程序不会输出任何信息！</span><br></pre></td></tr></table></figure>
+
+<p>如果将同样的输出语句加入一个拥有终止操作的流,艺术家的名字就会被输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long count = allArtists.stream() </span><br><span class="line">                       .filter(artist -&gt; &#123; </span><br><span class="line">                           System.out.println(artist.getName()); </span><br><span class="line">                           return artist.isFrom(&quot;London&quot;); </span><br><span class="line">                       &#125;) </span><br><span class="line">                       .count();</span><br></pre></td></tr></table></figure>
+
+<p>判断一个操作是惰性求值还是及早求值很简单：只需看它的返回值。<br>如果返回值是 Stream，那么是惰性求值；如果返回值是另一个值或为空，那么就是及早求值。<br>使用这些操作的理想方式就是形成一个惰性求值的链，最后用一个及早求值的操作返回想要的结果，这正是它的合理之处。</p>
+<h2 id="常用的流操作"><a href="#常用的流操作" class="headerlink" title="常用的流操作"></a>常用的流操作</h2><p>为了更好地理解 Stream API，掌握一些常用的 Stream 操作十分必要。除此处讲述的几种重要操作之外，该 API 的 Javadoc 中还有更多信息。</p>
+<h3 id="collect-toList"><a href="#collect-toList" class="headerlink" title="collect(toList())"></a>collect(toList())</h3><blockquote>
+<p>collect(toList()) 方法由 Stream 里的值生成一个列表，是一个及早求值操作。</p>
+</blockquote>
+<p>Stream 的 of 方法使用一组初始值生成新的 Stream。<br>事实上，collect 的用法不仅限于此，它是一个非常通用的强大结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; collected = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span><br><span class="line">                               .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这段程序展示了如何使用 collect(toList()) 方法从 Stream 中生成一个列表。</span><br><span class="line">由于很多 Stream 操作都是惰性求值，因此调用 Stream 上一系列方法之后，还需要最后再调用一个类似 collect 的及早求值方法。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -2322,90 +2423,6 @@
 <li>Lambda 表达式的常见结构：BinaryOperator<Integer> add &#x3D; (x, y) → x + y。</li>
 <li>函数接口指仅具有单个抽象方法的接口，用来表示 Lambda 表达式的类型。</li>
 </ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java-8函数式编程2</title>
-    <url>/00e85f51e0a8.html</url>
-    <content><![CDATA[<blockquote>
-<p>前言</p>
-<p>Java 8 Lambdas，Richard Warburton 著（O’Reilly，2014）。版权所有， 978-1-449-37077-0</p>
-<ul>
-<li>如何编写出简单、干净、易读的代码 —— 尤其是对于集合的操作？</li>
-<li>如何简单地使用并行计算提高性能？</li>
-<li>如何准确地为问题建模，并且开发出更好的领域特定语言？</li>
-<li>如何写出不易出错，并且更简单的并发代码？</li>
-<li>如何测试和调试 Lambda 表达式？</li>
-</ul>
-<p>将<strong>Lambda 表达式</strong>加入 Java，并不只是为了提高开发人员的生产效率，业界也对这一特性有根本性的需求。</p>
-</blockquote>
-<h1 id="流"><a href="#流" class="headerlink" title="流"></a>流</h1><p>Java 8 中新增的特性旨在帮助程序员写出更好的代码，其中对核心类库的改进是很关键的一部分。</p>
-<p>对核心类库的改进主要包括集合类的 API 和新引入的流（Stream）。</p>
-<p>流使程序员得以站在更高的抽象层次上对集合进行操作。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li>Artist : 创作音乐的个人或团队<ul>
-<li>name ：艺术家的名字</li>
-<li>members ：乐队成员</li>
-<li>origin ：乐队来自哪里</li>
-<li>Track : 专辑中的一支曲目<ul>
-<li>name : 曲目名称</li>
-</ul>
-</li>
-<li>Album ： 专辑，若干曲目组成<ul>
-<li>name ：专辑名</li>
-<li>tracks ： 专辑上所有曲目的列表</li>
-<li>musicians ：参与创作本专辑的艺术家列表</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="从外部迭代到内部迭代"><a href="#从外部迭代到内部迭代" class="headerlink" title="从外部迭代到内部迭代"></a>从外部迭代到内部迭代</h2><p>Java 程序员在使用集合类时，一个通用的模式是在集合上进行迭代，然后处理返回的每一个元素。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用 for 循环计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">for (Artist artist : allArtists) &#123; </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">尽管这样的操作可行，但存在几个问题</span><br><span class="line">1.每次迭代集合类时，都需要写很多样板代码。</span><br><span class="line">2.将for 循环改造成并行方式运行也很麻烦，需要修改每个 for 循环才能实现。</span><br><span class="line">3.上述代码无法流畅传达程序员的意图。</span><br><span class="line">	for 循环的样板代码模糊了代码的本意，程序员必须阅读整个循环体才能理解。</span><br><span class="line">	若是单一的 for 循环，倒也问题不大，但面对一个满是循环（尤其是嵌套循环）的庞大代码库时，负担就重了。</span><br></pre></td></tr></table></figure>
-
-<p>for 循环其实是一个封装了迭代的语法糖，看看它的工作原理。</p>
-<p>首先调用 iterator 方法，产生一个新的 Iterator 对象，进而控制整个迭代过程，这就是<strong>外部迭代</strong>。</p>
-<p>迭代过程通过显式调用 Iterator 对象的 hasNext 和 next 方法完成迭代。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用迭代器计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">int count = 0; </span><br><span class="line">Iterator&lt;Artist&gt; iterator = allArtists.iterator(); </span><br><span class="line">while(iterator.hasNext()) &#123; </span><br><span class="line">    Artist artist = iterator.next(); </span><br><span class="line">    if (artist.isFrom(&quot;London&quot;)) &#123; </span><br><span class="line">        count++; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>内部迭代</strong></p>
-<p>首先要注意 stream() 方法的调用，它和调用 iterator() 的作用一样。</p>
-<p>该方法不是返回一个控制迭代的 Iterator 对象，而是返回内部迭代中的相应接口：Stream。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用内部迭代计算来自伦敦的艺术家人数</span><br><span class="line"></span><br><span class="line">long count = allArtists.stream()</span><br><span class="line">			.filter(artist -&gt; artist.isFrom(&quot;London&quot;))</span><br><span class="line">			.count();</span><br><span class="line"></span><br><span class="line">被分解为两步更简单的操作：</span><br><span class="line">	找出所有来自伦敦的艺术家</span><br><span class="line">	计算他们的人数</span><br></pre></td></tr></table></figure>
-
-<p>每种操作都对应 Stream 接口的一个方法。<br>为了找出来自伦敦的艺术家，需要对 Stream 对象进行过滤：filter。过滤在这里是指“只保留通过某项测试的对象”。<br>测试由一个函数完成，根据艺术家是否来自伦敦，该函数返回 true 或者 false。<br>由于 Stream API 的函数式编程风格，我们并没有改变集合的内容，而是描述出 Stream 里的内容。<br>count() 方法计算给定 Stream 里包含多少个对象。</p>
-<blockquote>
-<p>Stream 是用函数式编程方式在集合类上进行复杂操作的工具。</p>
-</blockquote>
-<h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>整个过程被分解为两种更简单的操作：过滤和计数，看似有化简为繁之嫌<br>但 迭代只有一个for循环 ，两种操作是否以为着需要两次循环？ 答案并不是，只需要对列表迭代一次。</p>
-<p>通常，在Java中调用一个方法，计算机会随机执行操作：比如，System.out.println(“Hello World”);会在终端上输出一条信息。<br>Streatm里的一些方法却略有不同，他们虽是普通Java方法，但返回的Stream对象却不是一个新集合，而是<strong>创建新集合的配方</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">只过滤，不计数</span><br><span class="line"></span><br><span class="line">allArtists.stream().filter(artist -&gt; artist.isFrom(&quot;London&quot;));</span><br></pre></td></tr></table></figure>
-
-<p>这行代码并未做什么实际性的工作，filter 只刻画出了 Stream，但没有产生新的集合。<br>像filter 这样只描述 Stream，最终不产生新集合的方法叫<strong>作惰性求值方法</strong>；<br>而像 count 这样最终会从 Stream 产生值的方法叫作<strong>及早求值方法</strong>。</p>
-<p>在过滤器中加入一条 println 语句，来输出艺术家的名字，就能轻而易举地看出其中的不同。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">由于使用了惰性求值，没有输出艺术家的名字</span><br><span class="line"></span><br><span class="line">allArtists.stream() </span><br><span class="line">          .filter(artist -&gt; &#123; </span><br><span class="line">              System.out.println(artist.getName()); </span><br><span class="line">              return artist.isFrom(&quot;London&quot;); </span><br><span class="line">           &#125;);</span><br><span class="line"></span><br><span class="line">运行这段代码，程序不会输出任何信息！</span><br></pre></td></tr></table></figure>
-
-<p>如果将同样的输出语句加入一个拥有终止操作的流,艺术家的名字就会被输出。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">long count = allArtists.stream() </span><br><span class="line">                       .filter(artist -&gt; &#123; </span><br><span class="line">                           System.out.println(artist.getName()); </span><br><span class="line">                           return artist.isFrom(&quot;London&quot;); </span><br><span class="line">                       &#125;) </span><br><span class="line">                       .count();</span><br></pre></td></tr></table></figure>
-
-<p>判断一个操作是惰性求值还是及早求值很简单：只需看它的返回值。<br>如果返回值是 Stream，那么是惰性求值；如果返回值是另一个值或为空，那么就是及早求值。<br>使用这些操作的理想方式就是形成一个惰性求值的链，最后用一个及早求值的操作返回想要的结果，这正是它的合理之处。</p>
-<h2 id="常用的流操作"><a href="#常用的流操作" class="headerlink" title="常用的流操作"></a>常用的流操作</h2><p>为了更好地理解 Stream API，掌握一些常用的 Stream 操作十分必要。除此处讲述的几种重要操作之外，该 API 的 Javadoc 中还有更多信息。</p>
-<h3 id="collect-toList"><a href="#collect-toList" class="headerlink" title="collect(toList())"></a>collect(toList())</h3><blockquote>
-<p>collect(toList()) 方法由 Stream 里的值生成一个列表，是一个及早求值操作。</p>
-</blockquote>
-<p>Stream 的 of 方法使用一组初始值生成新的 Stream。<br>事实上，collect 的用法不仅限于此，它是一个非常通用的强大结构。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; collected = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span><br><span class="line">                               .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这段程序展示了如何使用 collect(toList()) 方法从 Stream 中生成一个列表。</span><br><span class="line">由于很多 Stream 操作都是惰性求值，因此调用 Stream 上一系列方法之后，还需要最后再调用一个类似 collect 的及早求值方法。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 ]]></content>
       <categories>
         <category>Java</category>
@@ -7689,23 +7706,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>Ajax(原生,JQ)</title>
-    <url>/e1f9a21b8822.html</url>
-    <content><![CDATA[<h1 id="XMLHttpRequest发送请求"><a href="#XMLHttpRequest发送请求" class="headerlink" title="XMLHttpRequest发送请求"></a>XMLHttpRequest发送请求</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="comment">//1.获取a节点，并为其添加onclick响应函数</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;a&quot;</span>)[<span class="number">0</span>].<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//3.创建一个XMLHttpRequest对象  </span></span><br><span class="line">		<span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">		<span class="comment">//4.准备发送请求的数据：url</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;?time=&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> method = <span class="string">&quot;GET&quot;</span>;</span><br><span class="line">		<span class="comment">//5.调用XMLHttpRequest对象的open方法</span></span><br><span class="line">		request.<span class="title function_">open</span>(method, url);</span><br><span class="line">		<span class="comment">//6.调用XMLHttpRequest对象的send方法</span></span><br><span class="line">		request.<span class="title function_">send</span>(<span class="literal">null</span>);</span><br><span class="line">		<span class="comment">//7.为XMLHttpRequest对象添加onreadystatechange响应函数</span></span><br><span class="line">		request.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//8.判断响应是否完成：XMLHttpRequest对象的readyState属性值为4的时候</span></span><br><span class="line">			<span class="keyword">if</span>(request.<span class="property">readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">				<span class="comment">//9.再判断响应是否可用：XMLHttpRequest对象status属性为200</span></span><br><span class="line">				<span class="keyword">if</span>(request.<span class="property">status</span> == <span class="number">200</span> || request.<span class="property">status</span> == <span class="number">304</span>) &#123;</span><br><span class="line">					<span class="comment">//10.打印响应结果responseText</span></span><br><span class="line">					<span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//2.取消a节点的默认行为</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Jquery中的Ajax"><a href="#Jquery中的Ajax" class="headerlink" title="Jquery中的Ajax"></a>Jquery中的Ajax</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">	$(<span class="string">&quot;a&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="comment">//url</span></span><br><span class="line">		<span class="comment">//args :JSON格式</span></span><br><span class="line">		<span class="comment">//function :回调函数：当响应结束时，回调函数被触发。响应结果在data中</span></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">//结果是直接插入HTML节点中</span></span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用load方法处理Ajax,加上选择器</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span> + <span class="string">&quot;h2 a&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">load</span>(url, args);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//GET请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">get</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//POST请求,返回结果在返回结果里面需要自己指定</span></span><br><span class="line">		<span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">href</span>;</span><br><span class="line">		<span class="keyword">var</span> args = &#123;</span><br><span class="line">			<span class="string">&quot;time&quot;</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">		&#125;;</span><br><span class="line">		$.<span class="title function_">post</span>(url, args,</span><br><span class="line">		<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">			$(<span class="string">&quot;#con&quot;</span>).<span class="title function_">empty</span>().<span class="title function_">append</span>(data);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonObject = &#123;</span><br><span class="line">	<span class="string">&quot;name&quot;</span>: <span class="string">&quot;guigui&quot;</span>,</span><br><span class="line">	<span class="string">&quot;age&quot;</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="string">&quot;address&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;city&quot;</span>: <span class="string">&quot;sc&quot;</span>,</span><br><span class="line">		<span class="string">&quot;school&quot;</span>: <span class="string">&quot;sc&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;teaching&quot;</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">name</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonObject.<span class="property">address</span>.<span class="property">city</span>);</span><br><span class="line"></span><br><span class="line">jsonObject.<span class="title function_">teaching</span>();</span><br><span class="line"><span class="comment">//把字符串转为json</span></span><br><span class="line"><span class="keyword">var</span> jsonStr = <span class="string">&quot;&#123;&#x27;name&#x27;:&#x27;guigui&#x27;&#125;&quot;</span>;</span><br><span class="line">jsonStr = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + jsonStr + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>(jsonStr.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Ajax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux设置定时任务</title>
     <url>/949c2f6ddc37.html</url>
     <content><![CDATA[<p>在 Linux 中，你可以使用 cron 来设置定时任务。Cron 是一个用于在预定时间执行任务的工具。以下是设置定时任务的步骤：</p>
@@ -8230,6 +8230,28 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>临时禁用 MySQL 数据库的外键约束</title>
+    <url>/26bca217efa2.html</url>
+    <content><![CDATA[<p>当你需要删除数据时，可以临时禁用 MySQL 数据库的外键约束。这样，你就可以在删除操作完成后再重新启用外键约束。以下是具体的步骤：</p>
+<p>在进行删除操作前，使用以下语句暂时禁用外键约束：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br></pre></td></tr></table></figure>
+
+<p>然后执行删除操作，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM table1 WHERE <span class="built_in">id</span>=1;</span><br></pre></td></tr></table></figure>
+
+<p>删除完成后，再启用外键约束：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=1;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，使用这种方法禁用外键约束后，对数据进行的修改操作将不再受到外键约束的限制和检查，因此需要谨慎操作，以免影响数据的完整性和一致性。如果你只是想清空一个受外键约束的表，也可以先删除外键约束后再清空表。</p>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql主从设置</title>
     <url>/967f626b21b0.html</url>
     <content><![CDATA[<p>什么是主从，详细百度去吧，我说说我自己的理解</p>
@@ -8269,28 +8291,6 @@ new Scanner(System.in).nextInt();
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CHANGE MASTER TO </span><br><span class="line">MASTER_HOST=’localhost’, #主机的IP</span><br><span class="line">MASTER_PORT=3306,</span><br><span class="line">MASTER_USER=’usermysql’, #之前创建的那个使用名</span><br><span class="line">MASTER_PASSWORD=’123456′, #密码</span><br><span class="line">MASTER_LOG_FILE=’mysql-bin.000001′, #这是主库中show master status;File下的那个值</span><br><span class="line">MASTER_LOG_POS=446;#这是主库Position下的那个值</span><br><span class="line"></span><br><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes </span><br><span class="line">看到这两个都是Yes就成了</span><br></pre></td></tr></table></figure>
 <p>— 关闭</p>
 <p><code>stop slave;</code></p>
-]]></content>
-      <categories>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>临时禁用 MySQL 数据库的外键约束</title>
-    <url>/26bca217efa2.html</url>
-    <content><![CDATA[<p>当你需要删除数据时，可以临时禁用 MySQL 数据库的外键约束。这样，你就可以在删除操作完成后再重新启用外键约束。以下是具体的步骤：</p>
-<p>在进行删除操作前，使用以下语句暂时禁用外键约束：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=0;</span><br></pre></td></tr></table></figure>
-
-<p>然后执行删除操作，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DELETE FROM table1 WHERE <span class="built_in">id</span>=1;</span><br></pre></td></tr></table></figure>
-
-<p>删除完成后，再启用外键约束：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SET FOREIGN_KEY_CHECKS=1;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，使用这种方法禁用外键约束后，对数据进行的修改操作将不再受到外键约束的限制和检查，因此需要谨慎操作，以免影响数据的完整性和一致性。如果你只是想清空一个受外键约束的表，也可以先删除外键约束后再清空表。</p>
 ]]></content>
       <categories>
         <category>mysql</category>
@@ -8651,21 +8651,6 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>四阶幻方</title>
-    <url>/df6f4a8dbde9.html</url>
-    <content><![CDATA[<p>把1~16的数字填入4×4的方格中，使得行、列以及两个对角线的和都相等，满足这样的特征时称为：四阶幻方。<br>四阶幻方可能有很多方案。如果固定左上角为1，请计算一共有多少种方案。<br>比如：<br>1 2 15 16<br>12 14 3 5<br>13 7 10 4<br>8 11 6 9<br>以及：<br>1 12 13 8<br>2 14 7 11<br>15 3 10 6<br>16 5 4 9<br>就可以算为两种不同的方案。<br>请提交左上角固定为1时的所有方案数字，不要填写任何多余内容或说明文字。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static int[] num = new int[] &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 &#125;;</span><br><span class="line">	static int su = 0;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		sun(1);</span><br><span class="line">&#125;</span><br><span class="line">private static void sun(int i) &#123;</span><br><span class="line">		if (sum() &amp;&amp; i == num.length) &#123;</span><br><span class="line">			su++;</span><br><span class="line">			System.out.println(su);</span><br><span class="line">		&#125;</span><br><span class="line">		int tmp = 0;</span><br><span class="line">		for (int j = i; j &lt; num.length; j++) &#123;</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">			sun(i + 1);</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">private static boolean sum() &#123;</span><br><span class="line">		int tmp = num[0] + num[1] + num[2] + num[3];</span><br><span class="line">		for (int i = 0; i &lt; num.length; i += 4) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 1] + num[i + 2] + num[i + 3])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 4] + num[i + 8] + num[i + 12])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		if (tmp != num[0] + num[5] + num[10] + num[15])</span><br><span class="line">			return false;</span><br><span class="line">		if (tmp != num[3] + num[6] + num[9] + num[12])</span><br><span class="line">			return false;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>理论有解</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>奇怪的数列</title>
     <url>/48ddc852e08a.html</url>
     <content><![CDATA[<p>从X星截获一份电码，是一些数字，如下：<br>13<br>1113<br>3113<br>132113<br>1113122113<br>….</p>
@@ -8681,6 +8666,21 @@ new Scanner(System.in).nextInt();
 <p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner scanner = new Scanner(System.in);</span><br><span class="line">		String input = scanner.next();</span><br><span class="line">		int num = scanner.nextInt();</span><br><span class="line">		String number = list(input);</span><br><span class="line">		for (int i = 1; i &lt; num; i++) &#123;</span><br><span class="line">			number = list(number);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(number);</span><br><span class="line">		scanner.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static String list(String input) &#123;</span><br><span class="line">		int i = 0;</span><br><span class="line">		int tmp;</span><br><span class="line">		String index = &quot;&quot;;</span><br><span class="line">		while (i &lt; input.length()) &#123;</span><br><span class="line">			tmp = 1;</span><br><span class="line">			while (flag(i, input)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				tmp++;</span><br><span class="line">			&#125;</span><br><span class="line">			index = index + tmp + String.valueOf(input.charAt(i));</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		return index;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean flag(int i, String input) &#123;</span><br><span class="line">		String valueOf = String.valueOf(input.charAt(i));</span><br><span class="line">		if (i + 1 &lt; input.length()) &#123;</span><br><span class="line">			String valueOf2 = String.valueOf(input.charAt(i + 1));</span><br><span class="line">			if (valueOf.equals(valueOf2)) &#123;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>四阶幻方</title>
+    <url>/df6f4a8dbde9.html</url>
+    <content><![CDATA[<p>把1~16的数字填入4×4的方格中，使得行、列以及两个对角线的和都相等，满足这样的特征时称为：四阶幻方。<br>四阶幻方可能有很多方案。如果固定左上角为1，请计算一共有多少种方案。<br>比如：<br>1 2 15 16<br>12 14 3 5<br>13 7 10 4<br>8 11 6 9<br>以及：<br>1 12 13 8<br>2 14 7 11<br>15 3 10 6<br>16 5 4 9<br>就可以算为两种不同的方案。<br>请提交左上角固定为1时的所有方案数字，不要填写任何多余内容或说明文字。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	static int[] num = new int[] &#123; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 &#125;;</span><br><span class="line">	static int su = 0;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		sun(1);</span><br><span class="line">&#125;</span><br><span class="line">private static void sun(int i) &#123;</span><br><span class="line">		if (sum() &amp;&amp; i == num.length) &#123;</span><br><span class="line">			su++;</span><br><span class="line">			System.out.println(su);</span><br><span class="line">		&#125;</span><br><span class="line">		int tmp = 0;</span><br><span class="line">		for (int j = i; j &lt; num.length; j++) &#123;</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">			sun(i + 1);</span><br><span class="line">			tmp = num[j];</span><br><span class="line">			num[j] = num[i];</span><br><span class="line">			num[i] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">private static boolean sum() &#123;</span><br><span class="line">		int tmp = num[0] + num[1] + num[2] + num[3];</span><br><span class="line">		for (int i = 0; i &lt; num.length; i += 4) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 1] + num[i + 2] + num[i + 3])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			if (tmp != num[i] + num[i + 4] + num[i + 8] + num[i + 12])</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		if (tmp != num[0] + num[5] + num[10] + num[15])</span><br><span class="line">			return false;</span><br><span class="line">		if (tmp != num[3] + num[6] + num[9] + num[12])</span><br><span class="line">			return false;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>理论有解</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -8715,11 +8715,13 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>显示二叉树</title>
-    <url>/d1609d979851.html</url>
-    <content><![CDATA[<p>排序二叉树的特征是：<br>某个节点的左子树的所有节点值都不大于本节点值。<br>某个节点的右子树的所有节点值都不小于本节点值。</p>
-<p>为了能形象地观察二叉树的建立过程，小明写了一段程序来显示出二叉树的结构来。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">		public static void main(String[] args) &#123;</span><br><span class="line">		BiTree tree = new BiTree(500);</span><br><span class="line">		tree.add(new BiTree(200));</span><br><span class="line">		tree.add(new BiTree(509));</span><br><span class="line">		tree.add(new BiTree(100));</span><br><span class="line">		tree.add(new BiTree(250));</span><br><span class="line">		tree.add(new BiTree(507));</span><br><span class="line">		tree.add(new BiTree(600));</span><br><span class="line">		tree.add(new BiTree(650));</span><br><span class="line">		tree.add(new BiTree(450));</span><br><span class="line">		tree.add(new BiTree(510));</span><br><span class="line">		tree.add(new BiTree(440));</span><br><span class="line">		tree.add(new BiTree(220));</span><br><span class="line">		tree.show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static class BiTree &#123;</span><br><span class="line">		private int v;</span><br><span class="line">		private BiTree l;// 左</span><br><span class="line">		private BiTree r;// 右</span><br><span class="line"></span><br><span class="line">		public BiTree(int v) &#123;</span><br><span class="line">			this.v = v;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public void add(BiTree the) &#123;</span><br><span class="line">			if (the.v &lt; v) &#123;</span><br><span class="line">				if (l == null)</span><br><span class="line">					l = the;</span><br><span class="line">				else</span><br><span class="line">					l.add(the);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				if (r == null)</span><br><span class="line">					r = the;</span><br><span class="line">				else</span><br><span class="line">					r.add(the);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public int getHeight() &#123;</span><br><span class="line">			int h = 2;</span><br><span class="line">			int hl = l == null ? 0 : l.getHeight();</span><br><span class="line">			int hr = r == null ? 0 : r.getHeight();</span><br><span class="line">			return h + Math.max(hl, hr);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public int getWidth() &#123;</span><br><span class="line">			int w = (&quot;&quot; + v).length();</span><br><span class="line">			if (l != null)</span><br><span class="line">				w += l.getWidth();</span><br><span class="line">			if (r != null)</span><br><span class="line">				w += r.getWidth();</span><br><span class="line">			return w;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public void show() &#123;</span><br><span class="line">			char[][] buf = new char[getHeight()][getWidth()];</span><br><span class="line">			printInBuf(buf, 0, 0);</span><br><span class="line">			showBuf(buf);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private void showBuf(char[][] x) &#123;</span><br><span class="line">			for (int i = 0; i &lt; x.length; i++) &#123;</span><br><span class="line">				for (int j = 0; j &lt; x[i].length; j++)</span><br><span class="line">					System.out.print(x[i][j] == 0 ? &#x27; &#x27; : x[i][j]);</span><br><span class="line">				System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private void printInBuf(char[][] buf, int x, int y) &#123;</span><br><span class="line">			String sv = &quot;&quot; + v;</span><br><span class="line">			int p1 = l == null ? x : l.getRootPos(x);</span><br><span class="line">			int p2 = getRootPos(x);</span><br><span class="line">			int p3 = r == null ? p2 : r.getRootPos(p2 + sv.length());</span><br><span class="line">			buf[y][p2] = &#x27;|&#x27;;</span><br><span class="line">			for (int i = p1; i &lt;= p3; i++)</span><br><span class="line">				buf[y + 1][i] = &#x27;-&#x27;;</span><br><span class="line">			for (int i = 0; i &lt; sv.length(); i++)</span><br><span class="line">				buf[y + 1][p2 + i] = sv.charAt(i);// 填空位置</span><br><span class="line">			if (p1 &lt; p2) buf[y + 1][p1] = &#x27;/&#x27;; if (p3 &gt; p2)</span><br><span class="line">				buf[y + 1][p3] = &#x27;\\&#x27;;</span><br><span class="line">			if (l != null)</span><br><span class="line">				l.printInBuf(buf, x, y + 2);</span><br><span class="line">			if (r != null)</span><br><span class="line">				r.printInBuf(buf, p2 + sv.length(), y + 2);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private int getRootPos(int x) &#123;</span><br><span class="line">			return l == null ? x : x + l.getWidth();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>生成回文数</title>
+    <url>/de8220af4fbd.html</url>
+    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
+<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
+<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
+<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -8731,13 +8733,11 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
-    <title>生成回文数</title>
-    <url>/de8220af4fbd.html</url>
-    <content><![CDATA[<p>所谓回文数就是左右对称的数字，比如：<br>585,5885,123321…<br>当然，单个的数字也可以算作是对称的。</p>
-<p>小明发现了一种生成回文数的方法：<br>比如，取数字19，把它与自己的翻转数相加：<br>19 + 91 &#x3D; 110，如果不是回文数，就再进行这个过程：<br>110 + 011 &#x3D; 121 这次是回文数了。</p>
-<p>200以内的数字中，绝大多数都可以在30步以内变成回文数，只有一个数字很特殊，就算迭代了1000次，它还是顽固地拒绝回文！</p>
-<p>请你提交该顽固数字，不要填写任何多余的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		StringBuffer buffer = new StringBuffer();</span><br><span class="line">		Long i = 10L;</span><br><span class="line">		BigInteger tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">		int count = 0;</span><br><span class="line">		while (i &lt;= 200) &#123;</span><br><span class="line">			while (!isHuiWen(tmp) &amp;&amp; i &lt;= 200) &#123;</span><br><span class="line">				buffer.append(tmp);</span><br><span class="line">				// Long tmp2 = Long.valueOf(buffer.reverse().toString().trim());</span><br><span class="line">				// tmp = tmp + tmp2;</span><br><span class="line">				BigInteger big = new BigInteger(buffer.toString());</span><br><span class="line">				BigInteger big2 = new BigInteger(buffer.reverse().toString());</span><br><span class="line">				tmp = big.add(big2);</span><br><span class="line">				buffer.delete(0, buffer.length());</span><br><span class="line">				count++;</span><br><span class="line">				</span><br><span class="line">				if (count &gt; 9999) &#123;</span><br><span class="line">					System.out.println(i);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;			</span><br><span class="line">			count = 0;			</span><br><span class="line">			i++;</span><br><span class="line">			tmp = new BigInteger(i + &quot;&quot;);</span><br><span class="line">			buffer.delete(0, buffer.length());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static boolean isHuiWen(BigInteger tmp) &#123;</span><br><span class="line">		StringBuffer buffer1 = new StringBuffer();</span><br><span class="line">		StringBuffer buffer2 = new StringBuffer();</span><br><span class="line">		buffer1.append(tmp);</span><br><span class="line">		buffer2.append(tmp).reverse();</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		// int i = 0;</span><br><span class="line">		// while (buffer1.length() / 2 &gt; i) &#123;</span><br><span class="line">		// if (!(buffer1.charAt(i) == buffer2.charAt(i))) &#123;</span><br><span class="line">		// flag = false;</span><br><span class="line">		// break;</span><br><span class="line">		// &#125;</span><br><span class="line">		// i++;</span><br><span class="line">		// &#125;</span><br><span class="line">		if (buffer1.toString().equals(buffer2.toString())) &#123;</span><br><span class="line">			flag = true;</span><br><span class="line">		&#125;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>显示二叉树</title>
+    <url>/d1609d979851.html</url>
+    <content><![CDATA[<p>排序二叉树的特征是：<br>某个节点的左子树的所有节点值都不大于本节点值。<br>某个节点的右子树的所有节点值都不小于本节点值。</p>
+<p>为了能形象地观察二叉树的建立过程，小明写了一段程序来显示出二叉树的结构来。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">		public static void main(String[] args) &#123;</span><br><span class="line">		BiTree tree = new BiTree(500);</span><br><span class="line">		tree.add(new BiTree(200));</span><br><span class="line">		tree.add(new BiTree(509));</span><br><span class="line">		tree.add(new BiTree(100));</span><br><span class="line">		tree.add(new BiTree(250));</span><br><span class="line">		tree.add(new BiTree(507));</span><br><span class="line">		tree.add(new BiTree(600));</span><br><span class="line">		tree.add(new BiTree(650));</span><br><span class="line">		tree.add(new BiTree(450));</span><br><span class="line">		tree.add(new BiTree(510));</span><br><span class="line">		tree.add(new BiTree(440));</span><br><span class="line">		tree.add(new BiTree(220));</span><br><span class="line">		tree.show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static class BiTree &#123;</span><br><span class="line">		private int v;</span><br><span class="line">		private BiTree l;// 左</span><br><span class="line">		private BiTree r;// 右</span><br><span class="line"></span><br><span class="line">		public BiTree(int v) &#123;</span><br><span class="line">			this.v = v;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public void add(BiTree the) &#123;</span><br><span class="line">			if (the.v &lt; v) &#123;</span><br><span class="line">				if (l == null)</span><br><span class="line">					l = the;</span><br><span class="line">				else</span><br><span class="line">					l.add(the);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				if (r == null)</span><br><span class="line">					r = the;</span><br><span class="line">				else</span><br><span class="line">					r.add(the);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public int getHeight() &#123;</span><br><span class="line">			int h = 2;</span><br><span class="line">			int hl = l == null ? 0 : l.getHeight();</span><br><span class="line">			int hr = r == null ? 0 : r.getHeight();</span><br><span class="line">			return h + Math.max(hl, hr);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public int getWidth() &#123;</span><br><span class="line">			int w = (&quot;&quot; + v).length();</span><br><span class="line">			if (l != null)</span><br><span class="line">				w += l.getWidth();</span><br><span class="line">			if (r != null)</span><br><span class="line">				w += r.getWidth();</span><br><span class="line">			return w;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public void show() &#123;</span><br><span class="line">			char[][] buf = new char[getHeight()][getWidth()];</span><br><span class="line">			printInBuf(buf, 0, 0);</span><br><span class="line">			showBuf(buf);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private void showBuf(char[][] x) &#123;</span><br><span class="line">			for (int i = 0; i &lt; x.length; i++) &#123;</span><br><span class="line">				for (int j = 0; j &lt; x[i].length; j++)</span><br><span class="line">					System.out.print(x[i][j] == 0 ? &#x27; &#x27; : x[i][j]);</span><br><span class="line">				System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private void printInBuf(char[][] buf, int x, int y) &#123;</span><br><span class="line">			String sv = &quot;&quot; + v;</span><br><span class="line">			int p1 = l == null ? x : l.getRootPos(x);</span><br><span class="line">			int p2 = getRootPos(x);</span><br><span class="line">			int p3 = r == null ? p2 : r.getRootPos(p2 + sv.length());</span><br><span class="line">			buf[y][p2] = &#x27;|&#x27;;</span><br><span class="line">			for (int i = p1; i &lt;= p3; i++)</span><br><span class="line">				buf[y + 1][i] = &#x27;-&#x27;;</span><br><span class="line">			for (int i = 0; i &lt; sv.length(); i++)</span><br><span class="line">				buf[y + 1][p2 + i] = sv.charAt(i);// 填空位置</span><br><span class="line">			if (p1 &lt; p2) buf[y + 1][p1] = &#x27;/&#x27;; if (p3 &gt; p2)</span><br><span class="line">				buf[y + 1][p3] = &#x27;\\&#x27;;</span><br><span class="line">			if (l != null)</span><br><span class="line">				l.printInBuf(buf, x, y + 2);</span><br><span class="line">			if (r != null)</span><br><span class="line">				r.printInBuf(buf, p2 + sv.length(), y + 2);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private int getRootPos(int x) &#123;</span><br><span class="line">			return l == null ? x : x + l.getWidth();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -9066,6 +9066,96 @@ new Scanner(System.in).nextInt();
       <tags>
         <tag>设计模式</tag>
         <tag>原型模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外观模式</title>
+    <url>/27c62a80157e.html</url>
+    <content><![CDATA[<h1 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>外观模式</strong>是一种结构型设计模式， 能为程序库、 框架或其他复杂类提供一个简单的接口。</p>
+<img src="/27c62a80157e/image-20240919114501146.png" class="" alt="image-20240919114501146">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>假设你必须在代码中使用某个复杂的库或框架中的众多对象。 正常情况下， 你需要负责所有对象的初始化工作、 管理其依赖关系并按正确的顺序执行方法等。</p>
+<p>最终， 程序中类的业务逻辑将与第三方类的实现细节紧密耦合， 使得理解和维护代码的工作很难进行。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>外观类为包含许多活动部件的复杂子系统提供一个简单的接口。 与直接调用子系统相比， 外观提供的功能可能比较有限， 但它却包含了客户端真正关心的功能。</p>
+<p>如果你的程序需要与包含几十种功能的复杂库整合， 但只需使用其中非常少的功能， 那么使用外观模式会非常方便，</p>
+<p>例如， 上传猫咪搞笑短视频到社交媒体网站的应用可能会用到专业的视频转换库， 但它只需使用一个包含 <code>encode­(filename, format)</code>方法 （以文件名与文件格式为参数进行编码的方法） 的类即可。 在创建这个类并将其连接到视频转换库后， 你就拥有了自己的第一个外观。</p>
+<h2 id="真实世界类比"><a href="#真实世界类比" class="headerlink" title="真实世界类比"></a>真实世界类比</h2><img src="/27c62a80157e/image-20240919114533703.png" class="" alt="电话购物。">
+
+<p>当你通过电话给商店下达订单时， 接线员就是该商店的所有服务和部门的外观。 接线员为你提供了一个同购物系统、 支付网关和各种送货服务进行互动的简单语音接口。</p>
+<h2 id="外观模式结构"><a href="#外观模式结构" class="headerlink" title="外观模式结构"></a>外观模式结构</h2><img src="/27c62a80157e/image-20240919114557340.png" class="" alt="image-20240919114557340">
+
+<ol>
+<li><p><strong>外观</strong> （Facade） 提供了一种访问特定子系统功能的便捷方式， 其了解如何重定向客户端请求， 知晓如何操作一切活动部件。</p>
+</li>
+<li><p>创建<strong>附加外观</strong> （Additional Facade） 类可以避免多种不相关的功能污染单一外观， 使其变成又一个复杂结构。 客户端和其他外观都可使用附加外观。</p>
+</li>
+<li><p><strong>复杂子系统</strong> （Complex Subsystem） 由数十个不同对象构成。 如果要用这些对象完成有意义的工作， 你必须深入了解子系统的实现细节， 比如按照正确顺序初始化对象和为其提供正确格式的数据。</p>
+<p>子系统类不会意识到外观的存在， 它们在系统内运作并且相互之间可直接进行交互。</p>
+</li>
+<li><p><strong>客户端</strong> （Client） 使用外观代替对子系统对象的直接调用。</p>
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>在本例中， <strong>外观</strong>模式简化了客户端与复杂视频转换框架之间的交互。</p>
+<img src="/27c62a80157e/image-20240919114642525.png" class="" alt="使用单个外观类隔离多重依赖的示例">
+
+<p>你可以创建一个封装所需功能并隐藏其他代码的外观类， 从而无需使全部代码直接与数十个框架类进行交互。 该结构还能将未来框架升级或更换所造成的影响最小化， 因为你只需修改程序中外观方法的实现即可。</p>
+<h3 id="some-complex-media-library-复杂视频转换程序库"><a href="#some-complex-media-library-复杂视频转换程序库" class="headerlink" title="some_complex_media_library: 复杂视频转换程序库"></a><strong>some_complex_media_library:</strong> 复杂视频转换程序库</h3><h4 id="some-complex-media-library-VideoFile-java"><a href="#some-complex-media-library-VideoFile-java" class="headerlink" title="some_complex_media_library&#x2F;VideoFile.java"></a><strong>some_complex_media_library&#x2F;VideoFile.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VideoFile</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String codecType;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">VideoFile</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.codecType = name.substring(name.indexOf(<span class="string">&quot;.&quot;</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getCodecType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> codecType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-Codec-java"><a href="#some-complex-media-library-Codec-java" class="headerlink" title="some_complex_media_library&#x2F;Codec.java"></a><strong>some_complex_media_library&#x2F;Codec.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Codec</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-MPEG4CompressionCodec-java"><a href="#some-complex-media-library-MPEG4CompressionCodec-java" class="headerlink" title="some_complex_media_library&#x2F;MPEG4CompressionCodec.java"></a><strong>some_complex_media_library&#x2F;MPEG4CompressionCodec.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MPEG4CompressionCodec</span> <span class="keyword">implements</span> <span class="title class_">Codec</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> <span class="string">&quot;mp4&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-OggCompressionCodec-java"><a href="#some-complex-media-library-OggCompressionCodec-java" class="headerlink" title="some_complex_media_library&#x2F;OggCompressionCodec.java"></a><strong>some_complex_media_library&#x2F;OggCompressionCodec.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OggCompressionCodec</span> <span class="keyword">implements</span> <span class="title class_">Codec</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> <span class="string">&quot;ogg&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-CodecFactory-java"><a href="#some-complex-media-library-CodecFactory-java" class="headerlink" title="some_complex_media_library&#x2F;CodecFactory.java"></a><strong>some_complex_media_library&#x2F;CodecFactory.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CodecFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Codec <span class="title function_">extract</span><span class="params">(VideoFile file)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> file.getCodecType();</span><br><span class="line">        <span class="keyword">if</span> (type.equals(<span class="string">&quot;mp4&quot;</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;CodecFactory: 提取音频...&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MPEG4CompressionCodec</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;CodecFactory: 提取ogg音频...&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">OggCompressionCodec</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-BitrateReader-java"><a href="#some-complex-media-library-BitrateReader-java" class="headerlink" title="some_complex_media_library&#x2F;BitrateReader.java"></a><strong>some_complex_media_library&#x2F;BitrateReader.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BitrateReader</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> VideoFile <span class="title function_">read</span><span class="params">(VideoFile file, Codec codec)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BitrateReader: 读取文件...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> file;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> VideoFile <span class="title function_">convert</span><span class="params">(VideoFile buffer, Codec codec)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BitrateReader: 写入文件...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> buffer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="some-complex-media-library-AudioMixer-java"><a href="#some-complex-media-library-AudioMixer-java" class="headerlink" title="some_complex_media_library&#x2F;AudioMixer.java"></a><strong>some_complex_media_library&#x2F;AudioMixer.java</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.some_complex_media_library;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AudioMixer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> File <span class="title function_">fix</span><span class="params">(VideoFile result)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;AudioMixer: 修复音频...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;tmp&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="facade"><a href="#facade" class="headerlink" title="facade"></a><strong>facade</strong></h3><h4 id="facade-VideoConversionFacade-java-外观提供了进行视频转换的简单接口"><a href="#facade-VideoConversionFacade-java-外观提供了进行视频转换的简单接口" class="headerlink" title="facade&#x2F;VideoConversionFacade.java: 外观提供了进行视频转换的简单接口"></a><strong>facade&#x2F;VideoConversionFacade.java:</strong> 外观提供了进行视频转换的简单接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.facade;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.some_complex_media_library.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 外观提供了进行视频转换的简单接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VideoConversionFacade</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> File <span class="title function_">convertVideo</span><span class="params">(String fileName, String format)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;VideoConversionFacade: 转换已开始。&quot;</span>);</span><br><span class="line">        <span class="type">VideoFile</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VideoFile</span>(fileName);</span><br><span class="line">        <span class="type">Codec</span> <span class="variable">sourceCodec</span> <span class="operator">=</span> CodecFactory.extract(file);</span><br><span class="line">        Codec destinationCodec;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;mp4&quot;</span>.equals(format)) &#123;</span><br><span class="line">            destinationCodec = <span class="keyword">new</span> <span class="title class_">MPEG4CompressionCodec</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            destinationCodec = <span class="keyword">new</span> <span class="title class_">OggCompressionCodec</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">VideoFile</span> <span class="variable">buffer</span> <span class="operator">=</span> BitrateReader.read(file, sourceCodec);</span><br><span class="line">        <span class="type">VideoFile</span> <span class="variable">intermediateResult</span> <span class="operator">=</span> BitrateReader.convert(buffer, destinationCodec);</span><br><span class="line">        <span class="type">File</span> <span class="variable">result</span> <span class="operator">=</span> (<span class="keyword">new</span> <span class="title class_">AudioMixer</span>()).fix(intermediateResult);</span><br><span class="line">        System.out.println(<span class="string">&quot;VideoConversionFacade: 转换已完成。&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Main-java-客户端代码"><a href="#Main-java-客户端代码" class="headerlink" title="Main.java: 客户端代码"></a><strong>Main.java:</strong> 客户端代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.facade.VideoConversionFacade;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端代码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/19 上午11:44</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">VideoConversionFacade</span> <span class="variable">converter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VideoConversionFacade</span>();</span><br><span class="line">        <span class="type">File</span> <span class="variable">mp4Video</span> <span class="operator">=</span> converter.convertVideo(<span class="string">&quot;youtubevideo.ogg&quot;</span>, <span class="string">&quot;mp4&quot;</span>);</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="外观模式适合应用场景"><a href="#外观模式适合应用场景" class="headerlink" title="外观模式适合应用场景"></a>外观模式适合应用场景</h2><p><strong>如果你需要一个指向复杂子系统的直接接口，且该接口的功能有限，则可以使用外观模式。</strong></p>
+<p>子系统通常会随着时间的推进变得越来越复杂。 即便是应用了设计模式， 通常你也会创建更多的类。 尽管在多种情形中子系统可能是更灵活或易于复用的， 但其所需的配置和样板代码数量将会增长得更快。 为了解决这个问题， 外观将会提供指向子系统中最常用功能的快捷方式， 能够满足客户端的大部分需求。</p>
+<p><strong>如果需要将子系统组织为多层结构，可以使用外观。</strong></p>
+<p>创建外观来定义子系统中各层次的入口。 你可以要求子系统仅使用外观来进行交互， 以减少子系统之间的耦合。</p>
+<p>让我们回到视频转换框架的例子。 该框架可以拆分为两个层次： 音频相关和视频相关。 你可以为每个层次创建一个外观， 然后要求各层的类必须通过这些外观进行交互。 这种方式看上去与中介者模式非常相似。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>考虑能否在现有子系统的基础上提供一个更简单的接口。 如果该接口能让客户端代码独立于众多子系统类， 那么你的方向就是正确的。</li>
+<li>在一个新的外观类中声明并实现该接口。 外观应将客户端代码的调用重定向到子系统中的相应对象处。 如果客户端代码没有对子系统进行初始化， 也没有对其后续生命周期进行管理， 那么外观必须完成此类工作。</li>
+<li>如果要充分发挥这一模式的优势， 你必须确保所有客户端代码仅通过外观来与子系统进行交互。 此后客户端代码将不会受到任何由子系统代码修改而造成的影响， 比如子系统升级后， 你只需修改外观中的代码即可。</li>
+<li>如果外观变得过于臃肿， 你可以考虑将其部分行为抽取为一个新的专用外观类。</li>
+</ol>
+<h2 id="外观模式优缺点"><a href="#外观模式优缺点" class="headerlink" title="外观模式优缺点"></a>外观模式优缺点</h2><p>优点：</p>
+<ul>
+<li>你可以让自己的代码独立于复杂子系统。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>外观可能成为与程序中所有类都耦合的上帝对象。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li>外观模式为现有对象定义了一个新接口， 适配器模式则会试图运用已有的接口。 <em>适配器</em>通常只封装一个对象， <em>外观</em>通常会作用于整个对象子系统上。</li>
+<li>当只需对客户端代码隐藏子系统创建对象的方式时， 你可以使用抽象工厂模式来代替外观。</li>
+<li>享元模式展示了如何生成大量的小型对象， 外观则展示了如何用一个对象来代表整个子系统。</li>
+<li>外观和中介者模式的职责类似：它们都尝试在大量紧密耦合的类中组织起合作。<ul>
+<li><em>外观</em>为子系统中的所有对象定义了一个简单接口， 但是它不提供任何新功能。 子系统本身不会意识到外观的存在。 子系统中的对象可以直接进行交流。</li>
+<li><em>中介者</em>将系统中组件的沟通行为中心化。 各组件只知道中介者对象， 无法直接相互交流。</li>
+</ul>
+</li>
+<li>外观类通常可以转换为单例模式类， 因为在大部分情况下一个外观对象就足够了。</li>
+<li>外观与代理模式的相似之处在于它们都缓存了一个复杂实体并自行对其进行初始化。 <em>代理</em>与其服务对象遵循同一接口， 使得自己和服务对象可以互换， 在这一点上它与<em>外观</em>不同。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>外观模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>外观模式</tag>
       </tags>
   </entry>
   <entry>
@@ -9654,6 +9744,132 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>装饰模式</title>
+    <url>/1e0942ba54aa.html</url>
+    <content><![CDATA[<h1 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>装饰模式</strong>是一种结构型设计模式， 允许你通过将对象放入包含行为的特殊封装对象中来为原对象绑定新的行为。</p>
+<img src="/1e0942ba54aa/image-20240918175329163.png" class="" alt="image-20240918175329163">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>假设你正在开发一个提供通知功能的库， 其他程序可使用它向用户发送关于重要事件的通知。</p>
+<p>库的最初版本基于 <code>通知器</code>Notifier类， 其中只有很少的几个成员变量， 一个构造函数和一个 <code>send</code>发送方法。 该方法可以接收来自客户端的消息参数， 并将该消息发送给一系列的邮箱， 邮箱列表则是通过构造函数传递给通知器的。 作为客户端的第三方程序仅会创建和配置通知器对象一次， 然后在有重要事件发生时对其进行调用。</p>
+<img src="/1e0942ba54aa/image-20240918175349098.png" class="" alt="程序可以使用通知器类向预定义的邮箱发送重要事件通知。">
+
+<p>此后某个时刻， 你会发现库的用户希望使用除邮件通知之外的功能。 许多用户会希望接收关于紧急事件的手机短信， 还有些用户希望在微信上接收消息， 而公司用户则希望在 QQ 上接收消息。</p>
+<img src="/1e0942ba54aa/image-20240918175415164.png" class="" alt="每种通知类型都将作为通知器的一个子类得以实现。">
+
+<p>这有什么难的呢？ 首先扩展 <code>通知器</code>类， 然后在新的子类中加入额外的通知方法。 现在客户端要对所需通知形式的对应类进行初始化， 然后使用该类发送后续所有的通知消息。</p>
+<p>但是很快有人会问：  “为什么不同时使用多种通知形式呢？ 如果房子着火了， 你大概会想在所有渠道中都收到相同的消息吧。”</p>
+<p>你可以尝试创建一个特殊子类来将多种通知方法组合在一起以解决该问题。 但这种方式会使得代码量迅速膨胀， 不仅仅是程序库代码， 客户端代码也会如此。</p>
+<img src="/1e0942ba54aa/image-20240918175436465.png" class="" alt="子类组合数量爆炸。">
+
+<p>你必须找到其他方法来规划通知类的结构， 否则它们的数量会在不经意之间打破吉尼斯纪录。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>当你需要更改一个对象的行为时， 第一个跳入脑海的想法就是扩展它所属的类。 但是， 你不能忽视继承可能引发的几个严重问题。</p>
+<ul>
+<li>继承是静态的。 你无法在运行时更改已有对象的行为， 只能使用由不同子类创建的对象来替代当前的整个对象。</li>
+<li>子类只能有一个父类。 大部分编程语言不允许一个类同时继承多个类的行为。</li>
+</ul>
+<p>其中一种方法是用<em>聚合</em>或<em>组合</em> ， 而不是<em>继承</em>。 两者的工作方式几乎一模一样： 一个对象<em>包含</em>指向另一个对象的引用， 并将部分工作委派给引用对象； 继承中的对象则继承了父类的行为， 它们自己<em>能够</em>完成这些工作。</p>
+<p>你可以使用这个新方法来轻松替换各种连接的 “小帮手” 对象， 从而能在运行时改变容器的行为。 一个对象可以使用多个类的行为， 包含多个指向其他对象的引用， 并将各种工作委派给引用对象。 聚合 （或组合） 组合是许多设计模式背后的关键原则 （包括装饰在内）。 记住这一点后， 让我们继续关于模式的讨论。</p>
+<img src="/1e0942ba54aa/image-20240918175503959.png" class="" alt="继承与聚合的对比">
+
+<p><em>封装器</em>是装饰模式的别称， 这个称谓明确地表达了该模式的主要思想。  “封装器” 是一个能与其他 “目标” 对象连接的对象。 封装器包含与目标对象相同的一系列方法， 它会将所有接收到的请求委派给目标对象。 但是， 封装器可以在将请求委派给目标前后对其进行处理， 所以可能会改变最终结果。</p>
+<p>那么什么时候一个简单的封装器可以被称为是真正的装饰呢？ 正如之前提到的， 封装器实现了与其封装对象相同的接口。 因此从客户端的角度来看， 这些对象是完全一样的。 封装器中的引用成员变量可以是遵循相同接口的任意对象。 这使得你可以将一个对象放入多个封装器中， 并在对象中添加所有这些封装器的组合行为。</p>
+<p>比如在消息通知示例中， 我们可以将简单邮件通知行为放在基类 <code>通知器</code>中， 但将所有其他通知方法放入装饰中。</p>
+<img src="/1e0942ba54aa/image-20240918175527116.png" class="" alt="将各种通知方法放入装饰。">
+
+<p>客户端代码必须将基础通知器放入一系列自己所需的装饰中。 因此最后的对象将形成一个栈结构。</p>
+<img src="/1e0942ba54aa/image-20240918175614220.png" class="" alt="程序可以配置由通知装饰构成的复杂栈。">
+
+<p>实际与客户端进行交互的对象将是最后一个进入栈中的装饰对象。 由于所有的装饰都实现了与通知基类相同的接口， 客户端的其他代码并不在意自己到底是与 “纯粹” 的通知器对象， 还是与装饰后的通知器对象进行交互。</p>
+<p>我们可以使用相同方法来完成其他行为 （例如设置消息格式或者创建接收人列表）。 只要所有装饰都遵循相同的接口， 客户端就可以使用任意自定义的装饰来装饰对象。</p>
+<h2 id="真实世界类比"><a href="#真实世界类比" class="headerlink" title="真实世界类比"></a>真实世界类比</h2><img src="/1e0942ba54aa/image-20240918175652587.png" class="" alt="穿上多件衣服将获得组合性的效果。">
+
+<p>穿衣服是使用装饰的一个例子。 觉得冷时， 你可以穿一件毛衣。 如果穿毛衣还觉得冷， 你可以再套上一件夹克。 如果遇到下雨， 你还可以再穿一件雨衣。 所有这些衣物都 “扩展” 了你的基本行为， 但它们并不是你的一部分， 如果你不再需要某件衣物， 可以方便地随时脱掉。</p>
+<h2 id="装饰模式结构"><a href="#装饰模式结构" class="headerlink" title="装饰模式结构"></a>装饰模式结构</h2><img src="/1e0942ba54aa/image-20240918175728317.png" class="" alt="image-20240918175728317">
+
+<ol>
+<li><strong>部件</strong> （Component） 声明封装器和被封装对象的公用接口。</li>
+<li><strong>具体部件</strong> （Concrete Component） 类是被封装对象所属的类。 它定义了基础行为， 但装饰类可以改变这些行为。</li>
+<li><strong>基础装饰</strong> （Base Decorator） 类拥有一个指向被封装对象的引用成员变量。 该变量的类型应当被声明为通用部件接口， 这样它就可以引用具体的部件和装饰。 装饰基类会将所有操作委派给被封装的对象。</li>
+<li><strong>具体装饰类</strong> （Concrete Decorators） 定义了可动态添加到部件的额外行为。 具体装饰类会重写装饰基类的方法， 并在调用父类方法之前或之后进行额外的行为。</li>
+<li><strong>客户端</strong> （Client） 可以使用多层装饰来封装部件， 只要它能使用通用接口与所有对象互动即可。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>在本例中， <strong>装饰</strong>模式能够对敏感数据进行压缩和加密， 从而将数据从使用数据的代码中独立出来。</p>
+<img src="/1e0942ba54aa/image-20240918175829607.png" class="" alt="加密和压缩装饰的示例。">
+
+<p>程序使用一对装饰来封装数据源对象。 这两个封装器都改变了从磁盘读写数据的方式：</p>
+<ul>
+<li>当数据即将被<strong>写入磁盘</strong>前， 装饰对数据进行加密和压缩。 在原始类对改变毫无察觉的情况下， 将加密后的受保护数据写入文件。</li>
+<li>当数据刚<strong>从磁盘读出</strong>后， 同样通过装饰对数据进行解压和解密。</li>
+</ul>
+<p>装饰和数据源类实现同一接口， 从而能在客户端代码中相互替换。</p>
+<h3 id="decorators"><a href="#decorators" class="headerlink" title="decorators"></a><strong>decorators</strong></h3><h4 id="decorators-DataSource-java-定义了读取和写入操作的通用数据接口"><a href="#decorators-DataSource-java-定义了读取和写入操作的通用数据接口" class="headerlink" title="decorators&#x2F;DataSource.java: 定义了读取和写入操作的通用数据接口"></a><strong>decorators&#x2F;DataSource.java:</strong> 定义了读取和写入操作的通用数据接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.decorators;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义了读取和写入操作的通用数据接口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午5:59</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DataSource</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(String data)</span>;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">readData</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="decorators-FileDataSource-java-简单数据读写器"><a href="#decorators-FileDataSource-java-简单数据读写器" class="headerlink" title="decorators&#x2F;FileDataSource.java: 简单数据读写器"></a><strong>decorators&#x2F;FileDataSource.java:</strong> 简单数据读写器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.decorators;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 简单数据读写器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午5:59</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileDataSource</span> <span class="keyword">implements</span> <span class="title class_">DataSource</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">FileDataSource</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(name);</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">OutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)) &#123;</span><br><span class="line">            fos.write(data.getBytes(), <span class="number">0</span>, data.length());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            System.out.println(ex.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] buffer = <span class="literal">null</span>;</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(name);</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">FileReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(file)) &#123;</span><br><span class="line">            buffer = <span class="keyword">new</span> <span class="title class_">char</span>[(<span class="type">int</span>) file.length()];</span><br><span class="line">            reader.read(buffer);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            System.out.println(ex.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="decorators-DataSourceDecorator-java-抽象基础装饰"><a href="#decorators-DataSourceDecorator-java-抽象基础装饰" class="headerlink" title="decorators&#x2F;DataSourceDecorator.java: 抽象基础装饰"></a><strong>decorators&#x2F;DataSourceDecorator.java:</strong> 抽象基础装饰</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.decorators;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象基础装饰</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午6:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">DataSourceDecorator</span> <span class="keyword">implements</span> <span class="title class_">DataSource</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> DataSource wrappee;</span><br><span class="line"></span><br><span class="line">    DataSourceDecorator(DataSource source) &#123;</span><br><span class="line">        <span class="built_in">this</span>.wrappee = source;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        wrappee.writeData(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> wrappee.readData();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="decorators-EncryptionDecorator-java-加密装饰"><a href="#decorators-EncryptionDecorator-java-加密装饰" class="headerlink" title="decorators&#x2F;EncryptionDecorator.java: 加密装饰"></a><strong>decorators&#x2F;EncryptionDecorator.java:</strong> 加密装饰</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.decorators;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加密装饰</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午6:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EncryptionDecorator</span> <span class="keyword">extends</span> <span class="title class_">DataSourceDecorator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">EncryptionDecorator</span><span class="params">(DataSource source)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.writeData(encode(data));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> decode(<span class="built_in">super</span>.readData());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">encode</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] result = data.getBytes();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">            result[i] += (<span class="type">byte</span>) <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Base64.getEncoder().encodeToString(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">decode</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] result = Base64.getDecoder().decode(data);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">            result[i] -= (<span class="type">byte</span>) <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="decorators-CompressionDecorator-java-压缩装饰"><a href="#decorators-CompressionDecorator-java-压缩装饰" class="headerlink" title="decorators&#x2F;CompressionDecorator.java: 压缩装饰"></a><strong>decorators&#x2F;CompressionDecorator.java:</strong> 压缩装饰</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.decorators;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.zip.Deflater;</span><br><span class="line"><span class="keyword">import</span> java.util.zip.DeflaterOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.zip.InflaterInputStream;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 压缩装饰</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午6:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CompressionDecorator</span> <span class="keyword">extends</span> <span class="title class_">DataSourceDecorator</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">compLevel</span> <span class="operator">=</span> <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CompressionDecorator</span><span class="params">(DataSource source)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCompressionLevel</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> compLevel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCompressionLevel</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        compLevel = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.writeData(compress(data));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> decompress(<span class="built_in">super</span>.readData());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">compress</span><span class="params">(String stringData)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] data = stringData.getBytes();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ByteArrayOutputStream</span> <span class="variable">bout</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>(<span class="number">512</span>);</span><br><span class="line">            <span class="type">DeflaterOutputStream</span> <span class="variable">dos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DeflaterOutputStream</span>(bout, <span class="keyword">new</span> <span class="title class_">Deflater</span>(compLevel));</span><br><span class="line">            dos.write(data);</span><br><span class="line">            dos.close();</span><br><span class="line">            bout.close();</span><br><span class="line">            <span class="keyword">return</span> Base64.getEncoder().encodeToString(bout.toByteArray());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">decompress</span><span class="params">(String stringData)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] data = Base64.getDecoder().decode(stringData);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(data);</span><br><span class="line">            <span class="type">InflaterInputStream</span> <span class="variable">iin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InflaterInputStream</span>(in);</span><br><span class="line">            <span class="type">ByteArrayOutputStream</span> <span class="variable">bout</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>(<span class="number">512</span>);</span><br><span class="line">            <span class="type">int</span> b;</span><br><span class="line">            <span class="keyword">while</span> ((b = iin.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                bout.write(b);</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line">            iin.close();</span><br><span class="line">            bout.close();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(bout.toByteArray());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Main-java-客户端代码"><a href="#Main-java-客户端代码" class="headerlink" title="Main.java: 客户端代码"></a><strong>Main.java:</strong> 客户端代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.decorators.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端代码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Z</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/9/18 下午5:52</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">salaryRecords</span> <span class="operator">=</span> <span class="string">&quot;姓名，薪水 \n 约翰·史密斯，100000\n Steven Jobs，912000&quot;</span>;</span><br><span class="line">        <span class="type">DataSourceDecorator</span> <span class="variable">encoded</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CompressionDecorator</span>(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">EncryptionDecorator</span>(</span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">FileDataSource</span>(<span class="string">&quot;out/OutputDemo.txt&quot;</span>)));</span><br><span class="line">        encoded.writeData(salaryRecords);</span><br><span class="line">        <span class="type">DataSource</span> <span class="variable">plain</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileDataSource</span>(<span class="string">&quot;out/OutputDemo.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;- Input ----------------&quot;</span>);</span><br><span class="line">        System.out.println(salaryRecords);</span><br><span class="line">        System.out.println(<span class="string">&quot;- Encoded --------------&quot;</span>);</span><br><span class="line">        System.out.println(plain.readData());</span><br><span class="line">        System.out.println(<span class="string">&quot;- Decoded --------------&quot;</span>);</span><br><span class="line">        System.out.println(encoded.readData());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="装饰模式适合应用场景"><a href="#装饰模式适合应用场景" class="headerlink" title="装饰模式适合应用场景"></a>装饰模式适合应用场景</h2><p><strong>如果你希望在无需修改代码的情况下即可使用对象，且希望在运行时为对象新增额外的行为，可以使用装饰模式。</strong></p>
+<p> 装饰能将业务逻辑组织为层次结构， 你可为各层创建一个装饰， 在运行时将各种不同逻辑组合成对象。 由于这些对象都遵循通用接口， 客户端代码能以相同的方式使用这些对象。</p>
+<p><strong>如果用继承来扩展对象行为的方案难以实现或者根本不可行，你可以使用该模式。</strong></p>
+<p>许多编程语言使用 <code>final</code>最终关键字来限制对某个类的进一步扩展。 复用最终类已有行为的唯一方法是使用装饰模式： 用封装器对其进行封装。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>确保业务逻辑可用一个基本组件及多个额外可选层次表示。</li>
+<li>找出基本组件和可选层次的通用方法。 创建一个组件接口并在其中声明这些方法。</li>
+<li>创建一个具体组件类， 并定义其基础行为。</li>
+<li>创建装饰基类， 使用一个成员变量存储指向被封装对象的引用。 该成员变量必须被声明为组件接口类型， 从而能在运行时连接具体组件和装饰。 装饰基类必须将所有工作委派给被封装的对象。</li>
+<li>确保所有类实现组件接口。</li>
+<li>将装饰基类扩展为具体装饰。 具体装饰必须在调用父类方法 （总是委派给被封装对象） 之前或之后执行自身的行为。</li>
+<li>客户端代码负责创建装饰并将其组合成客户端所需的形式。</li>
+</ol>
+<h2 id="装饰模式优缺点"><a href="#装饰模式优缺点" class="headerlink" title="装饰模式优缺点"></a>装饰模式优缺点</h2><p>优点：</p>
+<ul>
+<li>你无需创建新子类即可扩展对象的行为。</li>
+<li>你可以在运行时添加或删除对象的功能。</li>
+<li>你可以用多个装饰封装对象来组合几种行为。</li>
+<li><em>单一职责原则</em>。 你可以将实现了许多不同行为的一个大类拆分为多个较小的类。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>在封装器栈中删除特定封装器比较困难。</li>
+<li>实现行为不受装饰栈顺序影响的装饰比较困难。</li>
+<li>各层的初始化配置代码看上去可能会很糟糕。</li>
+</ul>
+<h2 id="与其他模式的关系"><a href="#与其他模式的关系" class="headerlink" title="与其他模式的关系"></a>与其他模式的关系</h2><ul>
+<li>适配器模式可以对已有对象的接口进行修改，装饰模式则能在不改变对象接口的前提下强化对象功能。 此外， <em>装饰</em>还支持递归组合， <em>适配器</em>则无法实现。</li>
+<li>适配器能为被封装对象提供不同的接口， 代理模式能为对象提供相同的接口， 装饰则能为对象提供加强的接口。</li>
+<li>责任链模式和装饰模式的类结构非常相似。 两者都依赖递归组合将需要执行的操作传递给一系列对象。 但是， 两者有几点重要的不同之处。责任链的管理者可以相互独立地执行一切操作， 还可以随时停止传递请求。 另一方面， 各种<em>装饰</em>可以在遵循基本接口的情况下扩展对象的行为。 此外， 装饰无法中断请求的传递。</li>
+<li>组合模式和装饰的结构图很相似， 因为两者都依赖递归组合来组织无限数量的对象。 <em>装饰</em>类似于<em>组合</em>， 但其只有一个子组件。 此外还有一个明显不同： <em>装饰</em>为被封装对象添加了额外的职责， <em>组合</em>仅对其子节点的结果进行了 “求和”。 但是， 模式也可以相互合作： 你可以使用<em>装饰</em>来扩展<em>组合</em>树中特定对象的行为。</li>
+<li>大量使用组合和装饰的设计通常可从对于原型模式的使用中获益。 你可以通过该模式来复制复杂结构， 而非从零开始重新构造。</li>
+<li>装饰可让你更改对象的外表， 策略模式则让你能够改变其本质。</li>
+<li>装饰和代理有着相似的结构， 但是其意图却非常不同。 这两个模式的构建都基于组合原则， 也就是说一个对象应该将部分工作委派给另一个对象。 两者之间的不同之处在于<em>代理</em>通常自行管理其服务对象的生命周期， 而<em>装饰</em>的生成则总是由客户端进行控制。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>装饰模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>装饰模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>适配器模式</title>
     <url>/18238916cc52.html</url>
     <content><![CDATA[<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p><strong>适配器模式</strong>是一种结构型设计模式， 它能使接口不兼容的对象能够相互合作。</p>
@@ -9825,6 +10041,30 @@ new Scanner(System.in).nextInt();
       </tags>
   </entry>
   <entry>
+    <title>Nginx无法开启ssl</title>
+    <url>/ddb67e219574.html</url>
+    <content><![CDATA[<h2 id="Nginx无法开启ssl"><a href="#Nginx无法开启ssl" class="headerlink" title="Nginx无法开启ssl"></a>Nginx无法开启ssl</h2><p>异常描述</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx: [emerg] the “ssl“ parameter requires ngx_http_ssl_module <span class="keyword">in</span> /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="源码编译时添加SSL"><a href="#源码编译时添加SSL" class="headerlink" title="源码编译时添加SSL"></a>源码编译时添加SSL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入Nginx源码目录</span></span><br><span class="line"><span class="built_in">cd</span> /root/FastDFS/nginx-1.12.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 附加--with-http_ssl_module</span></span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module --http-client-body-temp-path=/var/temp/nginx/client --http-proxy-temp-path=/var/temp/nginx/proxy --http-fastcgi-temp-path=/var/temp/nginx/fastcgi --http-uwsgi-temp-path=/var/temp/nginx/uwsgi --http-scgi-temp-path=/var/temp/nginx/scgi --add-module=/root/FastDFS/fastdfs-nginx-module/src --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当添加 with-http_ssl_module 无法编译通过需要openssl的地址时 注意需要的是源码地址 而非应用地址</span></span><br><span class="line">./configure --with-openssl=/opt/openssl-3.0.7 --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行make命令</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份</span></span><br><span class="line"><span class="built_in">cp</span> /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保证nginx是关闭状态, 如果无法关闭，可以使用杀死进程方式关闭</span></span><br><span class="line">ps -ef | grep nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制退出：</span></span><br><span class="line">pkill -9 nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新编译的Nginx覆盖原来的Nginx</span></span><br><span class="line"><span class="built_in">cp</span> ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动Nginx</span></span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次查看已安装模块，确认是否成功</span></span><br><span class="line">nginx -V</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关命令</span></span><br><span class="line">./nginx -s reload</span><br><span class="line">./nginx -s stop</span><br><span class="line">./nginx </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="编译无法完成"><a href="#编译无法完成" class="headerlink" title="编译无法完成"></a>编译无法完成</h3><p>因为openssl的版本不对</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Nginx 1.11.5及以上版本与OpenSSL 1.0.2及以上版本兼容。</span><br><span class="line">Nginx 1.15.2及以上版本与OpenSSL 1.1.1及以上版本兼容。</span><br></pre></td></tr></table></figure>
+
+<p>需要下载新的openssl覆盖安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载openssl</span></span><br><span class="line">wget https://www.openssl.org/source/openssl-3.0.7.tar.gz</span><br><span class="line">tar -zxvf openssl-3.0.7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-3.0.7</span><br><span class="line"><span class="comment"># 编译安装</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="comment"># 备份原配置</span></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line"><span class="built_in">mv</span> /usr/include/openssl/ /usr/include/openssl.bak</span><br><span class="line"><span class="comment"># 新版配置</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line"><span class="comment"># 也有可能没有64的版本需要去/usr/local/openssl下面看具体的libssl</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/lib64/libssl.so.3 /usr/local/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="comment"># 写入openssl库文件的搜索路径 添加动态库不添加无法启动openssl</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib64&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line"><span class="comment"># 使修改后的/etc/ld.so.conf生效</span></span><br><span class="line">ldconfig -v | grep ssl</span><br><span class="line"><span class="comment"># 查看openssl版本</span></span><br><span class="line">openssl version</span><br><span class="line"><span class="comment"># 查看openssl的位置</span></span><br><span class="line"><span class="built_in">which</span> openssl</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>问题</category>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>问题</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>打开双重el-dialog后出现遮罩</title>
     <url>/4b5ecca296b4.html</url>
     <content><![CDATA[<p>环境：vue2，element</p>
@@ -9860,30 +10100,6 @@ new Scanner(System.in).nextInt();
       </categories>
       <tags>
         <tag>问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx无法开启ssl</title>
-    <url>/ddb67e219574.html</url>
-    <content><![CDATA[<h2 id="Nginx无法开启ssl"><a href="#Nginx无法开启ssl" class="headerlink" title="Nginx无法开启ssl"></a>Nginx无法开启ssl</h2><p>异常描述</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx: [emerg] the “ssl“ parameter requires ngx_http_ssl_module <span class="keyword">in</span> /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<h3 id="源码编译时添加SSL"><a href="#源码编译时添加SSL" class="headerlink" title="源码编译时添加SSL"></a>源码编译时添加SSL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入Nginx源码目录</span></span><br><span class="line"><span class="built_in">cd</span> /root/FastDFS/nginx-1.12.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 附加--with-http_ssl_module</span></span><br><span class="line">./configure --prefix=/usr/local/nginx --pid-path=/var/run/nginx/nginx.pid --lock-path=/var/lock/nginx.lock --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-http_gzip_static_module --http-client-body-temp-path=/var/temp/nginx/client --http-proxy-temp-path=/var/temp/nginx/proxy --http-fastcgi-temp-path=/var/temp/nginx/fastcgi --http-uwsgi-temp-path=/var/temp/nginx/uwsgi --http-scgi-temp-path=/var/temp/nginx/scgi --add-module=/root/FastDFS/fastdfs-nginx-module/src --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当添加 with-http_ssl_module 无法编译通过需要openssl的地址时 注意需要的是源码地址 而非应用地址</span></span><br><span class="line">./configure --with-openssl=/opt/openssl-3.0.7 --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行make命令</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份</span></span><br><span class="line"><span class="built_in">cp</span> /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">nginx -s stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保证nginx是关闭状态, 如果无法关闭，可以使用杀死进程方式关闭</span></span><br><span class="line">ps -ef | grep nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制退出：</span></span><br><span class="line">pkill -9 nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新编译的Nginx覆盖原来的Nginx</span></span><br><span class="line"><span class="built_in">cp</span> ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动Nginx</span></span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次查看已安装模块，确认是否成功</span></span><br><span class="line">nginx -V</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关命令</span></span><br><span class="line">./nginx -s reload</span><br><span class="line">./nginx -s stop</span><br><span class="line">./nginx </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="编译无法完成"><a href="#编译无法完成" class="headerlink" title="编译无法完成"></a>编译无法完成</h3><p>因为openssl的版本不对</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Nginx 1.11.5及以上版本与OpenSSL 1.0.2及以上版本兼容。</span><br><span class="line">Nginx 1.15.2及以上版本与OpenSSL 1.1.1及以上版本兼容。</span><br></pre></td></tr></table></figure>
-
-<p>需要下载新的openssl覆盖安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载openssl</span></span><br><span class="line">wget https://www.openssl.org/source/openssl-3.0.7.tar.gz</span><br><span class="line">tar -zxvf openssl-3.0.7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-3.0.7</span><br><span class="line"><span class="comment"># 编译安装</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="comment"># 备份原配置</span></span><br><span class="line"><span class="built_in">mv</span> /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line"><span class="built_in">mv</span> /usr/include/openssl/ /usr/include/openssl.bak</span><br><span class="line"><span class="comment"># 新版配置</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line"><span class="comment"># 也有可能没有64的版本需要去/usr/local/openssl下面看具体的libssl</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/lib64/libssl.so.3 /usr/local/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="comment"># 写入openssl库文件的搜索路径 添加动态库不添加无法启动openssl</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib64&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line"><span class="comment"># 使修改后的/etc/ld.so.conf生效</span></span><br><span class="line">ldconfig -v | grep ssl</span><br><span class="line"><span class="comment"># 查看openssl版本</span></span><br><span class="line">openssl version</span><br><span class="line"><span class="comment"># 查看openssl的位置</span></span><br><span class="line"><span class="built_in">which</span> openssl</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>问题</category>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>问题</tag>
-        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
